@@ -1,4 +1,4 @@
-package com.jia.jiawiki;
+package com.jiawa.wiki;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,13 +8,13 @@ import org.springframework.core.env.Environment;
 
 
 @SpringBootApplication
-public class JiawikiApplication {
+public class WikiApplication {
 
-    private static final Logger LOG = LoggerFactory.getLogger(JiawikiApplication.class);
+    private static final Logger LOG = LoggerFactory.getLogger(WikiApplication.class);
 
     public static void main(String[] args) {
 
-        SpringApplication app = new SpringApplication(JiawikiApplication.class);
+        SpringApplication app = new SpringApplication(WikiApplication.class);
 
         Environment env = app.run(args).getEnvironment();
 
