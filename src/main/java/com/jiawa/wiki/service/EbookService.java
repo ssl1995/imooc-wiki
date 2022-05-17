@@ -1,6 +1,7 @@
 package com.jiawa.wiki.service;
 
-import com.jiawa.wiki.domain.Ebook;
+import com.jiawa.wiki.req.EbookReq;
+import com.jiawa.wiki.resp.EbookResp;
 
 import java.util.List;
 
@@ -11,5 +12,5 @@ import java.util.List;
  */
 public interface EbookService {
 
-    List<Ebook> list();
+    List<EbookResp> list(EbookReq req);
 }
