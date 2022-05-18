@@ -5,20 +5,21 @@
 
     <router-view/>
 
-    <the-footer/>
 
+    <a-layout-footer style="text-align: center">
+      甲蛙电子书
+    </a-layout-footer>
   </a-layout>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
+import { defineComponent } from 'vue';
 import TheHeader from '@/components/the-header.vue'; // @ is an alias to /src
-import TheFooter from '@/components/the-footer.vue';
 
 export default defineComponent({
   name: 'app',
   components: {
-    TheHeader, TheFooter
+    TheHeader,
   },
 });
 </script>
