@@ -48,22 +48,45 @@
     <a-layout-content
         :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }"
     >
-      Content
+      <pre >
+        {{ebooke1}}
+        {{ebooke2}}
+      </pre>
     </a-layout-content>
   </a-layout>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
+import {defineComponent, onMounted, ref, reactive, toRef} from 'vue';
 import axios from 'axios'
 
 export default defineComponent({
   name: 'Home',
   setup() {
-    // 发送http请求
-    axios.get("http://localhost:8880/ebook/list?name=教程").then((response) => {
-      console.log(response);
+    // 声明响应式数据
+    const ebooke1 = ref();
+    const ebooke2 = reactive({"books": []});
+
+
+    onMounted(() => {
+      // 发送http请求
+      axios.get("http://localhost:8880/ebook/list?name=教程").then((response) => {
+        const data = response.data;
+
+        ebooke1.value = data.content;
+
+        ebooke2.books = data.content;
+
+        console.log(response);
+      })
     })
+
+    return {
+      ebooke1,
+      ebooke2: toRef(ebooke2, "books")
+    }
+
+
   }
 });
 </script>
