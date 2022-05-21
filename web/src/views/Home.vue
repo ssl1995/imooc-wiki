@@ -103,7 +103,7 @@ export default defineComponent({
 
     onMounted(() => {
       // 发送http请求
-      axios.get(process.env.VUE_APP_SERVER+"/ebook/list?name=教程").then((response) => {
+      axios.get("/ebook/list?name=Spring").then((response) => {
         const data = response.data;
 
         ebooke1.value = data.content;
