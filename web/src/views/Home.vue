@@ -109,8 +109,6 @@ export default defineComponent({
         ebooke1.value = data.content;
 
         ebooke2.books = data.content;
-
-        console.log(response);
       })
     })
 
