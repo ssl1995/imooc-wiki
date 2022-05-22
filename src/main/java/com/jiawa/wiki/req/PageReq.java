@@ -7,16 +7,16 @@ package com.jiawa.wiki.req;
  */
 public class PageReq {
 
-    private Integer num;
+    private Integer page;
 
     private Integer size;
 
-    public Integer getNum() {
-        return num;
+    public Integer getPage() {
+        return page;
     }
 
-    public void setNum(Integer num) {
-        this.num = num;
+    public void setPage(Integer page) {
+        this.page = page;
     }
 
     public Integer getSize() {
@@ -30,7 +30,7 @@ public class PageReq {
     @Override
     public String toString() {
         return "PageReq{" +
-                "num=" + num +
+                "num=" + page +
                 ", size=" + size +
                 '}';
     }

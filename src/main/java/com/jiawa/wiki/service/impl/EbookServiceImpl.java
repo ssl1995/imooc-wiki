@@ -38,7 +38,7 @@ public class EbookServiceImpl implements EbookService {
             criteria.andNameLike("%" + req.getName() + "%");
         }
         // 使用PageHelper
-        PageHelper.startPage(req.getNum(), req.getSize());
+        PageHelper.startPage(req.getPage(), req.getSize());
         List<Ebook> ebookList = ebookMapper.selectByExample(ebookExample);
 
         PageInfo<Ebook> pageInfo = new PageInfo<>(ebookList);
