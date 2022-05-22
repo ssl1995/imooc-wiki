@@ -7,6 +7,7 @@ import com.jiawa.wiki.domain.CategoryExample;
 import com.jiawa.wiki.mapper.CategoryMapper;
 import com.jiawa.wiki.req.CategoryQueryReq;
 import com.jiawa.wiki.req.CategorySaveReq;
+import com.jiawa.wiki.resp.CategoryQueryResp;
 import com.jiawa.wiki.resp.PageResp;
 import com.jiawa.wiki.service.CategoryService;
 import com.jiawa.wiki.utils.CopyUtil;
@@ -36,9 +37,19 @@ public class CategoryServiceImpl implements CategoryService {
     private SnowFlake snowFlake;
 
     @Override
+    public List<CategoryQueryResp> all() {
+        CategoryExample categoryExample = new CategoryExample();
+        categoryExample.setOrderByClause("sort asc");
+        List<Category> categoryList = categoryMapper.selectByExample(categoryExample);
+
+        // 列表复制
+        return CopyUtil.copyList(categoryList, CategoryQueryResp.class);
+    }
+
+    @Override
     public PageResp<Category> list(CategoryQueryReq req) {
         CategoryExample categoryExample = new CategoryExample();
-        CategoryExample.Criteria criteria = categoryExample.createCriteria();
+        categoryExample.setOrderByClause("sort asc");
 
         // 使用PageHelper
         PageHelper.startPage(req.getPage(), req.getSize());
@@ -52,7 +63,6 @@ public class CategoryServiceImpl implements CategoryService {
         pageResp.setList(categoryList);
 
         return pageResp;
-        
     }
 
     @Override
