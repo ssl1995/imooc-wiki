@@ -5,7 +5,7 @@ package com.jiawa.wiki.req;
  * @Date: 2022/05/17 11:05 PM
  * @Describe:
  */
-public class EbookReq {
+public class EbookReq extends PageReq{
     private Long id;
 
     private String name;
