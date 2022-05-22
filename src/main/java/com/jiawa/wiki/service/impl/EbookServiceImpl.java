@@ -10,6 +10,7 @@ import com.jiawa.wiki.req.EbookSaveReq;
 import com.jiawa.wiki.resp.PageResp;
 import com.jiawa.wiki.service.EbookService;
 import com.jiawa.wiki.utils.CopyUtil;
+import com.jiawa.wiki.utils.SnowFlake;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class EbookServiceImpl implements EbookService {
 
     @Autowired
     private EbookMapper ebookMapper;
+
+    @Autowired
+    private SnowFlake snowFlake;
 
     @Override
     public PageResp<Ebook> list(EbookQueryReq req) {
@@ -57,6 +61,8 @@ public class EbookServiceImpl implements EbookService {
     public void save(EbookSaveReq req) {
         Ebook ebook = CopyUtil.copy(req, Ebook.class);
         if (ObjectUtils.isEmpty(req.getId())) {
+            // 雪花算法生成ID
+            ebook.setId(snowFlake.nextId());
             // 新增
             ebookMapper.insert(ebook);
         } else {

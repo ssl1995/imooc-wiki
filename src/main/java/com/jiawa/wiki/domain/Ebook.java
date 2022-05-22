@@ -1,6 +1,11 @@
 package com.jiawa.wiki.domain;
 
 public class Ebook {
+    /**
+     * 雪花算法精度丢失，可以使用注解将Long转换为字符串传给前端
+     * 缺点：每个实体类Id都要添加，可以参考config/JacksonConfig全局配置
+     */
+//    @JsonSerialize(using= ToStringSerializer.class)
     private Long id;
 
     private String name;
