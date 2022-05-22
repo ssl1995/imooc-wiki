@@ -71,6 +71,8 @@
 <script lang="ts">
 import {defineComponent, onMounted, ref} from 'vue';
 import axios from 'axios';
+import {message} from 'ant-design-vue';
+
 
 export default defineComponent({
   name: 'AdminEbook',
@@ -78,7 +80,7 @@ export default defineComponent({
     const ebooks = ref();
     const pagination = ref({
       current: 1,
-      pageSize: 4,
+      pageSize: 10,
       total: 0
     });
     const loading = ref(false);
@@ -134,14 +136,17 @@ export default defineComponent({
       }).then((response) => {
         loading.value = false;
         const data = response.data;
-        ebooks.value = data.content.list;
+        if (data.success) {
+          ebooks.value = data.content.list;
 
-        // 重置分页按钮
-        pagination.value.current = params.page;
-        // pagination.value.pageSize = params.size;
-        pagination.value.total = data.content.total;
-
-
+          // 重置分页按钮
+          pagination.value.current = params.page;
+          // pagination.value.pageSize = params.size;
+          pagination.value.total = data.content.total;
+        } else {
+          // 错误提示
+          message.error(data.message)
+        }
       });
     };
 
@@ -157,7 +162,7 @@ export default defineComponent({
     };
 
 
-    // -------- 表单 ---------
+    // -------- 保存表单 ---------
     const ebook = ref({})
     const modalVisible = ref(false);
     const modalLoading = ref(false);
@@ -169,12 +174,14 @@ export default defineComponent({
         if (data.success) {
           modalVisible.value = false;
           modalLoading.value = false;
-        }
 
-        handleQuery({
-          page: pagination.value.current,
-          size: pagination.value.pageSize,
-        });
+          handleQuery({
+            page: pagination.value.current,
+            size: pagination.value.pageSize,
+          });
+        } else {
+          message.error(data.message)
+        }
 
       });
     };

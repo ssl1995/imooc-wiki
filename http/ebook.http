@@ -1,1 +1,1 @@
-GET http://localhost:8880/ebook/list?num=2&size111=3
+GET http://localhost:8880/ebook/list?page=1&size=1001

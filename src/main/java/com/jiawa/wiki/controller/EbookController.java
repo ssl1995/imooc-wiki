@@ -9,6 +9,8 @@ import com.jiawa.wiki.service.EbookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * @Author: SongShengLin
  * @Date: 2022/05/17 10:38 PM
@@ -21,7 +23,7 @@ public class EbookController {
     private EbookService ebookService;
 
     @GetMapping("/list")
-    public CommonResp<PageResp<Ebook>> list(EbookQueryReq req) {
+    public CommonResp<PageResp<Ebook>> list(@Valid EbookQueryReq req) {
         PageResp<Ebook> list = ebookService.list(req);
 
         CommonResp<PageResp<Ebook>> res = new CommonResp<>();
@@ -32,7 +34,7 @@ public class EbookController {
     }
 
     @PostMapping("/save")
-    public CommonResp save(@RequestBody EbookSaveReq req) {
+    public CommonResp save(@Valid @RequestBody EbookSaveReq req) {
         ebookService.save(req);
 
         return new CommonResp<>();

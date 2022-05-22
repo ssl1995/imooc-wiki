@@ -1,5 +1,7 @@
 package com.jiawa.wiki.req;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * @Author: SongShengLin
  * @Date: 2022/05/22 10:08 AM
@@ -9,6 +11,7 @@ public class EbookSaveReq {
 
     private Long id;
 
+    @NotNull(message = "【名称】不能为空")
     private String name;
 
     private Long category1Id;
