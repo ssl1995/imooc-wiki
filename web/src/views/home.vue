@@ -84,38 +84,43 @@ export default defineComponent({
   setup() {
     // 声明响应式数据
     const ebooke1 = ref();
-    const ebooke2 = reactive({"books": []});
+    // const ebooke2 = reactive({"books": []});
 
 
-    const listData: Record<string, string>[] = [];
-
-    for (let i = 0; i < 23; i++) {
-      listData.push({
-        href: 'https://www.antdv.com/',
-        title: `ant design vue part ${i}`,
-        avatar: 'https://joeschmoe.io/api/v1/random',
-        description:
-            'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-        content:
-            'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-      });
-    }
+    // const listData: Record<string, string>[] = [];
+    //
+    // for (let i = 0; i < 23; i++) {
+    //   listData.push({
+    //     href: 'https://www.antdv.com/',
+    //     title: `ant design vue part ${i}`,
+    //     avatar: 'https://joeschmoe.io/api/v1/random',
+    //     description:
+    //         'Ant Design, a design language for background applications, is refined by Ant UED Team.',
+    //     content:
+    //         'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
+    //   });
+    // }
 
     onMounted(() => {
       // 发送http请求
-      axios.get("/ebook/list?name=Spring").then((response) => {
+      axios.get("/ebook/list", {
+        params: {
+          // 首页写死查第一页，总1000条数据
+          page: 1,
+          size: 1000
+        }
+      }).then((response) => {
         const data = response.data;
 
-        ebooke1.value = data.content;
-
-        ebooke2.books = data.content;
+        ebooke1.value = data.content.list;
+        // ebooke2.books = data.content;
       })
     })
 
     return {
       ebooke1,
-      ebooke2: toRef(ebooke2, "books"),
-      listData,
+      // ebooke2: toRef(ebooke2, "books"),
+      // listData,
       pagination: {
         onChange: (page: any) => {
           console.log(page);
