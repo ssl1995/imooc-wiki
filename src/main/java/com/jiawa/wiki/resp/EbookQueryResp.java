@@ -5,7 +5,7 @@ package com.jiawa.wiki.resp;
  * @Date: 2022/05/17 11:08 PM
  * @Describe:
  */
-public class EbookResp {
+public class EbookQueryResp {
 
     private String name;
 

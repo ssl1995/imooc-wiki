@@ -1,14 +1,13 @@
 package com.jiawa.wiki.controller;
 
 import com.jiawa.wiki.domain.Ebook;
-import com.jiawa.wiki.req.EbookReq;
+import com.jiawa.wiki.req.EbookQueryReq;
+import com.jiawa.wiki.req.EbookSaveReq;
 import com.jiawa.wiki.resp.CommonResp;
 import com.jiawa.wiki.resp.PageResp;
 import com.jiawa.wiki.service.EbookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author: SongShengLin
@@ -22,7 +21,7 @@ public class EbookController {
     private EbookService ebookService;
 
     @GetMapping("/list")
-    public CommonResp<PageResp<Ebook>> list(EbookReq req) {
+    public CommonResp<PageResp<Ebook>> list(EbookQueryReq req) {
         PageResp<Ebook> list = ebookService.list(req);
 
         CommonResp<PageResp<Ebook>> res = new CommonResp<>();
@@ -30,6 +29,13 @@ public class EbookController {
         res.setContent(list);
 
         return res;
+    }
+
+    @PostMapping("/save")
+    public CommonResp save(@RequestBody EbookSaveReq req) {
+        ebookService.save(req);
+
+        return new CommonResp<>();
     }
 
 }
