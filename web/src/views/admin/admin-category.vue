@@ -20,7 +20,7 @@
       <a-table
           :columns="columns"
           :row-key="record => record.id"
-          :data-source="categorys"
+          :data-source="level1"
           :loading="loading"
           :pagination="false"
       >
@@ -103,6 +103,8 @@ export default defineComponent({
       }
     ];
 
+    const level1 = ref();
+
     /**
      * 数据查询
      **/
@@ -113,6 +115,11 @@ export default defineComponent({
         const data = response.data;
         if (data.success) {
           categorys.value = data.content;
+          console.log("原始数组:" + data.content);
+
+          level1.value = [];
+          level1.value = Tool.array2Tree(data.content, 0);
+
         } else {
           message.error(data.message);
         }
@@ -171,7 +178,8 @@ export default defineComponent({
 
     return {
       param,
-      categorys,
+      // categorys,
+      level1,
       columns,
       loading,
       handleQuery,
