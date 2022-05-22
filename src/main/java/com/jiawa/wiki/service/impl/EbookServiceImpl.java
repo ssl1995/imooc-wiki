@@ -70,4 +70,9 @@ public class EbookServiceImpl implements EbookService {
             ebookMapper.updateByPrimaryKey(ebook);
         }
     }
+
+    @Override
+    public void delete(Long id) {
+        ebookMapper.deleteByPrimaryKey(id);
+    }
 }
