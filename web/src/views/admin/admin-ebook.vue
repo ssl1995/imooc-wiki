@@ -143,6 +143,8 @@ export default defineComponent({
      **/
     const handleQuery = (params: any) => {
       loading.value = true;
+      // 清空ebook数据，防止保存编辑后，还是前面的数据展示
+      ebooks.value = []
       axios.get("/ebook/list", {
         params: {
           page: params.page,
