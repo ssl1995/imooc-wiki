@@ -5,10 +5,13 @@ import com.jiawa.wiki.resp.DocQueryResp;
 import com.jiawa.wiki.resp.CommonResp;
 import com.jiawa.wiki.service.DocService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Author: SongShengLin
@@ -39,10 +42,18 @@ public class DocController {
         return new CommonResp<>();
     }
 
-    @DeleteMapping("/delete/{id}")
-    public CommonResp delete(@PathVariable Long id) {
-        docService.delete(id);
-        return new CommonResp<>();
+    @DeleteMapping("/delete/{idsStr}")
+    public CommonResp delete(@PathVariable String idsStr) {
+        CommonResp<String> res = new CommonResp<>();
+        if (ObjectUtils.isEmpty(idsStr)) {
+            res.setSuccess(Boolean.FALSE);
+            res.setMessage("删除文档Id为空");
+            return res;
+        }
+        List<String> ids = Arrays.asList(idsStr.split(","));
+        docService.delete(ids.stream().map(Long::parseLong).collect(Collectors.toList()));
+
+        return res;
     }
 
 

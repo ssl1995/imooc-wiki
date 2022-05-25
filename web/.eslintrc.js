@@ -20,5 +20,6 @@ module.exports = {
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         '@typescript-eslint/ban-types': 'off',
         'andCategory2IdEqualTo': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
     }
 }
