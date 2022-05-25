@@ -144,7 +144,7 @@ export default defineComponent({
      * }]
      */
     const level1 = ref(); // 一级文档树，children属性就是二级文档
-    level1.value=[]
+    level1.value = []
 
     /**
      * 数据查询
@@ -173,7 +173,8 @@ export default defineComponent({
     // 因为树选择组件的属性状态，会随当前编辑的节点而变化，所以单独声明一个响应式变量
     const treeSelectData = ref();
     treeSelectData.value = [];
-    const doc = ref({});
+    const doc = ref();
+    doc.value = {};
     const modalVisible = ref(false);
     const modalLoading = ref(false);
     const editor = new E('#content');
@@ -181,6 +182,10 @@ export default defineComponent({
 
     const handleSave = () => {
       modalLoading.value = true;
+      doc.value.content = editor.txt.html();
+
+      console.log("doc:" + doc.value.content);
+
       axios.post("/doc/save", doc.value).then((response) => {
         modalLoading.value = false;
         const data = response.data; // data = commonResp
