@@ -10,13 +10,21 @@ public interface UserMapper {
 
     int deleteByExample(UserExample example);
 
-    int insert(User row);
+    int deleteByPrimaryKey(Long id);
 
-    int insertSelective(User row);
+    int insert(User record);
+
+    int insertSelective(User record);
 
     List<User> selectByExample(UserExample example);
 
-    int updateByExampleSelective(@Param("row") User row, @Param("example") UserExample example);
+    User selectByPrimaryKey(Long id);
 
-    int updateByExample(@Param("row") User row, @Param("example") UserExample example);
+    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
+
+    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
+
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
 }
