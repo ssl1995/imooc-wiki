@@ -107,4 +107,13 @@ public class DocServiceImpl implements DocService {
 
         docMapper.deleteByExample(docExample);
     }
+
+    @Override
+    public String findContent(Long id) {
+        Content content = contentMapper.selectByPrimaryKey(id);
+        if (ObjectUtils.isEmpty(content)) {
+            return "";
+        }
+        return content.getContent();
+    }
 }
