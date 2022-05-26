@@ -196,7 +196,10 @@ export default defineComponent({
     // -------- 表单 ---------
 
     const doc = ref();
-    doc.value = {};
+    doc.value = {
+      // 初始化ebookId,修复为可以直接保存
+      ebookId: route.query.ebookId
+    };
     const modalVisible = ref(false);
     const modalLoading = ref(false);
     const editor = new E('#content');
