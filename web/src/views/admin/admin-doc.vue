@@ -29,7 +29,7 @@
               size="small"
               :defaultExpandAllRows="true"
           >
-            <template #name="{ text,record }">
+            <template #name="{ text, record }">
               {{ record.sort }} {{ text }}
             </template>
             <template v-slot:action="{ text, record }">
@@ -87,10 +87,17 @@
         </a-col>
       </a-row>
 
-
     </a-layout-content>
   </a-layout>
 
+  <!--<a-modal-->
+  <!--  title="文档表单"-->
+  <!--  v-model:visible="modalVisible"-->
+  <!--  :confirm-loading="modalLoading"-->
+  <!--  @ok="handleModalOk"-->
+  <!--&gt;-->
+  <!--  -->
+  <!--</a-modal>-->
 </template>
 
 <script lang="ts">
@@ -99,7 +106,7 @@ import axios from 'axios';
 import {message, Modal} from 'ant-design-vue';
 import {useRoute} from "vue-router";
 import ExclamationCircleOutlined from "@ant-design/icons-vue/ExclamationCircleOutlined";
-import E from 'wangeditor';
+import E from 'wangeditor'
 import {Tool} from "@/util/Tool";
 
 export default defineComponent({
@@ -113,7 +120,6 @@ export default defineComponent({
     console.log("route.fullPath：", route.fullPath);
     console.log("route.name：", route.name);
     console.log("route.meta：", route.meta);
-
     const param = ref();
     param.value = {};
     const docs = ref();
@@ -144,7 +150,7 @@ export default defineComponent({
      * }]
      */
     const level1 = ref(); // 一级文档树，children属性就是二级文档
-    level1.value = []
+    level1.value = [];
 
     /**
      * 数据查询
@@ -153,7 +159,7 @@ export default defineComponent({
       loading.value = true;
       // 如果不清空现有数据，则编辑保存重新加载数据后，再点编辑，则列表显示的还是编辑前的数据
       level1.value = [];
-      axios.get("/doc/all").then((response) => {
+      axios.get("/doc/all/" + route.query.ebookId).then((response) => {
         loading.value = false;
         const data = response.data;
         if (data.success) {
@@ -183,15 +189,13 @@ export default defineComponent({
     const handleSave = () => {
       modalLoading.value = true;
       doc.value.content = editor.txt.html();
-
-      console.log("doc:" + doc.value.content);
-
       axios.post("/doc/save", doc.value).then((response) => {
         modalLoading.value = false;
         const data = response.data; // data = commonResp
         if (data.success) {
           // modalVisible.value = false;
-          message.success("保存成功");
+          message.success("保存成功！");
+
           // 重新加载列表
           handleQuery();
         } else {
@@ -231,66 +235,10 @@ export default defineComponent({
       }
     };
 
-
-    /**
-     * 内容查询
-     **/
-    const handleQueryContent = () => {
-      axios.get("/doc/find-content/" + doc.value.id).then((response) => {
-        const data = response.data;
-        if (data.success) {
-          editor.txt.html(data.content);
-        } else {
-          message.error(data.message);
-        }
-      });
-    };
-
-    /**
-     * 编辑
-     */
-    const edit = (record: any) => {
-      // 清空富文本
-      editor.txt.html("");
-      modalVisible.value = true;
-      console.log("编辑 record:" + record);
-
-      doc.value = Tool.copy(record);
-
-      handleQueryContent();
-
-      console.log("编辑中的 doc:" + doc.value);
-      // 不能选择当前节点及其所有子孙节点，作为父节点，会使树断开
-      treeSelectData.value = Tool.copy(level1.value);
-      setDisable(treeSelectData.value, record.id);
-
-      // 为选择树添加一个"无"
-      treeSelectData.value.unshift({id: '0', name: '无'});
-
-    };
-
-    /**
-     * 新增
-     */
-    const add = () => {
-      // 清空富文本
-      editor.txt.html("");
-      modalVisible.value = true;
-      doc.value = {
-        ebookId: route.query.ebookId
-      };
-
-      treeSelectData.value = Tool.copy(level1.value);
-
-      // 为选择树添加一个"无"
-      treeSelectData.value.unshift({id: '0', name: '无'});
-
-    };
-
     const deleteIds: Array<string> = [];
     const deleteNames: Array<string> = [];
     /**
-     * 将某节点及其子孙节点全部置为disabled
+     * 查找整根树枝
      */
     const getDeleteIds = (treeSelectData: any, id: any) => {
       // console.log(treeSelectData, id);
@@ -298,11 +246,14 @@ export default defineComponent({
       for (let i = 0; i < treeSelectData.length; i++) {
         const node = treeSelectData[i];
         if (node.id === id) {
+          // 如果当前节点就是目标节点
           console.log("delete", node);
+          // 将目标ID放入结果集ids
+          // node.disabled = true;
           deleteIds.push(id);
-          deleteNames.push(node.name)
+          deleteNames.push(node.name);
 
-          // 遍历所有子节点，将所有子节点全部都加上disabled
+          // 遍历所有子节点
           const children = node.children;
           if (Tool.isNotEmpty(children)) {
             for (let j = 0; j < children.length; j++) {
@@ -320,20 +271,66 @@ export default defineComponent({
     };
 
     /**
-     * 删除
+     * 内容查询
+     **/
+    const handleQueryContent = () => {
+      axios.get("/doc/find-content/" + doc.value.id).then((response) => {
+        const data = response.data;
+        if (data.success) {
+          editor.txt.html(data.content)
+        } else {
+          message.error(data.message);
+        }
+      });
+    };
+
+    /**
+     * 编辑
      */
+    const edit = (record: any) => {
+      // 清空富文本框
+      editor.txt.html("");
+      modalVisible.value = true;
+      doc.value = Tool.copy(record);
+      handleQueryContent();
+
+      // 不能选择当前节点及其所有子孙节点，作为父节点，会使树断开
+      treeSelectData.value = Tool.copy(level1.value);
+      setDisable(treeSelectData.value, record.id);
+
+      // 为选择树添加一个"无"
+      treeSelectData.value.unshift({id: 0, name: '无'});
+    };
+
+    /**
+     * 新增
+     */
+    const add = () => {
+      // 清空富文本框
+      editor.txt.html("");
+      modalVisible.value = true;
+      doc.value = {
+        ebookId: route.query.ebookId
+      };
+
+      treeSelectData.value = Tool.copy(level1.value);
+
+      // 为选择树添加一个"无"
+      treeSelectData.value.unshift({id: 0, name: '无'});
+    };
+
     const handleDelete = (id: number) => {
+      // console.log(level1, level1.value, id)
       // 清空数组，否则多次删除时，数组会一直增加
       deleteIds.length = 0;
       deleteNames.length = 0;
-
       getDeleteIds(level1.value, id);
-      // 二次弹窗确认
       Modal.confirm({
         title: '重要提醒',
         icon: createVNode(ExclamationCircleOutlined),
         content: '将删除：【' + deleteNames.join("，") + "】删除后不可恢复，确认删除？",
         onOk() {
+          // console.log(ids)
           axios.delete("/doc/delete/" + deleteIds.join(",")).then((response) => {
             const data = response.data; // data = commonResp
             if (data.success) {

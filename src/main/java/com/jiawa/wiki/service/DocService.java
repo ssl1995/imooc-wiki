@@ -15,7 +15,7 @@ import java.util.List;
  */
 public interface DocService {
 
-    List<DocQueryResp> all();
+    List<DocQueryResp> all(Long ebookId);
     PageResp<Doc> list(DocQueryReq req);
 
     void save(DocSaveReq req);
