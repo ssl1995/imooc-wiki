@@ -87,6 +87,7 @@ public class UserServiceImpl implements UserService {
             // 更新
             // 防止前端用户名被破解，登录名置空再选择性登录
             user.setLoginName(null);
+            user.setPassword(null);
             userMapper.updateByPrimaryKeySelective(user);
         }
     }
