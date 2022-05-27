@@ -1,6 +1,7 @@
 package com.jiawa.wiki.controller;
 
 import com.jiawa.wiki.req.UserQueryReq;
+import com.jiawa.wiki.req.UserRestPasswordReq;
 import com.jiawa.wiki.req.UserSaveReq;
 import com.jiawa.wiki.resp.CommonResp;
 import com.jiawa.wiki.resp.PageResp;
@@ -42,5 +43,13 @@ public class UserController {
         CommonResp resp = new CommonResp<>();
         userService.delete(id);
         return resp;
+    }
+
+    @PostMapping("/reset-password")
+    public CommonResp resetPassword(@Valid @RequestBody UserRestPasswordReq req) {
+        req.setPassword(DigestUtils.md5DigestAsHex(req.getPassword().getBytes()));
+        userService.resetPassword(req);
+
+        return new CommonResp<>();
     }
 }

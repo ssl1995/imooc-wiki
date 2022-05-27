@@ -8,6 +8,7 @@ import com.jiawa.wiki.exception.BusinessException;
 import com.jiawa.wiki.exception.BusinessExceptionCode;
 import com.jiawa.wiki.mapper.UserMapper;
 import com.jiawa.wiki.req.UserQueryReq;
+import com.jiawa.wiki.req.UserRestPasswordReq;
 import com.jiawa.wiki.req.UserSaveReq;
 import com.jiawa.wiki.resp.PageResp;
 import com.jiawa.wiki.resp.UserQueryResp;
@@ -90,6 +91,12 @@ public class UserServiceImpl implements UserService {
             user.setPassword(null);
             userMapper.updateByPrimaryKeySelective(user);
         }
+    }
+
+    @Override
+    public void resetPassword(UserRestPasswordReq req) {
+        User user = CopyUtil.copy(req, User.class);
+        userMapper.updateByPrimaryKeySelective(user);
     }
 
     public void delete(Long id) {
