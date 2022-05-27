@@ -1,6 +1,6 @@
 <template>
   <a-layout-footer style="text-align: center">
-    甲蛙电子书，欢迎：{{ user.name }}
+    甲蛙电子书，<span v-show="user.id">欢迎：</span> {{ user.name }}
   </a-layout-footer>
 </template>
 

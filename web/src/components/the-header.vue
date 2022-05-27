@@ -53,7 +53,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref} from 'vue';
+import {computed, defineComponent, ref} from 'vue';
 import axios from 'axios';
 import {message} from 'ant-design-vue';
 import store from "@/store";
@@ -64,8 +64,7 @@ declare let KEY: any;
 export default defineComponent({
   name: 'the-header',
   setup() {
-    const user = ref();
-    user.value = {};
+    const user = computed(() => store.state.user);
 
     const loginUser = ref({
       loginName: "test",
@@ -87,8 +86,7 @@ export default defineComponent({
         const data = response.data;
         if (data.success) {
           loginModalVisible.value = false;
-          user.value = data.content;
-          store.commit("setUser", user.value);
+          store.commit("setUser", data.content);
 
           message.success("登录成功！");
 
