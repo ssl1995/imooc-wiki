@@ -1,6 +1,7 @@
 package com.jiawa.wiki.service;
 
 
+import com.jiawa.wiki.domain.User;
 import com.jiawa.wiki.req.UserQueryReq;
 import com.jiawa.wiki.req.UserSaveReq;
 import com.jiawa.wiki.resp.PageResp;
@@ -18,4 +19,6 @@ public interface UserService {
     void save(UserSaveReq req);
 
     void delete(Long id);
+
+    User selectByLoginName(String logName);
 }

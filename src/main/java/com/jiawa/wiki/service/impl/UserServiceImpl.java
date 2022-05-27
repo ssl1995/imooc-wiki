@@ -4,16 +4,19 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.jiawa.wiki.domain.User;
 import com.jiawa.wiki.domain.UserExample;
+import com.jiawa.wiki.exception.BusinessException;
+import com.jiawa.wiki.exception.BusinessExceptionCode;
 import com.jiawa.wiki.mapper.UserMapper;
 import com.jiawa.wiki.req.UserQueryReq;
 import com.jiawa.wiki.req.UserSaveReq;
-import com.jiawa.wiki.resp.UserQueryResp;
 import com.jiawa.wiki.resp.PageResp;
+import com.jiawa.wiki.resp.UserQueryResp;
 import com.jiawa.wiki.utils.CopyUtil;
 import com.jiawa.wiki.utils.SnowFlake;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 
 import javax.annotation.Resource;
@@ -69,9 +72,17 @@ public class UserServiceImpl implements UserService {
     public void save(UserSaveReq req) {
         User user = CopyUtil.copy(req, User.class);
         if (ObjectUtils.isEmpty(req.getId())) {
-            // 新增
-            user.setId(snowFlake.nextId());
-            userMapper.insert(user);
+
+            User userDB = selectByLoginName(req.getLoginName());
+            if (ObjectUtils.isEmpty(userDB)) {
+                // 新增
+                user.setId(snowFlake.nextId());
+                userMapper.insert(user);
+            } else {
+                // 抛出自定义异常
+                throw new BusinessException(BusinessExceptionCode.USER_LOGIN_NAME_EXIST);
+            }
+
         } else {
             // 更新
             userMapper.updateByPrimaryKey(user);
@@ -80,5 +91,18 @@ public class UserServiceImpl implements UserService {
 
     public void delete(Long id) {
         userMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public User selectByLoginName(String logName) {
+        UserExample userExample = new UserExample();
+        UserExample.Criteria criteria = userExample.createCriteria();
+        criteria.andLoginNameEqualTo(logName);
+
+        List<User> users = userMapper.selectByExample(userExample);
+        if (CollectionUtils.isEmpty(users)) {
+            return null;
+        }
+        return users.get(0);
     }
 }
