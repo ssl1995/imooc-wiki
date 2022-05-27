@@ -1,4 +1,4 @@
-package com.jiawa.wiki.service;
+package com.jiawa.wiki.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -7,11 +7,14 @@ import com.jiawa.wiki.domain.UserExample;
 import com.jiawa.wiki.exception.BusinessException;
 import com.jiawa.wiki.exception.BusinessExceptionCode;
 import com.jiawa.wiki.mapper.UserMapper;
+import com.jiawa.wiki.req.UserLoginReq;
 import com.jiawa.wiki.req.UserQueryReq;
 import com.jiawa.wiki.req.UserRestPasswordReq;
 import com.jiawa.wiki.req.UserSaveReq;
 import com.jiawa.wiki.resp.PageResp;
+import com.jiawa.wiki.resp.UserLoginResp;
 import com.jiawa.wiki.resp.UserQueryResp;
+import com.jiawa.wiki.service.UserService;
 import com.jiawa.wiki.utils.CopyUtil;
 import com.jiawa.wiki.utils.SnowFlake;
 import org.slf4j.Logger;
@@ -22,6 +25,7 @@ import org.springframework.util.ObjectUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -60,7 +64,7 @@ public class UserServiceImpl implements UserService {
         // 列表复制
         List<UserQueryResp> list = CopyUtil.copyList(userList, UserQueryResp.class);
 
-        PageResp<UserQueryResp> pageResp = new PageResp();
+        PageResp<UserQueryResp> pageResp = new PageResp<>();
         pageResp.setTotal(pageInfo.getTotal());
         pageResp.setList(list);
 
@@ -114,5 +118,26 @@ public class UserServiceImpl implements UserService {
             return null;
         }
         return users.get(0);
+    }
+
+    @Override
+    public UserLoginResp login(UserLoginReq req) {
+        User userDB = selectByLoginName(req.getLoginName());
+
+        if (ObjectUtils.isEmpty(userDB)) {
+            LOG.info("用户名不存在,{}", req.getLoginName());
+            // 用户名或密码错误
+            throw new BusinessException(BusinessExceptionCode.LOGIN_USER_ERROR);
+        } else {
+            if (Objects.equals(userDB.getPassword(), req.getPassword())) {
+                // 登录成功
+                return CopyUtil.copy(userDB, UserLoginResp.class);
+            } else {
+                // 密码不对
+                LOG.info("密码不对,输入密码：{}，数据库密码：{}", req.getPassword(), userDB.getPassword());
+                // 用户名或密码错误
+                throw new BusinessException(BusinessExceptionCode.LOGIN_USER_ERROR);
+            }
+        }
     }
 }
