@@ -133,7 +133,7 @@ export default defineComponent({
         if (data.success) {
           doc.value.voteCount++;
         } else {
-          message.error(data.message);
+          message.info(data.message);
         }
       });
     };
