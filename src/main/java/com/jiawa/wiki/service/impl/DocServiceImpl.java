@@ -15,13 +15,14 @@ import com.jiawa.wiki.req.DocSaveReq;
 import com.jiawa.wiki.resp.DocQueryResp;
 import com.jiawa.wiki.resp.PageResp;
 import com.jiawa.wiki.service.DocService;
+import com.jiawa.wiki.service.WsService;
 import com.jiawa.wiki.utils.CopyUtil;
 import com.jiawa.wiki.utils.RedisUtil;
 import com.jiawa.wiki.utils.RequestContext;
 import com.jiawa.wiki.utils.SnowFlake;
-import com.jiawa.wiki.websocket.WebSocketServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
@@ -55,7 +56,7 @@ public class DocServiceImpl implements DocService {
     private RedisUtil redisUtil;
 
     @Resource
-    private WebSocketServer webSocketServer;
+    private WsService wsService;
 
     @Override
     public List<DocQueryResp> all(Long ebookId) {
@@ -158,9 +159,13 @@ public class DocServiceImpl implements DocService {
             throw new BusinessException(BusinessExceptionCode.VOTE_REPEAT);
         }
 
+        // 点赞后发送通知，异步化解耦
         // 点赞完，发送通知
         Doc docDB = docMapper.selectByPrimaryKey(id);
-        webSocketServer.sendInfo("【" + docDB.getName() + "】" + "被点赞！");
+        String msg = "【" + docDB.getName() + "】" + "被点赞！";
+
+        String logId = MDC.get("LOG_ID");
+        wsService.sendInfo(msg, logId);
     }
 
     @Override
