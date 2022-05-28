@@ -26,6 +26,15 @@
           </div>
 
           <div class="wangeditor" :innerHTML="html"></div>
+
+          <div class="vote-div">
+            <a-button class="vote-div-but" type="primary" shape="round" :size="'large'" @click="vote">
+              <template #icon>
+                <LikeOutlined/> &nbsp;点赞：{{ doc.voteCount }}
+              </template>
+            </a-button>
+          </div>
+
         </a-col>
       </a-row>
     </a-layout-content>
@@ -33,7 +42,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, onMounted, ref, createVNode} from 'vue';
+import {defineComponent, onMounted, ref} from 'vue';
 import axios from 'axios';
 import {message} from 'ant-design-vue';
 import {useRoute} from "vue-router";
@@ -117,6 +126,18 @@ export default defineComponent({
       }
     };
 
+    // 点赞
+    const vote = () => {
+      axios.get('/doc/vote/' + doc.value.id).then((response) => {
+        const data = response.data;
+        if (data.success) {
+          doc.value.voteCount++;
+        } else {
+          message.error(data.message);
+        }
+      });
+    };
+
     onMounted(() => {
       handleQuery();
     });
@@ -126,7 +147,8 @@ export default defineComponent({
       html,
       onSelect,
       defaultSelectedKeys,
-      doc
+      doc,
+      vote
     }
   }
 });
@@ -190,4 +212,16 @@ export default defineComponent({
   font-size: 16px !important;
   font-weight: 600;
 }
+
+/* 点赞 */
+.vote-div {
+  padding: 15px;
+  text-align: center;
+}
+
+/*点赞文字过大*/
+.vote-div-but {
+  font-size: 10px !important;
+}
+
 </style>
