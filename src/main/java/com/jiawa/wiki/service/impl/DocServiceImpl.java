@@ -147,4 +147,9 @@ public class DocServiceImpl implements DocService {
             throw new BusinessException(BusinessExceptionCode.VOTE_REPEAT);
         }
     }
+
+    @Override
+    public void updateEbookInfo() {
+        docCustMapper.updateEbookInfo();
+    }
 }
