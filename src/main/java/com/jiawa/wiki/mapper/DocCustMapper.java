@@ -1,0 +1,8 @@
+package com.jiawa.wiki.mapper;
+
+import org.apache.ibatis.annotations.Param;
+
+public interface DocCustMapper {
+
+    void increaseViewCount(@Param("id")Long id);
+}

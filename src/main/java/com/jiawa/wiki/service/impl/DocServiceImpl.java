@@ -6,6 +6,7 @@ import com.jiawa.wiki.domain.Content;
 import com.jiawa.wiki.domain.Doc;
 import com.jiawa.wiki.domain.DocExample;
 import com.jiawa.wiki.mapper.ContentMapper;
+import com.jiawa.wiki.mapper.DocCustMapper;
 import com.jiawa.wiki.mapper.DocMapper;
 import com.jiawa.wiki.req.DocQueryReq;
 import com.jiawa.wiki.req.DocSaveReq;
@@ -34,6 +35,9 @@ public class DocServiceImpl implements DocService {
 
     @Resource
     private DocMapper docMapper;
+
+    @Resource
+    private DocCustMapper docCustMapper;
 
     @Resource
     private ContentMapper contentMapper;
@@ -78,9 +82,14 @@ public class DocServiceImpl implements DocService {
         if (ObjectUtils.isEmpty(req.getId())) {
             // 雪花算法生成ID
             doc.setId(snowFlake.nextId());
-            // 新增
+            // 防止数据库default 0 失效
+            doc.setViewCount(0);
+            doc.setVoteCount(0);
+            // 新增文档
             docMapper.insert(doc);
 
+
+            // 新增文档内容
             content.setId(doc.getId());
             contentMapper.insert(content);
 
@@ -112,6 +121,8 @@ public class DocServiceImpl implements DocService {
     @Override
     public String findContent(Long id) {
         Content content = contentMapper.selectByPrimaryKey(id);
+        // 更新阅读数+1
+        docCustMapper.increaseViewCount(id);
         if (ObjectUtils.isEmpty(content)) {
             return "";
         }
