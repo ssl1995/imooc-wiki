@@ -23,6 +23,7 @@ import com.jiawa.wiki.websocket.WebSocketServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
 import javax.annotation.Resource;
@@ -86,7 +87,13 @@ public class DocServiceImpl implements DocService {
         return pageResp;
     }
 
+    /**
+     * 一个方法内，同时对多张表进行增删改，都需要加上事务注解
+     *
+     * @param req 请求参数
+     */
     @Override
+    @Transactional
     public void save(DocSaveReq req) {
         Doc doc = CopyUtil.copy(req, Doc.class);
         Content content = CopyUtil.copy(req, Content.class);
