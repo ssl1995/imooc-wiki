@@ -122,5 +122,14 @@ create table `user` (
 
 insert into `user` (id, `login_name`, `name`, `password`) values (1, 'test', '测试', 'test');
 
+# 更新文档数、阅读数、点赞数
+update ebook t1 ,(select ebook_id, count(1) as doc_count, sum(view_count) as view_count, sum(vote_count) as vote_count
+                  from doc
+                  group by ebook_id) as t2
+set t1.doc_count  = t2.doc_count,
+    t1.view_count=t2.view_count,
+    t1.vote_count = t2.vote_count
+where t1.id = t2.ebook_id;
+
 
 

@@ -7,11 +7,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 
 @ComponentScan("com.jiawa.wiki")
 @SpringBootApplication
 @MapperScan("com.jiawa.wiki.mapper")
+@EnableScheduling // 启动springboot自带的定时任务框架
 public class WikiApplication {
 
     private static final Logger LOG = LoggerFactory.getLogger(WikiApplication.class);
