@@ -20,6 +20,7 @@ import com.jiawa.wiki.utils.CopyUtil;
 import com.jiawa.wiki.utils.RedisUtil;
 import com.jiawa.wiki.utils.RequestContext;
 import com.jiawa.wiki.utils.SnowFlake;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -57,6 +58,9 @@ public class DocServiceImpl implements DocService {
 
     @Resource
     private WsService wsService;
+
+    @Resource
+    private RocketMQTemplate rocketMQTemplate;
 
     @Override
     public List<DocQueryResp> all(Long ebookId) {
@@ -159,13 +163,17 @@ public class DocServiceImpl implements DocService {
             throw new BusinessException(BusinessExceptionCode.VOTE_REPEAT);
         }
 
-        // 点赞后发送通知，异步化解耦
         // 点赞完，发送通知
         Doc docDB = docMapper.selectByPrimaryKey(id);
         String msg = "【" + docDB.getName() + "】" + "被点赞！";
 
         String logId = MDC.get("LOG_ID");
-        wsService.sendInfo(msg, logId);
+
+        // 点赞后发送通知，异步化解耦
+//        wsService.sendInfo(msg, logId);
+
+        // 使用RocketMQ发送Topic
+        rocketMQTemplate.convertAndSend("VOTE_TOPIC", msg);
     }
 
     @Override
