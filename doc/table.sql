@@ -173,5 +173,27 @@ set t1.view_increase = (t1.view_count - IFNULL(t2.view_count, 0)),
     t1.vote_increase = (t1.vote_count - IFNULL(t2.vote_count, 0))
 where t1.date = curdate();
 
+-- 查前30天数据
+select t1.`date`             as `date`,
+       sum(t1.view_increase) as viewIncrease,
+       sum(t1.vote_increase) as voteIncrease
+from ebook_snapshot t1
+where t1.`date` between date_sub(curdate(), interval 30 day) and date_sub(curdate(), interval 1 day)
+group by t1.`date`
+order by t1.`date` asc;
+
+-- 快照表造假数据
+INSERT INTO ebook_snapshot (ebook_id, date, view_count, vote_count, view_increase, vote_increase) VALUES (1, '2022-05-20', 89, 15, 89, 15);
+INSERT INTO ebook_snapshot (ebook_id, date, view_count, vote_count, view_increase, vote_increase) VALUES (2, '2022-05-20', 0, 1, 0, 0);
+INSERT INTO ebook_snapshot (ebook_id, date, view_count, vote_count, view_increase, vote_increase) VALUES (3, '2022-05-20', 0, 2, 0, 0);
+INSERT INTO ebook_snapshot (ebook_id, date, view_count, vote_count, view_increase, vote_increase) VALUES (4, '2022-05-20', 2, 0, 23, 0);
+INSERT INTO ebook_snapshot (ebook_id, date, view_count, vote_count, view_increase, vote_increase) VALUES (5, '2022-05-20', 231, 0, 12, 23);
+
+INSERT INTO ebook_snapshot (ebook_id, date, view_count, vote_count, view_increase, vote_increase) VALUES (1, '2022-05-10', 223, 213, 123, 123);
+INSERT INTO ebook_snapshot (ebook_id, date, view_count, vote_count, view_increase, vote_increase) VALUES (2, '2022-05-10', 0, 1, 312, 0);
+INSERT INTO ebook_snapshot (ebook_id, date, view_count, vote_count, view_increase, vote_increase) VALUES (3, '2022-05-10', 123, 2, 213, 0);
+INSERT INTO ebook_snapshot (ebook_id, date, view_count, vote_count, view_increase, vote_increase) VALUES (4, '2022-05-10', 2, 0, 23, 123);
+INSERT INTO ebook_snapshot (ebook_id, date, view_count, vote_count, view_increase, vote_increase) VALUES (5, '2022-05-10', 231, 0, 12, 23);
+
 
 
