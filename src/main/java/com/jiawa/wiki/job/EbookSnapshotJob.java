@@ -24,7 +24,7 @@ public class EbookSnapshotJob {
     /**
      * 每30s更新电子书信息
      */
-    @Scheduled(cron = "0/5 * * * * ?")
+    @Scheduled(cron = "0 0/1 * * * ?")
     public void getSnapshotJob() {
         // logback自带的日志流水号
         MDC.put("LOG_ID", String.valueOf(snowFlake.nextId()));
