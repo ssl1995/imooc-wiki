@@ -66,6 +66,9 @@ public class EbookServiceImpl implements EbookService {
         if (ObjectUtils.isEmpty(req.getId())) {
             // 雪花算法生成ID
             ebook.setId(snowFlake.nextId());
+            ebook.setDocCount(0);
+            ebook.setViewCount(0);
+            ebook.setVoteCount(0);
             // 新增
             ebookMapper.insert(ebook);
         } else {
