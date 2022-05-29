@@ -14,4 +14,6 @@ public interface EbookSnapshotService {
     void getSnapshot();
 
     List<StatisticResp> getStatistic();
+
+    List<StatisticResp> get30Statistic();
 }
