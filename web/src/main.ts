@@ -7,6 +7,8 @@ import 'ant-design-vue/dist/antd.css'
 import * as Icons from '@ant-design/icons-vue'
 import axios from 'axios'
 import {Tool} from "@/util/Tool";
+import {message} from 'ant-design-vue';
+
 
 // axios定义全局URL地址
 axios.defaults.baseURL = process.env.VUE_APP_SERVER
@@ -32,6 +34,15 @@ axios.interceptors.response.use(function (response) {
     return response;
 }, error => {
     console.log('返回错误：', error);
+    // 判断状态码是401 跳转到首页或登录页
+    const response = error.response;
+    const status = response.status;
+    if (status === 401) {
+        console.log("未登录，跳到首页");
+        store.commit("setUser", {});
+        message.error("未登录或登录超时");
+        router.push('/');
+    }
     return Promise.reject(error);
 });
 
