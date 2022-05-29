@@ -1,5 +1,9 @@
 package com.jiawa.wiki.service;
 
+import com.jiawa.wiki.resp.StatisticResp;
+
+import java.util.List;
+
 /**
  * @author SongShengLin
  * @date 2022/5/29 10:19
@@ -8,4 +12,6 @@ package com.jiawa.wiki.service;
 public interface EbookSnapshotService {
 
     void getSnapshot();
+
+    List<StatisticResp> getStatistic();
 }
