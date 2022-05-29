@@ -19,7 +19,8 @@
               </a-statistic>
             </a-col>
             <a-col :span="8">
-              <a-statistic title="点赞率" :value="statistic.voteCount / statistic.viewCount * 100"
+              <a-statistic title="点赞率"
+                           :value="!((statistic.voteCount / statistic.viewCount * 100)===(statistic.voteCount / statistic.viewCount * 100))?'0':(statistic.voteCount / statistic.viewCount * 100)"
                            :precision="2"
                            suffix="%"
                            :value-style="{ color: '#cf1322' }">
@@ -99,6 +100,7 @@
 <script lang="ts">
 import {defineComponent, ref, onMounted} from 'vue'
 import axios from 'axios';
+import {Tool} from "@/util/Tool";
 
 declare let echarts: any;
 
@@ -107,15 +109,18 @@ export default defineComponent({
   setup() {
     const statistic = ref();
     statistic.value = {};
+
     const getStatistic = () => {
       axios.get('/ebook-snapshot/get-statistic').then((response) => {
         const data = response.data;
         if (data.success) {
           const statisticResp = data.content;
+          // 返回值:[昨天，今天]
           statistic.value.viewCount = statisticResp[1].viewCount;
           statistic.value.voteCount = statisticResp[1].voteCount;
           statistic.value.todayViewCount = statisticResp[1].viewIncrease;
           statistic.value.todayVoteCount = statisticResp[1].voteIncrease;
+
 
           // 按分钟计算当前时间点，占一天的百分比
           const now = new Date();
@@ -123,8 +128,14 @@ export default defineComponent({
           // console.log(nowRate)
           statistic.value.todayViewIncrease = parseInt(String(statisticResp[1].viewIncrease / nowRate));
           // todayViewIncreaseRate：今日预计增长率
-          statistic.value.todayViewIncreaseRate = (statistic.value.todayViewIncrease - statisticResp[0].viewIncrease) / statisticResp[0].viewIncrease * 100;
-          statistic.value.todayViewIncreaseRateAbs = Math.abs(statistic.value.todayViewIncreaseRate);
+          if (statisticResp[0].viewIncrease === 0) {
+            // 如果昨天没有增量
+            statistic.value.todayViewIncreaseRate = 100;
+            statistic.value.todayViewIncreaseRateAbs = 100;
+          } else {
+            statistic.value.todayViewIncreaseRate = (statistic.value.todayViewIncrease - statisticResp[0].viewIncrease) / statisticResp[0].viewIncrease * 100;
+            statistic.value.todayViewIncreaseRateAbs = Math.abs(statistic.value.todayViewIncreaseRate);
+          }
         }
       });
     };
@@ -205,7 +216,6 @@ export default defineComponent({
     const get30DayStatistic = () => {
       axios.get('/ebook-snapshot/get-30-statistic').then((response) => {
         const data = response.data;
-        console.log("get30DayStatistic接口返回的data:" + data);
 
         if (data.success) {
           const statisticList = data.content;
