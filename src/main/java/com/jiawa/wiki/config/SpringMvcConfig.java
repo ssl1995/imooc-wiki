@@ -29,9 +29,10 @@ public class SpringMvcConfig implements WebMvcConfigurer {
                         "/doc/all/**",
                         "/doc/vote/**",
                         "/doc/find-content/**",
-                        "/ebook-snapshot/**"
+                        "/ebook-snapshot/**",
+                        "/ebook/upload/avatar"
                 );
-        
+
         registry.addInterceptor(actionInterceptor)
                 .addPathPatterns(
                         "/*/save",
