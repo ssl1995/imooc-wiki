@@ -186,7 +186,12 @@ export default defineComponent({
           // 父文档下拉框初始化，相当于点击新增
           treeSelectData.value = Tool.copy(level1.value) || [];
           // 为选择树添加一个"无"
-          treeSelectData.value.unshift({id: 0, name: '无'});
+          if (Tool.isEmpty(treeSelectData.value)) {
+            treeSelectData.value.push({id: 0, name: '无'})
+          } else {
+            treeSelectData.value.unshift({id: 0, name: '无'});
+          }
+          console.log("treeSelectData.value:"+treeSelectData.value);
         } else {
           message.error(data.message);
         }
