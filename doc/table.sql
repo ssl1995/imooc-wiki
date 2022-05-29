@@ -165,10 +165,6 @@ where t1.date = curdate()
   and t1.ebook_id = t2.id;
 
 -- 3.获取昨天的数据
-# select ebook_id, view_count, vote_count
-# from ebook_snapshot
-# where date = date_sub(CURDATE(), interval 1 day);
-
 update ebook_snapshot t1 left join (select ebook_id, view_count, vote_count
                                     from ebook_snapshot
                                     where date = date_sub(CURDATE(), interval 1 day)) t2
