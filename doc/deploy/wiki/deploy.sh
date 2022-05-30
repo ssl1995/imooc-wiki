@@ -10,7 +10,7 @@ fi
 source /etc/profile
 # 让后台一直执行这个命令
 # 正式环境
-nohup java -jar -Dspring.profiles.active=prod ~/wiki/wiki.jar >/dev/null 2>&1 &
+nohup java -jar -Dspring.profiles.active=prd ~/wiki/wiki.jar >/dev/null 2>&1 &
 # 测试环境
 #nohup java -jar ~/wiki/wiki.jar >/dev/null 2>&1 &
 
