@@ -3,13 +3,17 @@
     <!-- 修改一下路径-->
     <property name="PATH" value="./log"></property>
 
+    <!--  打印在控制台   -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) %blue(%-50logger{50}:%-4line) %thread %green(%-18X{LOG_ID}) %msg%n</Pattern>
-<!--            <Pattern>%d{ss.SSS} %highlight(%-5level) %blue(%-30logger{30}:%-4line) %thread %green(%-18X{LOG_ID}) %msg%n</Pattern>-->
+            <!-- 日志隔离级别： TRACE < DEBUG < INFO < WARN < ERROR   -->
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) %blue(%-50logger{50}:%-4line) %thread
+                %green(%-18X{LOG_ID}) %msg%n
+            </Pattern>
         </encoder>
     </appender>
 
+    <!--  打印在trace.log文件里   -->
     <appender name="TRACE_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${PATH}/trace.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -23,6 +27,7 @@
         </layout>
     </appender>
 
+    <!--  打印在error.log文件里   -->
     <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${PATH}/error.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -44,14 +49,14 @@
     <!-- 日志隔离级别： TRACE < DEBUG < INFO < WARN < ERROR   -->
 
     <root level="ERROR">
-        <appender-ref ref="ERROR_FILE" />
+        <appender-ref ref="ERROR_FILE"/>
     </root>
 
     <root level="TRACE">
-        <appender-ref ref="TRACE_FILE" />
+        <appender-ref ref="TRACE_FILE"/>
     </root>
 
     <root level="INFO">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
