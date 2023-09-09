@@ -1,6 +1,6 @@
 <template>
   <a-layout-header class="header">
-    <div class="logo"> wiki知识库</div>
+    <div class="logo">北林wiki知识系统</div>
 
     <a-popconfirm
         title="确认退出登录?"
@@ -134,7 +134,7 @@ export default defineComponent({
 
 <style>
 .logo {
-  width: 120px;
+  width: 200px;
   height: 31px;
   /*background: rgba(255, 255, 255, 0.2);*/
   /*margin: 16px 28px 16px 0;*/
