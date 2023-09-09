@@ -77,7 +77,7 @@ export default defineComponent({
     const user = computed(() => store.state.user);
 
     const loginUser = ref({
-      loginName: "test",
+      loginName: "admin",
       password: "test"
     });
     const loginModalVisible = ref(false);
