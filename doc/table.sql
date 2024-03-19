@@ -123,7 +123,7 @@ create table `user`
   default charset = utf8mb4 comment ='用户';
 
 insert into `user` (id, `login_name`, `name`, `password`)
-values (1, 'test', '测试', 'test');
+values (1, 'admin', '管理员', 'e70e2222a9d67c4f2eae107533359aa4');
 
 # 更新文档数、阅读数、点赞数
 update ebook t1 ,(select ebook_id, count(1) as doc_count, sum(view_count) as view_count, sum(vote_count) as vote_count
