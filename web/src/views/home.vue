@@ -1,22 +1,19 @@
 <template>
   <a-layout>
     <a-layout-sider width="200" style="background: #fff">
-      <a-menu
-          mode="inline"
-          :style="{ height: '100%', borderRight: 0 }"
-          @click="handleClick"
-          :openKeys="openKeys"
-      >
+      <a-menu mode="inline" :style="{ height: '100%', borderRight: 0 }" @click="handleClick" :openKeys="openKeys"
+        v-model:selectedKeys="selectedKeys" @select="handleMenuClick">
+        <!-- 左侧导航栏 - 数据由接口控制 -->
         <a-menu-item key="welcome">
-          <MailOutlined/>
-          <span>欢迎</span>
+          <MailOutlined />
+          <span>首页</span>
         </a-menu-item>
-        <a-sub-menu v-for="item in level1" :key="item.id" :disabled="true">
+        <a-sub-menu v-for="item in level1" :key="item.id">
           <template v-slot:title>
-            <span><user-outlined/>{{ item.name }}</span>
+            <span><user-outlined />{{ item.name }}</span>
           </template>
           <a-menu-item v-for="child in item.children" :key="child.id">
-            <MailOutlined/>
+            <MailOutlined />
             <span>{{ child.name }}</span>
           </a-menu-item>
         </a-sub-menu>
@@ -26,27 +23,25 @@
         </a-menu-item>
       </a-menu>
     </a-layout-sider>
-    <a-layout-content
-        :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }"
-    >
+    <a-layout-content :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }">
       <div class="welcome" v-show="isShowWelcome">
         <the-welcome></the-welcome>
       </div>
-      <a-list v-show="!isShowWelcome" item-layout="vertical" size="large" :grid="{ gutter: 20, column: 3 }"
-              :data-source="ebooks">
+      <a-list v-show="!isShowWelcome && !isShowImage" item-layout="vertical" size="large"
+        :grid="{ gutter: 20, column: 3 }" :data-source="ebooks">
         <template #renderItem="{ item }">
           <a-list-item key="item.name">
             <template #actions>
-                <span>
-                <component v-bind:is="'FileOutlined'" style="margin-right: 8px"/>
+              <span>
+                <component v-bind:is="'FileOutlined'" style="margin-right: 8px" />
                 {{ item.docCount }}
               </span>
               <span>
-                <component v-bind:is="'UserOutlined'" style="margin-right: 8px"/>
+                <component v-bind:is="'UserOutlined'" style="margin-right: 8px" />
                 {{ item.viewCount }}
               </span>
               <span>
-                <component v-bind:is="'LikeOutlined'" style="margin-right: 8px"/>
+                <component v-bind:is="'LikeOutlined'" style="margin-right: 8px" />
                 {{ item.voteCount }}
               </span>
             </template>
@@ -57,36 +52,50 @@
                 </router-link>
               </template>
               <template #avatar>
-                <a-avatar :src="item.cover"/>
+                <a-avatar :src="item.cover" />
               </template>
             </a-list-item-meta>
           </a-list-item>
         </template>
       </a-list>
+      <!-- 图片上传 -->
+      <ImagePage v-show="isShowImage" :imageType="imageType" @changeType="changeType" />
     </a-layout-content>
   </a-layout>
 </template>
 
 <script lang="ts">
-import {defineComponent, onMounted, ref, reactive, toRef} from 'vue';
+import { defineComponent, onMounted, ref } from 'vue';
 import axios from 'axios';
-import {message} from 'ant-design-vue';
-import {Tool} from "@/util/Tool";
+import { message } from 'ant-design-vue';
+import { Tool } from "@/util/Tool";
 import TheWelcome from '@/components/the-welcome.vue';
+import ImagePage from '@/components/image-page.vue'
 
 
 export default defineComponent({
   name: 'Home',
   components: {
-    TheWelcome
+    TheWelcome,
+    ImagePage
   },
 
   setup() {
     const ebooks = ref();
     // const ebooks1 = reactive({books: []});
-    const openKeys =  ref();
+    const openKeys = ref();
 
     const level1 = ref();
+    const isShowImage = ref(false);
+    let selectedKeys = ref(['welcome']); // 左侧导航栏默认选择的
+    let imageType = ref('imageUpload'); // 控制展示图片页面 图片上传：imageUpload，图片管理：imageManage
+    // 修改图片页面状态
+    const changeType = (type: string) => {
+      imageType.value = type;
+      const key = type === 'imageUpload' ? '501' : '502';
+      selectedKeys.value = [key]; // 对应修改左侧导航栏状态
+    };
+
     let categorys: any;
     /**
      * 查询所有分类
@@ -112,6 +121,11 @@ export default defineComponent({
         }
       });
     };
+    // 
+    const handleMenuClick = (data: any) => {
+      const { key = '' } = data || {};
+      selectedKeys.value = [key];
+    };
 
     const isShowWelcome = ref(true);
     let categoryId2 = 0;
@@ -131,11 +145,20 @@ export default defineComponent({
     };
 
     const handleClick = (value: any) => {
-      // console.log("menu click", value)
-      if (value.key === 'welcome') {
+      // console.log("menu click", value.key)
+      const { key = '' } = value || {}
+      if (key === 'welcome') {
         isShowWelcome.value = true;
+        isShowImage.value = false;
       } else {
-        categoryId2 = value.key;
+        categoryId2 = key;
+        if (key === '501' || key === '502') {
+          // 打开图片上传列表时，显示内容 - 前端写死
+          isShowImage.value = true;
+          key === '501' ? imageType.value = 'imageUpload' : imageType.value = 'imageManage';
+        } else {
+          isShowImage.value = false;
+        }
         isShowWelcome.value = false;
         handleQueryEbook();
       }
@@ -164,8 +187,13 @@ export default defineComponent({
       // ],
 
       handleClick,
+      selectedKeys,
       level1,
       isShowWelcome,
+      isShowImage,
+      imageType,
+      changeType,
+      handleMenuClick,
 
       openKeys
     }
