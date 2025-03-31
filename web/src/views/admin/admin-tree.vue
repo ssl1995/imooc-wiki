@@ -54,14 +54,14 @@ export default defineComponent({
     watch: {
         imageType(val) {
             if (val === 'imageManage') {
-                this.cardTitle = '古树名木图片管理';
+                this.cardTitle = '古树名木数据管理';
             } else {
-                this.cardTitle = '古树名木图片上传';
+                this.cardTitle = '古树名木数据上传';
             }
         }
     },
     setup(props, { emit }) {
-        const cardTitle = ref('古树名木数据上传'); // 卡片标题
+        const cardTitle = ref('古树名木图片上传'); // 卡片标题
         const changeType = (type) => {
             emit('changeType', type);
             cardTitle.value = type === 'imageUpload' ? '古树名木图片上传' : '古树名木图片管理'; // 修改卡片标题
@@ -73,8 +73,10 @@ export default defineComponent({
         const selectType = ref(null);
         // 类型下拉列表
         const selectList = ref([
-            { value: '1', label: '榕树' },
-            { value: '2', label: '槐树' }
+            { value: '1', label: '古树名木1' },
+            { value: '2', label: '古树名木2' },
+            { value: '3', label: '古树名木3' },
+            { value: '4', label: '古树名木4' }
         ])
         // 图片处理逻辑 - 可复制
         const getBase64 = (img, callback) => {

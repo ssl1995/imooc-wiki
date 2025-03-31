@@ -33,37 +33,34 @@ public class LoginInterceptor implements HandlerInterceptor {
         long startTime = System.currentTimeMillis();
         request.setAttribute("requestStartTime", startTime);
 
-        return true;
+//        return true;
         // OPTIONS请求不做校验,
-        // 前后端分离的架构, 前端会发一个OPTIONS请求先做预检, 对预检请求不做校验
-//        if (request.getMethod().toUpperCase().equals("OPTIONS")) {
-//            return true;
-//        }
-//
-//
-//        String path = request.getRequestURL().toString();
-//        LOG.info("接口登录拦截：，path：{}", path);
-//
-//        //获取header的token参数
-//        String token = request.getHeader("token");
-//        LOG.info("登录校验开始，token：{}", token);
-//        if (token == null || token.isEmpty()) {
-//            LOG.info("token为空，请求被拦截");
-//            response.setStatus(HttpStatus.UNAUTHORIZED.value());
-//            return false;
-//        }
-//        Object object = redisTemplate.opsForValue().get(token);
-//        if (object == null) {
-//            LOG.warn("token无效，请求被拦截");
-//            response.setStatus(HttpStatus.UNAUTHORIZED.value());
-//            return false;
-//        } else {
-//            LOG.info("已登录：{}", object);
-//            // 设置登录人信息
-//            LoginUserContext.setUser(JSON.parseObject((String) object, UserLoginResp.class));
-//
-//            return true;
-//        }
+        if (request.getMethod().toUpperCase().equals("OPTIONS")) {
+            return true;
+        }
+
+
+        String path = request.getRequestURL().toString();
+        LOG.info("接口登录拦截：，path：{}", path);
+
+        //获取header的token参数
+        String token = request.getHeader("token");
+        LOG.info("登录校验开始，token：{}", token);
+        if (token == null || token.isEmpty()) {
+            LOG.info("token为空，请求被拦截");
+            response.setStatus(HttpStatus.UNAUTHORIZED.value());
+            return false;
+        }
+        Object object = redisTemplate.opsForValue().get(token);
+        if (object == null) {
+            LOG.warn("token无效，请求被拦截");
+            response.setStatus(HttpStatus.UNAUTHORIZED.value());
+            return false;
+        } else {
+            LOG.info("已登录：{}", object);
+            LoginUserContext.setUser(JSON.parseObject((String) object, UserLoginResp.class));
+            return true;
+        }
     }
 
     @Override

@@ -33,7 +33,7 @@ public class ActionInterceptor implements HandlerInterceptor {
         // 获取登录信息
         UserLoginResp userLoginResp = LoginUserContext.getUser();
         // 超级管理员：admin不拦截，其余请求操作不允许
-        if ("admin".equals(userLoginResp.getLoginName())) {
+        if ("superAdmin".equals(userLoginResp.getLoginName())) {
             return true;
         }
 

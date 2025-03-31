@@ -43,6 +43,10 @@
 <!--        <router-link to="/about">关于我</router-link>-->
 <!--      </a-menu-item>-->
 
+<!--      <a-menu-item key="/admin/tree" :style="user.id?{}:{display:'none'}">-->
+<!--        <router-link to="/admin/tree">古树名木管理</router-link>-->
+<!--      </a-menu-item>-->
+
     </a-menu>
 
     <a-modal
