@@ -1,6 +1,6 @@
 <template>
   <a-layout-footer style="text-align: center">
-    北林wiki知识库电子书 <span v-show="user.id">欢迎：</span> {{ user.name }}
+    古树名木检索系统 <span v-show="user.id">欢迎：</span> {{ user.name }}
   </a-layout-footer>
 </template>
 

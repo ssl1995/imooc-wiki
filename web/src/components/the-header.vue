@@ -1,6 +1,7 @@
 <template>
   <a-layout-header class="header">
-    <div class="logo">北林wiki知识库系统</div>
+<!--    <div class="logo">北林wiki知识库系统</div>-->
+    <div class="logo">古树名木检索系统</div>
 
     <a-popconfirm
         title="确认退出登录?"
@@ -32,15 +33,15 @@
       <a-menu-item key="/admin/user" :style="user.id?{}:{display:'none'}">
         <router-link to="/admin/user">用户管理</router-link>
       </a-menu-item>
-      <a-menu-item key="/admin/ebook" :style="user.id?{}:{display:'none'}">
-        <router-link to="/admin/ebook">电子书管理</router-link>
-      </a-menu-item>
-      <a-menu-item key="/admin/category" :style="user.id?{}:{display:'none'}">
-        <router-link to="/admin/category">分类管理</router-link>
-      </a-menu-item>
-      <a-menu-item key="/about">
-        <router-link to="/about">关于我</router-link>
-      </a-menu-item>
+<!--      <a-menu-item key="/admin/ebook" :style="user.id?{}:{display:'none'}">-->
+<!--        <router-link to="/admin/ebook">电子书管理</router-link>-->
+<!--      </a-menu-item>-->
+<!--      <a-menu-item key="/admin/category" :style="user.id?{}:{display:'none'}">-->
+<!--        <router-link to="/admin/category">分类管理</router-link>-->
+<!--      </a-menu-item>-->
+<!--      <a-menu-item key="/about">-->
+<!--        <router-link to="/about">关于我</router-link>-->
+<!--      </a-menu-item>-->
 
     </a-menu>
 

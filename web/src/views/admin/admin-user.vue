@@ -118,10 +118,10 @@ export default defineComponent({
         title: '名称',
         dataIndex: 'name'
       },
-      {
-        title: '密码',
-        dataIndex: 'password'
-      },
+      // {
+      //   title: '密码',
+      //   dataIndex: 'password'
+      // },
       {
         title: 'Action',
         key: 'action',
