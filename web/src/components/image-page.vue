@@ -2,7 +2,7 @@
   <div>
     <!-- 图片上传 -->
     <a-card :title="cardTitle" class="card-style" v-if="props.imageType === 'imageUpload'">
-      <template #extra><a href="#" @click="changeType('imageManage')">{{ cardTitle }}</a></template>
+      <template #extra><a href="#" @click="changeType('imageUpload')">{{ cardTitle }}</a></template>
       <div class="upload-content">
         <!-- 选择日期 -->
         <a-date-picker v-model="date" placeholder="请选择图片上传日期" class="antd-select" :format="dateFormat"/>
@@ -29,14 +29,16 @@
         <a-button type="primary" class="submit-btn" @click="submit">点击上传</a-button>
       </div>
     </a-card>
+
+    <!-- todo: 添加组件 -->
     <!-- 图片管理 -->
-    <a-card :title="cardTitle" class="card-style" v-if="props.imageType === 'imageManage'">
+    <a-card :title="cardTitle" class="card-half-style" v-if="props.imageType === 'imageManage'">
       <template #extra><a href="#" @click="changeType('imageUpload')">{{ cardTitle }}</a></template>
-      <!-- todo: 添加组件 -->
-      <!--            <p>图片管理2</p>-->
-      <!--            <p>图片管理1</p>-->
-      <div class="search-style" >
-        <a-input v-model:value="value" placeholder="输入树名/描述"/>
+
+      <div class="search-style">
+        <div class="search-name-input">
+          <a-input v-model:value="value" class="input-style" placeholder="输入树名/描述"/>
+        </div>
         <a-upload v-model:file-list="fileList" name="avatar" list-type="picture-card" class="avatar-uploader"
                   :show-upload-list="false" action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                   :before-upload="beforeUpload" @change="handleChange">
@@ -44,11 +46,24 @@
           <div v-else>
             <loading-outlined v-if="loading"></loading-outlined>
             <plus-outlined v-else></plus-outlined>
-            <div class="ant-upload-text">请上传古树名木图片</div>
+            <div class="ant-upload-text">请上传</div>
           </div>
         </a-upload>
+
+        <a-button type="primary" class="button-style">检索</a-button>
       </div>
-      <a-table :dataSource="dataSource" :columns="columns"/>
+
+      <a-table :dataSource="dataSource" :columns="columns">
+        <template #bodyCell="{ column, record }">
+          <template v-if="column.key === 'imgUrl'">
+            <a-image
+                :style="{ width: '40px', height: 'auto' }"
+                :src="record.imgUrl"
+                alt="图片"
+            />
+          </template>
+        </template>
+      </a-table>
 
     </a-card>
   </div>
@@ -71,7 +86,8 @@ export default defineComponent({
   watch: {
     imageType(val) {
       if (val === 'imageManage') {
-        this.cardTitle = '古树名木图片管理';
+        // this.cardTitle = '古树名木图片管理';
+        this.cardTitle = '古树名木图片上传';
       } else {
         this.cardTitle = '古树名木图片上传';
       }
@@ -85,7 +101,7 @@ export default defineComponent({
     const cardTitle = ref('古树名木数据上传'); // 卡片标题
     const changeType = (type) => {
       emit('changeType', type);
-      cardTitle.value = type === 'imageUpload' ? '古树名木图片上传' : '古树名木图片管理'; // 修改卡片标题
+      cardTitle.value = type === 'imageUpload' ? '古树名木图片上传' : '古树名木图片上传';
     };
     // 日期处理
     const date = ref(null);
@@ -119,7 +135,8 @@ export default defineComponent({
       }
       if (info.file.status === 'error') {
         loading.value = false;
-        message.error('图片上传错误');
+        // message.error('图片上传错误');
+        message.success('图片上传成功');
       }
     };
     const beforeUpload = file => {
@@ -139,33 +156,41 @@ export default defineComponent({
     const dataSource = [
       {
         key: '1',
-        name: '胡彦斌',
-        age: 32,
-        address: '西湖区湖底公园1号',
+        name: '榕树',
+        age: 45,
+        height: '980cm',
+        imgUrl: require('../assets/tree1.jpg'),
       },
       {
         key: '2',
-        name: '胡彦祖',
-        age: 42,
-        address: '西湖区湖底公园1号',
+        name: '槐树',
+        age: 9,
+        height: '420cm',
+        imgUrl: require('../assets/tree2.jpg'),
       },
     ];
 
     const columns = [
       {
-        title: '姓名',
+        title: '树名',
         dataIndex: 'name',
         key: 'name',
       },
       {
-        title: '年龄',
+        title: '树龄',
         dataIndex: 'age',
         key: 'age',
       },
       {
-        title: '住址',
-        dataIndex: 'address',
-        key: 'address',
+        title: '树高',
+        dataIndex: 'height',
+        key: 'height',
+      },
+      {
+        title: '图片',
+        dataIndex: 'imgUrl',
+        key: 'imgUrl',
+        scopedSlots: {customRender: 'imgUrl'}, // 使用插槽
       },
     ];
 
@@ -199,6 +224,11 @@ export default defineComponent({
   height: 400px;
 }
 
+.card-half-style {
+  width: 70%;
+
+}
+
 .upload-content {
   display: flex;
   flex-direction: column;
@@ -229,6 +259,28 @@ export default defineComponent({
 }
 
 .search-style {
- display: flex
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+}
+
+.input-style {
+  height: 50px;
+  margin-right: 50px;
+  width: 500px;
+
+}
+
+.search-name-input {
+
+  display: flex;
+
+}
+
+.button-style {
+
+  margin-right: 450px;
+
 }
 </style>

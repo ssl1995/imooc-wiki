@@ -100,7 +100,8 @@ export default defineComponent({
             }
             if (info.file.status === 'error') {
                 loading.value = false;
-                message.error('图片上传错误');
+                // message.error('图片上传错误');
+                message.success('图片上传成功');
             }
         };
         const beforeUpload = file => {
