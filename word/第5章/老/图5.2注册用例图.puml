@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+skinparam dpi 200
+
+left to right direction
+actor 普通用户  #line.bold
+actor 系统管理员 #line.bold
+
+usecase 输入用户名 as 用1 #line.bold
+usecase 输入用户名 as 用2 #line.bold
+
+usecase 输入密码 as 密1 #line.bold
+usecase 输入密码 as 密2 #line.bold
+usecase 输入邮箱 as 邮1 #line.bold
+
+usecase 登录 as 登录 #line.bold
+usecase 注册 as 注册 #line.bold
+
+普通用户 --> 登录
+系统管理员 --> 登录
+登录 --> 注册
+登录 ..> 用2:<<包含>>
+登录 ..> 密2:<<包含>>
+
+注册 ..>  用1:<<包含>>
+注册 ..>  密1:<<包含>>
+注册 ..>  邮1:<<包含>>
+
+
+@enduml

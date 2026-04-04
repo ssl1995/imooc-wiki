@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+skinparam dpi 200
+
+left to right direction
+actor 普通用户 #line.bold
+
+usecase 数据管理 as 数据管理 #line.bold
+
+usecase 数据查看 as 数据查看 #line.bold
+usecase 数据修改 as 数据修改 #line.bold
+usecase 数据删除 as 数据删除 #line.bold
+
+
+普通用户 --> 数据管理
+
+数据管理 ..> 数据查看:<<包含>>
+数据管理 ..> 数据修改:<<包含>>
+数据管理 ..> 数据删除:<<包含>>
+
+@enduml

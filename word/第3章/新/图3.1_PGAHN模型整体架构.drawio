@@ -1,0 +1,121 @@
+<mxfile host="Electron" agent="Mozilla/5.0" version="29.6.6">
+  <diagram name="图3.1 PGAHN模型整体架构" id="PGAHN-architecture">
+    <mxGraphModel dx="1434" dy="836" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- 标题 -->
+        <mxCell id="title" value="&lt;b&gt;图3.1 基于多模态数据融合的PGAHN模型整体架构&lt;/b&gt;" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="300" y="20" width="600" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- 输入层 -->
+        <mxCell id="input_image" value="&lt;b&gt;图像输入&lt;/b&gt;&#xa;(古树名木图片)" style="rounded=1;fillColor=#E8F4FD;strokeColor=#1565C0;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="80" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="input_text" value="&lt;b&gt;文本输入&lt;/b&gt;&#xa;(树种描述/历史记录)" style="rounded=1;fillColor=#E8F4FD;strokeColor=#1565C0;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 基础网络架构 PNAS -->
+        <mxCell id="pnas_block" value="&lt;b&gt;基础网络架构&lt;/b&gt;&#xa;PNAS (渐进式神经架构搜索)&#xa;• 多尺度卷积单元&#xa;• 自适应特征提取" style="rounded=1;fillColor=#FFF3CD;strokeColor=#F57C00;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="280" y="80" width="200" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- 文本编码 BERT -->
+        <mxCell id="bert_block" value="&lt;b&gt;文本编码器&lt;/b&gt;&#xa;BERT预训练模型&#xa;• 语义特征提取&#xa;• 上下文理解" style="rounded=1;fillColor=#D4EDDA;strokeColor=#2E7D32;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="280" y="210" width="200" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- 动态样本加权策略 -->
+        <mxCell id="dynamic_weight" value="&lt;b&gt;动态样本加权策略&lt;/b&gt;&#xa;Focal Loss + GHM&#xa;• 类别不平衡处理&#xa;• 难样本挖掘&#xa;• 梯度均衡机制" style="rounded=1;fillColor=#F8D7DA;strokeColor=#C62828;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="560" y="70" width="180" height="100" as="geometry" />
+        </mxCell>
+        
+        <!-- CBAM注意力模块 -->
+        <mxCell id="cbam_block" value="&lt;b&gt;注意力引导特征增强&lt;/b&gt;&#xa;CBAM模块&#xa;• 通道注意力&#xa;• 空间注意力&#xa;• 自适应特征校准" style="rounded=1;fillColor=#E2E3E5;strokeColor=#424242;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="560" y="200" width="180" height="110" as="geometry" />
+        </mxCell>
+        
+        <!-- 多模态融合 -->
+        <mxCell id="fusion_block" value="&lt;b&gt;多模态数据融合&lt;/b&gt;&#xa;跨模态特征对齐&#xa;• 图文特征拼接&#xa;• 统一语义空间&#xa;• 联合特征表示" style="rounded=1;fillColor=#D1ECF1;strokeColor=#006064;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="800" y="120" width="180" height="120" as="geometry" />
+        </mxCell>
+        
+        <!-- 分类输出 -->
+        <mxCell id="output" value="&lt;b&gt;分类输出&lt;/b&gt;&#xa;Softmax分类器&#xa;古树名木类别预测" style="rounded=1;fillColor=#C8E6C9;strokeColor=#1B5E20;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1050" y="140" width="130" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- 模型优化策略 -->
+        <mxCell id="optimization" value="&lt;b&gt;模型优化策略&lt;/b&gt;&#xa;• 双阶段训练&#xa;• 余弦退火学习率&#xa;• 数据增强" style="rounded=1;fillColor=#FFF9C4;strokeColor=#F9A825;strokeWidth=2;strokeDasharray=5,5;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="560" y="350" width="150" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- 连接线 -->
+        <!-- 图像输入到PNAS -->
+        <mxCell id="edge1" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#424242" edge="1" parent="1" source="input_image" target="pnas_block">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- 文本输入到BERT -->
+        <mxCell id="edge2" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#424242" edge="1" parent="1" source="input_text" target="bert_block">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- PNAS到动态样本加权 -->
+        <mxCell id="edge3" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#424242" edge="1" parent="1" source="pnas_block" target="dynamic_weight">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- PNAS到CBAM -->
+        <mxCell id="edge4" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#424242" edge="1" parent="1" source="pnas_block" target="cbam_block">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- BERT到融合 -->
+        <mxCell id="edge5" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#2E7D32" edge="1" parent="1" source="bert_block" target="fusion_block">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="250" />
+              <mxPoint x="760" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 动态样本加权到融合 -->
+        <mxCell id="edge6" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#424242" edge="1" parent="1" source="dynamic_weight" target="fusion_block">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- CBAM到融合 -->
+        <mxCell id="edge7" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#424242" edge="1" parent="1" source="cbam_block" target="fusion_block">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="255" />
+              <mxPoint x="760" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- 融合到输出 -->
+        <mxCell id="edge8" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#424242" edge="1" parent="1" source="fusion_block" target="output">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- 优化策略虚线连接 -->
+        <mxCell id="edge9" value="优化" style="endArrow=classic;strokeWidth=1;strokeColor=#F57C00;strokeDasharray=3,3;fontSize=10" edge="1" parent="1" source="optimization" target="cbam_block">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- 图例 -->
+        <mxCell id="legend" value="&lt;b&gt;模块说明：&lt;/b&gt;&#xa;PNAS: 渐进式神经架构搜索&#xa;CBAM: 卷积块注意力模块&#xa;Focal Loss: 聚焦损失函数&#xa;GHM: 梯度调和机制" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="80" y="350" width="200" height="80" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

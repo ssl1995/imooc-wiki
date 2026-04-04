@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+skinparam dpi 200
+
+left to right direction
+actor 普通用户  #line.bold
+actor 系统管理员 #line.bold
+
+usecase 上传图像 as 上传图像1 #line.bold
+usecase 上传图像 as 上传图像2 #line.bold
+
+usecase 删除所有图像 as 删除图像 #line.bold
+usecase 编辑所有图像 as 编辑图像 #line.bold
+usecase 查看所有图像 as 查看图像 #line.bold
+usecase 上传所有图像 as 上传图像3 #line.bold
+
+usecase 查看个人头像 as 查看个人头像 #line.bold
+usecase 编辑本人上传图像 as 编辑本人上传图像 #line.bold
+
+usecase 搜索功能 as 搜索功能 #line.bold
+usecase 上传图像 as 上传图像4 #line.bold
+
+系统管理员 --> 上传图像1
+上传图像1 ..> 删除图像:<<包含>>
+上传图像1 ..> 编辑图像:<<包含>>
+上传图像1 ..> 查看图像:<<包含>>
+上传图像1 ..> 上传图像3:<<包含>>
+
+
+普通用户 --> 上传图像2
+上传图像2 ..> 查看个人头像:<<包含>>
+上传图像2 ..> 编辑本人上传图像:<<包含>>
+上传图像2 ..> 搜索功能:<<包含>>
+上传图像2 ..> 上传图像4:<<包含>>
+
+@enduml
