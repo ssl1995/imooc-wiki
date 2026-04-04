@@ -33,3 +33,6 @@ build/
 .vscode/
 ### 忽略日志目录
 /log/
+
+
+.agents/
