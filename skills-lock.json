@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "skills": {
+    "academic-paper": {
+      "source": "Imbad0202/academic-research-skills",
+      "sourceType": "github",
+      "computedHash": "fc8ad5cf8865c33dc485dc0c0f94408133ed7961ed02d338f9e0e96553b17011"
+    },
+    "academic-paper-reviewer": {
+      "source": "Imbad0202/academic-research-skills",
+      "sourceType": "github",
+      "computedHash": "f9224de283a383bd6dee4fbd995f03ccd891f284a923f2cc6ca1b0299e7941bd"
+    },
+    "academic-pipeline": {
+      "source": "Imbad0202/academic-research-skills",
+      "sourceType": "github",
+      "computedHash": "d362ccc3fc1016aae080aa566e944902a772017507562e7ec6b35c3759f2f562"
+    },
+    "deep-research": {
+      "source": "Imbad0202/academic-research-skills",
+      "sourceType": "github",
+      "computedHash": "df44088ad51d404aab79db5338b3ecbfa9e6b7e16a8a10efa6626253f03ab60a"
+    },
+    "kimi-docx": {
+      "source": "thvroyal/kimi-skills",
+      "sourceType": "github",
+      "computedHash": "7400d7db8bb9f67aef2764dbed6d73d2bb4de4c1fe3d59bb85ed5349b26eaa51"
+    },
+    "kimi-pdf": {
+      "source": "thvroyal/kimi-skills",
+      "sourceType": "github",
+      "computedHash": "a9d44cae6aa95c192879522dd3edee1d2e3174d5239d2395208dfcf7c1a6930e"
+    },
+    "kimi-xlsx": {
+      "source": "thvroyal/kimi-skills",
+      "sourceType": "github",
+      "computedHash": "ec097984954aef00fe8fc484274f0b4a92206f0f6ad1a1ece87ebd0f19e1dc52"
+    }
+  }
+}
