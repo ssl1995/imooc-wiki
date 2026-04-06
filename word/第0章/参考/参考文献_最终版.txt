@@ -1,0 +1,188 @@
+参考文献
+
+[1] 胡鞍钢, 周绍杰. 绿色发展:功能界定、机制分析与发展战略[J]. 中国人口·资源与环境, 2014, 24(1): 14-20.
+[2] 安黎哲. 保护古树名木 传承中华优秀传统文化[J]. 工程建设标准化, 2025, 1(3): 20-27.
+[3] 明月. 保护古树名木 留住中华民族的文化根脉[J]. 绿色中国, 2025, 1(5): 76-81.
+[4] 张亚敏. 第二次全国古树名木资源普查结果公布[J]. 国土绿化, 2022, 1(9): 16-17.
+[5] 王懿祥, 戴文圣, 白尚斌, 等. 古树名木调查方法的改进[J]. 浙江林学院学报, 2006, 1(5): 549-553.
+[6] COPE J S, CORNEY D, CLARK J Y, et al. Plant species identification using digital morphometrics: A review[J]. Expert Systems with Applications, 2012, 39(1): 7562-7573.
+[7] 黄蒂云. 基于高光谱图像技术的脱绒棉种品种鉴别方法研究[D]. 石河子: 石河子大学, 2018.
+[8] 曹晓兰, 陈星明, 张帅, 等. 高光谱参数和逐步判别的苎麻品种识别[J]. 光谱学与光谱分析, 2018, 38(5): 1547-1551.
+[9] SHARMA P, SHARMA D P, BANSAL S. Optimum RBM encoded SVM model with ensemble feature extractor-based plant disease prediction[J]. Chemometrics and Intelligent Laboratory Systems, 2025, 43(1): 233-254.
+[10] ELHARIRI E, EL-BENDARY N, HASSANIEN A E. Plant classification system based on leaf features[C]//Proceedings of the 9th International Conference on Computer Engineering & Systems. Vancouver, Canada, 2014: 251-256.
+[11] TOMAR D, AGARWAL S. Leaf recognition for plant classification using direct acyclic graph based multi-class least squares twin support vector machine[J]. International Journal of Image and Graphics, 2016, 16(1): 1650012.
+[12] 徐祖顺. 基于深度学习的植物图像识别技术研究[D]. 西安: 西安石油大学, 2022.
+[13] 马琳. 基于深度学习的水生植物识别与系统实现[D]. 郑州: 华北水利水电大学, 2024.
+[14] 赵辉, 曹宇航, 岳有军, 等. 基于改进DenseNet的田间杂草识别[J]. 农业工程学报, 2021, 37(18): 136-142.
+[15] 李书琴, 陈聪, 朱彤, 等. 基于轻量级残差网络的植物叶片病害识别[J]. 农业机械学报, 2022, 53(3): 243-250.
+[16] FERENTINOS K P. Deep learning models for plant disease detection and diagnosis[J]. Computers and Electronics in Agriculture, 2018, 145(1): 311-318.
+[17] WANG X, ZHANG C, ZHANG S. Multiscale convolutional neural networks with attention for plant species recognition[J]. Computational Intelligence and Neuroscience, 2021, 2021: 5580340.
+[18] CHULIF S, LEE S H, CHANG Y L, et al. A machine learning approach for cross-domain plant identification using herbarium specimens[J]. Neural Computing and Applications, 2023, 35(8): 5963-5985.
+
+【以下为新增文献——深度哈希与图像检索方法（对应1.2.1(3)节）】
+
+[19] LIU H M, WANG R P, SHAN S G, et al. Deep supervised hashing for fast image retrieval[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Las Vegas, USA, 2016: 2064-2072.
+[20] ZHU H, LONG M S, WANG J M, et al. Deep hashing network for efficient similarity retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. Phoenix, USA, 2016: 2415-2421.
+[21] CAO Z J, LONG M S, WANG J M, et al. HashNet: Deep learning to hash by continuation[C]//Proceedings of the IEEE International Conference on Computer Vision. Venice, Italy, 2017: 5608-5617.
+[22] CAO Y, LONG M S, LIU B, et al. Deep Cauchy hashing for Hamming space retrieval[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. Salt Lake City, USA, 2018: 1229-1237.
+[23] SHEN F M, SHEN C H, LIU W, et al. Supervised discrete hashing[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Boston, USA, 2015: 37-45.
+[24] LAI H J, PAN Y, LIU Y, et al. Simultaneous feature learning and hash coding with deep neural networks[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Boston, USA, 2015: 3270-3278.
+
+【以下为新增文献——跨模态检索方法（对应1.2.2节）】
+
+[25] JIANG Q Y, LI W J. Deep cross-modal hashing[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Honolulu, USA, 2017: 3232-3240.
+[26] YANG E K, DENG C, LIU W, et al. Pairwise relationship guided deep hashing for cross-modal retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. San Francisco, USA, 2017, 31(1): 1618-1625.
+[27] LI C, DENG C, LI N, et al. Self-supervised adversarial hashing networks for cross-modal retrieval[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. Salt Lake City, USA, 2018: 4242-4251.
+[28] FENG F X, WANG X, LI R. Cross-modal retrieval with correspondence autoencoder[C]//Proceedings of the 22nd ACM International Conference on Multimedia. Orlando, USA, 2014: 7-16.
+[29] MA L, LU Z D, SHANG L, et al. Multimodal convolutional neural networks for matching image and sentence[C]//Proceedings of the IEEE International Conference on Computer Vision. Santiago, Chile, 2015: 2623-2631.
+[30] WANG B, YANG Y, XU X, et al. Adversarial cross-modal retrieval[C]//Proceedings of the ACM International Conference on Multimedia. Mountain View, USA, 2017: 154-162.
+[31] RADFORD A, KIM J W, HALLACY C, et al. Learning transferable visual models from natural language supervision[C]//Proceedings of the International Conference on Machine Learning. Virtual Event, 2021: 8748-8763.
+
+【以下为技术基础文献（原[23]-[54]重新编号）】
+
+[32] DEVLIN J, CHANG M W, LEE K, et al. BERT: Pre-training of deep bidirectional transformers for language understanding[C]//Proceedings of the Annual Meeting of the North American Chapter of the Association for Computational Linguistics. Minneapolis, USA, 2019: 4171-4186.
+[33] KRIZHEVSKY A, SUTSKEVER I, HINTON G E. ImageNet classification with deep convolutional neural networks[C]//Advances in Neural Information Processing Systems. Lake Tahoe, USA, 2012, 25: 1097-1105.
+[34] SIMONYAN K, ZISSERMAN A. Very deep convolutional networks for large-scale image recognition[C]//Proceedings of the International Conference on Learning Representations. San Diego, USA, 2015.
+[35] SZEGEDY C, LIU W, JIA Y Q, et al. Going deeper with convolutions[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. Boston, USA, 2015: 1-9.
+[36] HE K M, ZHANG X Y, REN S Q, et al. Deep residual learning for image recognition[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Las Vegas, USA, 2016: 770-778.
+[37] LIN M, CHEN Q, YAN S C. Network in network[C]//Proceedings of the International Conference on Learning Representations. Banff, Canada, 2014: 125-132.
+[38] ZOPH B, VASUDEVAN V, SHLENS J, et al. Learning transferable architectures for scalable image recognition[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. Salt Lake City, USA, 2018: 8697-8710.
+[39] LIU C, ZOPH B, NEUMANN M, et al. Progressive neural architecture search[C]//Proceedings of the European Conference on Computer Vision. Munich, Germany, 2018: 19-34.
+[40] LECUN Y, BENGIO Y, HINTON G. Deep learning[J]. Nature, 2015, 521(7553): 436-444.
+[41] LIN T Y, GOYAL P, GIRSHICK R, et al. Focal loss for dense object detection[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2020, 42(2): 318-327.
+[42] LI B, LIU Y, WANG X. Gradient harmonized single-stage detector[C]//Proceedings of the AAAI Conference on Artificial Intelligence. Honolulu, USA, 2019: 8577-8584.
+[43] WOO S, PARK J, LEE J Y, et al. CBAM: Convolutional block attention module[C]//Proceedings of the European Conference on Computer Vision. Munich, Germany, 2018: 3-19.
+[44] MAJUMDER N, HAZARIKA D, GELBUKH A, et al. Multimodal sentiment analysis using hierarchical fusion with context modeling[J]. arXiv preprint arXiv:1806.06228, 2018.
+[45] ZHU J Y, PARK T, ISOLA P, et al. Unpaired image-to-image translation using cycle-consistent adversarial networks[C]//Proceedings of the IEEE International Conference on Computer Vision. Venice, Italy, 2017: 1729-1729.
+
+【以下为数据集及其他文献】
+
+[46] CHEN D L, DOLAN W B. Collecting highly parallel data for paraphrase evaluation[C]//Proceedings of the 49th Annual Meeting of the Association for Computational Linguistics: Human Language Technologies. Portland, USA, 2011: 190-200.
+[47] VAN HORN G, MAC AODHA O, SONG Y, et al. The iNaturalist species classification and detection dataset[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. Salt Lake City, USA, 2018: 8769-8778.
+[48] 京津翼古树名木保护研究中心. 京津翼古树寻踪[M]. 北京: 中国建筑工业出版社, 2019.
+[49] TAN M X, LE Q V. EfficientNet: Rethinking model scaling for convolutional neural networks[C]//Proceedings of the International Conference on Machine Learning. Long Beach, USA, 2019: 6105-6114.
+[50] DOSOVITSKIY A, BEYER L, KOLESNIKOV A, et al. An image is worth 16x16 words: Transformers for image recognition at scale[C]//Proceedings of the International Conference on Learning Representations. Virtual Event, 2021.
+[51] WANG C Y, BOCHKOVSKIY A, LIAO H Y M. YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. New Orleans, USA, 2022: 7464-7475.
+
+
+================================================================================
+【文献分类与使用说明】
+================================================================================
+
+一、保留文献（原论文中已有）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[1]-[5]    古树名木保护背景 → 用于第1章绪论部分
+[6]-[18]   植物分类识别方法 → 用于1.2.1节文献综述(1)(2)小节
+[32]-[45]  深度学习技术基础 → 用于第3章模型方法部分
+[46]-[51]  数据集及其他 → 用于实验部分
+
+二、新增文献（为CHNATR模型和深度哈希学习添加）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【深度哈希与图像检索方法】→ 用于1.2.1(3)节
+  [19] LIU H M, et al. Deep supervised hashing for fast image retrieval[C] 
+       → DSH (CVPR 2016)，深度监督哈希基础方法
+  [20] ZHU H, et al. Deep hashing network for efficient similarity retrieval[C]
+       → DHN (AAAI 2016)，引入量化损失
+  [21] CAO Z J, et al. HashNet: Deep learning to hash by continuation[C]
+       → HashNet (ICCV 2017)，连续学习哈希
+  [22] CAO Y, et al. Deep Cauchy hashing for Hamming space retrieval[C]
+       → DCH (CVPR 2018)，柯西分布损失
+  [23] SHEN F M, et al. Supervised discrete hashing[C]
+       → SDH (CVPR 2015)，监督离散哈希
+  [24] LAI H J, et al. Simultaneous feature learning and hash coding[C]
+       → DNNH (CVPR 2015)，联合特征学习与哈希
+
+【跨模态检索方法】→ 用于1.2.2节
+  [25] JIANG Q Y, LI W J. Deep cross-modal hashing[C]
+       → DCMH (CVPR 2017)，深度跨模态哈希基准方法
+  [26] YANG E K, et al. Pairwise relationship guided deep hashing[C]
+       → PRDH (AAAI 2017)，成对关系引导深度哈希
+  [27] LI C, et al. Self-supervised adversarial hashing networks[C]
+       → SSAH (CVPR 2018)，自监督对抗哈希前沿方法
+  [28]-[30] 多模态检索基础方法
+  [31] RADFORD A, et al. Learning transferable visual models[C]
+       → CLIP (ICML 2021)，对比学习语言-视觉预训练
+
+三、文献格式说明（北林2023版规范）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. 标题：三号黑体，段前0.5行，段后0.5行
+2. 正文：宋体五号字，段落1.25倍行距
+3. 编码方式：顺序编码制[1]、[2]、[3]……
+   - 数字及中括号采用上角标
+   - 连续引用：[5-9]
+   - 不连续引用：[6,9,12-15]
+4. 作者格式：
+   - 中文：三名以上用"等"
+   - 英文：三名以上用"et al"
+   - 英文作者姓在前名在后，姓全大写，名首字母大写
+5. 文献类型标识：
+   - [J] 期刊文献
+   - [C] 会议文集
+   - [D] 学位论文
+   - [M] 普通图书
+   - [S] 技术标准
+   - [J/OL] 预印本/在线期刊
+
+四、特别说明
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. 原[19]-[24]郭姜、Feng、Ma、Vukotic、Devlin、Radford已重新编号为[28]-[33]
+2. 原[25]-[54]依次后移至[34]-[51]
+3. 所有文献已按照北林2023版格式和GB/T 7714-2015标准重新校对
+4. 新增文献用于支持：
+   - CHNATR模型的深度哈希学习方法（Triplet Loss + Contrastive Loss + Quantization Loss）
+   - 跨模态检索技术路线
+   - 对比实验基准模型（DCMH、PRDH）
+
+五、以下复制进word，自定义标题，双向引用修改
+------
+鞍钢, 周绍杰. 绿色发展:功能界定、机制分析与发展战略[J]. 中国人口·资源与环境, 2014, 24(1): 14-20.
+黎哲. 保护古树名木 传承中华优秀传统文化[J]. 工程建设标准化, 2025, 1(3): 20-27.
+月. 保护古树名木 留住中华民族的文化根脉[J]. 绿色中国, 2025, 1(5): 76-81.
+亚敏. 第二次全国古树名木资源普查结果公布[J]. 国土绿化, 2022, 1(9): 16-17.
+懿祥, 戴文圣, 白尚斌, 等. 古树名木调查方法的改进[J]. 浙江林学院学报, 2006, 1(5): 549-553.
+OPE J S, CORNEY D, CLARK J Y, et al. Plant species identification using digital morphometrics: A review[J]. Expert Systems with Applications, 2012, 39(1): 7562-7573.
+蒂云. 基于高光谱图像技术的脱绒棉种品种鉴别方法研究[D]. 石河子: 石河子大学, 2018.
+晓兰, 陈星明, 张帅, 等. 高光谱参数和逐步判别的苎麻品种识别[J]. 光谱学与光谱分析, 2018, 38(5): 1547-1551.
+HARMA P, SHARMA D P, BANSAL S. Optimum RBM encoded SVM model with ensemble feature extractor-based plant disease prediction[J]. Chemometrics and Intelligent Laboratory Systems, 2025, 43(1): 233-254.
+ELHARIRI E, EL-BENDARY N, HASSANIEN A E. Plant classification system based on leaf features[C]//Proceedings of the 9th International Conference on Computer Engineering & Systems. Vancouver, Canada, 2014: 251-256.
+TOMAR D, AGARWAL S. Leaf recognition for plant classification using direct acyclic graph based multi-class least squares twin support vector machine[J]. International Journal of Image and Graphics, 2016, 16(1): 1650012.
+徐祖顺. 基于深度学习的植物图像识别技术研究[D]. 西安: 西安石油大学, 2022.
+马琳. 基于深度学习的水生植物识别与系统实现[D]. 郑州: 华北水利水电大学, 2024.
+赵辉, 曹宇航, 岳有军, 等. 基于改进DenseNet的田间杂草识别[J]. 农业工程学报, 2021, 37(18): 136-142.
+李书琴, 陈聪, 朱彤, 等. 基于轻量级残差网络的植物叶片病害识别[J]. 农业机械学报, 2022, 53(3): 243-250.
+FERENTINOS K P. Deep learning models for plant disease detection and diagnosis[J]. Computers and Electronics in Agriculture, 2018, 145(1): 311-318.
+WANG X, ZHANG C, ZHANG S. Multiscale convolutional neural networks with attention for plant species recognition[J]. Computational Intelligence and Neuroscience, 2021, 2021: 5580340.
+CHULIF S, LEE S H, CHANG Y L, et al. A machine learning approach for cross-domain plant identification using herbarium specimens[J]. Neural Computing and Applications, 2023, 35(8): 5963-5985.
+LIU H M, WANG R P, SHAN S G, et al. Deep supervised hashing for fast image retrieval[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Las Vegas, USA, 2016: 2064-2072.
+ZHU H, LONG M S, WANG J M, et al. Deep hashing network for efficient similarity retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. Phoenix, USA, 2016: 2415-2421.
+CAO Z J, LONG M S, WANG J M, et al. HashNet: Deep learning to hash by continuation[C]//Proceedings of the IEEE International Conference on Computer Vision. Venice, Italy, 2017: 5608-5617.
+CAO Y, LONG M S, LIU B, et al. Deep Cauchy hashing for Hamming space retrieval[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. Salt Lake City, USA, 2018: 1229-1237.
+SHEN F M, SHEN C H, LIU W, et al. Supervised discrete hashing[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Boston, USA, 2015: 37-45.
+LAI H J, PAN Y, LIU Y, et al. Simultaneous feature learning and hash coding with deep neural networks[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Boston, USA, 2015: 3270-3278.
+JIANG Q Y, LI W J. Deep cross-modal hashing[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Honolulu, USA, 2017: 3232-3240.
+YANG E K, DENG C, LIU W, et al. Pairwise relationship guided deep hashing for cross-modal retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. San Francisco, USA, 2017, 31(1): 1618-1625.
+LI C, DENG C, LI N, et al. Self-supervised adversarial hashing networks for cross-modal retrieval[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. Salt Lake City, USA, 2018: 4242-4251.
+FENG F X, WANG X, LI R. Cross-modal retrieval with correspondence autoencoder[C]//Proceedings of the 22nd ACM International Conference on Multimedia. Orlando, USA, 2014: 7-16.
+MA L, LU Z D, SHANG L, et al. Multimodal convolutional neural networks for matching image and sentence[C]//Proceedings of the IEEE International Conference on Computer Vision. Santiago, Chile, 2015: 2623-2631.
+WANG B, YANG Y, XU X, et al. Adversarial cross-modal retrieval[C]//Proceedings of the ACM International Conference on Multimedia. Mountain View, USA, 2017: 154-162.
+RADFORD A, KIM J W, HALLACY C, et al. Learning transferable visual models from natural language supervision[C]//Proceedings of the International Conference on Machine Learning. Virtual Event, 2021: 8748-8763.
+DEVLIN J, CHANG M W, LEE K, et al. BERT: Pre-training of deep bidirectional transformers for language understanding[C]//Proceedings of the Annual Meeting of the North American Chapter of the Association for Computational Linguistics. Minneapolis, USA, 2019: 4171-4186.
+KRIZHEVSKY A, SUTSKEVER I, HINTON G E. ImageNet classification with deep convolutional neural networks[C]//Advances in Neural Information Processing Systems. Lake Tahoe, USA, 2012, 25: 1097-1105.
+SIMONYAN K, ZISSERMAN A. Very deep convolutional networks for large-scale image recognition[C]//Proceedings of the International Conference on Learning Representations. San Diego, USA, 2015.
+SZEGEDY C, LIU W, JIA Y Q, et al. Going deeper with convolutions[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. Boston, USA, 2015: 1-9.
+HE K M, ZHANG X Y, REN S Q, et al. Deep residual learning for image recognition[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Las Vegas, USA, 2016: 770-778.
+LIN M, CHEN Q, YAN S C. Network in network[C]//Proceedings of the International Conference on Learning Representations. Banff, Canada, 2014: 125-132.
+ZOPH B, VASUDEVAN V, SHLENS J, et al. Learning transferable architectures for scalable image recognition[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. Salt Lake City, USA, 2018: 8697-8710.
+LIU C, ZOPH B, NEUMANN M, et al. Progressive neural architecture search[C]//Proceedings of the European Conference on Computer Vision. Munich, Germany, 2018: 19-34.
+LECUN Y, BENGIO Y, HINTON G. Deep learning[J]. Nature, 2015, 521(7553): 436-444.
+LIN T Y, GOYAL P, GIRSHICK R, et al. Focal loss for dense object detection[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2020, 42(2): 318-327.
+LI B, LIU Y, WANG X. Gradient harmonized single-stage detector[C]//Proceedings of the AAAI Conference on Artificial Intelligence. Honolulu, USA, 2019: 8577-8584.
+WOO S, PARK J, LEE J Y, et al. CBAM: Convolutional block attention module[C]//Proceedings of the European Conference on Computer Vision. Munich, Germany, 2018: 3-19.
+MAJUMDER N, HAZARIKA D, GELBUKH A, et al. Multimodal sentiment analysis using hierarchical fusion with context modeling[J]. arXiv preprint arXiv:1806.06228, 2018.
+ZHU J Y, PARK T, ISOLA P, et al. Unpaired image-to-image translation using cycle-consistent adversarial networks[C]//Proceedings of the IEEE International Conference on Computer Vision. Venice, Italy, 2017: 1729-1729.
+CHEN D L, DOLAN W B. Collecting highly parallel data for paraphrase evaluation[C]//Proceedings of the 49th Annual Meeting of the Association for Computational Linguistics: Human Language Technologies. Portland, USA, 2011: 190-200.
+VAN HORN G, MAC AODHA O, SONG Y, et al. The iNaturalist species classification and detection dataset[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. Salt Lake City, USA, 2018: 8769-8778.
+京津翼古树名木保护研究中心. 京津翼古树寻踪[M]. 北京: 中国建筑工业出版社, 2019.
+TAN M X, LE Q V. EfficientNet: Rethinking model scaling for convolutional neural networks[C]//Proceedings of the International Conference on Machine Learning. Long Beach, USA, 2019: 6105-6114.
+DOSOVITSKIY A, BEYER L, KOLESNIKOV A, et al. An image is worth 16x16 words: Transformers for image recognition at scale[C]//Proceedings of the International Conference on Learning Representations. Virtual Event, 2021.
+WANG C Y, BOCHKOVSKIY A, LIAO H Y M. YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. New Orleans, USA, 2022: 7464-7475.

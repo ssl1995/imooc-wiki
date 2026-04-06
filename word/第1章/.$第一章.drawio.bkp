@@ -1,196 +1,193 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.1.1 Chrome/132.0.6834.210 Electron/34.3.3 Safari/537.36" version="26.1.1">
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.2.5 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" version="28.2.5">
   <diagram name="1.1 技术路线图" id="u33ZGaGGSsp2A3v2krIe">
-    <mxGraphModel dx="1571" dy="1094" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2066" dy="1202" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-1" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-1" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="990" y="40" width="460" height="740" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-2" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-2" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="510" y="40" width="460" height="740" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-3" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-3" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="30" y="40" width="460" height="740" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-4" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-4" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="1000" y="360" width="440" height="290" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-6">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=13;fontStyle=1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-6" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1220" y="360" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-6" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-6" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="1000" y="120" width="440" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-7" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font face=&quot;微软雅黑&quot; style=&quot;color: rgb(51, 0, 0);&quot;&gt;&lt;span style=&quot;font-size: 13px; caret-color: rgb(231, 79, 76); background-color: rgb(250, 250, 250);&quot;&gt;&lt;span style=&quot;&quot;&gt;基于深度学习和多模态信息检索的名木古树识别模型FGCPN构建&lt;/span&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#eeeeee;strokeColor=#36393d;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-7" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font face=&quot;微软雅黑&quot; style=&quot;color: rgb(51, 0, 0);&quot;&gt;&lt;span style=&quot;caret-color: rgb(231, 79, 76); background-color: rgb(250, 250, 250);&quot;&gt;&lt;span&gt;基于多模态融合和PGAHN模型的古树名木识别系统研建&lt;/span&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#eeeeee;strokeColor=#36393d;fontSize=13;" parent="1" vertex="1">
           <mxGeometry x="40" y="60" width="440" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-9" target="L3l7cpLN_ktf8SxOB5cD-19">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=13;fontStyle=1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-9" target="L3l7cpLN_ktf8SxOB5cD-19" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-9" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-9" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="40" y="120" width="440" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-10" value="特征编码层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;strokeColor=none;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-10" value="特征编码层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;strokeColor=none;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="200" y="130" width="120" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-12" target="L3l7cpLN_ktf8SxOB5cD-17">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=13;fontStyle=1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-12" target="L3l7cpLN_ktf8SxOB5cD-17" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-12" value="图像特征表示" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-12" value="图像特征表示" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="80" y="160" width="110" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-14" target="L3l7cpLN_ktf8SxOB5cD-17">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=13;fontStyle=1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-16" target="L3l7cpLN_ktf8SxOB5cD-17" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-14" value="纹理特征表示" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="205" y="160" width="110" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-16" target="L3l7cpLN_ktf8SxOB5cD-17">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-16" value="文本特征表示" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-16" value="文本特征表示" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="330" y="160" width="110" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-17" value="使用全连接层，分别进行向量维度调整" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-17" value="使用全连接层，分别进行向量维度调整" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="80" y="230" width="360" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-19" target="L3l7cpLN_ktf8SxOB5cD-24">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=13;fontStyle=1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-19" target="L3l7cpLN_ktf8SxOB5cD-24" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-19" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-19" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="40" y="360" width="440" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-20" value="多模态构建层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-20" value="多模态构建层" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="200" y="370" width="120" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-22" target="L3l7cpLN_ktf8SxOB5cD-23">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;fontStyle=1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-22" target="L3l7cpLN_ktf8SxOB5cD-23" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-22" value="构建识别文本和图像之间跨模态空间层" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-22" value="构建识别文本和图像之间跨模态空间层" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="80" y="410" width="360" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-23" value="构建识别图像和纹理之间同模态空间层" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-23" value="构建识别图像和纹理之间同模态空间层" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="80" y="480" width="360" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-24" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-24" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="40" y="600" width="440" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-25" value="多模态融合层" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-25" value="多模态融合层" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="200" y="610" width="120" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-27" target="L3l7cpLN_ktf8SxOB5cD-28">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;fontStyle=1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-27" target="L3l7cpLN_ktf8SxOB5cD-28" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-27" value="引入CBAM注意力机制，增强网络对名木古树关键特征的提取能力" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-27" value="引入CBAM注意力机制，增强网络对关键特征的提取能力" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="80" y="650" width="360" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-28" value="引入Focal Loss和GHM损失函数，优化模型性能" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-28" value="引入Focal Loss和GHM损失函数，优化模型性能" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="80" y="720" width="360" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-29" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font color=&quot;#330000&quot; face=&quot;微软雅黑&quot;&gt;&lt;span style=&quot;font-size: 13px; caret-color: rgb(231, 79, 76); background-color: rgb(250, 250, 250);&quot;&gt;&lt;span&gt;验证FGCPN模型性能试验配置和实验设计&lt;/span&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=#36393d;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-29" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font color=&quot;#330000&quot; face=&quot;微软雅黑&quot;&gt;&lt;span style=&quot;caret-color: rgb(231, 79, 76); background-color: rgb(250, 250, 250);&quot;&gt;&lt;span&gt;验证PGAHN模型性能的实验配置和实验设计&lt;/span&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=#36393d;fontStyle=1;fontSize=13;" parent="1" vertex="1">
           <mxGeometry x="520" y="60" width="440" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-31" target="L3l7cpLN_ktf8SxOB5cD-37">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=13;fontStyle=1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-31" target="L3l7cpLN_ktf8SxOB5cD-37" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-31" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-31" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="520" y="120" width="440" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-32" value="对比实验" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;strokeColor=none;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-32" value="对比实验" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;strokeColor=none;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="680" y="130" width="120" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-34" target="L3l7cpLN_ktf8SxOB5cD-35">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=13;fontStyle=1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-34" target="L3l7cpLN_ktf8SxOB5cD-35" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-34" value="选取四个基准模型与FGCPN构建对比实验" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-34" value="选取四个基准模型与PGAHN构建性能对比" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="560" y="160" width="360" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-35" value="在自建名木古树多模态数据集上以四大评价指标为性能标准" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="560" y="230" width="360" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-37" target="L3l7cpLN_ktf8SxOB5cD-42">
+        <mxCell id="Aa05z9dCGzm0j2-TFRL2-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=13;fontStyle=1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-35" target="Aa05z9dCGzm0j2-TFRL2-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-37" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-35" value="在三大数据集上以四大评价指标构建精度对比" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="560" y="200" width="360" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=13;fontStyle=1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-37" target="L3l7cpLN_ktf8SxOB5cD-42" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-37" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="520" y="360" width="440" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-38" value="消融实验" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-38" value="消融实验" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="680" y="370" width="120" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-40" target="L3l7cpLN_ktf8SxOB5cD-41">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;fontStyle=1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-40" target="L3l7cpLN_ktf8SxOB5cD-41" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-40" value="在自建名木古树多模态数据集上，替换Foca Loss、GHM" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-40" value="在MSVD数据集上，替换Foca Loss、GHM" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="560" y="410" width="360" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-41" value="在自建名木古树多模态数据集上，替换CBAM" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-41" value="在MSVD数据集上，替换CBAM" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="560" y="480" width="360" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-42" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-42" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="520" y="600" width="440" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-43" value="模型超参敏感性实验" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="680" y="630" width="120" height="30" as="geometry" />
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-44" value="在三大数据集数据集上，确定模型的最佳参数配置" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="560" y="670" width="360" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-44" value="在自建名木古树多模态数据集上，确定模型的最佳参数配置" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="560" y="700" width="360" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-45" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font color=&quot;#330000&quot; face=&quot;微软雅黑&quot;&gt;&lt;span style=&quot;font-size: 13px; caret-color: rgb(231, 79, 76); background-color: rgb(250, 250, 250);&quot;&gt;&lt;span&gt;名木古树智能识别与管理系统设计与实现&lt;/span&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=#36393d;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-45" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font color=&quot;#330000&quot; face=&quot;微软雅黑&quot;&gt;&lt;span style=&quot;caret-color: rgb(231, 79, 76); background-color: rgb(250, 250, 250);&quot;&gt;&lt;span&gt;名木古树识别系统设计与实现&lt;/span&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=#36393d;fontStyle=1;fontSize=13;" parent="1" vertex="1">
           <mxGeometry x="1000" y="60" width="440" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-47" target="L3l7cpLN_ktf8SxOB5cD-50">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;fontStyle=1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-47" target="L3l7cpLN_ktf8SxOB5cD-50" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-47" value="系统需求设计" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-47" value="系统需求设计" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="1040" y="130" width="360" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-48" value="系统详细设计以及数据库设计" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-48" value="系统详细设计以及数据库设计" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="1040" y="240" width="360" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-50" target="L3l7cpLN_ktf8SxOB5cD-48">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;fontStyle=1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-50" target="L3l7cpLN_ktf8SxOB5cD-48" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-50" value="系统架构设计" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-50" value="系统架构设计" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="1040" y="185" width="360" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-51" value="系统实验" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-51" value="系统实验" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="1160" y="370" width="120" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-53" target="L3l7cpLN_ktf8SxOB5cD-61">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=13;fontStyle=1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-53" target="L3l7cpLN_ktf8SxOB5cD-61" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-53" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-53" value="" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="1040" y="400" width="360" height="170" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-54" value="数据采集" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-54" value="数据上传" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="1060" y="420" width="145" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-55" value="名木古树识别" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-55" value="名木古树识别" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="1230" y="420" width="145" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-56" value="信息管理" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-56" value="信息管理" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="1060" y="470" width="145" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-57" value="&amp;nbsp;信息检索" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-57" value="&amp;nbsp;信息识别" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="1230" y="470" width="145" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-58" value="用户管理" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-58" value="用户管理" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="1060" y="520" width="145" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-59" value="权限管理" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-59" value="权限管理" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="1230" y="520" width="145" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-61" target="L3l7cpLN_ktf8SxOB5cD-62">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=13;fontStyle=1" parent="1" source="L3l7cpLN_ktf8SxOB5cD-61" target="L3l7cpLN_ktf8SxOB5cD-62" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-61" value="FGCPN模型" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-61" value="PGAHN模型" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="1147.5" y="600" width="145" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="L3l7cpLN_ktf8SxOB5cD-62" value="功能性与非功能性系统测试" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="L3l7cpLN_ktf8SxOB5cD-62" value="功能性与非功能性系统测试" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
           <mxGeometry x="1010" y="700" width="420" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Aa05z9dCGzm0j2-TFRL2-1" value="在STABTH数据集上以四大评价指标进行多模态对比" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="560" y="240" width="360" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
