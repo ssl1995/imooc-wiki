@@ -1,118 +1,351 @@
 <mxfile host="Electron" agent="Mozilla/5.0" version="29.6.6">
-  <diagram name="图3.1 PGAHN模型整体架构" id="PGAHN-architecture">
-    <mxGraphModel dx="1434" dy="836" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" math="0" shadow="0">
+  <diagram name="图3.1 多模态检索模型架构" id="multimodal-retrieval-architecture">
+    <mxGraphModel dx="1434" dy="836" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         
-        <!-- 标题 -->
-        <mxCell id="title" value="&lt;b&gt;图3.1 基于多模态数据融合的PGAHN模型整体架构&lt;/b&gt;" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=16;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="300" y="20" width="600" height="40" as="geometry" />
+        <!-- 背景区域 - 跨模态公共空间 -->
+        <mxCell id="bg_cross_modal" value="" style="rounded=0;fillColor=#F5F5F5;strokeColor=none;arcSize=3" vertex="1" parent="1">
+          <mxGeometry x="200" y="100" width="700" height="420" as="geometry" />
         </mxCell>
         
-        <!-- 输入层 -->
-        <mxCell id="input_image" value="&lt;b&gt;图像输入&lt;/b&gt;&#xa;(古树名木图片)" style="rounded=1;fillColor=#E8F4FD;strokeColor=#1565C0;strokeWidth=2;fontSize=11" vertex="1" parent="1">
-          <mxGeometry x="80" y="100" width="120" height="60" as="geometry" />
+        <mxCell id="bg_label" value="跨模态公共空间 (Cross-modal Common Space)" style="text;strokeColor=none;fillColor=none;align=center;fontSize=12;fontStyle=1;fontColor=#616161" vertex="1" parent="1">
+          <mxGeometry x="450" y="105" width="300" height="20" as="geometry" />
         </mxCell>
         
-        <mxCell id="input_text" value="&lt;b&gt;文本输入&lt;/b&gt;&#xa;(树种描述/历史记录)" style="rounded=1;fillColor=#E8F4FD;strokeColor=#1565C0;strokeWidth=2;fontSize=11" vertex="1" parent="1">
-          <mxGeometry x="80" y="200" width="120" height="60" as="geometry" />
+        <!-- ==================== 左侧：文本分支 ==================== -->
+        <!-- 查询文本输入 -->
+        <mxCell id="text_input" value="&lt;b&gt;查询文本&lt;/b&gt;&#xa;t&#xa;(树种/树龄/位置描述)" style="rounded=1;fillColor=#E3F2FD;strokeColor=#1976D2;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="50" y="280" width="100" height="70" as="geometry" />
         </mxCell>
         
-        <!-- 基础网络架构 PNAS -->
-        <mxCell id="pnas_block" value="&lt;b&gt;基础网络架构&lt;/b&gt;&#xa;PNAS (渐进式神经架构搜索)&#xa;• 多尺度卷积单元&#xa;• 自适应特征提取" style="rounded=1;fillColor=#FFF3CD;strokeColor=#F57C00;strokeWidth=2;fontSize=11" vertex="1" parent="1">
-          <mxGeometry x="280" y="80" width="200" height="100" as="geometry" />
+        <!-- BERT编码 -->
+        <mxCell id="bert_block" value="BERT&#xa;文本编码器" style="rounded=1;fillColor=#FFFFFF;strokeColor=#424242;strokeWidth=1;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="200" y="280" width="80" height="60" as="geometry" />
         </mxCell>
         
-        <!-- 文本编码 BERT -->
-        <mxCell id="bert_block" value="&lt;b&gt;文本编码器&lt;/b&gt;&#xa;BERT预训练模型&#xa;• 语义特征提取&#xa;• 上下文理解" style="rounded=1;fillColor=#D4EDDA;strokeColor=#2E7D32;strokeWidth=2;fontSize=11" vertex="1" parent="1">
-          <mxGeometry x="280" y="210" width="200" height="80" as="geometry" />
+        <!-- 文本特征向量 f(t) - 竖直长条 -->
+        <mxCell id="text_feature_bar" value="" style="rounded=0;fillColor=#90CAF9;strokeColor=#1976D2;strokeWidth=1;gradientColor=#E3F2FD;gradientDirection=north" vertex="1" parent="1">
+          <mxGeometry x="320" y="250" width="20" height="120" as="geometry" />
         </mxCell>
         
-        <!-- 动态样本加权策略 -->
-        <mxCell id="dynamic_weight" value="&lt;b&gt;动态样本加权策略&lt;/b&gt;&#xa;Focal Loss + GHM&#xa;• 类别不平衡处理&#xa;• 难样本挖掘&#xa;• 梯度均衡机制" style="rounded=1;fillColor=#F8D7DA;strokeColor=#C62828;strokeWidth=2;fontSize=11" vertex="1" parent="1">
-          <mxGeometry x="560" y="70" width="180" height="100" as="geometry" />
+        <mxCell id="text_feature_label" value="f(t)&#xa;768d" style="text;strokeColor=none;fillColor=none;align=center;fontSize=10;fontColor=#424242" vertex="1" parent="1">
+          <mxGeometry x="310" y="375" width="40" height="30" as="geometry" />
         </mxCell>
         
-        <!-- CBAM注意力模块 -->
-        <mxCell id="cbam_block" value="&lt;b&gt;注意力引导特征增强&lt;/b&gt;&#xa;CBAM模块&#xa;• 通道注意力&#xa;• 空间注意力&#xa;• 自适应特征校准" style="rounded=1;fillColor=#E2E3E5;strokeColor=#424242;strokeWidth=2;fontSize=11" vertex="1" parent="1">
-          <mxGeometry x="560" y="200" width="180" height="110" as="geometry" />
+        <!-- FC层 -->
+        <mxCell id="text_fc" value="FC" style="ellipse;fillColor=#FFFFFF;strokeColor=#424242;strokeWidth=1;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="370" y="285" width="30" height="30" as="geometry" />
         </mxCell>
         
-        <!-- 多模态融合 -->
-        <mxCell id="fusion_block" value="&lt;b&gt;多模态数据融合&lt;/b&gt;&#xa;跨模态特征对齐&#xa;• 图文特征拼接&#xa;• 统一语义空间&#xa;• 联合特征表示" style="rounded=1;fillColor=#D1ECF1;strokeColor=#006064;strokeWidth=2;fontSize=11" vertex="1" parent="1">
-          <mxGeometry x="800" y="120" width="180" height="120" as="geometry" />
+        <!-- 文本哈希特征 - 竖直长条 -->
+        <mxCell id="text_hash_bar" value="" style="rounded=0;fillColor=#42A5F5;strokeColor=#1976D2;strokeWidth=1" vertex="1" parent="1">
+          <mxGeometry x="430" y="260" width="20" height="100" as="geometry" />
         </mxCell>
         
-        <!-- 分类输出 -->
-        <mxCell id="output" value="&lt;b&gt;分类输出&lt;/b&gt;&#xa;Softmax分类器&#xa;古树名木类别预测" style="rounded=1;fillColor=#C8E6C9;strokeColor=#1B5E20;strokeWidth=2;fontSize=11" vertex="1" parent="1">
-          <mxGeometry x="1050" y="140" width="130" height="80" as="geometry" />
+        <mxCell id="text_hash_label" value="h(t)&#xa;128d" style="text;strokeColor=none;fillColor=none;align=center;fontSize=10;fontColor=#424242" vertex="1" parent="1">
+          <mxGeometry x="420" y="365" width="40" height="30" as="geometry" />
         </mxCell>
         
-        <!-- 模型优化策略 -->
-        <mxCell id="optimization" value="&lt;b&gt;模型优化策略&lt;/b&gt;&#xa;• 双阶段训练&#xa;• 余弦退火学习率&#xa;• 数据增强" style="rounded=1;fillColor=#FFF9C4;strokeColor=#F9A825;strokeWidth=2;strokeDasharray=5,5;fontSize=10" vertex="1" parent="1">
-          <mxGeometry x="560" y="350" width="150" height="80" as="geometry" />
+        <!-- ==================== 右侧：图像分支 ==================== -->
+        <!-- 查询图像输入 -->
+        <mxCell id="image_input" value="&lt;b&gt;查询图像&lt;/b&gt;&#xa;v&#xa;(古树名木图片)" style="rounded=1;fillColor=#FFECB3;strokeColor=#FF8F00;strokeWidth=2;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1380" y="280" width="100" height="70" as="geometry" />
         </mxCell>
         
-        <!-- 连接线 -->
-        <!-- 图像输入到PNAS -->
-        <mxCell id="edge1" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#424242" edge="1" parent="1" source="input_image" target="pnas_block">
+        <!-- ResNet/ViT编码 -->
+        <mxCell id="cnn_block" value="ResNet/ViT&#xa;图像编码器" style="rounded=1;fillColor=#FFFFFF;strokeColor=#424242;strokeWidth=1;fontSize=11" vertex="1" parent="1">
+          <mxGeometry x="1250" y="280" width="90" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- 图像特征向量 f(v) - 竖直长条 -->
+        <mxCell id="image_feature_bar" value="" style="rounded=0;fillColor=#FFD54F;strokeColor=#FF8F00;strokeWidth=1;gradientColor=#FFF8E1;gradientDirection=north" vertex="1" parent="1">
+          <mxGeometry x="1190" y="250" width="20" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="image_feature_label" value="f(v)&#xa;512d" style="text;strokeColor=none;fillColor=none;align=center;fontSize=10;fontColor=#424242" vertex="1" parent="1">
+          <mxGeometry x="1180" y="375" width="40" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- FC层 -->
+        <mxCell id="image_fc" value="FC" style="ellipse;fillColor=#FFFFFF;strokeColor=#424242;strokeWidth=1;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="1130" y="285" width="30" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- 图像哈希特征 - 竖直长条 -->
+        <mxCell id="image_hash_bar" value="" style="rounded=0;fillColor=#FFB300;strokeColor=#FF8F00;strokeWidth=1" vertex="1" parent="1">
+          <mxGeometry x="1070" y="260" width="20" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="image_hash_label" value="h(v)&#xa;128d" style="text;strokeColor=none;fillColor=none;align=center;fontSize=10;fontColor=#424242" vertex="1" parent="1">
+          <mxGeometry x="1060" y="365" width="40" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== 中间：公共空间与对齐 ==================== -->
+        <!-- 跨模态对齐空间 - 几何图示 -->
+        <mxCell id="common_space" value="" style="triangle;direction=south;fillColor=#FFFFFF;strokeColor=#424242;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="650" y="200" width="200" height="180" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="space_label" value="公共哈希空间&#xa;(128 bit)" style="text;strokeColor=none;fillColor=none;align=center;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="680" y="260" width="140" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- 对齐箭头 文本到空间 -->
+        <mxCell id="align_text" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#1976D2;exitX=1;exitY=0.5;entryX=0;entryY=0.3" edge="1" parent="1" source="text_hash_bar" target="common_space">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <!-- 文本输入到BERT -->
-        <mxCell id="edge2" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#424242" edge="1" parent="1" source="input_text" target="bert_block">
+        <!-- 对齐箭头 图像到空间 -->
+        <mxCell id="align_image" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#FF8F00;exitX=0;exitY=0.5;entryX=1;entryY=0.3" edge="1" parent="1" source="image_hash_bar" target="common_space">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <!-- PNAS到动态样本加权 -->
-        <mxCell id="edge3" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#424242" edge="1" parent="1" source="pnas_block" target="dynamic_weight">
-          <mxGeometry relative="1" as="geometry" />
+        <!-- 相似度计算符号 -->
+        <mxCell id="similarity_circle" value="⊗" style="ellipse;fillColor=#FFFFFF;strokeColor=#424242;strokeWidth=2;fontSize=20;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="735" y="300" width="30" height="30" as="geometry" />
         </mxCell>
         
-        <!-- PNAS到CBAM -->
-        <mxCell id="edge4" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#424242" edge="1" parent="1" source="pnas_block" target="cbam_block">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="sim_label" value="相似度&#xa;计算" style="text;strokeColor=none;fillColor=none;align=center;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="725" y="335" width="50" height="30" as="geometry" />
         </mxCell>
         
-        <!-- BERT到融合 -->
-        <mxCell id="edge5" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#2E7D32" edge="1" parent="1" source="bert_block" target="fusion_block">
+        <!-- ==================== 多模态融合模块 ==================== -->
+        <mxCell id="fusion_box" value="" style="rounded=1;fillColor=#E8F5E9;strokeColor=#388E3C;strokeWidth=2;arcSize=5" vertex="1" parent="1">
+          <mxGeometry x="580" y="400" width="340" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="fusion_title" value="&lt;b&gt;多模态融合模块&lt;/b&gt; (Multi-modal Fusion)" style="text;strokeColor=none;fillColor=none;align=center;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="580" y="405" width="340" height="25" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="fusion_concat" value="特征&#xa;拼接" style="rounded=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=1;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="610" y="440" width="50" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="fusion_attention" value="注意力&#xa;融合" style="rounded=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=1;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="690" y="440" width="60" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="fusion_align" value="跨模态&#xa;对齐" style="rounded=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=1;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="780" y="440" width="60" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="fusion_hash" value="统一哈希&#xa;表征" style="rounded=1;fillColor=#A5D6A7;strokeColor=#2E7D32;strokeWidth=1;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="870" y="440" width="60" height="45" as="geometry" />
+        </mxCell>
+        
+        <!-- 空间到融合的箭头 -->
+        <mxCell id="edge_space_fusion" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#388E3C;exitX=0.5;exitY=1;entryX=0.5;entryY=0" edge="1" parent="1" source="common_space" target="fusion_box">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="750" y="380" as="sourcePoint" />
+            <mxPoint x="750" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- ==================== 哈希层 ==================== -->
+        <mxCell id="hash_layer_box" value="" style="rounded=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;strokeWidth=2;arcSize=5" vertex="1" parent="1">
+          <mxGeometry x="560" y="530" width="380" height="120" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="hash_title" value="&lt;b&gt;深度哈希层&lt;/b&gt; (Deep Hash Layer)" style="text;strokeColor=none;fillColor=none;align=center;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="560" y="535" width="380" height="25" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="hash_fc" value="FC&#xa;全连接" style="rounded=1;fillColor=#E1BEE7;strokeColor=#6A1B9A;strokeWidth=1;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="600" y="570" width="60" height="65" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="hash_tanh" value="Tanh&#xa;激活" style="rounded=1;fillColor=#E1BEE7;strokeColor=#6A1B9A;strokeWidth=1;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="690" y="570" width="60" height="65" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="hash_quant" value="Sign&#xa;量化" style="rounded=1;fillColor=#CE93D8;strokeColor=#6A1B9A;strokeWidth=1;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="780" y="570" width="60" height="65" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="hash_output" value="二进制&#xa;哈希码&#xa;{0,1}^k" style="rounded=1;fillColor=#BA68C8;strokeColor=#6A1B9A;strokeWidth=1;fontSize=10;fontStyle=1;fontColor=#FFFFFF" vertex="1" parent="1">
+          <mxGeometry x="870" y="570" width="60" height="65" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== 检索模块 ==================== -->
+        <mxCell id="retrieval_box" value="" style="rounded=1;fillColor=#ECEFF1;strokeColor=#455A64;strokeWidth=2;arcSize=5" vertex="1" parent="1">
+          <mxGeometry x="560" y="680" width="380" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="retrieval_title" value="&lt;b&gt;多模态检索模块&lt;/b&gt; (Multi-modal Retrieval)" style="text;strokeColor=none;fillColor=none;align=center;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="560" y="685" width="380" height="25" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="retrieval_cosine" value="余弦相似度&#xa;Cosine" style="rounded=1;fillColor=#CFD8DC;strokeColor=#37474F;strokeWidth=1;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="610" y="720" width="70" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="retrieval_hamming" value="汉明距离&#xa;Hamming" style="rounded=1;fillColor=#CFD8DC;strokeColor=#37474F;strokeWidth=1;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="710" y="720" width="70" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="retrieval_topk" value="Top-K&#xa;排序" style="rounded=1;fillColor=#B0BEC5;strokeColor=#37474F;strokeWidth=1;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="810" y="720" width="70" height="45" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="retrieval_result" value="检索结果&#xa;Results" style="rounded=1;fillColor=#90A4AE;strokeColor=#37474F;strokeWidth=1;fontSize=10;fontStyle=1;fontColor=#FFFFFF" vertex="1" parent="1">
+          <mxGeometry x="910" y="720" width="70" height="45" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== 训练阶段 - 底部 ==================== -->
+        <mxCell id="train_box" value="" style="rounded=1;fillColor=#FFFDE7;strokeColor=#FBC02D;strokeWidth=2;strokeDasharray=5,5;arcSize=5" vertex="1" parent="1">
+          <mxGeometry x="200" y="820" width="700" height="100" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="train_title" value="&lt;b&gt;训练阶段 - 损失函数优化&lt;/b&gt; (Training Phase)" style="text;strokeColor=none;fillColor=none;align=center;fontSize=11;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="200" y="825" width="700" height="25" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="loss_triplet" value="&lt;b&gt;Triplet Loss&lt;/b&gt;&#xa;三元组损失&#xa;拉近同类样本" style="rounded=1;fillColor=#FFF9C4;strokeColor=#F57F17;strokeWidth=1;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="250" y="855" width="100" height="55" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="loss_contrastive" value="&lt;b&gt;Contrastive Loss&lt;/b&gt;&#xa;对比损失&#xa;增大类间距离" style="rounded=1;fillColor=#FFF9C4;strokeColor=#F57F17;strokeWidth=1;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="380" y="855" width="100" height="55" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="loss_quant" value="&lt;b&gt;Quantization Loss&lt;/b&gt;&#xa;量化损失&#xa;促进二值化" style="rounded=1;fillColor=#FFF9C4;strokeColor=#F57F17;strokeWidth=1;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="510" y="855" width="100" height="55" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="loss_online" value="&lt;b&gt;Online Triplet&lt;/b&gt;&#xa;在线难例挖掘&#xa;自适应采样" style="rounded=1;fillColor=#FFF9C4;strokeColor=#F57F17;strokeWidth=1;fontSize=10" vertex="1" parent="1">
+          <mxGeometry x="640" y="855" width="100" height="55" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="loss_back" value="" style="endArrow=classic;strokeWidth=1;strokeColor=#FBC02D;strokeDasharray=3,3;exitX=0.5;exitY=0;entryX=0.25;entryY=1" edge="1" parent="1" source="train_box" target="hash_layer_box">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="760" y="250" />
-              <mxPoint x="760" y="180" />
+              <mxPoint x="550" y="810" />
+              <mxPoint x="655" y="810" />
             </Array>
           </mxGeometry>
         </mxCell>
         
-        <!-- 动态样本加权到融合 -->
-        <mxCell id="edge6" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#424242" edge="1" parent="1" source="dynamic_weight" target="fusion_block">
+        <mxCell id="loss_label" value="反向传播" style="text;strokeColor=none;fillColor=none;align=center;fontSize=9;fontColor=#F57F17" vertex="1" parent="1">
+          <mxGeometry x="590" y="795" width="60" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== 连接线 - 左侧文本流 ==================== -->
+        <mxCell id="edge_text1" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#1976D2;exitX=1;exitY=0.5;entryX=0;entryY=0.5" edge="1" parent="1" source="text_input" target="bert_block">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <!-- CBAM到融合 -->
-        <mxCell id="edge7" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#424242" edge="1" parent="1" source="cbam_block" target="fusion_block">
+        <mxCell id="edge_text2" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#1976D2;exitX=1;exitY=0.5;entryX=0;entryY=0.5" edge="1" parent="1" source="bert_block" target="text_feature_bar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge_text3" value="" style="endArrow=classic;strokeWidth=1;strokeColor=#424242;exitX=1;exitY=0.5;entryX=0;entryY=0.5" edge="1" parent="1" source="text_feature_bar" target="text_fc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge_text4" value="" style="endArrow=classic;strokeWidth=1;strokeColor=#424242;exitX=1;exitY=0.5;entryX=0;entryY=0.5" edge="1" parent="1" source="text_fc" target="text_hash_bar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== 连接线 - 右侧图像流 ==================== -->
+        <mxCell id="edge_img1" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#FF8F00;exitX=0;exitY=0.5;entryX=1;entryY=0.5" edge="1" parent="1" source="image_input" target="cnn_block">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge_img2" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#FF8F00;exitX=0;exitY=0.5;entryX=1;entryY=0.5" edge="1" parent="1" source="cnn_block" target="image_feature_bar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge_img3" value="" style="endArrow=classic;strokeWidth=1;strokeColor=#424242;exitX=0;exitY=0.5;entryX=1;entryY=0.5" edge="1" parent="1" source="image_feature_bar" target="image_fc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge_img4" value="" style="endArrow=classic;strokeWidth=1;strokeColor=#424242;exitX=0;exitY=0.5;entryX=1;entryY=0.5" edge="1" parent="1" source="image_fc" target="image_hash_bar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== 融合内部连接 ==================== -->
+        <mxCell id="edge_fusion1" value="" style="endArrow=classic;strokeWidth=1;strokeColor=#388E3C;exitX=1;exitY=0.5;entryX=0;entryY=0.5" edge="1" parent="1" source="fusion_concat" target="fusion_attention">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge_fusion2" value="" style="endArrow=classic;strokeWidth=1;strokeColor=#388E3C;exitX=1;exitY=0.5;entryX=0;entryY=0.5" edge="1" parent="1" source="fusion_attention" target="fusion_align">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge_fusion3" value="" style="endArrow=classic;strokeWidth=1;strokeColor=#388E3C;exitX=1;exitY=0.5;entryX=0;entryY=0.5" edge="1" parent="1" source="fusion_align" target="fusion_hash">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== 哈希内部连接 ==================== -->
+        <mxCell id="edge_hash1" value="" style="endArrow=classic;strokeWidth=1;strokeColor=#6A1B9A;exitX=1;exitY=0.5;entryX=0;entryY=0.5" edge="1" parent="1" source="hash_fc" target="hash_tanh">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge_hash2" value="" style="endArrow=classic;strokeWidth=1;strokeColor=#6A1B9A;exitX=1;exitY=0.5;entryX=0;entryY=0.5" edge="1" parent="1" source="hash_tanh" target="hash_quant">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge_hash3" value="" style="endArrow=classic;strokeWidth=1;strokeColor=#6A1B9A;exitX=1;exitY=0.5;entryX=0;entryY=0.5" edge="1" parent="1" source="hash_quant" target="hash_output">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== 检索内部连接 ==================== -->
+        <mxCell id="edge_ret1" value="" style="endArrow=classic;strokeWidth=1;strokeColor=#37474F;exitX=1;exitY=0.5;entryX=0;entryY=0.5" edge="1" parent="1" source="retrieval_cosine" target="retrieval_hamming">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge_ret2" value="" style="endArrow=classic;strokeWidth=1;strokeColor=#37474F;exitX=1;exitY=0.5;entryX=0;entryY=0.5" edge="1" parent="1" source="retrieval_hamming" target="retrieval_topk">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="edge_ret3" value="" style="endArrow=classic;strokeWidth=1;strokeColor=#37474F;exitX=1;exitY=0.5;entryX=0;entryY=0.5" edge="1" parent="1" source="retrieval_topk" target="retrieval_result">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== 层间连接 ==================== -->
+        <mxCell id="edge_fusion_hash" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#388E3C;exitX=0.5;exitY=1;entryX=0.1;entryY=0" edge="1" parent="1" source="fusion_box" target="hash_layer_box">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="760" y="255" />
-              <mxPoint x="760" y="180" />
-            </Array>
+            <mxPoint x="750" y="500" as="sourcePoint" />
+            <mxPoint x="750" y="530" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         
-        <!-- 融合到输出 -->
-        <mxCell id="edge8" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#424242" edge="1" parent="1" source="fusion_block" target="output">
+        <mxCell id="edge_hash_retrieval" value="" style="endArrow=classic;strokeWidth=2;strokeColor=#7B1FA2;exitX=0.5;exitY=1;entryX=0.5;entryY=0" edge="1" parent="1" source="hash_layer_box" target="retrieval_box">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         
-        <!-- 优化策略虚线连接 -->
-        <mxCell id="edge9" value="优化" style="endArrow=classic;strokeWidth=1;strokeColor=#F57C00;strokeDasharray=3,3;fontSize=10" edge="1" parent="1" source="optimization" target="cbam_block">
-          <mxGeometry relative="1" as="geometry" />
+        <!-- ==================== 标题 ==================== -->
+        <mxCell id="main_title" value="&lt;b&gt;图3.1 融合文本图像多模态检索模型整体架构&lt;/b&gt;&#xa;Cross-modal Text-Image Retrieval Architecture for Ancient Trees" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="450" y="30" width="700" height="50" as="geometry" />
         </mxCell>
         
-        <!-- 图例 -->
-        <mxCell id="legend" value="&lt;b&gt;模块说明：&lt;/b&gt;&#xa;PNAS: 渐进式神经架构搜索&#xa;CBAM: 卷积块注意力模块&#xa;Focal Loss: 聚焦损失函数&#xa;GHM: 梯度调和机制" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=10" vertex="1" parent="1">
-          <mxGeometry x="80" y="350" width="200" height="80" as="geometry" />
+        <!-- ==================== 图例说明 ==================== -->
+        <mxCell id="legend_box" value="" style="rounded=1;fillColor=#FAFAFA;strokeColor=#9E9E9E;strokeWidth=1;arcSize=3" vertex="1" parent="1">
+          <mxGeometry x="50" y="530" width="140" height="180" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend_title" value="&lt;b&gt;符号说明&lt;/b&gt;" style="text;strokeColor=none;fillColor=none;align=center;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="50" y="535" width="140" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend_1" value="• t: 文本特征&#xa;• v: 图像特征&#xa;• f(): 连续特征&#xa;• h(): 哈希特征&#xa;• FC: 全连接层&#xa;• ⊗: 相似度计算&#xa;• BERT: 文本编码器&#xa;• d: 特征维度" style="text;strokeColor=none;fillColor=none;align=left;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="60" y="555" width="120" height="145" as="geometry" />
+        </mxCell>
+        
+        <!-- ==================== 右侧说明 ==================== -->
+        <mxCell id="note_box" value="" style="rounded=1;fillColor=#FAFAFA;strokeColor=#9E9E9E;strokeWidth=1;arcSize=3" vertex="1" parent="1">
+          <mxGeometry x="1250" y="400" width="180" height="200" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="note_title" value="&lt;b&gt;特点&lt;/b&gt;" style="text;strokeColor=none;fillColor=none;align=center;fontSize=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1250" y="405" width="180" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="note_content" value="• 支持以文搜图&#xa;• 支持以图搜图&#xa;• 统一哈希空间&#xa;• 跨模态对齐&#xa;• 端到端训练&#xa;• 高效二进制检索" style="text;strokeColor=none;fillColor=none;align=left;fontSize=9" vertex="1" parent="1">
+          <mxGeometry x="1260" y="425" width="160" height="160" as="geometry" />
         </mxCell>
         
       </root>
