@@ -1,5 +1,8 @@
 论文修改进度：D:\project\java\imooc-wiki\word\论文修改进度.md
-angets：D:\project\java\imooc-wiki\AGENTS.md
+AGENTS：D:\project\java\imooc-wiki\AGENTS.md
+修改操作清单：D:\project\java\imooc-wiki\word\第0章\第3章\论文修改操作清单.md
+
+更新论文修改进度和AGENTS
 
 文章标题：融合图像与地理位置元数据的古树名木多模态哈希检索系统研建
 
