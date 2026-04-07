@@ -1,0 +1,64 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6">
+  <diagram name="第 1 页" id="AfRtwSsYisRxhK0UPzwo">
+    <mxGraphModel dx="1452" dy="678" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="DxVMHMUvI9o0Aeuuz09Z-1" edge="1" parent="1" source="DxVMHMUvI9o0Aeuuz09Z-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="DxVMHMUvI9o0Aeuuz09Z-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DxVMHMUvI9o0Aeuuz09Z-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" value="特征向量f&lt;div&gt;512维&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="120" x="-660" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="DxVMHMUvI9o0Aeuuz09Z-3" edge="1" parent="1" source="DxVMHMUvI9o0Aeuuz09Z-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-336.5" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DxVMHMUvI9o0Aeuuz09Z-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="哈希层&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="140" x="-510" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="DxVMHMUvI9o0Aeuuz09Z-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="460" x="-510" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="DxVMHMUvI9o0Aeuuz09Z-6" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-276.8399999999999" y="200" as="sourcePoint" />
+            <mxPoint x="-276.8399999999999" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DxVMHMUvI9o0Aeuuz09Z-7" connectable="0" parent="DxVMHMUvI9o0Aeuuz09Z-6" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="训练阶段" vertex="1">
+          <mxGeometry relative="1" x="-0.1738" y="-1" as="geometry">
+            <mxPoint x="1" y="-2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DxVMHMUvI9o0Aeuuz09Z-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" value="二进制哈希码b&lt;div&gt;{-1,+1}^K&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="120" x="-170" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="DxVMHMUvI9o0Aeuuz09Z-9" edge="1" parent="1" source="DxVMHMUvI9o0Aeuuz09Z-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="DxVMHMUvI9o0Aeuuz09Z-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DxVMHMUvI9o0Aeuuz09Z-10" connectable="0" parent="DxVMHMUvI9o0Aeuuz09Z-9" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="量化" vertex="1">
+          <mxGeometry relative="1" x="-0.2084" y="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DxVMHMUvI9o0Aeuuz09Z-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" value="连续哈希码h&lt;div&gt;[-1, 1]^K&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="120" x="-336.5" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="DxVMHMUvI9o0Aeuuz09Z-12" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=11;" value="推理阶段" vertex="1">
+          <mxGeometry height="30" width="60" x="-140" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="DxVMHMUvI9o0Aeuuz09Z-13" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="$$L_{quant} = \frac{1}{K}\sum_{i=1}^{K}\left||h_i| - 1\right||$$" vertex="1">
+          <mxGeometry height="10" width="250" x="-410" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="DxVMHMUvI9o0Aeuuz09Z-14" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="量化损失" vertex="1">
+          <mxGeometry height="30" width="60" x="-310" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="DxVMHMUvI9o0Aeuuz09Z-15" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="$$h = \tanh(W \cdot f + b)$$" vertex="1">
+          <mxGeometry height="20" width="50" x="-465" y="160" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
