@@ -1,24 +1,31 @@
-文章标题：融合文本图像多模态检索的古树名木系统研建
-摘要：D:\project\java\imooc-wiki\word\第0章\摘要\新摘要.txt
-第一章：D:\project\java\imooc-wiki\word\第0章\第1章\新-第一章-自己改.txt
-第一章参考文献：D:\project\java\imooc-wiki\word\第0章\第1章\新-第一章-参考文献.txt
-老参考文献编号：D:\project\java\imooc-wiki\word\第0章\第1章\参考文献-序号留痕.txt
+论文修改进度：D:\project\java\imooc-wiki\word\论文修改进度.md
+angets：D:\project\java\imooc-wiki\AGENTS.md
 
-agents:D:\project\java\imooc-wiki\AGENTS.md
-论文进度：D:\project\java\imooc-wiki\word\论文修改进度.md
+文章标题：融合文本图像多模态检索的古树名木系统研建 -> 基于图像与元数据融合的古树名木检索系统研建
 
-第2章文字版：D:\project\java\imooc-wiki\word\第0章\第2章\新-第2章-自己改.txt
-第2章长截图版本：D:\project\java\imooc-wiki\word\第0章\第2章\img.png
-第2章和第1章参考文献：D:\project\java\imooc-wiki\word\第0章\第2章\新-第二章和第一章-参考文献.txt
+方案确认，最终执行方案确认：D:\project\java\imooc-wiki\word\第0章\最终方案确认及执行指南.md
+当前摘要：D:\project\java\imooc-wiki\word\第0章\摘要\新摘要.txt、D:\project\java\imooc-wiki\word\第0章\摘要\新摘要-英文.txt
+第一章：D:\project\java\imooc-wiki\word\第0章\第1章\新-第1章.txt
+第二章：D:\project\java\imooc-wiki\word\第0章\第2章\新-第2章.txt
+前2章-参考文献：D:\project\java\imooc-wiki\word\第0章\第2章\新-第2章-参考文献.txt
 
-以严谨的盲审审稿专家，请对第2章进行论文审查：
-1、是否有错别字、表述不符合规范
-2、图引用编号是否连续、公式引用编号是否连续
-3、文献的引用是否合理，是否有乱引用、错引用现象
-4、其余专家看中的问题是否存在
+需要修改的第三章：D:\project\java\imooc-wiki\word\第0章\第3章\新-文章.txt
+新文章设计的图和表：
+    图3.1 算法架构图：D:\project\java\imooc-wiki\word\第0章\第3章\图3.1.png
+    剩下的各种图和表：
+        D:\project\java\imooc-wiki\word\第0章\第3章\图3.2.png
+        D:\project\java\imooc-wiki\word\第0章\第3章\图3.3.png
+        D:\project\java\imooc-wiki\word\第0章\第3章\图3.4.png
+        D:\project\java\imooc-wiki\word\第0章\第3章\图3.5.png
+        D:\project\java\imooc-wiki\word\第0章\第3章\图3.6.png
+        D:\project\java\imooc-wiki\word\第0章\第3章\图3.7和图3.8.png
+        D:\project\java\imooc-wiki\word\第0章\第3章\图3.9.png
+        D:\project\java\imooc-wiki\word\第0章\第3章\图3.10.png
+        D:\project\java\imooc-wiki\word\第0章\第3章\图3.11.png
+        D:\project\java\imooc-wiki\word\第0章\第3章\图3.12.png
+        D:\project\java\imooc-wiki\word\第0章\第3章\图3.13.png
+        D:\project\java\imooc-wiki\word\第0章\第3章\表3.4和图3.4.png
 
-
-参考文献部分前2章已经全部改好，请再次审查参考文献，正文引用和文献列表，是否有不合理、乱引用、一文多引用、顺序问题？
-    D:\project\java\imooc-wiki\word\第0章\第2章\前2章-自己改-合.txt
-    D:\project\java\imooc-wiki\word\第0章\第2章\前2章-自己改-参考文献.txt
-
+你现在是一名审稿专家，兼顾研究生毕业论文指导老师，需要帮助学生顺利毕业，结合上述信息，开始从摘要、第一章到第三章修改论文
+整理修改论文操作清单，开始指导学生从摘要、第一章到第三章修改论文
+你可以起多个subagent去分析+相互Review合理性，然后输出一份论文操作清单，学生逐章节分批开始修改
