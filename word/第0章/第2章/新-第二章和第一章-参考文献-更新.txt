@@ -1,3 +1,44 @@
+国家林业和草原局. 全国古树名木普查技术规范[S]. 北京: 中国标准出版社, 2016.
+国家古树名木保护专项调查组. 第二次全国古树名木资源普查结果[R]. 北京: 国家林业和草原局, 2023.
+KALAIVANI P, SHARMA T P, MANDAL D, et al. Deep learning in plant biology: A comprehensive review[J]. Frontiers in Plant Science, 2022, 13: 924412.
+FERREIRA A S, DA SILVA N F, PAPA J P, et al. Plant leaf classification using color and texture features[J]. IEEE Transactions on Image Processing, 2020, 29: 7565-7576.
+ZHANG S W, WANG H X, HUANG W L, et al. Plantvillage: A large-scale open access database of plant disease images with deep learning-based diagnosis[J]. Scientific Data, 2023, 10(1): 1-9.
+LIU H M, WANG R P, SHAN S G, et al. Deep supervised hashing for fast image retrieval[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Las Vegas, USA, 2016: 2064-2072.
+ZHU H, LONG M S, WANG J M, et al. Deep hashing network for efficient similarity retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. Phoenix, USA, 2016: 2415-2421.
+CAO Z J, LONG M S, WANG J M, et al. HashNet: Deep learning to hash by continuation[C]//Proceedings of the IEEE International Conference on Computer Vision. Venice, Italy, 2017: 5609-5618.
+JIANG Q Y, LI W J. Deep cross-modal hashing[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Honolulu, USA, 2017: 3232-3240.
+YANG E K, DENG C, LIU W, et al. Pairwise relationship guided deep hashing for cross-modal retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. San Francisco, USA, 2017: 1618-1625.
+LI C, DENG C, LI N, et al. Self-supervised adversarial hashing networks for cross-modal retrieval[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Salt Lake City, USA, 2018: 4242-4251.
+DEVLIN J, CHANG M W, LEE K, et al. BERT: Pre-training of deep bidirectional transformers for language understanding[C]//Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics. Minneapolis, USA, 2019: 4171-4186.
+RADFORD A, KIM J W, HALLACY C, et al. Learning transferable visual models from natural language supervision[C]//Proceedings of the 38th International Conference on Machine Learning. Virtual Event, 2021: 8748-8763.
+ZOU Q, CHENG S L, CHEN J Y. PromptHash: Affinity-prompted collaborative cross-modal learning for adaptive hashing retrieval[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. Nashville, USA, 2025: 19649-19658.
+LI Y, ZHEN L L, SUN Y, et al. Deep evidential hashing for trustworthy cross-modal retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. Philadelphia, USA, 2025: 18566-18574.
+LI J X, WONG W K, JIANG L, et al. Lightweight contrastive distilled hashing for online cross-modal retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. Philadelphia, USA, 2025: 4779-4787.
+WANG J D, ZHANG T, SONG J K, et al. A survey on learning to hash[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2018, 40(4): 769-790.
+KRIZHEVSKY A, SUTSKEVER I, HINTON G E. ImageNet classification with deep convolutional neural networks[C]//Advances in Neural Information Processing Systems 25. Lake Tahoe, USA, 2012: 1097-1105.
+LIN M, CHEN Q, YAN S. Network in network[C]//Proceedings of the 2nd International Conference on Learning Representations. Banff, Canada, 2014.
+SIMONYAN K, ZISSERMAN A. Very deep convolutional networks for large-scale image recognition[C]//Proceedings of the 3rd International Conference on Learning Representations. San Diego, USA, 2015.
+SZEGEDY C, LIU W, JIA Y Q, et al. Going deeper with convolutions[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Boston, USA, 2015: 1-9.
+HE K M, ZHANG X Y, REN S Q, et al. Deep residual learning for image recognition[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Las Vegas, USA, 2016: 770-778.
+SRIVASTAVA N, HINTON G, KRIZHEVSKY A, et al. Dropout: A simple way to prevent neural networks from overfitting[J]. Journal of Machine Learning Research, 2014, 15(1): 1929-1958.
+GLOROT X, BENGIO Y. Understanding the difficulty of training deep feedforward neural networks[C]//Proceedings of the 13th International Conference on Artificial Intelligence and Statistics. Sardinia, Italy, 2010: 249-256.
+IOFFE S, SZEGEDY C. Batch normalization: Accelerating deep network training by reducing internal covariate shift[C]//Proceedings of the 32nd International Conference on Machine Learning. Lille, France, 2015: 448-456.
+SCHROFF F, KALENICHENKO D, PHILBIN J. FaceNet: A unified embedding for face recognition and clustering[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Boston, USA, 2015: 815-823.
+HADSELL R, CHOPRA S, LECUN Y. Dimensionality reduction by learning an invariant mapping[C]//Proceedings of the 2006 IEEE Computer Society Conference on Computer Vision and Pattern Recognition. New York, USA, 2006, 2: 1735-1742.
+DOSOVITSKIY A, BEYER L, KOLESNIKOV A, et al. An image is worth 16x16 words: Transformers for image recognition at scale[C]//Proceedings of the 9th International Conference on Learning Representations. Virtual Event, 2021.
+TAN M, LE Q V. EfficientNet: Rethinking model scaling for convolutional neural networks[C]//Proceedings of the 36th International Conference on Machine Learning. Long Beach, USA, 2019: 6105-6114.
+CHEN Z S, YUAN X M, LU J W, et al. Deep hashing via discrepancy minimization from privileged information[J]. IEEE Transactions on Image Processing, 2020, 29: 3586-3598.
+LI W J, WANG S, KANG W C. Feature learning based deep supervised hashing with pairwise labels[C]//Proceedings of the 25th International Joint Conference on Artificial Intelligence. New York, USA, 2016: 1711-1717.
+PORIA S, CAMBRIA E, BAJPAI R, et al. A review of affective computing: From unimodal analysis to multimodal fusion[J]. Information Fusion, 2017, 37: 98-125.
+RAMACHANDRAM D, TAYLOR G W. Deep multimodal learning: A survey on recent advances and trends[C]//Proceedings of the 2017 IEEE Signal Processing and Machine Learning for Sensor Signal Analytics. Philadelphia, USA, 2017: 1-6.
+ZADEH A, CHEN M, PORIA S, et al. Tensor fusion network for multimodal sentiment analysis[C]//Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing. Copenhagen, Denmark, 2017: 1103-1114.
+BALTRUSAITIS T, AHUJA C, MORENCY L P. Multimodal machine learning: A survey and taxonomy[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2019, 41(2): 423-443.
+PENG Y X, HUANG X, ZHAO Y. An overview of cross-media retrieval: Concepts, methodologies, benchmarks, and challenges[J]. IEEE Transactions on Circuits and Systems for Video Technology, 2018, 28(9): 2372-2385.
+ZHAI J, YUAN H. Multimodal deep learning for information processing: Methods, applications, and challenges[J]. Information Fusion, 2023, 91: 86-109.
+ZHANG D, LI W J. Large-scale supervised multimodal hashing with semantic correlation maximization[C]//Proceedings of the AAAI Conference on Artificial Intelligence. Quebec, Canada, 2014: 2177-2183.
+WANG B, YANG Y, XU X, et al. Adversarial cross-modal retrieval[C]//Proceedings of the 25th ACM International Conference on Multimedia. Mountain View, USA, 2017: 154-162.
+
+
 [1]国家林业和草原局. 全国古树名木普查技术规范[S]. 北京: 中国标准出版社, 2016.
 [2]国家古树名木保护专项调查组. 第二次全国古树名木资源普查结果[R]. 北京: 国家林业和草原局, 2023.
 [3]KALAIVANI P, SHARMA T P, MANDAL D, et al. Deep learning in plant biology: A comprehensive review[J]. Frontiers in Plant Science, 2022, 13: 924412.
