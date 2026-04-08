@@ -1,54 +1,31 @@
-基于当前信息，请更新一下文件：
+3.1 前言和3.2.1已更新审查完毕，修改信息如长截图请扫描：D:\project\java\imooc-wiki\word\第0章\第3章\img.png
+请根据目前信息更新如下文件：更新完成后我们开始编写3.2.2剩下部分
     论文修改进度：D:\project\java\imooc-wiki\word\论文修改进度.md
     AGENTS：D:\project\java\imooc-wiki\AGENTS.md
     修改操作清单：D:\project\java\imooc-wiki\word\第0章\第3章\论文修改操作清单.md
 
 文章标题：融合图像与地理位置元数据的古树名木多模态哈希检索系统研建
 
-方案确认，最终执行方案确认：D:\project\java\imooc-wiki\word\第0章\最终方案确认及执行指南.md
-当前摘要：D:\project\java\imooc-wiki\word\第0章\摘要\新摘要.txt、D:\project\java\imooc-wiki\word\第0章\摘要\新摘要-英文.txt
-第一章：D:\project\java\imooc-wiki\word\第0章\第1章\新-第1章.txt
-第二章：D:\project\java\imooc-wiki\word\第0章\第2章\新-第2章.txt
-前2章-参考文献：D:\project\java\imooc-wiki\word\第0章\第2章\新-第2章-参考文献.txt
+你现在是一名论文指导老师，兼顾研究生毕业论文指导老师，需要帮助学生顺利毕业：
+你现在是一名审稿专家，请对刚才提出的修改建议进行Review。
 
-需要修改的第三章：D:\project\java\imooc-wiki\word\第0章\第3章\新-文章.txt
-新文章设计的图和表：
-    图3.1 算法架构图：D:\project\java\imooc-wiki\word\第0章\第3章\图3.1.png
-    剩下的各种图和表：
-        D:\project\java\imooc-wiki\word\第0章\第3章\图3.2.png
-        D:\project\java\imooc-wiki\word\第0章\第3章\图3.3.png
-        D:\project\java\imooc-wiki\word\第0章\第3章\图3.4.png
-        D:\project\java\imooc-wiki\word\第0章\第3章\图3.5.png
-        D:\project\java\imooc-wiki\word\第0章\第3章\图3.6.png
-        D:\project\java\imooc-wiki\word\第0章\第3章\图3.7和图3.8.png
-        D:\project\java\imooc-wiki\word\第0章\第3章\图3.9.png
-        D:\project\java\imooc-wiki\word\第0章\第3章\图3.10.png
-        D:\project\java\imooc-wiki\word\第0章\第3章\图3.11.png
-        D:\project\java\imooc-wiki\word\第0章\第3章\图3.12.png
-        D:\project\java\imooc-wiki\word\第0章\第3章\图3.13.png
-        D:\project\java\imooc-wiki\word\第0章\第3章\表3.4和图3.4.png
+你可以起多个subagent去分析+相互Review合理性，然后输出一份第三章操作清单，学生逐章节分批开始修改
 
-你现在是一名审稿专家，兼顾研究生毕业论文指导老师，需要帮助学生顺利毕业，结合上述信息，开始从摘要、第一章到第三章修改论文
-整理修改论文操作清单，开始指导学生从摘要、第一章到第三章修改论文
-你可以起多个subagent去分析+相互Review合理性，然后输出一份论文操作清单，学生逐章节分批开始修改
+论文修改进度：D:\project\java\imooc-wiki\word\论文修改进度.md
+AGENTS：D:\project\java\imooc-wiki\AGENTS.md
+修改操作清单：D:\project\java\imooc-wiki\word\第0章\第3章\论文修改操作清单.md
+老文章：D:\project\java\imooc-wiki\word\第0章\第3章\老-文章.txt
+新文章：D:\project\java\imooc-wiki\word\第0章\第3章\新-文章.txt
 
-文章标题：融合图像与地理位置元数据的古树名木多模态哈希检索系统研建
-现在不开始修改第三章内容，毕竟前面的文章还没有修改，先从摘要、第一章、第二章开始修改，
-请根据之前的【D:\project\java\imooc-wiki\word\第0章\论文修改操作清单_最终版.md】意见 + 本次论文确认的标题，我们重新生成一份：【修改操作清单_新】
-你现在是一名审稿专家，兼顾研究生毕业论文指导老师，你可以起多个subagent去分析+相互Review合理性，我们重新生成一份：【修改操作清单_新】的修改清单，
-基于这个新的文件，我们从摘要开始修改。
-
-
-## 第二章
-
-刚才评审的新-第2章的内容没有更新，扫描的是老数据，我已经更新了。刚才的审查结果废弃，请重新开始：
-上述文献引用问题已修改，现在第2章整体修改完毕：
-第2章文字：D:\project\java\imooc-wiki\word\第0章\第2章\新-第2章.txt
-前2章-参考文献：D:\project\java\imooc-wiki\word\第0章\第2章\新-第2章-参考文献.txt
-
-你现在是一名审稿专家，兼顾研究生毕业论文指导老师，你可以起多个subagent去分析+相互Review合理性，评审第2章的修改是否合理？重点关注下错别字、重复术语等专业性描述问题
-
-
-除了这个问题："单一模态信息为研究对象的研究领域不同[32]"，其余问题我都修改好了。见下面的文章修改：
-    第2章文字：D:\project\java\imooc-wiki\word\第0章\第2章\新-第2章.txt
-这个[32]我打算更换另一篇参考文献，不删除引用，这样的话，就不用修改后续的参考文献。请联网搜索，选择一篇合适的文献
+我现在完成了第三章的3.1 和3.2.1和图3.1：D:\project\java\imooc-wiki\word\第0章\第3章\img.png
+现在打算结合新文章的该部分+当前已经修改的信息，编写3.2.2-3.2.6的文章。
+我发现这部分新文章
+1、虽然用公式描述很简短，我们需要扩充文字，
+2、公式后面的序号例如(3-1)都得右对齐
+3、图3.2 损失函数过程，需要重新画
+    D:\project\java\imooc-wiki\word\第0章\第3章\图3.2.png
+4、检查是否需要新增参考文献以及正文引用
+    D:\project\java\imooc-wiki\word\第0章\第2章\新-第2章-参考文献.txt
+4、其余符合送审专家的意见也得修改
+你现在是一名研究生论文指导老师，需要指导学生修改文章，保证学生能毕业。
+你可以起多个subagent去分析+相互Review合理性，然后输出一份修改清单，学生逐章节分批开始修改
