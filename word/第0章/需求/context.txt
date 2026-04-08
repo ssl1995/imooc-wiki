@@ -1,8 +1,7 @@
-论文修改进度：D:\project\java\imooc-wiki\word\论文修改进度.md
-AGENTS：D:\project\java\imooc-wiki\AGENTS.md
-修改操作清单：D:\project\java\imooc-wiki\word\第0章\第3章\论文修改操作清单.md
-
-更新论文修改进度和AGENTS
+基于当前信息，请更新一下文件：
+    论文修改进度：D:\project\java\imooc-wiki\word\论文修改进度.md
+    AGENTS：D:\project\java\imooc-wiki\AGENTS.md
+    修改操作清单：D:\project\java\imooc-wiki\word\第0章\第3章\论文修改操作清单.md
 
 文章标题：融合图像与地理位置元数据的古树名木多模态哈希检索系统研建
 
@@ -40,15 +39,17 @@ AGENTS：D:\project\java\imooc-wiki\AGENTS.md
 基于这个新的文件，我们从摘要开始修改。
 
 
-现在开始修改第一章：
-1、章节重写部分，涉及图都更新需要标识出来；
-2、注意参考文献的修改与引用，不能出现乱引、不按顺序引用问题
-3、其余文字描述更新，符合学术论文要求
-你现在是一名审稿专家，兼顾研究生毕业论文指导老师，你可以起多个subagent去分析+相互Review合理性，输出一份第一章修改文档
+## 第二章
 
-上述报告提到的问题已修改：
-新第一章-我改版本：D:\project\java\imooc-wiki\word\第0章\第1章\新-第1章-我改.txt
-图1.1：D:\project\java\imooc-wiki\word\第0章\第1章\img.png
-新第一章-参考文献：D:\project\java\imooc-wiki\word\第0章\第1章\新-第1章-参考文献.txt
+上述问题已修改：
+第2章文字：D:\project\java\imooc-wiki\word\第0章\第2章\新-第2章.txt
+第2章公式2-10和2-13已修改：
+    D:\project\java\imooc-wiki\word\第0章\第2章\公式2-10到2-13.png
+前2章-参考文献没改保持原样：D:\project\java\imooc-wiki\word\第0章\第2章\新-第2章-参考文献.txt
+文献引用[34-35]是北林论文格式要求，是合理的
 
-你现在是一名审稿专家，兼顾研究生毕业论文指导老师，你可以起多个subagent去分析+相互Review合理性，重新评估第一章的合理性？
+你现在是一名审稿专家，兼顾研究生毕业论文指导老师，你可以起多个subagent去分析+相互Review合理性，评审第2章的修改是否合理？审查下参考文献的列表与引用是否合理？
+
+D:\project\java\imooc-wiki\word\第0章\摘要\新摘要-我改.txt
+P0级别问题：漏标引用。是因为这些正文引用在第一章已经引用过了所以不用引用，是误判。
+所以文献[1]-[20]的文献是新更新第一章导致多出了几篇。[21]-[43]就是老的参考文献文章，但是正文引用的标号还是老的，所以对不上，请整理文献列表与正文引用的关联性，我修改正文引用的标号就好了
