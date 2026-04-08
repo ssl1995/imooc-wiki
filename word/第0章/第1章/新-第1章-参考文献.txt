@@ -6,8 +6,8 @@
 [6]LIU H M, WANG R P, SHAN S G, et al. Deep supervised hashing for fast image retrieval[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Las Vegas, USA, 2016: 2064-2072.
 [7]ZHU H, LONG M S, WANG J M, et al. Deep hashing network for efficient similarity retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. Phoenix, USA, 2016: 2415-2421.
 [8]CAO Z J, LONG M S, WANG J M, et al. HashNet: Deep learning to hash by continuation[C]//Proceedings of the IEEE International Conference on Computer Vision. Venice, Italy, 2017: 5609-5618.
-[9]JIANG Q Y, LI W J. Deep cross-modal hashing[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Honolulu, USA, 2017: 3232-3240.
-[10]YANG E K, DENG C, LIU W, et al. Pairwise relationship guided deep hashing for cross-modal retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. San Francisco, USA, 2017: 1618-1625.
+[9]YANG E K, DENG C, LIU W, et al. Pairwise relationship guided deep hashing for cross-modal retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. San Francisco, USA, 2017: 1618-1625.
+[10]JIANG Q Y, LI W J. Deep cross-modal hashing[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Honolulu, USA, 2017: 3232-3240.
 [11]LI C, DENG C, LI N, et al. Self-supervised adversarial hashing networks for cross-modal retrieval[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Salt Lake City, USA, 2018: 4242-4251.
 [12]ZOU Q, CHENG S L, CHEN J Y. PromptHash: Affinity-prompted collaborative cross-modal learning for adaptive hashing retrieval[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. Nashville, USA, 2025: 19649-19658.
 [13]LI Y, ZHEN L L, SUN Y, et al. Deep evidential hashing for trustworthy cross-modal retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. Philadelphia, USA, 2025: 18566-18574.
