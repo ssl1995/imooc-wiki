@@ -1,16 +1,20 @@
-公式编码连续问题可以忽略。请整理上下文信息，更新以下文件:
+3.3.3评价指标需要和后续实验做关联（3.4节表3.4需要修改），请整理上下文信息，更新以下文件:
     论文修改进度：D:\project\java\imooc-wiki\word\论文修改进度.md
     AGENTS：D:\project\java\imooc-wiki\AGENTS.md
-    修改操作清单：D:\project\java\imooc-wiki\word\第0章\第3章\论文修改操作清单.md
 
 文章标题：融合图像与地理位置元数据的古树名木多模态哈希检索系统研建
+// 3.3.3评价指标需要和后续实验做关联（3.4节表3.4需要修改）
 
 // 老师
 你现在是一名研究生论文指导老师，需要指导学生修改文章，保证学生能毕业。
-你可以起多个subagent去分析+相互Review合理性，然后输出一份修改清单，学生逐章节分批开始修改
+你可以起多个subagent去分析+相互Review合理性，然后输出一份修改清单
 
 // 盲审专家
 你现在是一名盲审专家，审查以上修改是否合理？
 你可以起多个subagent去分析+相互Review合理性，然后输出一份审查清单
 
+以下是论文完成进度
+    论文修改进度：D:\project\java\imooc-wiki\word\论文修改进度.md
+    AGENTS：D:\project\java\imooc-wiki\AGENTS.md
+    修改操作清单：D:\project\java\imooc-wiki\word\第0章\第3章\论文修改操作清单.md
 
