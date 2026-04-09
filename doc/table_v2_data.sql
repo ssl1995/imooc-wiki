@@ -56,4 +56,4 @@ INSERT INTO `wiki-dev`.ebook_snapshot (id, ebook_id, date, view_count, vote_coun
 INSERT INTO `wiki-dev`.ebook_snapshot (id, ebook_id, date, view_count, vote_count, view_increase, vote_increase) VALUES (26, 4, '2025-03-29', 0, 0, 0, 0);
 INSERT INTO `wiki-dev`.ebook_snapshot (id, ebook_id, date, view_count, vote_count, view_increase, vote_increase) VALUES (27, 5, '2025-03-29', 0, 0, 0, 0);
 
-INSERT INTO `wiki-dev`.user (id, login_name, name, password) VALUES (1, 'admin', '管理员', 'e70e2222a9d67c4f2eae107533359aa4');
+INSERT INTO `wiki-dev`.user (id, login_name, name, password) VALUES (1, 'admin', '管理员', '5ca679820249600c173480ba769126ed');
