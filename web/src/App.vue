@@ -1,10 +1,7 @@
 <template>
-  <a-layout>
-
+  <a-layout style="min-height: 100vh;">
     <the-header/>
-
-    <router-view/>
-
+    <router-view style="flex: 1;"/>
     <the-footer/>
   </a-layout>
 </template>

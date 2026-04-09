@@ -20,13 +20,21 @@
 你可以起多个subagent去分析+相互Review合理性，然后输出一份审查清单
 
 现在开始启动项目计划修改图4.6、图4.8和图4.9
+
 开始启动本地项目：
 后端启动：com.jiawa.wiki.config.WikiApplication
 前端启动： D:\project\java\imooc-wiki\web> npm run serve-dev
 前端代码：D:\project\java\imooc-wiki\web\src
 
-现在登录报错：D:\project\java\imooc-wiki\word\第0章\第4章\登录报错.png
-访问后端登录接口：com.jiawa.wiki.controller.UserController.login
-user库的admin数据：D:\project\java\imooc-wiki\word\第0章\第4章\默认user.png
+现在项目正常启动了，这是管理员登录后的页面：
+D:\project\java\imooc-wiki\word\第0章\第4章\用户管理.png
 
-现在看来是数据库的password密码忘记了/输入错了，分析前端页面和后端登录接口，如何解决这个问题？
+现在打算修改前端代码，完成图4.6的设计：
+1、目前前端页面下方的：【古树名木检索系统 欢迎： 管理员】没有自适应用户浏览器，导致一打开很丑
+2、根据论文内容和第四章设计，目前这个用户管理还缺失什么东西？
+你现在是一名研究生论文指导老师，需要指导学生修改文章，保证学生能毕业。
+你可以起多个subagent去分析+相互Review合理性，然后输出一份修改清单
+
+修改前端页面展示是合理的，因为后端不方便修改了。现在需要复制图片到论文里，
+1、目前这里的用户信息太少了，看起来很薄，前端需要多造一些数据，普通用户的姓名可以叫张三、王五之类的
+2、上次登录时间是后端返回的吗？看起来也不太合理
