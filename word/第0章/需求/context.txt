@@ -3,14 +3,13 @@
     论文修改操作清单：D:\project\java\imooc-wiki\word\第0章\第3章\论文修改操作清单.md
     AGENTS：D:\project\java\imooc-wiki\AGENTS.md
 
-上述问题中提到的消融实验后面的文字信息是错误的，我后续会修改。其余问题已核对，几乎没有问题。请总结本次会话核心内容，
-请整理上下文信息，更新以下文件：
+当前修改进度如下：
     AGENTS：D:\project\java\imooc-wiki\AGENTS.md
     论文修改进度：D:\project\java\imooc-wiki\word\论文修改进度.md
     论文修改操作清单：D:\project\java\imooc-wiki\word\第0章\第3章\论文修改操作清单.md
 
+// 文章标题
 文章标题：融合图像与地理位置元数据的古树名木多模态哈希检索系统研建
-// 3.3.3评价指标需要和后续实验做关联（3.4节表3.4需要修改）
 
 // 老师
 你现在是一名研究生论文指导老师，需要指导学生修改文章，保证学生能毕业。
@@ -20,32 +19,20 @@
 你现在是一名盲审专家，审查以上修改是否合理？
 你可以起多个subagent去分析+相互Review合理性，然后输出一份审查清单
 
-以下是论文完成进度:
+第三章已经修改完成：
+    D:\project\java\imooc-wiki\word\第0章\第3章\3-改完.txt
+    D:\project\java\imooc-wiki\word\第0章\第3章\3-参考文献.txt
+你现在是一名盲审专家，审查以上修改是否合理：
+1、文字描述是否有前后不一致？
+2、图表序号、公式序号是否不连续错误？
+3、论文结构、章节安排是否合理？
+4、参考文献，前面章节已经引用过的，可以不用再引用，是否还需要补充新的文献引用？
+你可以起多个subagent去分析+相互Review合理性，然后输出一份审查清单。
+
+刚才提的问题我已经几乎修改完了，请重新扫描：
+    D:\project\java\imooc-wiki\word\第0章\第3章\3-改完.txt
+1、你现在是一名盲审专家，审查以上修改是否达到盲审通过标准？
+2、整理本次会话信息，更新以下文件，更新完成后，我打算另开新会话，开始修改第4章系统部分
     论文修改进度：D:\project\java\imooc-wiki\word\论文修改进度.md
+    论文修改操作清单：D:\project\java\imooc-wiki\word\第0章\第3章\论文修改操作清单.md
     AGENTS：D:\project\java\imooc-wiki\AGENTS.md
-    修改操作清单：D:\project\java\imooc-wiki\word\第0章\第3章\论文修改操作清单.md
-
-          D:\project\java\imooc-wiki\word\第0章\第3章\图3.9.png
-            D:\project\java\imooc-wiki\word\第0章\第3章\图3.10.png
-            D:\project\java\imooc-wiki\word\第0章\第3章\图3.11.png
-            D:\project\java\imooc-wiki\word\第0章\第3章\图3.12.png
-            D:\project\java\imooc-wiki\word\第0章\第3章\图3.13.png
-
-现在打算开始修改3.4.2 对比实验：
-    新文章的3.4.2文字版：
-        D:\project\java\imooc-wiki\word\第0章\第3章\3.4.2-老.txt
-    涉及老的实验图如下：
-        D:\project\java\imooc-wiki\word\第0章\第3章\表3.4和图3.4.png
-        D:\project\java\imooc-wiki\word\第0章\第3章\图3.5.png
-        D:\project\java\imooc-wiki\word\第0章\第3章\图3.6.png
-        D:\project\java\imooc-wiki\word\第0章\第3章\图3.7和图3.8.png
-
-    新的实验图，采用python画图的形式：
-        参考代码：D:\project\python\A02_draw_graph\第三章\图3-1 消融实验.py
-        新建的实验图代码放到这个目录下：D:\project\python\A02_draw_graph\第三章-新
-
-3.4.2已完成，文字版和长截图如下：
-    文字版：D:\project\java\imooc-wiki\word\第0章\第3章\3.4.2-全-文字.txt
-    长截图：D:\project\java\imooc-wiki\word\第0章\第3章\3.4.2-全.png
-你现在是一名盲审专家，审查以上修改是否合理？
-你可以起多个subagent去分析+相互Review合理性，然后输出一份审查清单

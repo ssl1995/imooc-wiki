@@ -43,3 +43,7 @@
 [43]LI X, YANG J, MA J. Recent developments of content-based image retrieval (CBIR)[J]. Neurocomputing, 2021, 452: 675-689.
 [44]CAO Y, LONG M S, LIU B, WANG J M. Deep Cauchy hashing for Hamming space retrieval[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Salt Lake City, USA, 2018: 1229-1237.
 [45]WANG Q, ZHANG L, WU B, et al. Multi-scale deep supervised hashing for image retrieval[C]//Proceedings of the 31st ACM International Conference on Multimedia. Ottawa, Canada, 2023: 1124-1132.
+[46]SHRIVASTAVA A, GUPTA A, GIRSHICK R. Training region-based object detectors with online hard example mining[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Las Vegas, USA, 2016: 761-769.
+[47]京津冀古树名木保护研究中心. 京津冀古树寻踪[M]. 北京: 中国建筑工业出版社, 2019.
+[48]SHORTEN C, KHOSHGOFTAAR T M. A survey on image data augmentation for deep learning[J]. Journal of Big Data, 2019, 6(1): 1-48.
+[49]ZHENG L, YANG Y, TIAN Q. SIFT meets CNN: A decade survey of instance retrieval[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2017, 40(5): 1224-1244.
