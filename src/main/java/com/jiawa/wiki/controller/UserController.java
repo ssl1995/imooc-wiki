@@ -72,7 +72,8 @@ public class UserController {
 
     @PostMapping("/login")
     public CommonResp<UserLoginResp> login(@Valid @RequestBody UserLoginReq req) {
-        req.setPassword(DigestUtils.md5DigestAsHex(req.getPassword().getBytes()));
+        // 后端不在加密，用前端的
+//        req.setPassword(DigestUtils.md5DigestAsHex(req.getPassword().getBytes()));
         CommonResp<UserLoginResp> resp = new CommonResp<>();
         UserLoginResp login = userService.login(req);
 
