@@ -1,0 +1,110 @@
+@startuml
+
+skinparam backgroundColor #FFFFFF
+'skinparam handwritten false
+'title 图4.7 古树名木检索时序图\nFigure 4.7 Sequence Diagram of Searching Ancient and Famous Trees
+
+' 定义参与者
+actor "用户" as User
+
+participant "古树检索界面" as SearchPage
+participant "TreeRetrieveController" as Controller
+participant "ITreeRetrieveService" as Service
+participant "DHLAM模型" as DHLAM
+participant "TreeRetrieveMapper" as Mapper
+participant "MySQL数据库" as DB
+
+' 登录检查流程
+User -> SearchPage: 访问古树检索界面
+activate SearchPage
+
+SearchPage -> SearchPage: 检查Cookie登录状态
+
+alt Cookie过期或不存在
+    SearchPage --> User: 提示"未登录/过期请重新登录"
+else 登录成功
+    SearchPage --> User: 进入检索界面
+    deactivate SearchPage
+    
+    ' 用户选择检索模式并输入
+    User -> User: 选择检索模式(I2I/I2L/L2I)
+    
+    alt I2I模式：图像检索图像
+        User -> SearchPage: 上传检索图像
+        activate SearchPage
+        SearchPage -> Controller: 调用/tree/retrieve/i2i接口(POST)
+        
+    else I2L模式：图像检索位置
+        User -> SearchPage: 上传图像+设置距离阈值(<1km)
+        activate SearchPage
+        SearchPage -> Controller: 调用/tree/retrieve/i2l接口(POST)
+        
+    else L2I模式：位置检索图像
+        User -> SearchPage: 输入经纬度坐标(lat,lon)
+        activate SearchPage
+        SearchPage -> Controller: 调用/tree/retrieve/l2i接口(POST)
+    end
+    
+    activate Controller
+    Controller -> Service: 调用retrieveByImage/Location方法
+    activate Service
+    
+    ' DHLAM模型处理流程
+    Service -> DHLAM: 调用DHLAM模型服务
+    activate DHLAM
+    
+    alt 图像输入
+        DHLAM -> DHLAM: 图像特征提取(ResNet-50/ViT)
+    else 坐标输入
+        DHLAM -> DHLAM: 位置编码(LocationEncoder MLP)
+    end
+    
+    DHLAM -> DHLAM: 多模态融合
+    DHLAM -> DHLAM: 哈希层生成128位哈希码(FC→Tanh→Sign)
+    DHLAM --> Service: 返回哈希码
+    deactivate DHLAM
+    
+    ' 数据库检索流程
+    Service -> Mapper: 调用selectByHashCode方法
+    activate Mapper
+    Mapper -> DB: 执行哈希码相似度查询
+    activate DB
+    DB --> Mapper: 返回匹配结果集
+    deactivate DB
+    Mapper --> Service: 返回古树信息列表
+    deactivate Mapper
+    
+    ' 相似度计算和排序
+    Service -> Service: 计算汉明距离
+    Service -> Service: 按相似度排序(Top-K)
+    Service --> Controller: 返回检索结果
+    deactivate Service
+    
+    Controller --> SearchPage: 返回古树信息(名称/树高/树龄/位置)
+    deactivate Controller
+    
+    alt 查询结果为空
+        SearchPage --> User: 列表页返回"未找到匹配结果"
+    else 查询成功
+        SearchPage --> User: 前端渲染展示检索结果
+    end
+    deactivate SearchPage
+end
+
+' 注释说明
+note right of DHLAM
+  <b>DHLAM模型核心流程</b>
+  1. 特征提取(图像/位置)
+  2. 多模态融合
+  3. 哈希码生成(128位)
+  4. 汉明距离计算
+end note
+
+note right of Service
+  <b>三种检索模式</b>
+  I2I: 图像→哈希码→相似图像
+  I2L: 图像→哈希码→地理位置
+  L2I: 坐标→哈希码→附近图像
+end note
+
+@enduml

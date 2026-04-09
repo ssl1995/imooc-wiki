@@ -19,20 +19,40 @@
 你现在是一名盲审专家，审查以上修改是否合理？
 你可以起多个subagent去分析+相互Review合理性，然后输出一份审查清单
 
-第三章已经修改完成：
-    D:\project\java\imooc-wiki\word\第0章\第3章\3-改完.txt
-    D:\project\java\imooc-wiki\word\第0章\第3章\3-参考文献.txt
-你现在是一名盲审专家，审查以上修改是否合理：
-1、文字描述是否有前后不一致？
-2、图表序号、公式序号是否不连续错误？
-3、论文结构、章节安排是否合理？
-4、参考文献，前面章节已经引用过的，可以不用再引用，是否还需要补充新的文献引用？
-你可以起多个subagent去分析+相互Review合理性，然后输出一份审查清单。
-
-刚才提的问题我已经几乎修改完了，请重新扫描：
-    D:\project\java\imooc-wiki\word\第0章\第3章\3-改完.txt
-1、你现在是一名盲审专家，审查以上修改是否达到盲审通过标准？
-2、整理本次会话信息，更新以下文件，更新完成后，我打算另开新会话，开始修改第4章系统部分
+当前修改进度如下：
+    AGENTS：D:\project\java\imooc-wiki\AGENTS.md
     论文修改进度：D:\project\java\imooc-wiki\word\论文修改进度.md
     论文修改操作清单：D:\project\java\imooc-wiki\word\第0章\第3章\论文修改操作清单.md
-    AGENTS：D:\project\java\imooc-wiki\AGENTS.md
+目前已经完成前3章论文的改写，现在打算开始修改第4章：
+    老第4章文字：D:\project\java\imooc-wiki\word\第0章\第4章\老\老-第4章.txt
+    老第4章设计图片：
+        D:\project\java\imooc-wiki\word\第0章\第4章\老\图4.1.png
+        D:\project\java\imooc-wiki\word\第0章\第4章\老\图4.2.png
+        D:\project\java\imooc-wiki\word\第0章\第4章\老\图4.3.png
+        D:\project\java\imooc-wiki\word\第0章\第4章\老\图4.4.png
+        D:\project\java\imooc-wiki\word\第0章\第4章\老\图4.5.png
+        D:\project\java\imooc-wiki\word\第0章\第4章\老\图4.6.png
+        D:\project\java\imooc-wiki\word\第0章\第4章\老\图4.7.png
+        D:\project\java\imooc-wiki\word\第0章\第4章\老\图4.8.png
+        D:\project\java\imooc-wiki\word\第0章\第4章\老\图4.9.png
+现在发现需要改的点：
+1、识别系统改成检索系统
+2、系统功能模块图4.3，系统ER图4.4重新设计画图
+3、表4.3树木表储存的本章算法设计的信息应该错误，得重新设计
+4、系统Web图4.6，系统Web图4.8，系统Web图4.9，不符合本论文的算法和应用设计得重新做，
+    系统后端代码：D:\project\java\imooc-wiki\src
+    系统前端代码：D:\project\java\imooc-wiki\web
+5、其余论文问题，例如文献引用是否需要补充
+你现在是一名研究生论文指导老师，需要指导学生修改文章，保证学生能毕业。
+你可以起多个subagent去分析+相互Review合理性，然后输出一份修改清单，修改清单步骤要求是按照论文从上往下设计修改，清晰明了
+
+我现在开始修改第4.3部分，以下是老文字版：
+   D:\project\java\imooc-wiki\word\第0章\第4章\4.3-老.txt
+1、系统Web页面如图4.6、4.8、4.9可以先放下，等4章其余部分都修改完成，我调试前后端代码本地启动后，再一次测试修改
+你现在是一名研究生论文指导老师，需要指导学生修改文章，保证学生能毕业。
+你可以起多个subagent去分析+相互Review合理性，然后输出一份修改清单，需要生成一个修改文字的txt文件，我比对修改
+
+Web页面如图4.6、4.8、4.9可以先放下,最后修改,其余第4章部分已经修改完成：
+    D:\project\java\imooc-wiki\word\第0章\第4章\老\4-改.txt
+你现在是一名盲审专家，审查以上修改是否合理？
+你可以起多个subagent去分析+相互Review合理性，然后输出一份审查清单本地md文件
