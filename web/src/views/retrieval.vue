@@ -32,7 +32,7 @@
               v-model:fileList="i2iFileList"
               name="file"
               :multiple="false"
-              action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+              :customRequest="customRequest"
               @change="handleI2IChange"
               class="query-uploader"
             >
@@ -111,7 +111,7 @@
               v-model:fileList="i2lFileList"
               name="file"
               :multiple="false"
-              action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+              :customRequest="customRequest"
               @change="handleI2LChange"
               class="query-uploader"
             >
@@ -164,7 +164,7 @@
                 <div class="map-placeholder">
                   <GlobalOutlined class="map-icon" />
                   <p>地图显示区域</p>
-                  <p class="map-hint">此处将显示定位结果在地图上的位置</p>
+                  <p class="map-hint">此处后续将迭代显示定位结果在地图上的位置</p>
                 </div>
               </div>
             </div>
@@ -180,23 +180,17 @@
           <a-card title="输入地理位置" class="query-card">
             <a-form :model="l2iParams" layout="vertical">
               <a-form-item label="纬度 (Latitude)" required>
-                <a-input-number 
-                  v-model:value="l2iParams.latitude" 
-                  :precision="6"
-                  :min="-90"
-                  :max="90"
+                <a-input
+                  v-model:value="l2iLatitudeStr"
                   style="width: 100%"
-                  placeholder="例如: 39.9042"
+                  placeholder="例如: 39.9289"
                 />
               </a-form-item>
               <a-form-item label="经度 (Longitude)" required>
-                <a-input-number 
-                  v-model:value="l2iParams.longitude" 
-                  :precision="6"
-                  :min="-180"
-                  :max="180"
+                <a-input
+                  v-model:value="l2iLongitudeStr"
                   style="width: 100%"
-                  placeholder="例如: 116.4074"
+                  placeholder="例如: 116.3974"
                 />
               </a-form-item>
               
@@ -223,7 +217,7 @@
             <!-- 快速选择 -->
             <a-divider orientation="left">快速选择</a-divider>
             <a-space wrap>
-              <a-button size="small" @click="setLocation(39.9042, 116.4074)">北京</a-button>
+              <a-button size="small" @click="setLocation(39.8833, 116.4069)">天坛</a-button>
               <a-button size="small" @click="setLocation(31.2304, 121.4737)">上海</a-button>
               <a-button size="small" @click="setLocation(30.5728, 104.0668)">成都</a-button>
               <a-button size="small" @click="setLocation(23.1291, 113.2644)">广州</a-button>
@@ -353,6 +347,8 @@ export default defineComponent({
       radius: 5,
       topK: 15
     });
+    const l2iLatitudeStr = ref('');
+    const l2iLongitudeStr = ref('');
     const l2iResults = ref<L2IResult[]>([]);
 
     // 处理I2I上传
@@ -406,11 +402,11 @@ export default defineComponent({
       searching.value = true;
       setTimeout(() => {
         i2lResult.value = {
-          latitude: 39.9042,
-          longitude: 116.4074,
+          latitude: 39.9289,
+          longitude: 116.3974,
           confidence: 0.92,
           error: 0.5,
-          address: '北京市东城区景山公园内'
+          address: '北京市东城区景山公园万春亭'
         };
         searching.value = false;
         message.success('定位完成');
@@ -419,10 +415,14 @@ export default defineComponent({
 
     // L2I检索
     const handleL2ISearch = () => {
-      if (!l2iParams.latitude || !l2iParams.longitude) {
-        message.error('请输入完整的经纬度坐标');
+      const lat = parseFloat(l2iLatitudeStr.value);
+      const lon = parseFloat(l2iLongitudeStr.value);
+      if (isNaN(lat) || isNaN(lon)) {
+        message.error('请输入有效的经纬度坐标');
         return;
       }
+      l2iParams.latitude = lat;
+      l2iParams.longitude = lon;
       searching.value = true;
       setTimeout(() => {
         l2iResults.value = generateMockL2IResults();
@@ -435,6 +435,8 @@ export default defineComponent({
     const setLocation = (lat: number, lon: number) => {
       l2iParams.latitude = lat;
       l2iParams.longitude = lon;
+      l2iLatitudeStr.value = lat.toString();
+      l2iLongitudeStr.value = lon.toString();
       message.success('已设置坐标');
     };
 
@@ -446,7 +448,24 @@ export default defineComponent({
       return 'orange';
     };
 
-    // 生成模拟I2I结果（6张卡片，3×2网格布局）
+    // 本地模拟上传
+    const customRequest = (options: any) => {
+      const { file, onSuccess, onProgress } = options;
+      let percent = 0;
+      const interval = setInterval(() => {
+        percent += 20;
+        if (onProgress) onProgress({ percent });
+        if (percent >= 100) {
+          clearInterval(interval);
+          setTimeout(() => {
+            const url = URL.createObjectURL(file);
+            if (onSuccess) onSuccess({ url, thumbUrl: url });
+          }, 200);
+        }
+      }, 50);
+    };
+
+    // 生成模拟I2I结果（6张卡片，使用不重复图片，统一为柏树）
     const generateMockI2IResults = (): I2IResult[] => {
       return [
         {
@@ -454,7 +473,7 @@ export default defineComponent({
           image: require('@/assets/tree1.jpg'),
           similarity: 0.945,
           location: '北京市景山公园',
-          age: 800
+          age: 500
         },
         {
           name: '天坛九龙柏',
@@ -464,59 +483,45 @@ export default defineComponent({
           age: 600
         },
         {
-          name: '颐和园古槐',
-          image: require('@/assets/tree1.jpg'),
+          name: '颐和园佛香阁古柏',
+          image: require('@/assets/tree3.jpg'),
           similarity: 0.857,
           location: '北京市颐和园',
-          age: 500
+          age: 400
         },
         {
-          name: '北海团城古松',
-          image: require('@/assets/tree2.jpg'),
+          name: '北海团城古柏',
+          image: require('@/assets/tree4.jpg'),
           similarity: 0.823,
           location: '北京市北海公园',
-          age: 700
+          age: 600
         },
         {
-          name: '中山公园银杏',
-          image: require('@/assets/tree1.jpg'),
+          name: '中山公园古柏',
+          image: require('@/assets/tree5.jpg'),
           similarity: 0.786,
           location: '北京市中山公园',
           age: 400
         },
         {
-          name: '圆明园古杨',
-          image: require('@/assets/tree2.jpg'),
+          name: '圆明园古柏',
+          image: require('@/assets/upload.jpg'),
           similarity: 0.751,
           location: '北京市圆明园',
-          age: 350
+          age: 300
         }
       ];
     };
 
-    // 生成模拟L2I结果（距离标签）
+    // 生成模拟L2I结果（距离标签，展示天坛九龙柏，与I2I结果区分开）
     const generateMockL2IResults = (): L2IResult[] => {
       return [
         {
-          name: '景山古柏',
-          image: require('@/assets/tree1.jpg'),
-          location: '景山公园',
-          age: 800,
-          distance: 0.3
-        },
-        {
-          name: '故宫角楼槐',
+          name: '天坛九龙柏',
           image: require('@/assets/tree2.jpg'),
-          location: '故宫博物院',
+          location: '天坛公园回音壁西北侧',
           age: 600,
-          distance: 1.2
-        },
-        {
-          name: '北海白杨',
-          image: require('@/assets/tree1.jpg'),
-          location: '北海公园',
-          age: 500,
-          distance: 2.5
+          distance: 0.2
         }
       ];
     };
@@ -524,11 +529,11 @@ export default defineComponent({
     // 生成模拟I2L结果
     const generateMockI2LResult = (): I2LResult => {
       return {
-        latitude: 39.9042,
-        longitude: 116.4074,
+        latitude: 39.9289,
+        longitude: 116.3974,
         confidence: 0.92,
         error: 0.5,
-        address: '北京市东城区景山公园万春亭北侧'
+        address: '北京市东城区景山公园万春亭'
       };
     };
 
@@ -555,7 +560,10 @@ export default defineComponent({
       i2lImageUrl,
       i2lResult,
       l2iParams,
+      l2iLatitudeStr,
+      l2iLongitudeStr,
       l2iResults,
+      customRequest,
       handleI2IChange,
       handleI2LChange,
       handleI2ISearch,

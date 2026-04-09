@@ -164,15 +164,23 @@ Figure 4.6 User Info Page
 Figure 4.7 Sequence Diagram of Searching Ancient and Famous Trees
 
 （2）古树名木检索模块的实现
-古树名木数据上传和数据管理如图4.8和图4.9所示。
+古树名木数据上传和数据管理如图4.8所示。多模态检索界面如图4.9、图4.10和图4.11所示，分别展示以图搜图(I2I)、以图搜位置(I2L)和以位置搜图(L2I)三种检索模式。
 
 
 图4.8 古树名木数据上传页面
-Figure 4.8 Upload Ancient and Famous Trees Page
+Figure 4.8 Data Upload Page of Ancient and Famous Trees
 
 
-图4.9 古树名木数据上传页面
-Figure 4.9 Research Ancient and Famous Trees Page
+图4.9 以图搜图检索结果界面
+Figure 4.9 Image-to-Image Retrieval Result Interface
+
+
+图4.10 以图搜位置检索结果界面
+Figure 4.10 Image-to-Location  Retrieval Result Interface
+
+
+图4.11 以位置搜图检索结果界面
+Figure 4.11 Location-to-Image  Retrieval Result Interface
 4.4系统测试
 系统测试分为功能性测试（基于测试用例）与非功能性（如性能和兼容性等方面）两部分。这一部分会对测试结果进行详细的说明，并对系统的品质和稳定性进行评价。
 4.4.1功能测试
