@@ -12,13 +12,13 @@
     <div class="mode-tabs">
       <a-radio-group v-model:value="currentMode" button-style="solid" size="large">
         <a-radio-button value="i2i">
-          <PictureOutlined /> 以图搜图 (I2I)
+          <PictureOutlined /> 以图搜图
         </a-radio-button>
         <a-radio-button value="i2l">
-          <FileImageOutlined /> 以图搜位置 (I2L)
+          <FileImageOutlined /> 以图搜位置
         </a-radio-button>
         <a-radio-button value="l2i">
-          <EnvironmentOutlined /> 以位置搜图 (L2I)
+          <EnvironmentOutlined /> 以位置搜图
         </a-radio-button>
       </a-radio-group>
     </div>
@@ -277,7 +277,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, reactive } from 'vue';
+import { defineComponent, ref, reactive, onMounted } from 'vue';
 import { message } from 'ant-design-vue';
 import {
   PictureOutlined,
@@ -446,31 +446,103 @@ export default defineComponent({
       return 'orange';
     };
 
-    // 生成模拟I2I结果
+    // 生成模拟I2I结果（6张卡片，3×2网格布局）
     const generateMockI2IResults = (): I2IResult[] => {
-      const names = ['千年银杏', '古柏王', '九龙松', '唐槐', '宋柏', '明槐'];
-      const locations = ['北京市景山公园', '北京市天坛公园', '北京市颐和园', '北京市北海公园', '北京市中山公园', '北京市圆明园'];
-      return names.map((name, i) => ({
-        name,
-        image: require('@/assets/tree' + ((i % 2) + 1) + '.jpg'),
-        similarity: 0.95 - i * 0.05,
-        location: locations[i],
-        age: 500 + i * 100
-      }));
+      return [
+        {
+          name: '景山万春亭古柏',
+          image: require('@/assets/tree1.jpg'),
+          similarity: 0.945,
+          location: '北京市景山公园',
+          age: 800
+        },
+        {
+          name: '天坛九龙柏',
+          image: require('@/assets/tree2.jpg'),
+          similarity: 0.892,
+          location: '北京市天坛公园',
+          age: 600
+        },
+        {
+          name: '颐和园古槐',
+          image: require('@/assets/tree1.jpg'),
+          similarity: 0.857,
+          location: '北京市颐和园',
+          age: 500
+        },
+        {
+          name: '北海团城古松',
+          image: require('@/assets/tree2.jpg'),
+          similarity: 0.823,
+          location: '北京市北海公园',
+          age: 700
+        },
+        {
+          name: '中山公园银杏',
+          image: require('@/assets/tree1.jpg'),
+          similarity: 0.786,
+          location: '北京市中山公园',
+          age: 400
+        },
+        {
+          name: '圆明园古杨',
+          image: require('@/assets/tree2.jpg'),
+          similarity: 0.751,
+          location: '北京市圆明园',
+          age: 350
+        }
+      ];
     };
 
-    // 生成模拟L2I结果
+    // 生成模拟L2I结果（距离标签）
     const generateMockL2IResults = (): L2IResult[] => {
-      const names = ['景山古柏', '故宫角楼槐', '北海白杨', '中山银杏'];
-      const locations = ['景山公园', '故宫博物院', '北海公园', '中山公园'];
-      return names.map((name, i) => ({
-        name,
-        image: require('@/assets/tree' + ((i % 2) + 1) + '.jpg'),
-        location: locations[i],
-        age: 300 + i * 50,
-        distance: 0.5 + i * 1.2
-      }));
+      return [
+        {
+          name: '景山古柏',
+          image: require('@/assets/tree1.jpg'),
+          location: '景山公园',
+          age: 800,
+          distance: 0.3
+        },
+        {
+          name: '故宫角楼槐',
+          image: require('@/assets/tree2.jpg'),
+          location: '故宫博物院',
+          age: 600,
+          distance: 1.2
+        },
+        {
+          name: '北海白杨',
+          image: require('@/assets/tree1.jpg'),
+          location: '北海公园',
+          age: 500,
+          distance: 2.5
+        }
+      ];
     };
+
+    // 生成模拟I2L结果
+    const generateMockI2LResult = (): I2LResult => {
+      return {
+        latitude: 39.9042,
+        longitude: 116.4074,
+        confidence: 0.92,
+        error: 0.5,
+        address: '北京市东城区景山公园万春亭北侧'
+      };
+    };
+
+    // 默认加载模拟数据（页面加载时显示）
+    onMounted(() => {
+      // I2I模式默认加载6张模拟结果
+      i2iResults.value = generateMockI2IResults();
+      
+      // I2L模式默认加载模拟定位结果
+      i2lResult.value = generateMockI2LResult();
+      
+      // L2I模式默认加载模拟结果
+      l2iResults.value = generateMockL2IResults();
+    });
 
     return {
       currentMode,

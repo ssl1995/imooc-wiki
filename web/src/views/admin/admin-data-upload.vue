@@ -16,8 +16,11 @@
               <a-input 
                 v-model:value="formState.treeName" 
                 placeholder="请输入古树名称"
-                prefix="<FileImageOutlined />"
-              />
+              >
+                <template #prefix>
+                  <FileImageOutlined />
+                </template>
+              </a-input>
             </a-form-item>
             
             <!-- 物种分类 -->
@@ -81,24 +84,6 @@
               />
             </a-form-item>
             
-            <!-- 保护级别 -->
-            <a-form-item label="保护级别">
-              <a-radio-group v-model:value="formState.protectionLevel">
-                <a-radio value="一级">一级</a-radio>
-                <a-radio value="二级">二级</a-radio>
-                <a-radio value="三级">三级</a-radio>
-              </a-radio-group>
-            </a-form-item>
-            
-            <!-- 拍摄日期 -->
-            <a-form-item label="拍摄日期">
-              <a-date-picker 
-                v-model:value="formState.photoDate" 
-                style="width: 100%"
-                placeholder="请选择拍摄日期"
-              />
-            </a-form-item>
-            
             <!-- 备注 -->
             <a-form-item label="备注">
               <a-textarea 
@@ -118,7 +103,7 @@
             v-model:fileList="fileList"
             name="file"
             :multiple="true"
-            action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+            :customRequest="customRequest"
             @change="handleChange"
             @drop="handleDrop"
             class="upload-dragger"
@@ -195,8 +180,6 @@ interface FormState {
   longitude: number | null;
   age: number | null;
   height: number | null;
-  protectionLevel: string;
-  photoDate: any;
   remark: string;
 }
 
@@ -219,8 +202,6 @@ export default defineComponent({
       longitude: null,
       age: null,
       height: null,
-      protectionLevel: '一级',
-      photoDate: null,
       remark: ''
     });
 
@@ -235,9 +216,44 @@ export default defineComponent({
       { value: '其他', label: '其他' }
     ];
 
-    // 文件列表
-    const fileList = ref<any[]>([]);
+    // 文件列表 - 默认加载本地图片
+    const fileList = ref<any[]>([
+      {
+        uid: '-1',
+        name: 'upload.jpg',
+        status: 'done',
+        url: require('@/assets/upload.jpg'),
+        thumbUrl: require('@/assets/upload.jpg')
+      }
+    ]);
     const submitting = ref(false);
+
+    // 自定义上传请求 - 本地模拟上传成功
+    const customRequest = (options: any) => {
+      const { file, onSuccess, onError, onProgress } = options;
+      
+      // 模拟上传进度
+      let percent = 0;
+      const interval = setInterval(() => {
+        percent += 20;
+        if (onProgress) {
+          onProgress({ percent });
+        }
+        if (percent >= 100) {
+          clearInterval(interval);
+          // 模拟上传成功，使用本地图片URL
+          setTimeout(() => {
+            const url = URL.createObjectURL(file);
+            if (onSuccess) {
+              onSuccess({
+                url: url,
+                thumbUrl: url
+              });
+            }
+          }, 200);
+        }
+      }, 50);
+    };
 
     // 处理文件变化
     const handleChange = (info: UploadChangeParam) => {
@@ -286,8 +302,6 @@ export default defineComponent({
       formState.longitude = null;
       formState.age = null;
       formState.height = null;
-      formState.protectionLevel = '一级';
-      formState.photoDate = null;
       formState.remark = '';
       fileList.value = [];
       message.success('表单已重置');
@@ -302,7 +316,8 @@ export default defineComponent({
       handleDrop,
       removeFile,
       handleSubmit,
-      handleReset
+      handleReset,
+      customRequest
     };
   }
 });
