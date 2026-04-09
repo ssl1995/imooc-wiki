@@ -1,5 +1,15 @@
-当前
-    AGENTS：D:\project\java\imooc-wiki\AGENTS.md
+当前论文已经完成修改：
+D:\project\java\imooc-wiki\word\第0章\审查\融合图像与地理位置元数据的古树名木多模态哈希检索系统研建.docx
+上次送审意见，可以扫描学习老师审核关注的点：D:\project\java\imooc-wiki\word\第0章\送审意见汇总.docx
 
-判断是否需要更新
- AGENTS：D:\project\java\imooc-wiki\AGENTS.md
+现在你是一名资深的盲审老师，需要对整篇文章进行审查，必须确保上述word你能扫描出信息，如果不能扫描除信息，分析是否需要安装某些包或则skill：
+    本地安装了python，安装包管理工具是uv
+重点关注：
+1、错别字、词汇错误、非学术性描述等？
+2、图的标号、表的标号、公式的标号在各个章节内的连续性，有没有错标或漏标？
+3、文献引用是否有低等级文献
+4、论文工作量和创新点是否能支撑毕业？
+5、是否有跑题风险？
+6、其他盲审老师关注的点
+你可以起多个subagent同时审查，相互交换意见+相互review,最终输出一版审查清单md文件，
+保存到以下目录：D:\project\java\imooc-wiki\word\第0章\审查
