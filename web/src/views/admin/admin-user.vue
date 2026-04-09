@@ -118,32 +118,43 @@ export default defineComponent({
     const columns = [
       {
         title: '登陆名',
-        dataIndex: 'loginName'
+        dataIndex: 'loginName',
+        width: 120
       },
       {
         title: '名称',
-        dataIndex: 'name'
+        dataIndex: 'name',
+        width: 120
+      },
+      {
+        title: '年龄',
+        dataIndex: 'age',
+        width: 80
       },
       {
         title: '角色',
         dataIndex: 'role',
+        width: 100,
         customRender: ({ text }: { text: string }) => {
           const roleMap: Record<string, string> = { 'admin': '管理员', 'user': '普通用户', 'operator': '操作员' };
           return roleMap[text] || '普通用户';
         }
       },
       {
+        title: '用户介绍',
+        dataIndex: 'desc',
+        ellipsis: true,
+        width: 200
+      },
+      {
         title: '上次登录',
         dataIndex: 'lastLoginTime',
-        customRender: ({ text }: { text: string }) => text || '2025-01-10 08:30:00'
+        width: 170
       },
-      // {
-      //   title: '密码',
-      //   dataIndex: 'password'
-      // },
       {
         title: '操作',
         key: 'action',
+        width: 280,
         slots: {customRender: 'action'}
       }
     ];
@@ -172,22 +183,22 @@ export default defineComponent({
           };
           
           const mockUsers = [
-            { id: 1, loginName: 'admin', name: '系统管理员', role: 'admin', lastLoginTime: formatTime(now) },
-            { id: 2, loginName: 'zhangsan', name: '张三', role: 'user', lastLoginTime: '2026-04-08 09:15:42' },
-            { id: 3, loginName: 'lisi', name: '李四', role: 'user', lastLoginTime: '2026-04-07 16:20:18' },
-            { id: 4, loginName: 'wangwu', name: '王五', role: 'user', lastLoginTime: '2026-04-06 11:45:33' },
-            { id: 5, loginName: 'zhaoliu', name: '赵六', role: 'user', lastLoginTime: '2026-04-05 08:30:12' },
-            { id: 6, loginName: 'sunqi', name: '孙七', role: 'operator', lastLoginTime: '2026-04-04 17:25:56' },
-            { id: 7, loginName: 'zhouba', name: '周八', role: 'user', lastLoginTime: '2026-04-03 14:18:29' },
-            { id: 8, loginName: 'wujiu', name: '吴九', role: 'user', lastLoginTime: '2026-04-02 10:55:47' },
-            { id: 9, loginName: 'zhengshi', name: '郑十', role: 'user', lastLoginTime: '2026-04-01 08:22:15' },
-            { id: 10, loginName: 'chengyi', name: '程一', role: 'operator', lastLoginTime: '2026-03-31 19:40:33' },
-            { id: 11, loginName: 'xueer', name: '薛二', role: 'user', lastLoginTime: '2026-03-30 15:12:58' },
-            { id: 12, loginName: 'lisan', name: '李三', role: 'user', lastLoginTime: '2026-03-29 11:35:21' },
-            { id: 13, loginName: 'wusi', name: '吴四', role: 'user', lastLoginTime: '2026-03-28 09:48:06' },
-            { id: 14, loginName: 'zhengwu', name: '郑五', role: 'user', lastLoginTime: '2026-03-27 16:55:42' },
-            { id: 15, loginName: 'wangliu', name: '王六', role: 'operator', lastLoginTime: '2026-03-26 13:28:19' },
-            { id: 16, loginName: 'fengqi', name: '冯七', role: 'user', lastLoginTime: '2026-03-25 07:15:55' }
+            { id: 1, loginName: 'admin', name: '系统管理员', age: 35, role: 'admin', desc: '系统管理员账号', lastLoginTime: formatTime(now) },
+            { id: 2, loginName: 'zhangsan', name: '张三', age: 28, role: 'user', desc: '同学1', lastLoginTime: '2026-04-08 09:15:42' },
+            { id: 3, loginName: 'lisi', name: '李四', age: 32, role: 'user', desc: '同学2', lastLoginTime: '2026-04-07 16:20:18' },
+            { id: 4, loginName: 'wangwu', name: '王五', age: 26, role: 'user', desc: '同学3', lastLoginTime: '2026-04-06 11:45:33' },
+            { id: 5, loginName: 'zhaoliu', name: '赵六', age: 24, role: 'user', desc: '同学4', lastLoginTime: '2026-04-05 08:30:12' },
+            { id: 6, loginName: 'sunqi', name: '孙七', age: 29, role: 'operator', desc: '操作员1', lastLoginTime: '2026-04-04 17:25:56' },
+            { id: 7, loginName: 'zhouba', name: '周八', age: 27, role: 'user', desc: '同学5', lastLoginTime: '2026-04-03 14:18:29' },
+            { id: 8, loginName: 'wujiu', name: '吴九', age: 25, role: 'user', desc: '同学6', lastLoginTime: '2026-04-02 10:55:47' },
+            { id: 9, loginName: 'zhengshi', name: '郑十', age: 26, role: 'user', desc: '同学7', lastLoginTime: '2026-04-01 08:22:15' },
+            { id: 10, loginName: 'chengyi', name: '程一', age: 31, role: 'operator', desc: '操作员2', lastLoginTime: '2026-03-31 19:40:33' },
+            { id: 11, loginName: 'xueer', name: '薛二', age: 25, role: 'user', desc: '同学8', lastLoginTime: '2026-03-30 15:12:58' },
+            { id: 12, loginName: 'lisan', name: '李三', age: 28, role: 'user', desc: '同学9', lastLoginTime: '2026-03-29 11:35:21' },
+            { id: 13, loginName: 'wusi', name: '吴四', age: 30, role: 'user', desc: '同学10', lastLoginTime: '2026-03-28 09:48:06' },
+            { id: 14, loginName: 'zhengwu', name: '郑五', age: 27, role: 'user', desc: '同学11', lastLoginTime: '2026-03-27 16:55:42' },
+            { id: 15, loginName: 'wangliu', name: '王六', age: 29, role: 'operator', desc: '操作员3', lastLoginTime: '2026-03-26 13:28:19' },
+            { id: 16, loginName: 'fengqi', name: '冯七', age: 26, role: 'user', desc: '同学12', lastLoginTime: '2026-03-25 07:15:55' }
           ];
           const backendUsers = data.content.list || [];
           // 如果后端有数据，合并；否则使用模拟数据

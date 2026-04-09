@@ -26,27 +26,20 @@
         theme="dark"
         mode="horizontal"
         :style="{ lineHeight: '64px' }"
+        v-model:selectedKeys="selectedKeys"
     >
       <a-menu-item key="/">
         <router-link to="/">首页</router-link>
       </a-menu-item>
+      <a-menu-item key="/retrieval">
+        <router-link to="/retrieval">多模态检索</router-link>
+      </a-menu-item>
+      <a-menu-item key="/admin/data-upload" :style="user.id?{}:{display:'none'}">
+        <router-link to="/admin/data-upload">数据上传</router-link>
+      </a-menu-item>
       <a-menu-item key="/admin/user" :style="user.id?{}:{display:'none'}">
         <router-link to="/admin/user">用户管理</router-link>
       </a-menu-item>
-<!--      <a-menu-item key="/admin/ebook" :style="user.id?{}:{display:'none'}">-->
-<!--        <router-link to="/admin/ebook">电子书管理</router-link>-->
-<!--      </a-menu-item>-->
-<!--      <a-menu-item key="/admin/category" :style="user.id?{}:{display:'none'}">-->
-<!--        <router-link to="/admin/category">分类管理</router-link>-->
-<!--      </a-menu-item>-->
-<!--      <a-menu-item key="/about">-->
-<!--        <router-link to="/about">关于我</router-link>-->
-<!--      </a-menu-item>-->
-
-<!--      <a-menu-item key="/admin/tree" :style="user.id?{}:{display:'none'}">-->
-<!--        <router-link to="/admin/tree">古树名木管理</router-link>-->
-<!--      </a-menu-item>-->
-
     </a-menu>
 
     <a-modal
@@ -68,7 +61,8 @@
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, ref} from 'vue';
+import {computed, defineComponent, ref, watch} from 'vue';
+import { useRoute } from 'vue-router';
 import axios from 'axios';
 import {message} from 'ant-design-vue';
 import store from "@/store";
@@ -80,6 +74,13 @@ export default defineComponent({
   name: 'the-header',
   setup() {
     const user = computed(() => store.state.user);
+    const route = useRoute();
+    const selectedKeys = ref<string[]>([route.path]);
+
+    // 监听路由变化更新选中状态
+    watch(() => route.path, (newPath) => {
+      selectedKeys.value = [newPath];
+    });
 
     const loginUser = ref({
       loginName: "admin",
@@ -131,7 +132,8 @@ export default defineComponent({
       loginUser,
       login,
       user,
-      logout
+      logout,
+      selectedKeys
     }
   }
 });

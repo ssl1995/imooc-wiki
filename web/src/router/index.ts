@@ -6,6 +6,8 @@ import AdminEbook from '../views/admin/admin-ebook.vue'
 import AdminCategory from '../views/admin/admin-category.vue'
 import AdminDoc from '../views/admin/admin-doc.vue'
 import AdminUser from "@/views/admin/admin-user.vue";
+import AdminDataUpload from "@/views/admin/admin-data-upload.vue";
+import Retrieval from "@/views/retrieval.vue";
 import store from "@/store";
 import {Tool} from "@/util/Tool";
 
@@ -56,6 +58,19 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
             loginRequire: true
         }
+    },
+    {
+        path: '/admin/data-upload',
+        name: 'AdminDataUpload',
+        component: AdminDataUpload,
+        meta: {
+            loginRequire: true
+        }
+    },
+    {
+        path: '/retrieval',
+        name: 'Retrieval',
+        component: Retrieval
     },
 ]
 
