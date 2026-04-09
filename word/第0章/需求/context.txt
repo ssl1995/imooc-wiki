@@ -1,11 +1,5 @@
-3.3.3评价指标需要和后续实验做关联（3.4节表3.4需要修改），请整理上下文信息，更新以下文件:
-    论文修改进度：D:\project\java\imooc-wiki\word\论文修改进度.md
-    论文修改操作清单：D:\project\java\imooc-wiki\word\第0章\第3章\论文修改操作清单.md
+当前
     AGENTS：D:\project\java\imooc-wiki\AGENTS.md
 
-这是最终第5章修改的版本：D:\project\java\imooc-wiki\word\第0章\第5章\总结-改.txt
-当前论文已完成，请根据会话信息总结，更新以下文件：
-    AGENTS：D:\project\java\imooc-wiki\AGENTS.md
-    论文修改进度：D:\project\java\imooc-wiki\word\论文修改进度.md
-    论文修改操作清单：D:\project\java\imooc-wiki\word\第0章\第3章\论文修改操作清单.md
-
+判断是否需要更新
+ AGENTS：D:\project\java\imooc-wiki\AGENTS.md
