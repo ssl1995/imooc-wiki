@@ -1,0 +1,177 @@
+================================================================================
+参考文献专项清理对照表
+生成日期：2026-04-14
+清理项：1)删除未引用文献  2)调整低相关度引用  3)统一作者姓名格式
+================================================================================
+
+【一、需删除的文献（正文未引用）】
+--------------------------------------------------------------------------------
+原[5]   ZHANG S W... Plantvillage...                    → 删除（正文无引用）
+原[33] CHEN Z S... Deep hashing via discrepancy...       → 删除（正文无引用）
+原[34] LI W J... Feature learning based deep supervised hashing → 删除（正文无引用）
+原[39] PENG Y X... An overview of cross-media retrieval → 删除（正文无引用）
+
+【二、需调整的低相关度引用】
+--------------------------------------------------------------------------------
+原[37] ZADEH A... Tensor fusion network for multimodal sentiment analysis
+     问题：情感分析领域的具体方法论文，用于支撑通用的"特征层融合/决策层融合/混合融合"分类，学科领域匹配度不高。
+     建议：删除[37]，正文第176行"[35-37]"同步改为"[35-36]"。
+     理由：[35](Snoek)已涵盖early/late fusion分类，[36](Ramachandram)是多模态综述，两者已足够支撑该分类论述。
+
+【三、格式问题修正】
+--------------------------------------------------------------------------------
+原[44] 作者超3人未加et al
+     修正：CAO Y, LONG M S, LIU B, WANG J M → Cao Y, Long M S, Liu B, et al.
+
+原[52] 作者姓名全大写
+     修正：YOU Y → You Y
+
+原[53] 电子文献格式缺少空格
+     修正：Spring Boot Documentation[EB/OL]. VMware, Inc., 2023[2024-04-09].
+     → 改为：VMware, Inc. Spring Boot Documentation[EB/OL]. 2023 [2024-04-09]. https://spring.io/projects/spring-boot.
+
+原[54] [EB/OL]后缺少空格
+     修正：MySQL 8.0 Reference Manual[EB/OL].2023[2024-04-09].
+     → 改为：Oracle Corporation. MySQL 8.0 Reference Manual[EB/OL]. 2023 [2024-04-09]. https://dev.mysql.com/doc/refman/8.0/en.
+
+【四、作者姓名格式统一规范】
+--------------------------------------------------------------------------------
+依据往届论文《lah-面向品评文本的食品感官分析系统研建》的写法：
+- 英文作者：姓氏首字母大写、其余小写（Title Case），名用首字母缩写。
+  示例：Mendes da Silva T, Drake M, Lawless H T
+- 超过3位作者：列前3位，后加 "et al"（小写）。
+  示例：Drake M, McIngvale S, Gerard P, et al.
+- 中文作者：保持中文原名不变。
+
+================================================================================
+【五、编号映射表（旧→新）】
+================================================================================
+由于删除4条未引用文献（原[5][33][34][39]）及1条低相关度文献（原[37]），
+后续编号需整体前移。修改正文引用时，请对照下表统一替换：
+
+旧编号 | 新编号 | 说明
+-------|--------|------
+[1]    | [1]    | 不变
+[2]    | [2]    | 不变
+[3]    | [3]    | 不变
+[4]    | [4]    | 不变
+[5]    | —      | 删除
+[6]    | [5]    | Liu H M等(DPSH)
+[7]    | [6]    | Zhu H等(DHN)
+[8]    | [7]    | Cao Z J等(HashNet)
+[9]    | [8]    | Yang E K等(PRDH)
+[10]   | [9]    | Jiang Q Y等(DCMH)
+[11]   | [10]   | Li C等(SSAH)
+[12]   | [11]   | Zou Q等(PromptHash)
+[13]   | [12]   | Li Y等(Deep Evidential)
+[14]   | [13]   | Li J X等(Lightweight)
+[15]   | [14]   | Wang J D等(A survey on learning to hash)
+[16]   | [15]   | Mai G等(Space2Vec)
+[17]   | [16]   | Chu G等(Geo-Aware)
+[18]   | [17]   | Mai G等(Contrastive Spatial)
+[19]   | [18]   | Klemmer K等(SatCLIP)
+[20]   | [19]   | Van Horn G等(iNaturalist)
+[21]   | [20]   | Krizhevsky A等(AlexNet)
+[22]   | [21]   | Srivastava N等(Dropout)
+[23]   | [22]   | Glorot X等(Xavier)
+[24]   | [23]   | Lin M等(NIN)
+[25]   | [24]   | Simonyan K等(VGGNet)
+[26]   | [25]   | Szegedy C等(GoogLeNet)
+[27]   | [26]   | He K M等(ResNet)
+[28]   | [27]   | Schroff F等(FaceNet/Triplet Loss)
+[29]   | [28]   | Hadsell R等(Contrastive Loss)
+[30]   | [29]   | Dosovitskiy A等(ViT)
+[31]   | [30]   | Tan M等(EfficientNet)
+[32]   | [31]   | Zhang S等(Multi-Modal Survey)
+[33]   | —      | 删除
+[34]   | —      | 删除
+[35]   | [32]   | Snoek C G M等(Early vs Late Fusion)
+[36]   | [33]   | Ramachandram D等(Deep Multimodal Survey)
+[37]   | —      | 删除（或替换）
+[38]   | [34]   | Baltrusaitis T等(Multimodal Machine Learning Survey)
+[39]   | —      | 删除
+[40]   | [35]   | Fukui A等(Multimodal Compact Bilinear Pooling)
+[41]   | [36]   | Ben-Younes H等(MUTAN)
+[42]   | [37]   | Lu J等(Hierarchical Co-attention)
+[43]   | [38]   | Li X等(CBIR Survey)
+[44]   | [39]   | Cao Y等(DCH) — 已修正et al
+[45]   | [40]   | Wang Q等(MDSH)
+[46]   | [41]   | Shrivastava A等(OHEM)
+[47]   | [42]   | 京津冀古树寻踪
+[48]   | [43]   | Shorten C等(Data Augmentation Survey)
+[49]   | [50]   | Zheng L等(SIFT meets CNN)
+[50]   | [44]   | Sommerville I (Software Engineering)
+[51]   | [45]   | Sandhu R S等(RBAC)
+[52]   | [46]   | You Y (Vue.js) — 已修正大小写
+[53]   | [47]   | Spring Boot Documentation — 已修正空格
+[54]   | [48]   | MySQL 8.0 Reference Manual — 已修正空格
+
+================================================================================
+【六、清理后的完整参考文献列表（可直接复制到Word）】
+================================================================================
+
+[1] 诸大建, 张帅. 中国生态文明实践如何检验和深化可持续性科学[J]. 中国人口·资源与环境, 2022, 32(9): 1-10.
+[2] 国家古树名木保护专项调查组. 第二次全国古树名木资源普查结果[R]. 北京: 国家林业和草原局, 2023.
+[3] Kalaivani P, Sharma T P, Mandal D, et al. Deep learning in plant biology: A comprehensive review[J]. Frontiers in Plant Science, 2022, 13: 924412.
+[4] Ferreira A S, Da Silva N F, Papa J P, et al. Plant leaf classification using color and texture features[J]. IEEE Transactions on Image Processing, 2020, 29: 7565-7576.
+[5] Liu H M, Wang R P, Shan S G, et al. Deep supervised hashing for fast image retrieval[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Las Vegas, USA, 2016: 2064-2072.
+[6] Zhu H, Long M S, Wang J M, et al. Deep hashing network for efficient similarity retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. Phoenix, USA, 2016: 2415-2421.
+[7] Cao Z J, Long M S, Wang J M, et al. HashNet: Deep learning to hash by continuation[C]//Proceedings of the IEEE International Conference on Computer Vision. Venice, Italy, 2017: 5609-5618.
+[8] Yang E K, Deng C, Liu W, et al. Pairwise relationship guided deep hashing for cross-modal retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. San Francisco, USA, 2017: 1618-1625.
+[9] Jiang Q Y, Li W J. Deep cross-modal hashing[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Honolulu, USA, 2017: 3232-3240.
+[10] Li C, Deng C, Li N, et al. Self-supervised adversarial hashing networks for cross-modal retrieval[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Salt Lake City, USA, 2018: 4242-4251.
+[11] Zou Q, Cheng S L, Chen J Y. PromptHash: Affinity-prompted collaborative cross-modal learning for adaptive hashing retrieval[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. Nashville, USA, 2025: 19649-19658.
+[12] Li Y, Zhen L L, Sun Y, et al. Deep evidential hashing for trustworthy cross-modal retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. Philadelphia, USA, 2025: 18566-18574.
+[13] Li J X, Wong W K, Jiang L, et al. Lightweight contrastive distilled hashing for online cross-modal retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. Philadelphia, USA, 2025: 4779-4787.
+[14] Wang J D, Zhang T, Song J K, et al. A survey on learning to hash[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2018, 40(4): 769-790.
+[15] Mai G, Janowicz K, Yan B, et al. Multi-Scale Representation Learning for Spatial Feature Distributions using Grid Cells[C]//Proceedings of the 8th International Conference on Learning Representations. Virtual Event, 2020.
+[16] Chu G, Potetz B, Adam H, et al. Geo-Aware Networks for Fine-Grained Recognition[C]//Proceedings of the IEEE/CVF International Conference on Computer Vision. Seoul, Korea, 2019: 2811-2820.
+[17] Mai G, Huang W, Sun J, et al. Contrastive Spatial Pre-Training for Learning Spatially-Aware Visual Representations[C]//Proceedings of the 11th International Conference on Learning Representations. Kigali, Rwanda, 2023.
+[18] Klemmer K, Rolf E, Watt A, et al. SatCLIP: Global, General-Purpose Location Embeddings with Satellite Imagery[J]. Advances in Neural Information Processing Systems, 2023, 36: 53471-53495.
+[19] Van Horn G, Mac Aodha O, Song Y, et al. The iNaturalist Species Classification and Detection Dataset[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Salt Lake City, USA, 2018: 8769-8778.
+[20] Krizhevsky A, Sutskever I, Hinton G E. ImageNet classification with deep convolutional neural networks[C]//Advances in Neural Information Processing Systems 25. Lake Tahoe, USA, 2012: 1097-1105.
+[21] Srivastava N, Hinton G, Krizhevsky A, et al. Dropout: A simple way to prevent neural networks from overfitting[J]. Journal of Machine Learning Research, 2014, 15(1): 1929-1958.
+[22] Glorot X, Bengio Y. Understanding the difficulty of training deep feedforward neural networks[C]//Proceedings of the 13th International Conference on Artificial Intelligence and Statistics. Sardinia, Italy, 2010: 249-256.
+[23] Lin M, Chen Q, Yan S. Network in network[C]//Proceedings of the 2nd International Conference on Learning Representations. Banff, Canada, 2014.
+[24] Simonyan K, Zisserman A. Very deep convolutional networks for large-scale image recognition[C]//Proceedings of the 3rd International Conference on Learning Representations. San Diego, USA, 2015.
+[25] Szegedy C, Liu W, Jia Y Q, et al. Going deeper with convolutions[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Boston, USA, 2015: 1-9.
+[26] He K M, Zhang X Y, Ren S Q, et al. Deep residual learning for image recognition[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Las Vegas, USA, 2016: 770-778.
+[27] Schroff F, Kalenichenko D, Philbin J. FaceNet: A unified embedding for face recognition and clustering[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Boston, USA, 2015: 815-823.
+[28] Hadsell R, Chopra S, LeCun Y. Dimensionality reduction by learning an invariant mapping[C]//Proceedings of the 2006 IEEE Computer Society Conference on Computer Vision and Pattern Recognition. New York, USA, 2006, 2: 1735-1742.
+[29] Dosovitskiy A, Beyer L, Kolesnikov A, et al. An image is worth 16x16 words: Transformers for image recognition at scale[C]//Proceedings of the 9th International Conference on Learning Representations. Virtual Event, 2021.
+[30] Tan M, Le Q V. EfficientNet: Rethinking model scaling for convolutional neural networks[C]//Proceedings of the 36th International Conference on Machine Learning. Long Beach, USA, 2019: 6105-6114.
+[31] Zhang S, Wang Z, Zhang Y, et al. A Survey of Vision and Language Related Multi-Modal Task[J]. Artificial Intelligence Review, 2022, 55(6): 4685-4715.
+[32] Snoek C G M, Worring M, Smeulders A W M. Early versus late fusion in semantic video analysis[C]//Proceedings of the 13th ACM International Conference on Multimedia. Singapore, 2005: 399-402.
+[33] Ramachandram D, Taylor G W. Deep multimodal learning: A survey on recent advances and trends[C]//Proceedings of the 2017 IEEE Signal Processing and Machine Learning for Sensor Signal Analytics. Philadelphia, USA, 2017: 1-6.
+[34] Baltrusaitis T, Ahuja C, Morency L P. Multimodal machine learning: A survey and taxonomy[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2019, 41(2): 423-443.
+[35] Fukui A, Park D H, Yang D, et al. Multimodal compact bilinear pooling for visual question answering and visual grounding[C]//Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing. Austin, USA, 2016: 457-468.
+[36] Ben-Younes H, Cadene R, Cord M, et al. MUTAN: Multimodal tucker fusion for visual question answering[C]//Proceedings of the IEEE International Conference on Computer Vision. Venice, Italy, 2017: 2631-2639.
+[37] Lu J, Yang J, Batra D, et al. Hierarchical question-image co-attention for visual question answering[C]//Proceedings of the 30th International Conference on Neural Information Processing Systems. Barcelona, Spain, 2016: 289-297.
+[38] Li X, Yang J, Ma J. Recent developments of content-based image retrieval (CBIR)[J]. Neurocomputing, 2021, 452: 675-689.
+[39] Cao Y, Long M S, Liu B, et al. Deep Cauchy hashing for Hamming space retrieval[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Salt Lake City, USA, 2018: 1229-1237.
+[40] Wang Q, Zhang L, Wu B, et al. Multi-scale deep supervised hashing for image retrieval[C]//Proceedings of the 31st ACM International Conference on Multimedia. Ottawa, Canada, 2023: 1124-1132.
+[41] Shrivastava A, Gupta A, Girshick R. Training region-based object detectors with online hard example mining[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Las Vegas, USA, 2016: 761-769.
+[42] 京津冀古树名木保护研究中心. 京津冀古树寻踪[M]. 北京: 中国建筑工业出版社, 2019.
+[43] Shorten C, Khoshgoftaar T M. A survey on image data augmentation for deep learning[J]. Journal of Big Data, 2019, 6(1): 1-48.
+[44] Zheng L, Yang Y, Tian Q. SIFT meets CNN: A decade survey of instance retrieval[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2017, 40(5): 1224-1244.
+[45] Sommerville I. Software Engineering[M]. 10th ed. Boston: Addison-Wesley, 2015: 125-130.
+[46] Sandhu R S, Coyne E J, Feinstein H L, et al. Role-based access control models[J]. Computer, 1996, 29(2): 38-47.
+[47] You Y. Vue.js[M]. Birmingham: Packt Publishing Ltd, 2022.
+[48] VMware, Inc. Spring Boot Documentation[EB/OL]. 2023 [2024-04-09]. https://spring.io/projects/spring-boot.
+[49] Oracle Corporation. MySQL 8.0 Reference Manual[EB/OL]. 2023 [2024-04-09]. https://dev.mysql.com/doc/refman/8.0/en.
+
+================================================================================
+【七、修改操作清单】
+================================================================================
+1. 从参考文献列表中删除：原[5]、[33]、[34]、[37]、[39]（共5条）。
+2. 将剩余的参考文献按【六】中的新编号重新排序。
+3. 在正文中使用"查找替换"功能，按【五、编号映射表】将所有旧编号替换为新编号。
+   特别注意：
+   - 第176行：将[35-37]改为[32-33]
+   - 第431行：将[50]改为[44]
+   - 涉及[6]-[32]及[38]-[54]的引用均需批量替换
+4. 统一英文作者姓名大小写（按Title Case格式）。
+5. 修正[39]（新编号）的et al格式。
+6. 修正[48][49]（新编号）的空格和电子文献格式。
+
+================================================================================
