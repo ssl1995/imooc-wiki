@@ -164,8 +164,6 @@
 | `academic-paper`          | v3.0 | "写论文"、"修改论文"   | 撰写新章节、修改审稿意见           |
 | `academic-paper-reviewer` | v1.8 | **默认使用**           | 所有论文审查、摘要修改、架构图评审 |
 | `academic-pipeline`       | v3.2 | "完整流程"、"端到端"   | 从研究到成稿的完整流程             |
-| `kimi-docx`               | -    | Word文档处理           | 生成/修改docx文件                  |
-| `kimi-pdf`                | -    | PDF处理                | 生成PDF版本                        |
 
 ### v3.3 新增功能
 
@@ -183,8 +181,7 @@
 修改论文时：
 1. 先使用 academic-paper-reviewer 审查（默认，支持calibration模式）
 2. 根据审稿意见，使用 academic-paper 修改具体章节（支持anti-leakage协议）
-3. 使用 kimi-docx 生成/修改Word文档
-4. 使用 academic-paper-reviewer 再次审查（re-review模式，支持score trajectory追踪）
+3. 使用 academic-paper-reviewer 再次审查（re-review模式，支持score trajectory追踪）
 ```
 
 ### v3.3 新增功能使用规范

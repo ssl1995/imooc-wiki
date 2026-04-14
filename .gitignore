@@ -38,4 +38,4 @@ build/
 .agents/
 .claude/
 
-algorithm
+.venv/

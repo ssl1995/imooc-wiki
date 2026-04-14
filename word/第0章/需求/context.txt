@@ -1,15 +1,3 @@
-论文已经完成修改：
-    D:\project\java\imooc-wiki\word\第0章\审查\5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建 - 改文献引用.docx
-agents如下，该agents里有北林论文格式要求的规范，请扫描：
-    D:\project\java\imooc-wiki\AGENTS.md
-
-本地安装了python，安装包管理工具是uv，必须确保上述word你能扫描出信息，如果不能扫描除信息，分析是否需要安装某些包或则skill。
-
-现在你是一名资深的论文指老师，需要严格的检查上述论文的格式是否符合要求：
-1、已知的问题，之前的agents里要求文献引用必须严格单调递增，不能一文多引或者插着引用，我找老师核对了下，是错误的，需要排查论文哪些地方需要重新引用文献，已经更新agents
-2、审查论文是否有不符合北林论文格式要求的地方，请审查
-你可以起多个subagent同时审查，相互交换意见+相互review,最终输出一版审查清单md文件
-
-
-
-
+我重新换了电脑，需要修改论文，发现之前的skill没有推到到远程服务，导致本地没有
+我重新克隆了修改论文的skills到本地这个路径:/Users/ssl/code/academic-research-skills
+请根据/Users/ssl/code/imooc-wiki/AGENTS.md等信息，复制到本地项目，让kimi每次都能读取到这些skill
