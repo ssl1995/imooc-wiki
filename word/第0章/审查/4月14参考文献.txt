@@ -1,4 +1,4 @@
-[1]国家林业和草原局. 全国古树名木普查技术规范[S]. 北京: 中国标准出版社, 2016.
+[1]诸大建, 张帅. 中国生态文明实践如何检验和深化可持续性科学[J]. 中国人口·资源与环境, 2022, 32(9): 1-10.
 [2]国家古树名木保护专项调查组. 第二次全国古树名木资源普查结果[R]. 北京: 国家林业和草原局, 2023.
 [3]KALAIVANI P, SHARMA T P, MANDAL D, et al. Deep learning in plant biology: A comprehensive review[J]. Frontiers in Plant Science, 2022, 13: 924412.
 [4]FERREIRA A S, DA SILVA N F, PAPA J P, et al. Plant leaf classification using color and texture features[J]. IEEE Transactions on Image Processing, 2020, 29: 7565-7576.
@@ -29,10 +29,10 @@
 [29]HADSELL R, CHOPRA S, LECUN Y. Dimensionality reduction by learning an invariant mapping[C]//Proceedings of the 2006 IEEE Computer Society Conference on Computer Vision and Pattern Recognition. New York, USA, 2006, 2: 1735-1742.
 [30]DOSOVITSKIY A, BEYER L, KOLESNIKOV A, et al. An image is worth 16x16 words: Transformers for image recognition at scale[C]//Proceedings of the 9th International Conference on Learning Representations. Virtual Event, 2021.
 [31]TAN M, LE Q V. EfficientNet: Rethinking model scaling for convolutional neural networks[C]//Proceedings of the 36th International Conference on Machine Learning. Long Beach, USA, 2019: 6105-6114.
-[32]IOFFE S, SZEGEDY C. Batch normalization: Accelerating deep network training by reducing internal covariate shift[C]//Proceedings of the 32nd International Conference on Machine Learning. Lille, France, 2015: 448-456.
+[32]ZHANG S, WANG Z, ZHANG Y, et al. A Survey of Vision and Language Related Multi-Modal Task[J]. Artificial Intelligence Review, 2022, 55(6): 4685-4715.
 [33]CHEN Z S, YUAN X M, LU J W, et al. Deep hashing via discrepancy minimization from privileged information[J]. IEEE Transactions on Image Processing, 2020, 29: 3586-3595.
 [34]LI W J, WANG S, KANG W C. Feature learning based deep supervised hashing with pairwise labels[C]//Proceedings of the 25th International Joint Conference on Artificial Intelligence. New York, USA, 2016: 1711-1717.
-[35]PORIA S, CAMBRIA E, BAJPAI R, et al. A review of affective computing: From unimodal analysis to multimodal fusion[J]. Information Fusion, 2017, 37: 98-125.
+[35]SNOEK C G M, WORRING M, SMEULDERS A W M. Early versus late fusion in semantic video analysis[C]//Proceedings of the 13th ACM International Conference on Multimedia. Singapore, 2005: 399-402.
 [36]RAMACHANDRAM D, TAYLOR G W. Deep multimodal learning: A survey on recent advances and trends[C]//Proceedings of the 2017 IEEE Signal Processing and Machine Learning for Sensor Signal Analytics. Philadelphia, USA, 2017: 1-6.
 [37]ZADEH A, CHEN M, PORIA S, et al. Tensor fusion network for multimodal sentiment analysis[C]//Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing. Copenhagen, Denmark, 2017: 1103-1114.
 [38]BALTRUSAITIS T, AHUJA C, MORENCY L P. Multimodal machine learning: A survey and taxonomy[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2019, 41(2): 423-443.
@@ -40,3 +40,15 @@
 [40]FUKUI A, PARK D H, YANG D, et al. Multimodal compact bilinear pooling for visual question answering and visual grounding[C]//Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing. Austin, USA, 2016: 457-468.
 [41]BEN-YOUNES H, CADENE R, CORD M, et al. MUTAN: Multimodal tucker fusion for visual question answering[C]//Proceedings of the IEEE International Conference on Computer Vision. Venice, Italy, 2017: 2631-2639.
 [42]LU J, YANG J, BATRA D, et al. Hierarchical question-image co-attention for visual question answering[C]//Proceedings of the 30th International Conference on Neural Information Processing Systems. Barcelona, Spain, 2016: 289-297.
+[43]LI X, YANG J, MA J. Recent developments of content-based image retrieval (CBIR)[J]. Neurocomputing, 2021, 452: 675-689.
+[44]CAO Y, LONG M S, LIU B, WANG J M. Deep Cauchy hashing for Hamming space retrieval[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Salt Lake City, USA, 2018: 1229-1237.
+[45]WANG Q, ZHANG L, WU B, et al. Multi-scale deep supervised hashing for image retrieval[C]//Proceedings of the 31st ACM International Conference on Multimedia. Ottawa, Canada, 2023: 1124-1132.
+[46]SHRIVASTAVA A, GUPTA A, GIRSHICK R. Training region-based object detectors with online hard example mining[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Las Vegas, USA, 2016: 761-769.
+[47]京津冀古树名木保护研究中心. 京津冀古树寻踪[M]. 北京: 中国建筑工业出版社, 2019.
+[48]SHORTEN C, KHOSHGOFTAAR T M. A survey on image data augmentation for deep learning[J]. Journal of Big Data, 2019, 6(1): 1-48.
+[49]ZHENG L, YANG Y, TIAN Q. SIFT meets CNN: A decade survey of instance retrieval[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2017, 40(5): 1224-1244.
+[50]SOMMERVILLE I. Software Engineering[M]. 10th ed. Boston: Addison-Wesley, 2015: 125-130.
+[51]SANDHU R S, COYNE E J, FEINSTEIN H L, et al. Role-based access control models[J]. Computer, 1996, 29(2): 38-47.
+[52]YOU Y. Vue.js[M]. Birmingham: Packt Publishing Ltd, 2022.
+[53]Spring Boot Documentation[EB/OL]. VMware, Inc., 2023[2024-04-09]. https://spring.io/projects/spring-boot.
+[54]Oracle Corporation. MySQL 8.0 Reference Manual[EB/OL].2023[2024-04-09]. https://dev.mysql.com/doc/refman/8.0/en.

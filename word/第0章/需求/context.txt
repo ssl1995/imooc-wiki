@@ -1,3 +1,19 @@
-我重新换了电脑，需要修改论文，发现之前的skill没有推到到远程服务，导致本地没有
-我重新克隆了修改论文的skills到本地这个路径:/Users/ssl/code/academic-research-skills
-请根据/Users/ssl/code/imooc-wiki/AGENTS.md等信息，复制到本地项目，让kimi每次都能读取到这些skill
+论文：/Users/ssl/code/imooc-wiki/word/第0章/审查/5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建_2222.docx.docx
+北林格式：/Users/ssl/code/imooc-wiki/word/第0章/审查/北林学位格式（2023版修订）.docx
+本地agents:/Users/ssl/code/imooc-wiki/AGENTS.md
+你现在是一名资深的盲审老师，使用academic-paper-reviewer审查论文格式问题，重点关注错别字、序号问题、文献引用问题
+你可以起多个agents分析不同的论文格式问题，然后汇总成一个审查清单给我Review
+
+上述提到的第二轮问题P0-P2都修改了
+论文：/Users/ssl/code/imooc-wiki/word/第0章/审查/5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建_33.docx
+第二轮问题说明：/Users/ssl/code/imooc-wiki/word/第0章/审查/论文格式盲审审查清单_第二轮.txt
+其中有2个方向打算专项清理：
+1、公式说明，缺少变量符号表述的问题，需要单独整理成一个txt文件我全文比对修改
+2、参考文献，文献列表和问题表述如下，需要单独整理成一个txt文件我全文比对修改
+    /Users/ssl/code/imooc-wiki/word/第0章/审查/4月14参考文献.txt
+    存在的问题：
+    2.1 目前还存在中间一些文献没有实际引用，需要删除
+    2.2 正文引用文献参考度不高，需要修改文献；
+    2.3 文献列表中涉及作者的姓名全大写，导致正文引用都是大学人名
+        我参考/Users/ssl/code/imooc-wiki/word/第0章/参考/lah-面向品评文本的食品感官分析系统研建.docx，往届文献作者姓名是大写接上小写的
+
