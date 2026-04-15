@@ -1,11 +1,18 @@
-论文：/Users/ssl/code/imooc-wiki/word/第0章/审查/5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建_c1.docx
-北林格式：/Users/ssl/code/imooc-wiki/word/第0章/审查/北林学位格式（2023版修订）.docx
-本地agents:/Users/ssl/code/imooc-wiki/AGENTS.md
-你现在是扮演着几名资深的盲审老师，请使用academic-paper-reviewer，请全面审查该篇论文，你可以起多个agents分析不同的论文格式问题，然后汇总成一个审查清单txt给我Review
+  P1-F1 | 关键词分隔符错误（中英文均需修改）
+    位置：中文摘要第22行、英文摘要第29行
+    现状：使用逗号","分隔
+    规范：北林格式明确要求使用分号"；"分隔
+    修改：
+      中文：古树名木检索；深度哈希学习；多模态哈希检索；DHLAM模型
+      英文：Ancient Tree Retrieval; Deep Hashing Learning;
+            Multimodal Hashing Retrieval; DHLAM Model
+误判：根据往届毕业论文，都是,分割，以往届为主，北林摘要格式可能很多人没有实施：
+    /Users/ssl/code/imooc-wiki/word/第0章/参考/lah-面向品评文本的食品感官分析系统研建.docx
+    /Users/ssl/code/imooc-wiki/word/第0章/参考/lah-面向品评文本的食品感官分析系统研建.docx
+
+论文：/Users/ssl/code/imooc-wiki/word/第0章/审查/5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建_v13.docx
+上述问题中绝大多数我已经再次修改，你现在是扮演着几名资深的盲审老师，请使用academic-paper-reviewer，请全面审查该篇论文，你可以起多个agents分析不同的论文格式问题，然后汇总成一个审查清单txt给我Review
 北林的送审规格是1个校外老师+2个校内老师，请分析按照当前的审稿团队配置（5人制）结果，我期望的效果是这3个盲审老师一致通过，而不是修改后二审
 
-论文：/Users/ssl/code/imooc-wiki/word/第0章/审查/5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建_v10.docx
-本次会话提到的绝大多数问题已经修改，
-你现在是扮演着几名资深的盲审老师，请使用academic-paper-reviewer，请全面审查该篇论文，你可以起多个agents分析不同的论文格式问题，然后汇总成一个审查清单txt给我Review
-北林的送审规格是1个校外老师+2个校内老师，请分析按照当前的审稿团队配置（5人制）结果，我期望的效果是这3个盲审老师一致通过，而不是修改后二审
+
 
