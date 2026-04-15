@@ -12,10 +12,12 @@ Zou Q, Cheng S L, Chen J Y. PromptHash: Affinity-Prompted Collaborative Cross-Mo
 Li Y, Zhen L L, Sun Y, et al. Deep Evidential Hashing for Trustworthy Cross-Modal Retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. Philadelphia, USA, 2025: 18566-18574.
 Li J X, Wong W K, Jiang L, et al. Lightweight Contrastive Distilled Hashing for Online Cross-Modal Retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. Philadelphia, USA, 2025: 4779-4787.
 Wang J D, Zhang T, Song J K, et al. A Survey on Learning to Hash[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2018, 40(4): 769-790.
+Pegia M, Jónsson B T, Moumtzidou A, et al. MuseHash: Supervised Bayesian Hashing for Multimodal Image Representation[C]//Proceedings of the 2023 ACM International Conference on Multimedia Retrieval. Thessaloniki, Greece, 2023: 434-442.
 Mai G, Janowicz K, Yan B, et al. Multi-Scale Representation Learning for Spatial Feature Distributions using Grid Cells[C]//Proceedings of the 8th International Conference on Learning Representations. Virtual Event, 2020.
 Chu G, Potetz B, Adam H, et al. Geo-Aware Networks for Fine-Grained Recognition[C]//Proceedings of the IEEE/CVF International Conference on Computer Vision. Seoul, Korea, 2019: 2811-2820.
 Mai G, Huang W, Sun J, et al. Contrastive Spatial Pre-Training for Learning Spatially-Aware Visual Representations[C]//Proceedings of the 11th International Conference on Learning Representations. Kigali, Rwanda, 2023.
 Klemmer K, Rolf E, Watt A, et al. SatCLIP: Global, General-Purpose Location Embeddings with Satellite Imagery[J]. Advances in Neural Information Processing Systems, 2023, 36: 53471-53495.
+Vivanco Cepeda V, Nayak G K, Shah M. GeoCLIP: CLIP-Inspired Alignment between Locations and Images for Effective Worldwide Geo-Localization[C]//Advances in Neural Information Processing Systems 36. New Orleans, USA, 2023: 8690-8701.
 Van Horn G, Mac Aodha O, Song Y, et al. The iNaturalist Species Classification and Detection Dataset[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Salt Lake City, USA, 2018: 8769-8778.
 Krizhevsky A, Sutskever I, Hinton G E. ImageNet Classification with Deep Convolutional Neural Networks[C]//Advances in Neural Information Processing Systems 25. Lake Tahoe, USA, 2012: 1097-1105.
 Srivastava N, Hinton G, Krizhevsky A, et al. Dropout: A Simple Way to Prevent Neural Networks from Overfitting[J]. Journal of Machine Learning Research, 2014, 15(1): 1929-1958.
@@ -34,7 +36,7 @@ Ramachandram D, Taylor G W. Deep Multimodal Learning: A Survey on Recent Advance
 Baltrusaitis T, Ahuja C, Morency L P. Multimodal Machine Learning: A Survey and Taxonomy[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2019, 41(2): 423-443.
 Fukui A, Park D H, Yang D, et al. Multimodal Compact Bilinear Pooling for Visual Question Answering and Visual Grounding[C]//Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing. Austin, USA, 2016: 457-468.
 Ben-Younes H, Cadene R, Cord M, et al. MUTAN: Multimodal Tucker Fusion for Visual Question Answering[C]//Proceedings of the IEEE International Conference on Computer Vision. Venice, Italy, 2017: 2631-2639.
-Lu J, Yang J, Batra D, et al. Hierarchical Question-Image Co-Attention for Visual Question Answering[C]//Proceedings of the 30th International Conference on Neural Information Processing Systems. Barcelona, Spain, 2016: 289-297.
+Lu J, Yang J, Batra D, et al. Hierarchical Question-Image Co-Attention for Visual Question Answering[C]//Proceedings of the 29th International Conference on Neural Information Processing Systems. Barcelona, Spain, 2016: 289-297.
 Li X, Yang J, Ma J. Recent Developments of Content-Based Image Retrieval (CBIR)[J]. Neurocomputing, 2021, 452: 675-689.
 Cao Y, Long M S, Liu B, et al. Deep Cauchy Hashing for Hamming Space Retrieval[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Salt Lake City, USA, 2018: 1229-1237.
 Wang Q, Zhang L, Wu B, et al. Multi-Scale Deep Supervised Hashing for Image Retrieval[C]//Proceedings of the 31st ACM International Conference on Multimedia. Ottawa, Canada, 2023: 1124-1132.
@@ -47,5 +49,3 @@ Sandhu R S, Coyne E J, Feinstein H L, et al. Role-Based Access Control Models[J]
 You Y. Vue.js[M]. Birmingham: Packt Publishing Ltd, 2022.
 VMware, Inc. Spring Boot Documentation[EB/OL]. 2023 [2024-04-09]. https://spring.io/projects/spring-boot.
 Oracle Corporation. MySQL 8.0 Reference Manual[EB/OL]. 2023 [2024-04-09]. https://dev.mysql.com/doc/refman/8.0/en.
-Vivanco Cepeda V, Nayak G K, Shah M. GeoCLIP: CLIP-Inspired Alignment between Locations and Images for Effective Worldwide Geo-Localization[C]//Advances in Neural Information Processing Systems 36. New Orleans, USA, 2023: 8690-8701.
-Pegia M, Jónsson B T, Moumtzidou A, et al. MuseHash: Supervised Bayesian Hashing for Multimodal Image Representation[C]//Proceedings of the 2023 ACM International Conference on Multimedia Retrieval. Thessaloniki, Greece, 2023: 434-442.
