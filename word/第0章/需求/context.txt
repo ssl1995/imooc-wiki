@@ -1,11 +1,11 @@
-论文：/Users/ssl/code/imooc-wiki/word/第0章/审查/5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建_文1.docx
+论文：/Users/ssl/code/imooc-wiki/word/第0章/审查/5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建_c1.docx
 北林格式：/Users/ssl/code/imooc-wiki/word/第0章/审查/北林学位格式（2023版修订）.docx
 本地agents:/Users/ssl/code/imooc-wiki/AGENTS.md
-之前提到的文献问题我已经修改了，你现在是一名资深的盲审老师，使用academic-paper-reviewer审查论文格式问题，重点关注错别字、文献引用问题
-你可以起多个agents分析不同的论文格式问题，然后汇总成一个审查清单txt给我Review
-
-上述提到的问题已经修改，
-论文：/Users/ssl/code/imooc-wiki/word/第0章/审查/5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建_文8.docx
-你现在是扮演着几名资深的盲审老师，根据AGENTS.md中的审稿团队配置（5人制） + 本地的skill的academic-paper-reviewer（/Users/ssl/code/imooc-wiki/.agents/skills/academic-paper-reviewer/SKILL.md），
+你现在是扮演着几名资深的盲审老师，请使用academic-paper-reviewer，请全面审查该篇论文，你可以起多个agents分析不同的论文格式问题，然后汇总成一个审查清单txt给我Review
 北林的送审规格是1个校外老师+2个校内老师，请分析按照当前的审稿团队配置（5人制）结果，我期望的效果是这3个盲审老师一致通过，而不是修改后二审
-请全面审查该篇论文，你可以起多个agents分析不同的论文格式问题，然后汇总成一个审查清单txt给我Review
+
+论文：/Users/ssl/code/imooc-wiki/word/第0章/审查/5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建_v10.docx
+本次会话提到的绝大多数问题已经修改，
+你现在是扮演着几名资深的盲审老师，请使用academic-paper-reviewer，请全面审查该篇论文，你可以起多个agents分析不同的论文格式问题，然后汇总成一个审查清单txt给我Review
+北林的送审规格是1个校外老师+2个校内老师，请分析按照当前的审稿团队配置（5人制）结果，我期望的效果是这3个盲审老师一致通过，而不是修改后二审
+
