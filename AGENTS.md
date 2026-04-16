@@ -233,6 +233,17 @@
   - 工具版本（Claude Code + Academic Research Skills v3.3）
   - 人工审核确认（所有内容经作者审核确认）
 
+#### 五.7 Skill 自动化同步机制
+- **实现方案**：通过软链接（Symbolic Link）实现 `imooc-wiki` 项目与外部 Skill 仓库 `academic-research-skills` 的实时同步。
+- **配置路径**：
+  - 软链接：`.agents/skills` -> `/Users/ssl/code/academic-research-skills`
+  - Trae 配置：`.trae/config.json` 指向 `.agents`
+- **工具支持**：
+  - **Junie (Trae)**：根据 `.trae/config.json` 自动扫描 `.agents/skills` 目录下的所有子目录作为可用 Skill。
+  - **Cursor**：通过文件系统索引 `.agents/skills` 路径，可在 `.cursorrules` 中直接引用最新规则。
+  - **Claude Code**：作为项目上下文的一部分，能够直接扫描并读取软链接指向的最新 Skill 文件。
+- **同步说明**：当外部仓库 `academic-research-skills` 执行 `git pull` 更新代码后，`imooc-wiki` 项目内的所有 AI 工具将自动识别并加载最新的 Skill 定义，确保“一处更新，处处同步”。
+
 ---
 
 ## 六、引用格式规范（北林特有）
@@ -968,6 +979,7 @@
 | 3.1  | 2026-04-09 | **Skills更新至v3.3**：academic-paper v3.0, academic-paper-reviewer v1.8, academic-pipeline v3.2, deep-research v2.8 |
 | 3.2  | 2026-04-12 | **AGENTS.md规范化更新**：添加北林论文排版格式规范（七.4）、装订顺序（七.5）、查重与提交规范（十一）、v3.3功能使用指南（五.1-五.6） |
 | 3.3  | 2026-04-15 | **格式审查经验修正**：修正标题格式（二级→黑体小三号，三级→宋体四号）；新增审查误判记录（十二） |
+| 3.4  | 2026-04-16 | **Skill同步机制更新**：建立软链接实现外部Skill仓库自动化同步，支持Junie、Cursor、Claude Code |
 
 ---
 
