@@ -4,6 +4,7 @@ D:\project\java\imooc-wiki\word\第0章\审查\5200090_宋声林_融合图像与
 上次送审我失败了，这是上次的送审报告：/Users/ssl/code/imooc-wiki/word/第0章/参考/上次送审意见汇总.docx，
 kimi的盲审分析报告：/Users/ssl/code/imooc-wiki/word/第0章/审查/kimi盲审结果预测.md
 cc的盲审分析报告：D:\project\java\imooc-wiki\word\第0章\审查\cc盲审结果预测.md
+学校论文答辩时间安排：D:\project\java\imooc-wiki\word\第0章\审查\时间安排.jpg
 
-请结合当前论文和已有信息，重新分析我本次参加盲审通过的各种可能性，输出一份总的盲审结果预测.md文件，我时刻阅读。
-预祝我能顺利毕业
+请重新完整的扫描当前论文，重新分析我本次参加盲审通过的各种可能性，输出一份总的盲审结果预测.md文件，我时刻阅读。
+并且更新AGENTS.md
