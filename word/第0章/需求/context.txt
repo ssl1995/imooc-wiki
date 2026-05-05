@@ -2,9 +2,30 @@ D:\project\java\imooc-wiki\word\第0章\审查\5200090_宋声林_融合图像与
 这篇论文已经上传学校盲审系统，本文查重率2.8%（北林查重率是15%以下就行），AIGC率20%（北林不要求AIGC率），等待盲审中，
 
 上次送审我失败了，这是上次的送审报告：/Users/ssl/code/imooc-wiki/word/第0章/参考/上次送审意见汇总.docx，
-kimi的盲审分析报告：/Users/ssl/code/imooc-wiki/word/第0章/审查/kimi盲审结果预测.md
-cc的盲审分析报告：D:\project\java\imooc-wiki\word\第0章\审查\cc盲审结果预测.md
 学校论文答辩时间安排：D:\project\java\imooc-wiki\word\第0章\审查\时间安排.jpg
+盲审分析：D:\project\java\imooc-wiki\word\第0章\审查\总盲审结果分析.md
 
-请重新完整的扫描当前论文，重新分析我本次参加盲审通过的各种可能性，输出一份总的盲审结果预测.md文件，我时刻阅读。
-并且更新AGENTS.md
+5月1日假期期间，有些同学的盲审结果已经出来了，我的另一个非全日制的同学得了3个B。但我这里盲审结果还是0，我还挺担心。
+请分析我的盲审不过的概率大吗？
+
+1、论文中的图，你应该没有扫描到，是否可以扫描图？起一个agent扫描图片，看我画的图是否有错误的地方？
+2、盲审老师的盲审层次不齐，有些是非常认真的全文读一遍找瑕疵，有些是只看摘要、第三章核心章、每章导读、参考文献是否合理；分析这2个维度的下的盲审老师是否会给我不过的概率？
+
+1、上述图片分析严重的问题，被盲审老师发现的概率应该不是很大，即使发现了，是否也不会给C的理由？
+2、我感觉我论文当前的质量再怎么都不可能得C，起码比50%的同学论文写的好吧，站在盲审老师的角度分析是否如此？
+3、结合目前的信息输出一版新的盲审结果分析报告，更新AGENTS.md，
+3、老的如下分析文档可以删除了：
+    D:\project\java\imooc-wiki\word\第0章\审查\cc盲审结果预测.md
+    D:\project\java\imooc-wiki\word\第0章\审查\kimi盲审结果预测.md
+    D:\project\java\imooc-wiki\word\第0章\审查\总盲审结果分析.md
+
+
+4.1和4.9是第四章系统章节，盲审老师可能仔细看，也可能没有仔细看，毕竟优先级低于第3章核心章，我理解有表述问题，也不会构成C档，给B让修改后答辩没问题，如果没看到给A也行，是否如此？
+
+以下临时文件是否可以删除，或者保留核心方便下次另外的session会话使用？
+    D:\project\java\imooc-wiki\word\第0章\审查\extracted_images
+    D:\project\java\imooc-wiki\word\第0章\审查\extracted_images_v2
+    D:\project\java\imooc-wiki\extract_images.py
+    D:\project\java\imooc-wiki\extract_images_v2.py
+    D:\project\java\imooc-wiki\map_images.py
+    D:\project\java\imooc-wiki\_temp_paper.txt
