@@ -1,19 +1,17 @@
-D:\project\java\imooc-wiki\word\第0章\审查\5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建-盲审.docx
-学校论文答辩时间安排：D:\project\java\imooc-wiki\word\第0章\审查\时间安排.jpg
+待修改的论文：D:\project\java\imooc-wiki\word\第0章\二审\5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建-1.docx
+送审进展：D:\project\java\imooc-wiki\word\第0章\盲审结果\一审是1A1B1C.png
+盲审1评语：D:\project\java\imooc-wiki\word\第0章\盲审结果\盲审1.png
+盲审2评语：D:\project\java\imooc-wiki\word\第0章\盲审结果\盲审2.png
+盲审3评语：D:\project\java\imooc-wiki\word\第0章\盲审结果\盲审3.png
+盲审意见：D:\project\java\imooc-wiki\word\第0章\二审\盲审意见.txt
 
-送审进展：D:\project\java\imooc-wiki\word\第0章\盲审结果\img.png
-今晚出了第二个盲审结果，查看F12发现是校外的盲审老师回复的，我还差1个校内的意见，本次评审结果如下：
-评语内容：D:\project\java\imooc-wiki\word\第0章\盲审结果\盲审2.pdf
-评语截图：D:\project\java\imooc-wiki\word\第0章\盲审结果\img_1.png
+现在你是一名资深的计算机盲审专家，请读取D:\project\java\imooc-wiki\word\第0章\二审\盲审意见.txt和D:\project\java\imooc-wiki\word\第0章\审查\盲审结果分析.md
+请开始扫描论文，整理论文文字和图片信息，可以起多个agent共同分析，
+然后审查如何修改盲审1老师提到的3个意见，给出一个txt版本的修改意见，给出修改意见后再重新审查是否合理？
+我Review后修改进论文中
 
-根据盲审2的pdf信息，校外老师的总体评价=合格，但是否同意答辩=同意，不是修改后直接答辩，有点矛盾：
-1、总体评价=合格，是否同意答辩=同意，是处于什么原因呢？
-2、该老师提的意见记录下来，等3个老师意见回来后，我们统一修改
-3、盲审2的校外导师比第一个盲审结果校内导师仔细，不像是AI评审的结果，是自己很仔细看了的，根据现有的2个导师评审风格，预测第三个校内导师的意见
-4、更新：D:\project\java\imooc-wiki\word\第0章\审查\盲审结果分析.md
-
-这是盲审1老师的意见：D:\project\java\imooc-wiki\word\第0章\盲审结果\盲审1.png
-问了往届的同学，北林信息学院连续3年都是5月21号答辩，和时间安排不一致，说明时间安排是有出入的：
-1、结合盲审1和盲审2的意见，分析汇总整理问题，补充到D:\project\java\imooc-wiki\word\第0章\审查\盲审结果分析.md
-2、按照时间安排虽然今天是答辩申请时间，但是系统还没有开通，还有同学3个盲审意见没有返回，预测这周3-周5，信息学院行政辅导员就会通知下周四21号答辩，更新答辩日期和时间安排
-3、北林学校往届的都是校内盲审老师比校外的严格，但是根据我目前的情况，第三个盲审老师能看到前面2个送审的意见？比如看到前面2个送审的意见，来参考自己的
+上述的标注修改版：D:\project\java\imooc-wiki\word\第0章\二审\盲审1意见修改方案_v2_精确标注版.txt
+用修订模式已完成上述修改：D:\project\java\imooc-wiki\word\第0章\二审\5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建-1.docx
+意见1的修改部分我没有完全参考，我是手动修改的，精简了一些内容，意见2、意见3以及其余建议我都完成了修改。
+1、请扫描修改的论文，审查是否修改正确？
+2、审查没问题的话，请更新D:\project\java\imooc-wiki\word\第0章\二审\盲审意见.txt
