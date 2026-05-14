@@ -1,0 +1,91 @@
+@startuml
+
+' ===== 字体与样式设置 =====
+skinparam defaultFontSize 14
+skinparam defaultFontName SimHei
+skinparam sequenceMessageAlign center
+skinparam sequenceArrowThickness 2
+skinparam participantPadding 20
+skinparam sequenceBoxBackgroundColor #F8F8F8
+
+' 黑白风格，确保打印清晰
+skinparam monochrome true
+
+' ===== 参与者（精简为6个） =====
+actor "用户" as User
+participant "古树检索界面" as SearchPage
+participant "TreeRetrieveController" as Controller
+participant "ITreeRetrieveService" as Service
+participant "DHLAM模型" as DHLAM
+participant "TreeRetrieveMapper" as Mapper
+participant "MySQL数据库" as DB
+
+' ===== 前置条件说明 =====
+note over User, SearchPage
+  <b>前置条件：</b>用户已完成登录
+end note
+
+' ===== 核心检索流程（三种模式合并描述） =====
+autonumber 1
+User -> SearchPage: 上传图像或输入坐标(lat,lon)
+activate SearchPage
+
+autonumber 2
+SearchPage -> Controller: 调用 /tree/retrieve (POST)
+activate Controller
+
+autonumber 3
+Controller -> Service: retrieve(query)
+activate Service
+
+autonumber 4
+Service -> DHLAM: 调用模型服务生成哈希码
+activate DHLAM
+
+autonumber 5
+DHLAM -> DHLAM: 特征提取(ResNet-50 / LocationEncoder)
+DHLAM -> DHLAM: 多模态融合
+DHLAM -> DHLAM: 哈希层生成128位哈希码(FC→Tanh→Sign)
+
+autonumber 6
+DHLAM --> Service: 返回哈希码
+deactivate DHLAM
+
+autonumber 7
+Service -> Mapper: selectByHashCode(hash)
+activate Mapper
+
+autonumber 8
+Mapper -> DB: 哈希码相似度查询
+activate DB
+DB --> Mapper: 返回匹配结果集
+deactivate DB
+
+autonumber 9
+Mapper --> Service: 返回古树信息列表
+deactivate Mapper
+
+autonumber 10
+Service -> Service: 汉明距离排序(Top-K)
+
+autonumber 11
+Service --> Controller: 返回检索结果
+deactivate Service
+
+autonumber 12
+Controller --> SearchPage: 返回古树信息JSON
+deactivate Controller
+
+autonumber 13
+SearchPage --> User: 渲染检索结果列表
+deactivate SearchPage
+
+' ===== 底部说明（替代右侧note，不占横向空间） =====
+note over Controller, DB
+  <b>三种检索模式共享同一流程</b>
+  I2I: 图像→哈希码→相似图像
+  I2L: 图像→哈希码→地理位置
+  L2I: 坐标→哈希码→附近图像
+end note
+
+@enduml
