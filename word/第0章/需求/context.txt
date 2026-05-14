@@ -12,3 +12,9 @@ v2版本：D:\project\java\imooc-wiki\word\第0章\二审\盲审3意见修改方
 v2审查版：D:\project\java\imooc-wiki\word\第0章\二审\v2审查版.txt
 请根据v2审查版，仔细严格审查对修改意见和论文中的文字、数据、图文，输出一个v3的版本
 
+本项目用的论文审查的skill：D:\project\java\imooc-wiki\.agents\skills\academic-paper-reviewer
+原skill进行了大更新：D:\project\java\academic-research-skills\README.zh-TW.md，
+1、agents.md设计到的相关描述也请修改，例如AI审稿团从老版本的5位变成了7位，请更新agents,
+2、我发现你是先写入然后更新，非常耗时间，我等了很久，很浪费我修改论文的时间，有什么提效的方式吗
+
+我发现以下2个文件有内容是重复的：
