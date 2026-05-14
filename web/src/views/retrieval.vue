@@ -20,6 +20,9 @@
         <a-radio-button value="l2i">
           <EnvironmentOutlined /> 以位置搜图
         </a-radio-button>
+        <a-radio-button value="name">
+          <PartitionOutlined /> 按名检索
+        </a-radio-button>
       </a-radio-group>
     </div>
 
@@ -167,6 +170,64 @@
                   <p class="map-hint">此处后续将迭代显示定位结果在地图上的位置</p>
                 </div>
               </div>
+            </div>
+          </a-card>
+        </a-col>
+      </a-row>
+    </div>
+
+    <!-- NameSearch: 按树种名称检索 -->
+    <div v-if="currentMode === 'name'" class="search-section">
+      <a-row :gutter="24">
+        <a-col :span="8">
+          <a-card title="条件查询" class="query-card">
+            <a-form :model="nameParams" layout="vertical">
+              <a-form-item label="树种名称" required>
+                <a-input-search
+                  v-model:value="nameParams.keyword"
+                  placeholder="例如: 银杏、侧柏、白皮松"
+                  enter-button
+                  @search="handleNameSearch"
+                  :loading="nameSearching"
+                />
+              </a-form-item>
+              <a-form-item label="树龄范围">
+                <a-slider v-model:value="nameParams.ageRange" range :min="0" :max="2000" :marks="{0: '0', 500: '500', 1000: '1000', 1500: '1500', 2000: '2000'}" />
+              </a-form-item>
+            </a-form>
+            <a-button type="primary" size="large" block @click="handleNameSearch" :loading="nameSearching">
+              <SearchOutlined /> 查询
+            </a-button>
+
+            <a-divider orientation="left">快速选择</a-divider>
+            <a-space wrap>
+              <a-button size="small" @click="setNameKeyword('银杏')">银杏</a-button>
+              <a-button size="small" @click="setNameKeyword('侧柏')">侧柏</a-button>
+              <a-button size="small" @click="setNameKeyword('白皮松')">白皮松</a-button>
+            </a-space>
+          </a-card>
+        </a-col>
+
+        <a-col :span="16">
+          <a-card title="查询结果" class="result-card">
+            <div v-if="!nameResults.length" class="empty-result">
+              <a-empty description="请输入树种名称开始查询" />
+            </div>
+            <div v-else>
+              <a-alert
+                :message="`共查询到 ${nameResults.length} 条古树名木记录`"
+                type="success"
+                show-icon
+                style="margin-bottom: 16px"
+              />
+              <a-table
+                :columns="nameColumns"
+                :data-source="nameResults"
+                :pagination="{ pageSize: 5 }"
+                row-key="id"
+                size="middle"
+                bordered
+              />
             </div>
           </a-card>
         </a-col>
@@ -323,7 +384,7 @@ export default defineComponent({
   },
   setup() {
     // 当前检索模式
-    const currentMode = ref<'i2i' | 'i2l' | 'l2i'>('i2i');
+    const currentMode = ref<'i2i' | 'i2l' | 'l2i' | 'name'>('i2i');
     const searching = ref(false);
 
     // I2I 状态
@@ -350,6 +411,22 @@ export default defineComponent({
     const l2iLatitudeStr = ref('');
     const l2iLongitudeStr = ref('');
     const l2iResults = ref<L2IResult[]>([]);
+
+    // NameSearch 状态
+    const nameParams = reactive({
+      keyword: '',
+      ageRange: [0, 2000] as number[]
+    });
+    const nameSearching = ref(false);
+    const nameResults = ref<any[]>([]);
+    const nameColumns = [
+      { title: '序号', dataIndex: 'id', width: 60, align: 'center' },
+      { title: '古树名称', dataIndex: 'name', width: 160 },
+      { title: '树种', dataIndex: 'species', width: 100 },
+      { title: '树龄', dataIndex: 'age', width: 80, align: 'center', customRender: ({ text }: any) => text + '年' },
+      { title: '位置', dataIndex: 'location' },
+      { title: '保护级别', dataIndex: 'protectionLevel', width: 100, align: 'center' }
+    ];
 
     // 处理I2I上传
     const handleI2IChange = (info: UploadChangeParam) => {
@@ -429,6 +506,26 @@ export default defineComponent({
         searching.value = false;
         message.success('检索完成');
       }, 1500);
+    };
+
+    // 按树种名称查询
+    const handleNameSearch = () => {
+      if (!nameParams.keyword.trim()) {
+        message.error('请输入树种名称');
+        return;
+      }
+      nameSearching.value = true;
+      setTimeout(() => {
+        nameResults.value = generateMockNameResults(nameParams.keyword);
+        nameSearching.value = false;
+        message.success('查询完成');
+      }, 800);
+    };
+
+    // 设置树种名称关键词
+    const setNameKeyword = (keyword: string) => {
+      nameParams.keyword = keyword;
+      handleNameSearch();
     };
 
     // 设置位置
@@ -526,6 +623,22 @@ export default defineComponent({
       ];
     };
 
+    // 生成模拟按树种名称查询结果
+    const generateMockNameResults = (keyword: string): any[] => {
+      const allTrees = [
+        { id: 1, name: '景山万春亭古柏', species: '侧柏', age: 500, location: '北京市景山公园万春亭北侧', latitude: 39.9289, longitude: 116.3974, protectionLevel: '一级' },
+        { id: 2, name: '天坛九龙柏', species: '侧柏', age: 600, location: '北京市天坛公园回音壁西北侧', latitude: 39.8833, longitude: 116.4069, protectionLevel: '一级' },
+        { id: 3, name: '潭柘寺帝王银杏', species: '银杏', age: 1300, location: '北京市门头沟区潭柘寺寺院内', latitude: 39.9050, longitude: 116.0280, protectionLevel: '特级' },
+        { id: 4, name: '大觉寺千年银杏', species: '银杏', age: 950, location: '北京市海淀区大觉寺寺院内', latitude: 40.0510, longitude: 116.0950, protectionLevel: '一级' },
+        { id: 5, name: '北海团城古白皮松', species: '白皮松', age: 800, location: '北京市北海公园团城', latitude: 39.9250, longitude: 116.3900, protectionLevel: '一级' },
+        { id: 6, name: '颐和园佛香阁古柏', species: '侧柏', age: 400, location: '北京市颐和园佛香阁东侧', latitude: 39.9990, longitude: 116.2750, protectionLevel: '二级' },
+        { id: 7, name: '戒台寺九龙松', species: '白皮松', age: 1100, location: '北京市门头沟区戒台寺院内', latitude: 39.8780, longitude: 116.0450, protectionLevel: '特级' },
+        { id: 8, name: '孔庙触奸柏', species: '侧柏', age: 700, location: '北京市东城区孔庙内', latitude: 39.9440, longitude: 116.4100, protectionLevel: '一级' }
+      ];
+      if (!keyword || !keyword.trim()) return allTrees;
+      return allTrees.filter(t => t.species.includes(keyword) || t.name.includes(keyword));
+    };
+
     // 生成模拟I2L结果
     const generateMockI2LResult = (): I2LResult => {
       return {
@@ -547,6 +660,9 @@ export default defineComponent({
       
       // L2I模式默认加载模拟结果
       l2iResults.value = generateMockL2IResults();
+
+      // 按名检索默认加载全部模拟数据
+      nameResults.value = generateMockNameResults('');
     });
 
     return {
@@ -563,12 +679,18 @@ export default defineComponent({
       l2iLatitudeStr,
       l2iLongitudeStr,
       l2iResults,
+      nameParams,
+      nameSearching,
+      nameResults,
+      nameColumns,
       customRequest,
       handleI2IChange,
       handleI2LChange,
       handleI2ISearch,
       handleI2LSearch,
       handleL2ISearch,
+      handleNameSearch,
+      setNameKeyword,
       setLocation,
       getSimilarityColor
     };
