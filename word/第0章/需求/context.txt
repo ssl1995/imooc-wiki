@@ -1,17 +1,14 @@
-待修改的论文：D:\project\java\imooc-wiki\word\第0章\二审\5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建-1.docx
 送审进展：D:\project\java\imooc-wiki\word\第0章\盲审结果\一审是1A1B1C.png
 盲审1评语：D:\project\java\imooc-wiki\word\第0章\盲审结果\盲审1.png
 盲审2评语：D:\project\java\imooc-wiki\word\第0章\盲审结果\盲审2.png
 盲审3评语：D:\project\java\imooc-wiki\word\第0章\盲审结果\盲审3.png
 盲审意见：D:\project\java\imooc-wiki\word\第0章\二审\盲审意见.txt
+待修改的论文：D:\project\java\imooc-wiki\word\第0章\二审\5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建-3.docx
+现在待更新盲审3老师的意见，请更新D:\project\java\imooc-wiki\AGENTS.md，过期的信息请更新，skills请更新，无用的信息请删除
 
-现在你是一名资深的计算机盲审专家，请读取D:\project\java\imooc-wiki\word\第0章\二审\盲审意见.txt和D:\project\java\imooc-wiki\word\第0章\审查\盲审结果分析.md
-请开始扫描论文，整理论文文字和图片信息，可以起多个agent共同分析，
-然后审查如何修改盲审1老师提到的3个意见，给出一个txt版本的修改意见，给出修改意见后再重新审查是否合理？
-我Review后修改进论文中
+你现在是一名资深的盲审审稿老师，非常留意前后文字一致性、数据一致性、图文一致性，语句通常连贯等认真审查型老师的问题，一定要保证学生二审通过。
+现在开始处理修改盲审3老师的修改的建议，这是最多意见并且也是给我不同意答辩的意见，
+v2版本：D:\project\java\imooc-wiki\word\第0章\二审\盲审3意见修改方案_v2_最终版.txt
+v2审查版：D:\project\java\imooc-wiki\word\第0章\二审\v2审查版.txt
+请根据v2审查版，仔细严格审查对修改意见和论文中的文字、数据、图文，输出一个v3的版本
 
-上述的标注修改版：D:\project\java\imooc-wiki\word\第0章\二审\盲审1意见修改方案_v2_精确标注版.txt
-用修订模式已完成上述修改：D:\project\java\imooc-wiki\word\第0章\二审\5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建-1.docx
-意见1的修改部分我没有完全参考，我是手动修改的，精简了一些内容，意见2、意见3以及其余建议我都完成了修改。
-1、请扫描修改的论文，审查是否修改正确？
-2、审查没问题的话，请更新D:\project\java\imooc-wiki\word\第0章\二审\盲审意见.txt
