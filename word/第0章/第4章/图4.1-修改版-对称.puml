@@ -25,6 +25,7 @@ rectangle "古树名木多模态检索系统" {
         usecase "以图搜位置(I2L)" as UC8_2
         usecase "以位置搜图(L2I)" as UC8_3
         usecase "图像上传" as UC9
+        usecase "按树种名称检索" as UC10
     }
 }
 
@@ -42,6 +43,7 @@ User --> UC6
 User --> UC7
 User --> UC8
 User --> UC9
+User --> UC10
 
 UC8 ..> UC8_1 : <<include>>
 UC8 ..> UC8_2 : <<include>>
@@ -52,7 +54,7 @@ UC9 ..> UC8 : <<extend>>
 note bottom of UC8
   <b>三种检索模式</b>
   I2I: 上传图像,检索相似图像
-  I2L: 上传图像,预测拍摄位置  
+  I2L: 上传图像,检索返回位置  
   L2I: 输入坐标,检索附近图像
 end note
 

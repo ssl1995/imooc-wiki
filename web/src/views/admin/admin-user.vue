@@ -154,7 +154,7 @@ export default defineComponent({
       {
         title: '操作',
         key: 'action',
-        width: 280,
+        width: 320,
         slots: {customRender: 'action'}
       }
     ];
@@ -354,6 +354,43 @@ export default defineComponent({
 </script>
 
 <style scoped>
+/* 覆盖Ant Design表格默认字体，确保论文截图清晰 */
+:deep(.ant-table) {
+  font-size: 18px !important;
+}
+
+/* 表头加粗放大 */
+:deep(.ant-table-thead > tr > th) {
+  font-size: 18px !important;
+  font-weight: 600;
+  padding: 16px 12px;
+}
+
+/* 表格内容单元格 */
+:deep(.ant-table-tbody > tr > td) {
+  font-size: 18px !important;
+  padding: 16px 12px;
+}
+
+/* 操作按钮放大 */
+:deep(.ant-btn) {
+  font-size: 16px;
+  height: 38px;
+  padding: 0 16px;
+}
+
+/* 搜索区域输入框和按钮 */
+:deep(.ant-input),
+:deep(.ant-form-item .ant-btn) {
+  font-size: 16px;
+  height: 38px;
+}
+
+/* 分页组件字体 */
+:deep(.ant-pagination) {
+  font-size: 16px;
+}
+
 img {
   width: 50px;
   height: 50px;
