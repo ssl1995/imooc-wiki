@@ -3,18 +3,19 @@
 盲审2评语：D:\project\java\imooc-wiki\word\第0章\盲审结果\盲审2.png
 盲审3评语：D:\project\java\imooc-wiki\word\第0章\盲审结果\盲审3.png
 盲审意见：D:\project\java\imooc-wiki\word\第0章\二审\盲审意见.txt
-待修改的论文：D:\project\java\imooc-wiki\word\第0章\二审\5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建-3.docx
 现在待更新盲审3老师的意见，请更新D:\project\java\imooc-wiki\AGENTS.md，过期的信息请更新，skills请更新，无用的信息请删除
 
 你现在是一名资深的盲审审稿老师，非常留意前后文字一致性、数据一致性、图文一致性，语句通常连贯等认真审查型老师的问题，一定要保证学生二审通过。
 现在开始处理修改盲审3老师的修改的建议，这是最多意见并且也是给我不同意答辩的意见，
-v2版本：D:\project\java\imooc-wiki\word\第0章\二审\盲审3意见修改方案_v2_最终版.txt
-v2审查版：D:\project\java\imooc-wiki\word\第0章\二审\v2审查版.txt
-请根据v2审查版，仔细严格审查对修改意见和论文中的文字、数据、图文，输出一个v3的版本
+待修改的论文：D:\project\java\imooc-wiki\word\第0章\二审\5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建-3.docx
+v3版本：D:\project\java\imooc-wiki\word\第0章\二审\盲审3意见修改方案_v3_最终版.txt
+1、请再次审查v3版本是否存在问题，我是否可以按照v3版本开始修改？
+2、盲审1和盲审2的老师提到工作量一版，盲审3的老师提到工作量不足，现在已经修改完了盲审1和盲审2老师意见，我再修改完盲审3老师的意见，二审是不能送审到自己导师和盲审3的老师手上，分析我是否还会被工作量不足挂掉？
 
-本项目用的论文审查的skill：D:\project\java\imooc-wiki\.agents\skills\academic-paper-reviewer
-原skill进行了大更新：D:\project\java\academic-research-skills\README.zh-TW.md，
-1、agents.md设计到的相关描述也请修改，例如AI审稿团从老版本的5位变成了7位，请更新agents,
-2、我发现你是先写入然后更新，非常耗时间，我等了很久，很浪费我修改论文的时间，有什么提效的方式吗
-
-我发现以下2个文件有内容是重复的：
+现在已经修改完了盲审1和盲审2老师意见，以下文件信息可能是老的，例如第三章的公式在修改盲审1的意见时已经修改过了，请删除重新扫描论文更新，
+D:\project\java\imooc-wiki\word\第0章\二审\_extracted_images
+D:\project\java\imooc-wiki\word\第0章\二审\_extracted_text.txt
+D:\project\java\imooc-wiki\word\第0章\二审\_extracted_text_utf8.txt
+D:\project\java\imooc-wiki\word\第0章\二审\_temp_br3_scan.txt
+1、请重新审查v3版本是否存在问题，我是否可以按照v3版本开始修改？
+2、仔细修改盲审1-3的意见后，再仔细分析是否二审老师会给不同意答辩的意见，我们要尽力规避这个问题，也可以等盲审3修改完后，使用skill的D:\project\java\imooc-wiki\.agents\skills\academic-paper-reviewer审查下，然后看能不能补充下工作量问题
