@@ -139,7 +139,7 @@
             </div>
             <div v-else class="location-result">
               <a-descriptions bordered :column="2">
-                <a-descriptions-item label="预测位置" :span="2">
+                <a-descriptions-item label="检索位置" :span="2">
                   <span class="location-text">
                     <EnvironmentOutlined /> 纬度: {{ i2lResult.latitude }}°, 经度: {{ i2lResult.longitude }}°
                   </span>

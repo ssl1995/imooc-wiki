@@ -1,21 +1,29 @@
 # web
 
+## 项目简介
+古树名木多模态检索系统前端，基于 Vue 3 + TypeScript + Ant Design Vue 构建。
+
 ## Project setup
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 开发模式启动（热重载）
 ```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
+npm run serve-dev
 ```
 
-### Lints and fixes files
+### 生产模式预览
+```
+npm run serve-prod
+```
+
+### 生产环境打包
+```
+npm run build-prod
+```
+
+### 代码检查
 ```
 npm run lint
 ```
