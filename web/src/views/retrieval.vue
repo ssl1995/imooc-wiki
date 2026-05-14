@@ -21,7 +21,7 @@
           <EnvironmentOutlined /> 以位置搜图
         </a-radio-button>
         <a-radio-button value="name">
-          <PartitionOutlined /> 按名检索
+          <PartitionOutlined /> 按树种名称检索
         </a-radio-button>
       </a-radio-group>
     </div>
