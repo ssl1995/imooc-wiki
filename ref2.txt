@@ -1,0 +1,2270 @@
+
+
+   Text to Video Retrieval  T2VR Text to Video Retrieval based on Video Captions and Multi-space Learning TVRVCML  
+1  TVRVCML       TVRVCML 
+2 MSVDMSR-VTT  TGIF   MSVD   TVRVCML  K 
+3VueSpring Boot Web  TVRVCML   
+I
+
+Abstract
+Research and Construction of Forest Recuperation Course Training System Fused Text to Video Cross Modal Retrieval
+Master Candidate:Yang Guo Xing (Software Engineering)
+Directed by Tian Xuan and Cao Yao Zhu
+Abstract
+Forest recuperation, as a new pattern of green and sustainable forestry development in China, brings health and well-being to the public. The Forest Recuperation Branch of the Forestry Society urgently needs to meet the online training needs of therapists. At the same time, the few existing systems have varying degrees of retrieval difficulties due to the complexity of course videos and the single retrieval system, which makes it difficult for users to retrieve target course videos efficiently and accurately, affecting the quality and effectiveness of training. Text to Video Retrieval (T2VR), as a core task of cross modal retrieval, can enable users to accurately retrieve relevant video targets through text queries. This article proposes a Text to Video Retrieval based on Video Captions and Multi space Learning (TVRVCML) model and designs and constructs a forest therapy course training system that focuses on online training of forest therapists and provides accurate and practical course video retrieval services. The main work of this article is as follows:
+(1) In response to the difficulty of matching multiple semantic information within text and video in a single public space, this paper proposes a TVRVCML model, which includes a three-layer structure of feature encoding, multi-space construction, and multi-space fusion. To construct multiple public spaces, various types of encoders are first used to represent the features of query text, video, and video subtitles. By combining cross modal matching and same modal matching, improvements are made. On the one hand, a cross modal public space is constructed between query text and video, and on the other hand, a same modal public space is constructed between query text and video subtitles. In addition, by introducing self-attention mechanism strategies in multiple public spaces, weights are assigned to multiple spaces, and different public space relationships are modeled to improve the retrieval ability of the TVRVCML model.
+II
+
+Abstract (2) To verify the performance of the model, this article conducts a multi-level experimental design. Firstly, comparative experiments were conducted with four advanced models on three benchmark datasets, MSVD, MSR-VTT, and TGIF, to verify the effectiveness of the model design. Meanwhile, ablation experiments were conducted on the MSVD dataset. In addition, hyperparametric sensitivity experiments were conducted to construct the model. The experimental results confirm that the TVRVCML model has significantly improved in the top K recall rate, median ranking, and other indicators. (3) In response to the demand for online forest therapy training, this article adopts the development mode of front-end and back-end separation of Vue and Spring Boot to design and implement a web-based forest therapy course training system. The system is divided into a student end and an administrator end, which not only provides friendly and practical system training services for students, but also provides functional modules such as resource management, course management, class management, and student management for administrators. At the same time, by applying the TVRVCML model to the course video retrieval function of this system, the problem of user retrieval difficulties is alleviated, significantly improving the quality and effectiveness of training. At present, the system has been delivered for use and runs smoothly and stably, providing strong support for online training of forest recuperation.
+Key Words: Forest recuperation, course training system, text to video retrieval, multi-space learning
+III
+
+
+
+1  ......................................................................................................................................................... 1 1.1  .............................................................................................................................. 1 1.2  .............................................................................................................................. 2 1.2.1  ................................................................................................... 2 1.2.2  ................................................................................................... 3 1.3  ...................................................................................................................... 5 1.4  .................................................................................................................................. 7
+2  ................................................................................................................. 8 2.1  .......................................................................................................................... 8 2.1.1  ................................................................................................................................... 8 2.1.2  ............................................................................................................................... 9 2.1.3  ................................................................................................................. 10 2.2  ........................................................................................................................ 14 2.2.1  ................................................................................................. 14 2.2.2  ................................................................................................................. 15 2.3  ........................................................................................................................ 16 2.4  ........................................................................................................................................ 17
+3  ................................................................................... 18 3.1  ................................................................................................................................................ 18 3.2  ................................................................................................................................ 19 3.2.1  ......................................................................................................................... 19 3.2.2  ............................................................................................................................. 21 3.2.3  ......................................................................................................................... 23 3.2.4  ......................................................................................................................... 24 3.3  .................................................................................................................... 25 3.3.1  ............................................................................................................................. 25 3.3.2  ................................................................................................................................. 26 3.3.3  ......................................................................................................................... 27 3.3.4  ......................................................................................................................... 27 3.4  .................................................................................................................... 28 3.4.1  ......................................................................................................................... 28 3.4.2  ......................................................................................................................... 29 3.4.3  ......................................................................................................................... 32 IV
+
+
+3.4.4  ............................................................................................................. 33 3.5  ........................................................................................................................................ 34 4  ............................................................................................................... 35 4.1  ................................................................................................................................ 35
+4.1.1  ............................................................................................................................. 35 4.1.2  ......................................................................................................................... 37 4.2  ................................................................................................................................ 38 4.2.1  ......................................................................................................................... 38 4.2.2  ................................................................................................................. 40 4.2.3  ............................................................................................................................. 42 4.3  .................................................................................................................... 48 4.3.1  ............................................................................................. 48 4.3.2  ............................................................................................. 51 4.3.3  ............................................................................................. 52 4.3.4  ............................................................................................. 54 4.4  ........................................................................................................................................ 56 4.4.1  ................................................................................................................................. 56 4.4.2  ............................................................................................................................. 58 4.5  ........................................................................................................................................ 59 5  ........................................................................................................................................... 60 5.1  ................................................................................................................................................ 60 5.2  ................................................................................................................................................ 61  .................................................................................................................................................. 62  .................................................................................................................................................. 65  .......................................................................................................................................... 66  .................................................................................................................................................. 67  .................................................................................................................................. 68  .......................................................................................................................................................... 69
+V
+
+1 
+1 
+1.1 
+""  [1]     
+   
+ User Generated Content UGC  YouTube  TikTok   T2VR   [2]  T2VR   
+    TVRVCML   
+1
+
+
+1.2 
+1.2.1 
+ [3]   
+1   MOOC MOOC  MOOC[4]      [5] 2013   PPT [6]     Coursera Coursera[7]      2   www.foresttherapy.cn    
+2
+
+1 
+ ANFT ANFT 2008 [3]         
+1.2.2 
+  T2VR  T2VR     T2VR 
+1  T2VR    Convolutional Neural Network  CNN Ueki [8]  5  CNN  SVM  Markatopoulou [9]   Snoek [10] VideoStory[11]  CNN  VideoStory  
+3
+
+
+ T2VR    T2VR  
+2  T2VR   T2VR     Li [12]Word2VisualVec W2VV++ Gabeur  [13] TransformerMulti-modal Transformer MMT   MMT  Wu [14]  T2VR   T2VR     3 [21]   Mithun [15]   Miech [16]  Wray [17] Chen [18]- Li [19]
+4
+
+1 
+ SEA  BoWWord2VecGRU BERT Dong [20]  Dong [21]  
+   
+4  T2VR    T2VR   Dong [22]  Word2VisualVec   Wu [23] Cap4Video       
+1.3 
+  T2VR    TVRVCML  
+1 T2VR  
+5
+
+
+   TVRVCML       
+2 TVRVCML  TVRVCML   MSVDMSR-VTT  TGIF  MSVD   TVRVCML  
+3  Vue  Spring Boot  Web     TVRVCML 
+ 1.1 
+ 1.1  Figure 1.1 Diagram of technical route
+6
+
+1 
+1.4 
+  T2VR      T2VR      TVRVCML   TVRVCML     TVRVCML       T2VR    T2VR 
+7
+
+
+2 
+     
+2.1 
+   
+2.1.1 
+Bag-of-Words BoW  N N    2.1 
+ 2.1  Figure 2.1 Text feature representation based on Bag-of-Words model
+8
+
+2 
+   Li [12]  W2VV++ Dong [24] 
+2.1.2 
+ Hinton [25]    Word2Vec [26]Global vectors for word representations Glove[27]Word2Vec   3  3   3 Word2Vec Continuous Bag-of-Words CBoW [28]Skip-gram[29]CBoW  ""CBoW  """""" CBoW  2.2 
+ 2.2  Word2Vec  Figure 2.2 Text feature representation based on Word2Vec model
+9
+
+
+ Word2Vec  Glove     
+2.1.3 
+   RNNRecurrent Neual Network  CNNConvolutional Neural Network Transformer 
+1 RNN  RNN RNN   2.3 
+ 2.3  RNN  Figure 2.3 Text feature representation based on RNN model
+ T2VR  RNN  RNN   RNN  [30]Long Short-Term Memory LSTM RNN  Otani [31]
+10
+
+2 
+LSTM Chen [32]  LSTM  [33]Gated Recurrent Unit GRU  LSTMGRU  Mithun [15]  GRU 
+2 CNN  CNN   CNN   2.4 
+ 2.4  CNN  Figure 2.4 Text feature representation based on CNN model
+CNN  T2VR CNN Fan [34] CNN  Miech [16] Network Vector of Locally Aggregated Descriptors NetVLAD  CNN Dong [24]  CNN  GRU   CNN  RNN  
+11
+
+
+3 Transformer   RNN  CNN Transformer  [35]Self-Attention Mechanism   2.5 
+ 2.5  Figure 2.5 The calculation process of self-attention mechanism
+  querykeyvalue"" !""" ""#""{!, ", #} !! "#!!!! !! $  SoftMax
+12
+
+2 
+
+!!2-1 %
+Attention(, , ) = softmax ; >  <&
+
+2-1
+
+
+
+& 
+
+Transformer 
+
+Feed-forward Neural Network
+
+Transformer Layer Normalization
+
+ BERT[36]
+
+BERT  Transformer
+
+Bidirectional Encoder Representations from TransformerBERT
+
+ Transformer 
+
+ BERT [SEP]
+
+
+
+[CLS] 2.6 
+
+ 2.6  BERT  Figure 2.6 Text feature representation based on BERT model
+ Transformer  BERT  T2VR Li [37] Transformer Li [19]  SEA BERT 
+13
+
+
+2.2 
+    
+2.2.1 
+  2.7 
+ 2.7  Figure 2.7 Aggregating frame level features into video level features
+   Lei [38]  CLIPBERT 
+ Torabi [39]  VGG-19 [40]Mithun  [16] ResNet-152   CNN Dosovitskiy [41]
+14
+
+2 
+ Transformer 
+RNN Dong [21]  GRU  Yang [42]  ResNet-152  GRU  
+2.2.2 
+ ""  2.8 
+ 2.8  Figure 2.8 Fusion of multiple expert features
+ Yu [43]  Miech [16] Liu [44]  VLAD  Liu  Collaborative Expert CEGabeur [13] Transformer Multi-modal Transformer MMT Wang [45] T2VLAD   
+15
+
+
+
+2.3 
+
+ T2VR 
+
+
+
+
+
+
+
+1
+
+
+
+ T2VR Eucliden DistanceCosine Distance
+
+
+
+  
+
+(!, ", . . . , ')(!, ", . . . , ') ()2-2
+
+'
+() = CD ($ - $)"
+$*!
+
+2-2
+
+
+
+
+
+
+
+[-1,1]-1 
+
+ 1 
+
+(!, ", . . . , ')(!, ", . . . , ')
+
+(, )2-3
+
+(, ) = () =
+
+'$*! $$
+
+<$'*! $" <'$*! $"
+
+2-3
+
+
+
+
+
+
+
+2  +  ,!-  ," !" 2-42-5
+
+ = !+  = "-
+
+2-4 2-5
+
+16
+
+2 
+
+!  ,!×,"  ,"×, 
+
+2-6
+
+   (, ) =
+Q||Q  Q||Q
+
+2-6
+
+||||||||
+
+3
+
+
+
+Yang [42]
+
+ 5  Mithun [16]
+
+MMT  [13]
+
+
+
+2.4 
+ T2VR    
+
+17
+
+
+3 
+ TVRVCML   TVRVCML     TVRVCML 
+3.1 
+  T2VR    k 
+ T2VR  Li [12] W2VV++  Dong [24] Dual Encoding DE bi-GRU        Dong [20] DE  Li [19]  SEA  k k      
+  
+18
+
+3 
+ TVRVCML       
+ 1 TVRVCML    2   3 T2VR  MSVDMSR-VTT  TGIF    TVRVCML  MSVD  
+3.2 
+3.2.1 
+TVRVCML         TVRVCML  
+19
+
+
+TVRVCML  3.1 
+ 3.1 TVRVCML  Figure 3.1 Structure of Video Captions and Multi-space Learning retrieval modal
+1  T2VR    ResNeXt-101  ResNet-152 [12]  GRU  2     3   
+20
+
+3 
+
+3.2.2 
+
+1    W2VWord2VecGRU  BERT      (/01) 3-1
+
+(/01) = T(!, ), (", ), ... , (2, )W
+
+3-1
+
+($, )$ (/01) T2VR  (/01)
+ W2V 
+
+W2V  
+
+(1"-) W2V 
+
+3-2
+
+1'
+
+(1"-)
+
+=
+
+
+
+D 2($,
+$*!
+
+)
+
+3-2
+
+2($, )$ W2V 
+
+ W2V (1"-)
+
+ GRU 
+
+
+
+"the boy hit the ball""the ball hit the boy" RNN
+
+ GRU 
+
+{\\\\!, \\\\", . . . , \\\\'} \\\33\\\\3\4\\\!
+
+ GRU (567)
+
+3-3
+
+T567W
+
+=
+
+1 
+
+'
+D T\\\3W
+3*!
+
+3-3
+
+21
+
+
+
+  BERT  BERT  Transformer  Transformer   Transformer   Transformer  
+
+ Transformer  BERT 
+
+(/86+)3-4
+
+1'
+
+(/86+)
+
+=
+
+
+
+D ($,
+$*!
+
+
+
+-
+
+1)
+
+3-4
+
+($,  - 1) Transformer 
+
+=12  Transformer  BERT 
+
+2
+
+ CNN 
+
+
+
+0.5  n  ResNeXt-101 
+
+ResNet-152 
+
+{!, ", . . . , '}'  CNN 
+
+()3-5
+
+1'
+
+1'
+
+()
+
+=
+
+
+
+D $
+$*!
+
+
+
+
+
+D
+9*!
+
+9
+
+3-5
+
+$9 ResNeXt-101 
+
+ResNet-152 
+
+3
+
+
+
+
+
+ GRU  GRU 
+
+ GRU {\\\\!, \\\\", . . . , \\\\'}{\\!\\, \\"\\, . . . , \\'\\}  GRU  GRU  GRU 
+
+()3-6
+
+()
+
+=
+
+1 
+
+'
+D T\\\3
+3*!
+
+
+
+\\3\W
+
+3-6
+
+
+
+
+
+
+
+22
+
+3 
+
+3.2.3 
+    
+1  3.1  Fully Connected FC  2048 
+
+ 3.1 
+
+Table 3.1 The vector dimension output by the text encoder
+
+ BoW W2V GRU
+Bi-GRU BERT
+
+  
+  
+
+ m 500
+1024 2048 768
+
+m    2048 (/01) 3-7
+
+:(!) = (  (/01) + )
+
+3-7
+
+  2048  :(!):("):(#) BoWW2V  GRU 
+
+3-7 2048 :()  3 
+
+ T2VR 
+
+3-8 $ = cosineT:($), :()W
+
+3-8
+
+23
+
+
+
+cosine$=123 2   3  1   BERT (/86+) GRU  ()3-7 (/86+)() 2048 :(;):()  1    3-9
+
+; = cosineT:(;), :()W
+
+3-9
+
+cosine;  3  1 
+
+
+
+$ =1234
+
+
+
+
+
+
+
+3.2.4 
+
+
+
+
+
+
+
+:23 = {!, ", #, ;} 
+
+3-10
+
+ = <=>?  = <=>@
+
+3-10
+
+ = <=>A  ?  @  A 
+
+Attention(, , )
+
+3-11
+24
+
+3 
+
+% Attention(, , ) = softmax ; > 
+<&
+
+3-11
+
+<& softmax
+
+:23 3-12
+
+ = (, , )  :23
+
+3-12
+
+
+
+
+
+[46]Improved Triplet Ranking Loss ITRL
+
+4ITRL 
+
+43-13
+
+ k
+
+4 =  3$5
+
+argmax#/E+:F = max(0,  + 
+
+(
+4
+
+4- -
+
+G G)
+
+)
+
+3-13
+
+argmax
+
+=128 VSE++[46]=0.2 3$5
+
+ TVRVCML 
+
+ 3$5
+
+6833-14
+
+683
+
+=
+
+1 4
+
+;
+D $3$5
+$*!
+
+3-14
+
+3.3 
+3.3.1 
+[50-53] T2VR  3  MSR-VTTMSVD  TGIF  3.2 
+
+ 3.2 
+
+Table 3.2 The detailed statistical information on the dataset
+
+ MSVD MSR-VTT TGIF
+
+ 2011 2016 2016
+
+ 1970 7,180 102,068
+
+ 85,550 200,000 125,781
+
+ / / GIF/
+
+25
+
+
+
+1MSVD [47]  1,970  YouTube   40 [50-53]  2011  T2VR  2MSR-VTT [48]  10,000  YouTube   10  30  200,000   3TGIF [49]  100,000  Tumblr  GIF  1  3  120,000  [50] 70% 20%  10%
+
+3.3.2 
+
+[51-53]
+
+ T2VR  K Recall@K R@K
+
+Median Rank MdRmean Average Precision mAP
+
+1R@K
+
+R@K  K 
+
+K  15  10 R@K 
+
+3-15 R@K = :6+ × 100% +0H4@
+
+3-15
+
+:6++0H4@ K 
+
+2MdR MdR MdR   3mAP mAP   R@K  MdR R@K   K MdR mAP  
+
+26
+
+3 
+3.3.3 
+  Ubuntu  Python PyTorch   CPU  Xeon GPU  RTX 4090  3.3 
+
+ 3.3 
+
+Table 3.3 Software and hardware environment configuration parameters
+
+  
+
+ Ubuntu 18.04 VSCode Python 3.8 GPU CUDA 11.1 PyTorch 1.9.0 CPU Intel® Xeon® Platinum 8352V @ 2.10GHz GPU RTX 4090(24G) 120GB 80GB
+
+3.3.4 
+  R@KMdR  mAP   3.4  
+
+ 3.4 
+
+Table 3.4 The experimental parameter configuration for the models sharing
+
+  Transformer 
+   
+Epoch Batch_size
+
+
+2048 BERT=12 ITRL =0.2 ReLU  0.0005 10 128
+
+27
+
+
+3.4 
+3.4.1 
+ TVRVCML   T2VR  DE [20] SEA [19] TVRVCML  T2VR   T2VR   CE [44]""  W2VV++[12] TVRVCML  R@KMdR  mAP   TVRVCML 
+ 1DE  2022 Dong  DE GRU DE    2SEA  2021 Li  SEA   SEA   SEA  MSVD  {BoWW2VBERT} 3CE  2019 Liu  CE""    T2VR  4W2VV++ 2019 Li  W2VV++   T2VR  
+28
+
+3 
+
+3.4.2 
+ TVRVCML   3.5-3.7 
+
+ 3.5 MSVD 
+
+Table 3.5 Results of comparative experiments on the MSVD dataset
+
+
+DE SEA{BoW,W2V,BERT}
+CE W2VV++ TVRVCML
+
+R@1 23.4 24.6 21.5 22.4 25.7
+
+MSVD 
+
+R@5
+
+R@10
+
+MdR
+
+53.2
+
+65.7
+
+4
+
+54.3
+
+67.6
+
+4
+
+51.1
+
+65.2
+
+5
+
+51.6
+
+64.8
+
+5
+
+55.4
+
+69.2
+
+4
+
+mAP 37.9 38.7 36.8 36.1 39.7
+
+ 3.6 MSR-VTT 
+
+Table 3.6 t Results of comparative experiments on the MSR-VTT dataset
+
+
+DE SEA{BoW,W2V,BERT}
+CE W2VV++ TVRVCML
+
+R@1 11.6 13.1 10.0 11.1 13.7
+
+MSR-VTT 
+
+R@5
+
+R@10
+
+MdR
+
+30.3
+
+41.3
+
+17
+
+33.4
+
+45.0
+
+14
+
+29.0
+
+41.2
+
+16
+
+29.6
+
+40.5
+
+18
+
+33.8
+
+45.6
+
+13
+
+mAP 21.2 23.3 22.1 20.6 23.9
+
+ 3.7 TGIF 
+
+Table 3.7 Results of comparative experiments on the TGIF dataset
+
+
+DE SEA{BoW,W2V,BERT}
+CE W2VV++ TVRVCML
+
+R@1 11.3 10.7 10.2 9.4 10.9
+
+R@5 24.7 24.4 23.5 22.3 24.7
+
+TGIF 
+R@10 32.5 31.9 30.2 29.8 32.3
+
+MdR 37 37 44 48 37
+
+mAP 18.3 17.9 16.6 16.2 18.1
+
+ TVRVCML  MSVD  MSR-VTT  MSVD   R@1  4.47%R@5  2.03%R@10  2.37%MdR 
+29
+
+
+mAP  2.58% MSR-VTT R@1  4.58%R@5   1.2%R@10  1.33%MdR  7.14%mAP  2.58% TGIF  TVRVCML  DE    TVRVCML 
+ K R@KmAP MdR  TVRVCML  K  3.2 
+ 3.2  K  Figure 3.2 Comparison experiment results of recall rates for the first K items
+ mAP  3.3 
+30
+
+3 
+ 3.3 mAP  Figure 3.3 Comparative experimental results of mAP
+ MdR  3.4 
+ 3.4 MdR  Figure 3.4 Comparative experimental results of MdR
+31
+
+
+
+3.4.3 
+ TVRVCML   SMP  SA  MSVD  
+1w/o SMP TVRVCML  1   3  
+2w/o SA TVRVCML    TVRVCML  
+3FULL TVRVCML 
+
+ 3.8 MSVD 
+
+Table 3.8 Specific results of ablation experiments on the MSVD dataset
+
+
+w/o SMP w/o SA FULL
+
+R@1 24.4 25.2 25.7
+
+MSVD 
+
+R@5
+
+R@10
+
+MdR
+
+54.5
+
+67.7
+
+5
+
+54.9
+
+68.6
+
+4
+
+55.4
+
+69.2
+
+4
+
+mAP 38.8 39.2 39.7
+
+ SMP  SA  SMP   K  1.62%~5.06%  TVRVCML  3-16
+
+ = |  | × 1000
+
+3-16
+
+ SMP  SA  R@1R@5 R@10MdR  mAP  3.5 
+
+32
+
+3 
+
+ 3.5 SMP  SA  Figure 3.5 Contribution of SMP and SA modules
+
+3.4.4 
+ MSVD    T2VR    0.050.10.150.2  0.25  mAP  TVRVCML   3.9 
+
+ 3.9 MSVD 
+
+Table 3.9 Specific results of margin parameter experiments on the MSVD dataset
+
+TVRVCML 
+=0.05 =0.1 =0.15 =0.2 =0.25
+
+R@1 24.6 25.0 25.3 25.7 25.5
+
+MSVD 
+
+R@5
+
+R@10
+
+MdR
+
+54.5
+
+67.8
+
+5
+
+54.7
+
+68.4
+
+4
+
+55.2
+
+68.9
+
+4
+
+55.4
+
+69.2
+
+4
+
+55.1
+
+68.7
+
+4
+
+mAP 38.6 39.1 39.4 39.7 39.3
+
+33
+
+
+ 3.6 
+Figure 3.6 The impact of margin parameter value on retrieval performance
+ 3.6 TVRVCML  mAP  =0.2   
+3.5 
+ TVRVCML   TVRVCML    MSVD   TVRVCML 
+34
+
+4 
+4 
+    
+4.1 
+     
+4.1.1 
+    Web   
+     4.1 
+     
+
+35
+
+
+ 4.1  Figure 4.1 Overall user case diagram of the system
+ 1  PDF     2   PDF   3    4   
+36
+
+4 
+ 1    2    3     4     
+4.1.2 
+     
+1   PDF     
+37
+
+
+2    token   salt  3     4  Web    5    
+4.2 
+ 
+4.2.1 
+  
+ B/S  API   Vue.js  Element UI   Webpack  Vue.js   Spring Boot  Controller Service  Mapper  MySQL 
+38
+
+4 
+  4.2 
+ 4.2  Figure 4.2 Design of architecture of the system
+1   2  Vue.js  Element UI  
+39
+
+
+3    4   5  SQL   6  MySQL  
+4.2.2 
+   4.3 
+ 4.3  Figure 4.3 Diagram of system function module
+40
+
+4 
+ 1  PDF       2    3     4      1    2    3   
+41
+
+
+4    
+4.2.3 
+ MySQL  E-R  PDF   E-R  4.4 
+ 4.4  E-R  Figure 4.4 E-R diagram of the system
+ E-R   10 
+42
+
+4 
+1 4.1    ID
+
+ 4.1 
+
+Table 4.1 The database table of class information
+
+
+
+ 
+
+
+
+class_id
+
+varchar 255
+
+ ID
+
+name
+
+varchar
+
+50
+
+
+
+introduction
+
+varchar 255
+
+
+
+type
+
+char
+
+1
+
+
+
+year
+
+data
+
+--
+
+
+
+enroll_begin_time datatime
+
+--
+
+
+
+enroll_end_time datatime
+
+--
+
+
+
+class_begin_time datatime
+
+--
+
+
+
+class_end_time datatime
+
+--
+
+
+
+number_limit
+
+int
+
+11
+
+
+
+complete_rate
+
+int
+
+11
+
+
+
+price
+
+decimal
+
+7
+
+
+
+gmt_created
+
+datatime
+
+--
+
+
+
+gmt_modified datatime
+
+--
+
+
+
+              
+
+              
+
+2 4.2   ID
+
+ course_id
+name introduction course_hour gmt_created gmt_modified
+
+ 4.2 
+
+Table 4.2 The database table of course information
+
+ 
+
+
+
+
+
+varchar 255
+
+ ID
+
+
+
+varchar
+
+30
+
+
+
+
+
+varchar 255
+
+
+
+
+
+int
+
+11
+
+
+
+
+
+datatime
+
+--
+
+
+
+
+
+datatime
+
+--
+
+
+
+
+
+      
+
+43
+
+
+3 4.3   ID   ID
+
+ video_id
+name introduction
+file_type picture_location
+deleted_flag course_id video_time
+gmt_created gmt_modified
+
+ 4.3 
+
+Table 4.3 The database table of video resource information
+
+ 
+
+
+
+
+
+varchar 255
+
+ ID
+
+
+
+varchar 255
+
+
+
+
+
+varchar 255
+
+
+
+
+
+varchar 255
+
+
+
+
+
+varchar 255
+
+
+
+
+
+char
+
+1
+
+
+
+
+
+varchar 255
+
+ ID
+
+
+
+int
+
+50
+
+
+
+
+
+datatime
+
+--
+
+
+
+
+
+datatime
+
+--
+
+
+
+
+
+          
+
+4PDF  4.4  PDF   PDF PDF  ID   ID
+
+ id
+name introduction
+file_type picture_location
+course_id pdf_time gmt_created gmt_modified
+
+ 4.4 PDF 
+
+Table 4.4 The database table of pdf resource information
+
+ 
+
+
+
+
+
+varchar 255
+
+PDF  ID
+
+
+
+varchar 255
+
+PDF 
+
+
+
+varchar 255
+
+PDF 
+
+
+
+varchar 255
+
+
+
+
+
+varchar 255
+
+
+
+
+
+varchar 255
+
+ ID
+
+
+
+int
+
+10
+
+
+
+
+
+datatime
+
+--
+
+
+
+
+
+datatime
+
+--
+
+
+
+
+
+         
+
+44
+
+4 
+5 4.5    ID
+
+ user_id name id_number password phone token
+salt type job_address job address wechat gmt_created gmt_modified
+
+ 4.5 
+
+Table 4.5 The database table of user information
+
+ 
+
+
+
+varchar 255
+
+ ID
+
+varchar 255
+
+
+
+varchar
+
+18
+
+
+
+varchar 255
+
+
+
+varchar
+
+11
+
+
+
+varchar 255
+
+
+
+varchar 255
+
+
+
+tinyint
+
+4
+
+
+
+varchar
+
+50
+
+
+
+varchar
+
+50
+
+
+
+varchar 100
+
+
+
+varchar
+
+30
+
+
+
+datatime
+
+--
+
+
+
+datatime
+
+--
+
+
+
+              
+
+              
+
+6 4.6   ID ID  ID
+
+ id
+class_id user_id pay_state study_state
+
+ 4.6 
+
+Table 4.6 The database table of user_class information
+
+ 
+
+
+
+
+
+varchar 255
+
+ID
+
+
+
+varchar 255
+
+ ID
+
+
+
+varchar 255
+
+ ID
+
+
+
+tinyint
+
+10
+
+
+
+
+
+tinyint
+
+10
+
+
+
+
+
+     
+
+45
+
+
+7 4.7   ID ID  ID
+
+ id
+class_id course_id
+
+ 4.7 
+
+Table 4.7 The database table of class_course information
+
+ 
+
+
+
+
+
+varchar 255
+
+ID
+
+
+
+varchar 255
+
+ ID
+
+
+
+varchar 255
+
+ ID
+
+
+
+   
+
+8 4.8   ID ID  ID
+
+ id
+user_id video_id duration
+state
+
+ 4.8 
+
+Table 4.8 The database table of user_video information
+
+ 
+
+
+
+
+
+varchar 255
+
+ID
+
+
+
+varchar 255
+
+ ID
+
+
+
+varchar 255
+
+ ID
+
+
+
+int
+
+11
+
+
+
+
+
+char
+
+1
+
+
+
+
+
+     
+
+9 PDF  4.9   PDF  IDPDF  ID  ID
+
+ id
+user_id duration
+state
+
+ 4.9  PDF 
+
+Table 4.9 The database table of user_pdf information
+
+ 
+
+
+
+
+
+varchar 255
+
+ID
+
+
+
+varchar 255
+
+ ID
+
+
+
+int
+
+11
+
+
+
+
+
+char
+
+1
+
+
+
+
+
+46
+
+    
+
+4 
+10 4.10   ID ID  ID
+
+ out_trade_no
+user_id class_id subject
+body charset method total_amount
+sign trade_no auth_app_id version app_id sign_type seller_id timestamp gmt_created gmt_modified
+
+ 4.10 
+
+Table 4.10 The database table of order_all information
+
+ 
+
+
+
+
+
+varchar 255
+
+ ID
+
+
+
+varchar 255
+
+ ID
+
+
+
+varchar 255
+
+ ID
+
+
+
+varchar 255
+
+
+
+
+
+varchar 255
+
+
+
+
+
+varchar 255
+
+
+
+
+
+varchar 255
+
+
+
+
+
+decimal
+
+65
+
+
+
+
+
+text
+
+--
+
+
+
+
+
+varchar 255
+
+
+
+
+
+varchar
+
+255  ID
+
+
+
+varchar 255
+
+
+
+
+
+varchar 255
+
+ ID
+
+
+
+varchar 255
+
+
+
+
+
+varchar
+
+255
+
+
+
+
+
+timestamp 6
+
+
+
+
+
+datetime
+
+--
+
+
+
+
+
+datetime
+
+--
+
+
+
+
+
+                  
+
+ 10  PDF   
+
+47
+
+
+4.3 
+ Vue.js  Spring Boot    
+4.3.1 
+1   PDF    4.5 
+ 4.5  Figure 4.5 Core process Activity diagram
+   PDF 
+48
+
+4 
+/video/allVideo/{current}  VideoController  getAllVideo  IVideoService  videoMapper  selectPage   TVRVCML  JSON    video/getVideoNotCourse/{current} deleted_flag   videoMapper  selectPage   4.6 
+ 4.6  Figure 4.6 Video resource management Sequence diagram
+/video/updateIntroduction  /video/uploadFile  /video/add  deleted_flag   PDF  
+49
+
+
+2   4.7 
+ 4.7  Figure 4.7 Video resource management page
+ PDF PDF  4.8 
+ 4.8 PDF  Figure 4.8 PDF resource management page
+50
+
+4 
+4.3.2 
+1   CourseController   ICourseService  ICourseServiceImpl ClassCourseController  ClassController  ClassMapperCourseMapper   4.9 
+ 4.9  Figure 4.9 Course management Class diagram
+/course/getAllCourse/{current} CourseController  getAllCourse  /course/addCourse   Course  /course/updateCourse   PDF /class-
+51
+
+
+course/getClassWithCourse  /course/bindVideo/PDF  
+2  4.10 
+ 4.10  Figure 4.10 Course management page
+4.3.3 
+1                     /class/allClass/{current}       ClassController  getAllClass   classType   /class/addClass   /class/updateClass   Class  /class/deleteClass/{classId} id  /class-course/addClassCourse  ClassCourseController 
+52
+
+4 
+addClassCourse  IClassCourseService  classCourseMapper  insert  4.11 
+ 4.11  Figure 4.11 Class management Sequence diagram
+2  4.12 
+ 4.12  Figure 4.12 Class management page
+53
+
+
+4.3.4 
+1 /user/login  LoginDTO  /user-class/getBoughtClasses/{userId} UserClassController  getBoughtClasses  IUserClassService   ClassMapper  selecttBoughtClasses  useId  /class/getClassById   /course/getAllCourseByClassIdUserId       learnTimePre                       /video/getVideo/{courseId} /user-video/watchVideo//{videoId}/{currentTime}/{userId}currentTime  currentTime   4.13 
+ 4.13 
+Figure 4.13 User learning Sequence diagram 54
+
+4 
+2   4.14 
+ 4.14  Figure 4.14 User bought class page
+ 4.15 
+ 4.15  Figure 4.15 Watch course video learning page
+55
+
+
+4.4 
+  
+4.4.1 
+  
+ 4.11  PDF  
+
+ 4.11 
+
+Table 4.11 The test case table of the resource management module
+
+
+
+
+
+
+
+
+
+1 
+
+ 
+
+2 
+
+ 
+
+3 
+
+ 
+
+4  
+
+
+
+ 
+5   200M   toast
+
+  6 
+.avi .mp4   toast
+
+    
+
+
+
+ 4.12  
+
+ 4.12 
+
+Table 4.12 The test case table of the course management module
+
+
+
+
+
+
+
+
+
+
+
+1 
+
+
+
+ PDF 
+
+2  
+
+
+
+  
+
+56
+
+4 
+ 4.13  
+
+ 4.13 
+
+Table 4.13 The test case table of the class management module
+
+
+
+
+
+
+
+
+
+1 
+
+ 
+
+
+
+2 
+
+
+
+
+
+ 3   30 
+
+
+4 
+
+
+
+
+
+5  
+
+
+
+  
+  
+
+ 4.14  
+
+ 4.14 
+
+Table 4.14 The test case table of the user class selection module
+
+
+
+
+
+
+
+
+
+1  
+
+
+
+2   
+
+3   
+
+4   
+
+5  
+
+ 
+
+6  
+
+ PDF 
+
+7  
+
+
+
+
+
+8 
+
+
+
+
+
+ 
+
+9 
+
+
+
+
+
+    
+
+ 
+
+
+
+57
+
+
+4.4.2 
+1  JMeter   JMeter  2   200  500   4.15 
+
+ 4.15 
+
+Table 4.15 The performance test results
+
+
+
+
+
+200   
+
+/class/getAllClassPage
+
+ 0.11%
+
+0.64s
+
+/class/getAllClassByTypePage  0.10%
+
+0.52s
+
+/class/getClassUnderway
+
+ 0.27%
+
+1.35s
+
+/class/getClassById
+
+ id  0.12%
+
+0.32s
+
+/class/getStudentStatus
+
+ 0.13%
+
+0.25s
+
+/class/getStudentByName
+
+ 0.15%
+
+0.36s
+
+/course/getAllCourse
+
+ 0.17%
+
+0.63s
+
+/course/getAllCourseByClassId  0.11%
+
+0.54s
+
+/course/getCourseUserId
+
+ 0.12%
+
+0.72s
+
+/video/getVideo
+
+ 0.18%
+
+0.43s
+
+/video/getVideoNotCourse
+
+ 0.16%
+
+0.45s
+
+/pdf/getAllPdf
+
+ pdf 0.16%
+
+0.52s
+
+/pdf/ getPdfNotCourse
+
+ pdf 0.12%
+
+0.37s
+
+/alipay/getPagePay
+
+ 0.12%
+
+0.35s
+
+/alipay/getAppPagePay
+
+ 0.13%
+
+0.44s
+
+/order-success/getBuyStatus
+
+ 0.14%
+
+0.35s
+
+500 
+
+ 
+
+0.31% 1.61s
+
+0.26% 1.63s
+
+0.91% 2.17s
+
+0.45% 1.73s
+
+0.21% 1.21s
+
+0.24% 1.23s
+
+0.30% 1.33s
+
+0.39% 1.35s
+
+0.39% 0.41%
+
+0.97s 0.85s
+
+0.42% 1.52s
+
+0.41% 1.55s
+
+0.27% 1.44s
+
+0.30% 1.50s
+
+0.29% 1.63s
+
+0.31% 1.22s
+
+PDF   
+
+58
+
+4 
+2  Web   IEChromeEdgeFireFox  Safari   4.16 
+
+ 4.16 
+
+Table 4.16 The compatibility test results
+
+
+
+
+
+IE 
+
+
+
+Chrome 
+
+
+
+Edge 
+
+
+
+FireFox 
+
+
+
+Safari 
+
+
+
+ 
+4.5 
+     
+
+59
+
+
+5 
+  
+5.1 
+ T2VR           Web    TVRVCML  
+ 1  TVRVCML        2 TVRVCML  T2VR  MSVD MSR-VTT  TGIF   T2VR  TVRVCML 
+60
+
+5 
+ MSVD  
+3 Vue.js  Spring Boot  Web    TVRVCML   
+5.2 
+ TVRVCML  
+1 TVRVCML   T2VR   
+2TVRVCML  T2VR     T2VR 
+3 T2VR   
+61
+
+
+
+[1] . [J]. , 2016, 29(06): 1-6. [2] Awad G, Fiscus J, Joy D, et al. Trecvid 2016: Evaluating video search, video event detection,
+localization, and hyperlinking[C]. TREC Video Retrieval Evaluation (TRECVID), 2016. [3] , , , et al. [J]. ,
+2020, 33(04): 7-12. [4] . ---- MOOC 
+[J]. , 2017, (10): 52-57. [5] . [J]. , 2023, (02): 37-42. [6] . :[J]. , 2017, 27(05):
+26-32. [7] , .  MOOC ---- Coursera [J]. 
+, 2014, 24(05): 73-80. [8] Ueki K, Hirakawa K, Kikuchi K, et al. Waseda_Meisei at TRECVID 2017: Ad-hoc Video Search[C].
+TRECVID, 2017. [9] Markatopoulou F, Galanopoulos D, Mezaris V, et al. Query and keyframe representations for ad-hoc
+video search[C]. Proceedings of the 2017 ACM on international conference on multimedia retrieval, 2017. [10] Snoek C G, Li X, Xu C, et al. University of Amsterdam and Renmin University at TRECVID 2017: Searching Video, Detecting Events and Describing Video[C]. TRECVID, 2017. [11] Habibian A, Mensink T, Snoek C G. Video2vec embeddings recognize events when examples are scarce[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2016, 39(10): 2089-2103. [12] Li X, Xu C, Yang G, et al. W2vv++ fully deep learning for ad-hoc video search[C]. Proceedings of the 27th ACM international conference on multimedia, 2019. [13] Gabeur V, Sun C, Alahari K, et al. Multi-modal transformer for video retrieval[C]. Computer Vision­ ECCV 2020: 16th European Conference, Glasgow, UK, August 23­28, 2020, Proceedings, Part IV 16, 2020. Springer. [14] Wu X, Qian J, Wang T. Text-video retrieval method based on enhanced self-attention and multi-task learning[J]. Multimedia Tools and Applications, 2023, 82(16): 24387-24406. [15] Mithun N C, Li J, Metze F, et al. Learning joint embedding with multimodal cues for cross-modal video-text retrieval[C]. Proceedings of the 2018 ACM on international conference on multimedia retrieval, 2018. [16] Miech A, Laptev I, Sivic J. Learning a text-video embedding from incomplete and heterogeneous data[J]. arXiv preprint arXiv:180402516, 2018. [17] Wray M, Larlus D, Csurka G, et al. Fine-grained action retrieval through multiple parts-of-speech embeddings[C]. Proceedings of the IEEE/CVF international conference on computer vision, 2019. [18] Chen S, Zhao Y, Jin Q, et al. Fine-grained video-text retrieval with hierarchical graph reasoning[C]. Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, 2020. [19] Li X, Zhou F, Xu C, et al. Sea: Sentence encoder assembly for video retrieval by textual queries[J]. IEEE Transactions on Multimedia, 2020, 23: 4351-4362. [20] Dong J, Li X, Xu C, et al. Dual encoding for video retrieval by text[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2021, 44(8): 4065-4080.
+62
+
+
+[21] Dong J, Wang Y, Chen X, et al. Reading-strategy inspired visual representation learning for text-tovideo retrieval[J]. IEEE transactions on circuits and systems for video technology, 2022, 32(8): 56805694.
+[22] Dong J, Li X, Snoek C G. Word2visualvec: Image and video to sentence matching by visual feature prediction[J]. arXiv preprint arXiv:160406838, 2016.
+[23] Wu W, Luo H, Fang B, et al. Cap4video: What can auxiliary captions do for text-video retrieval?[C]. Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, 2023.
+[24] Dong J, Li X, Xu C, et al. Dual encoding for zero-example video retrieval[C]. Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, 2019.
+[25] Hinton G E. Learning distributed representations of concepts[C]. Proceedings of the eighth annual conference of the cognitive science society, 1986. Amherst, MA.
+[26] Mikolov T, Chen K, Corrado G, et al. Efficient estimation of word representations in vector space[J]. arXiv preprint arXiv:13013781, 2013.
+[27] Pennington J, Socher R, Manning C D. Glove: Global vectors for word representation[C]. Proceedings of the 2014 conference on empirical methods in natural language processing (EMNLP), 2014.
+[28] Kenter T, Borisov A, De Rijke M. Siamese cbow: Optimizing word embeddings for sentence representations[J]. arXiv preprint arXiv:160604640, 2016.
+[29] Guthrie D, Allison B, Liu W, et al. A closer look at skip-gram modelling[C]. LREC, 2006. [30] Yu Y, Si X, Hu C, et al. A review of recurrent neural networks: LSTM cells and network
+architectures[J]. Neural computation, 2019, 31(7): 1235-1270. [31] Otani M, Nakashima Y, Rahtu E, et al. Uncovering hidden challenges in query-based video moment
+retrieval[J]. arXiv preprint arXiv:200900325, 2020. [32] Chen Z-M, Jin X, Zhao B-R, et al. HCE: hierarchical context embedding for region-based object
+detection[J]. IEEE Transactions on Image Processing, 2021, 30: 6917-6929. [33] Dey R, Salem F M. Gate-variants of gated recurrent unit (GRU) neural networks[C]. 2017 IEEE 60th
+international midwest symposium on circuits and systems (MWSCAS), 2017. IEEE. [34] Fan H, Yang Y. Person tube retrieval via language description[C]. Proceedings of the AAAI
+Conference on Artificial Intelligence, 2020. [35] Vaswani A, Shazeer N, Parmar N, et al. Attention is all you need[J]. Advances in neural information
+processing systems, 2017, 30. [36] Devlin J, Chang M-W, Lee K, et al. Bert: Pre-training of deep bidirectional transformers for language
+understanding[J]. arXiv preprint arXiv:181004805, 2018. [37] Li L, Gao X, Deng J, et al. Long short-term relation transformer with global gating for video
+captioning[J]. IEEE Transactions on Image Processing, 2022, 31: 2726-2738. [38] Lei J, Li L, Zhou L, et al. Less is more: Clipbert for video-and-language learning via sparse
+sampling[C]. Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, 2021. [39] Torabi A, Tandon N, Sigal L. Learning language-visual embedding for movie understanding with natural-language[J]. arXiv preprint arXiv:160908124, 2016. [40] Wen L, Li X, Li X, et al. A new transfer learning based on VGG-19 network for fault diagnosis[C]. 2019 IEEE 23rd international conference on computer supported cooperative work in design (CSCWD), 2019. IEEE.
+63
+
+
+[41] Dosovitskiy A, Beyer L, Kolesnikov A, et al. An image is worth 16x16 words: Transformers for image recognition at scale[J]. arXiv preprint arXiv:201011929, 2020.
+[42] Yang X, Dong J, Cao Y, et al. Tree-augmented cross-modal encoding for complex-query video retrieval[C]. Proceedings of the 43rd international ACM SIGIR conference on research and development in information retrieval, 2020.
+[43] Yu Y, Kim J, Kim G. A joint sequence fusion model for video question answering and retrieval[C]. Proceedings of the European conference on computer vision (ECCV), 2018.
+[44] Liu Y, Albanie S, Nagrani A, et al. Use what you have: Video retrieval using representations from collaborative experts[J]. arXiv preprint arXiv:190713487, 2019.
+[45] Wang X, Zhu L, Yang Y. T2vlad: global-local sequence alignment for text-video retrieval[C]. Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, 2021.
+[46] Faghri F, Fleet D J, Kiros J R, et al. Vse++: Improving visual-semantic embeddings with hard negatives[J]. arXiv preprint arXiv:170705612, 2017.
+[47] Chen D, Dolan W B. Collecting highly parallel data for paraphrase evaluation[C]. Proceedings of the 49th annual meeting of the association for computational linguistics: human language technologies, 2011.
+[48] Xu J, Mei T, Yao T, et al. Msr-vtt: A large video description dataset for bridging video and language[C]. Proceedings of the IEEE conference on computer vision and pattern recognition, 2016.
+[49] Li Y, Song Y, Cao L, et al. TGIF: A new dataset and benchmark on animated GIF description[C]. Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, 2016.
+[50] Hu F, Chen A, Wang Z, et al. Lightweight attentional feature fusion: A new baseline for text-to-video retrieval[C]. European conference on computer vision, 2022. Springer.
+[51] , , , et al.  CLIP [J]. ,2023,60(09):2169-2179.
+[52] Tian K, Cheng Y, Liu Y, et al. Towards efficient and effective text-to-video retrieval with coarse-tofine visual representation learning. AAAI 2024: 5207-5214
+[53] Hao X, Zhang W, Wu D, et al. Dual alignment unsupervised domain adaptation for video-text retrieval[C]//Proceedings of the IEEE/CVF conference on computer vision and pattern recognition. 2023: 18962-18972.
+64
+
+
