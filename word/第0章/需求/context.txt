@@ -1,15 +1,3 @@
-送审进展：D:\project\java\imooc-wiki\word\第0章\盲审结果\一审是1A1B1C.png
-盲审1评语：D:\project\java\imooc-wiki\word\第0章\盲审结果\盲审1.png
-盲审2评语：D:\project\java\imooc-wiki\word\第0章\盲审结果\盲审2.png
-盲审3评语：D:\project\java\imooc-wiki\word\第0章\盲审结果\盲审3.png
-盲审意见：D:\project\java\imooc-wiki\word\第0章\二审\盲审意见.txt
-现在待更新盲审3老师的意见，请更新D:\project\java\imooc-wiki\AGENTS.md，过期的信息请更新，skills请更新，无用的信息请删除
-
-
-论文文件：`word/第0章/二审/5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建-4.docx`
-请重新扫描论文的文字、图、表和实验数据、系统数据。检查中文、英文摘要是否有问题，是否会被二审盲审老师抓紧问题不给同意答辩
-
-
 请对以下论文进行最终定稿前的全面审查。
 论文文件：`word/第0章/二审/5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建-4.docx`
 
