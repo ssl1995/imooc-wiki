@@ -10,9 +10,6 @@ skinparam sequenceBoxBackgroundColor #F8F8F8
 skinparam noteBackgroundColor #FFFFE0
 skinparam noteBorderColor #666666
 
-' 使用黑白风格，避免打印后颜色失真
-skinparam monochrome true
-
 ' ===== 参与者定义（减少为6个，去掉登录页） =====
 actor "用户" as User
 participant "用户信息页" as UserPage

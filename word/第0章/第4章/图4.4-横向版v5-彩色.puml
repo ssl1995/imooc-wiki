@@ -1,0 +1,94 @@
+@startuml
+
+skinparam backgroundColor #FFFFFF
+left to right direction
+
+' 间距控制
+skinparam nodesep 35
+skinparam ranksep 50
+
+' 隐藏 stereotype（去掉 «diamond»）
+hide stereotype
+
+' 实体样式（蓝色系）
+skinparam entity {
+    BackgroundColor #E3F2FD
+    BorderColor #1976D2
+    BorderThickness 1.5
+}
+
+' 类/菱形样式（黄色系）
+skinparam class {
+    BackgroundColor #FFF9C4
+    BorderColor #F9A825
+    BorderThickness 1.5
+}
+
+' ===== 定义实体（与上下文一致） =====
+entity "用户信息" as User {
+    * id : bigint <<PK>>
+    --
+    用户名 : varchar
+    密码 : varchar
+    个人描述 : text
+}
+
+entity "权限角色" as Role {
+    * id : bigint <<PK>>
+    --
+    角色名称 : varchar
+    权限描述 : text
+}
+
+entity "树木信息" as Tree {
+    * id : bigint <<PK>>
+    --
+    树种名称 : varchar
+    树龄 : int
+    树高 : varchar
+    纬度 : decimal(10,8)
+    经度 : decimal(11,8)
+}
+
+entity "图像信息" as Image {
+    * id : bigint <<PK>>
+    --
+    tree_id : bigint <<FK>>
+    存储路径 : varchar
+    hash_code : varchar(128)
+    hash_bits : binary(16)
+}
+
+' ===== 关系菱形（黄色背景） =====
+class "属于" as BelongsTo #FFF9C4
+class "管理" as ManageTree #FFF9C4
+class "拥有" as Owns #FFF9C4
+class "维护" as MaintainImage #FFF9C4
+
+' ===== 关系连接（带 cardinality 标注） =====
+Role "1" -- "N" BelongsTo
+BelongsTo "N" -- "1" User
+
+User "1" -- "N" ManageTree
+ManageTree "N" -- "1" Tree
+
+Tree "1" -- "N" Owns
+Owns "N" -- "1" Image
+
+User "1" -- "N" MaintainImage
+MaintainImage "N" -- "1" Image
+
+' ===== 注释（浅黄背景） =====
+note bottom of Image
+图像信息表：
+- hash_code: 128位哈希码字符串
+- hash_bits: 16字节二进制存储
+end note
+
+note bottom of Tree
+位置坐标采用WGS84坐标系：
+- latitude: 纬度(-90~90)
+- longitude: 经度(-180~180)
+end note
+
+@enduml

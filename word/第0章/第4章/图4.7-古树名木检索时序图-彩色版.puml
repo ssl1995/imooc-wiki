@@ -7,9 +7,8 @@ skinparam sequenceMessageAlign center
 skinparam sequenceArrowThickness 2
 skinparam participantPadding 20
 skinparam sequenceBoxBackgroundColor #F8F8F8
-
-' 黑白风格，确保打印清晰
-skinparam monochrome true
+skinparam noteBackgroundColor #FFFFE0
+skinparam noteBorderColor #666666
 
 ' ===== 参与者（精简为6个） =====
 actor "用户" as User
