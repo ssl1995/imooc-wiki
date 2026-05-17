@@ -54,8 +54,13 @@
 D:\project\java\imooc-wiki\word\第0章\二审\联调\论文\数据上传和用户管理.png
 1、做到的效果期望是per_role.id=1的用户，才展示“数据上串”和“用户管理”
 
-现在开始改数据上传页：D:\project\java\imooc-wiki\word\第0章\二审\联调\数据上传.png
-1、这个页面在论文中没有介绍，但是为了防止导师查看，我们需要重新检查前后端代码，重新实现
-2、这个页面逻辑是用于管理员上串古树名木的，请检查前端页面和已有的数据库tree、image和古树名木检索页的逻辑差距，请修改前后端代码
-
-
+测试完成了，我现在需要修改论文第四章，请重新扫描：
+第四章：D:\project\java\imooc-wiki\word\第0章\二审\联调\第四章.txt
+老的修改建议：D:\project\java\imooc-wiki\word\第0章\二审\联调\第四章_论文与实现一致性审查_修改建议.txt
+建表和数据的SQL：D:\project\java\imooc-wiki\doc\create_table.sql
+请结合当前代码等信息，思考需要重新修改的第四章部分，以论文描述为主，如果代码不符合就修改代码，不修改论文
+1、图4.4 系统ER图，代码：D:\project\java\imooc-wiki\word\第4章\图4.4-横向版v5-彩色.puml
+2、表4.1-表4.4的表信息和相关描述部分的修改
+3、图4.5 用户信息时序图，代码：D:\project\java\imooc-wiki\word\第4章\图4.5-用户信息时序图-彩色版.puml
+4、图4.7 图4.7 古树名木检索时序图，代码：D:\project\java\imooc-wiki\word\第4章\图4.7-古树名木检索时序图-彩色版.puml
+更新第四章_论文与实现一致性审查_修改建议，我审查一下
