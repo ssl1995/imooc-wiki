@@ -62,5 +62,12 @@ D:\project\java\imooc-wiki\word\第0章\二审\联调\论文\数据上传和用�
 1、图4.4 系统ER图，代码：D:\project\java\imooc-wiki\word\第4章\图4.4-横向版v5-彩色.puml
 2、表4.1-表4.4的表信息和相关描述部分的修改
 3、图4.5 用户信息时序图，代码：D:\project\java\imooc-wiki\word\第4章\图4.5-用户信息时序图-彩色版.puml
-4、图4.7 图4.7 古树名木检索时序图，代码：D:\project\java\imooc-wiki\word\第4章\图4.7-古树名木检索时序图-彩色版.puml
+4、图4.7 古树名木检索时序图，代码：D:\project\java\imooc-wiki\word\第4章\图4.7-古树名木检索时序图-彩色版.puml
 更新第四章_论文与实现一致性审查_修改建议，我审查一下
+
+现在开始思考如何修改下面2个时序图，给出建议的txt，建议中不用完整的puml修改代码，时序图的逻辑假设必须用模型，审查逻辑是否有问题和错误：
+1、图4.5 用户信息时序图，代码：D:\project\java\imooc-wiki\word\第4章\图4.5-用户信息时序图-彩色版.puml
+2、图4.7 古树名木检索时序图，代码：D:\project\java\imooc-wiki\word\第4章\图4.7-古树名木检索时序图-彩色版.puml
+
+现在开始思考如何修改下面21时序图，给出建议的txt，建议中不用完整的puml修改代码，时序图的逻辑假设必须用模型，审查逻辑是否有问题和错误：
+1、图4.5 用户信息时序图，代码：D:\project\java\imooc-wiki\word\第4章\图4.5-用户信息时序图-彩色版.puml

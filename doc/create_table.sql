@@ -202,7 +202,7 @@ create table user
     login_name      varchar(50) not null comment '登陆名',
     name            varchar(50) null comment '昵称/名称',
     password        char(32)    not null comment '密码（MD5加密）',
-    age             int         null comment '年龄',
+    age             int         not null comment '年龄',
     `desc`          text        null comment '用户介绍',
     per_role_id     bigint      null comment '简易权限角色',
     last_login_time bigint      null comment '上次登录时间戳',
