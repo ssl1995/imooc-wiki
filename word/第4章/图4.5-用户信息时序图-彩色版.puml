@@ -10,77 +10,93 @@ skinparam sequenceBoxBackgroundColor #F8F8F8
 skinparam noteBackgroundColor #FFFFE0
 skinparam noteBorderColor #666666
 
-' ===== 参与者定义（减少为6个，去掉登录页） =====
+' ===== 参与者定义 =====
 actor "用户" as User
 participant "用户信息页" as UserPage
 participant "UserController" as Controller
-participant "IUserService" as Service
+participant "UserService" as Service
 participant "UserMapper" as Mapper
 participant "MySQL数据库" as DB
 
-' ===== 核心流程：查询用户信息（聚焦此模块） =====
+' ===== 前置条件说明 =====
+note over User, UserPage
+  <b>前置条件：</b>管理员已完成登录并携带有效Token
+end note
+
+' ===== 核心流程：分页查询用户信息 =====
 autonumber 1
 User -> UserPage: 访问用户信息页面
 activate UserPage
 
 autonumber 2
-UserPage -> Controller: 调用 /user/getUserInfo/{userId} (GET)
+UserPage -> Controller: GET /user/list?loginName=xxx&page=1&size=10
 activate Controller
 
 autonumber 3
-Controller -> Service: getUserInfoByUserId(userId)
+Controller -> Service: list(UserQueryReq)
 activate Service
 
 autonumber 4
-Service -> Mapper: selectUserInfoByUserId(userId)
-activate Mapper
+Service -> Service: 创建 UserExample 查询条件
 
 autonumber 5
-Mapper -> DB: 查询用户详情
-activate DB
-DB --> Mapper: 返回用户数据
-deactivate DB
+Service -> Service: PageHelper.startPage(page, size)
 
 autonumber 6
-Mapper --> Service: 返回用户信息
-deactivate Mapper
+Service -> Mapper: selectByExample(userExample)
+activate Mapper
 
-' ===== 角色判断分支（简化表述） =====
 autonumber 7
-alt 管理员角色
-    Service -> Mapper: selectAllUsers()
-    activate Mapper
-    Mapper -> DB: 执行全量查询
-    activate DB
-    DB --> Mapper: 返回全部用户列表
-    deactivate DB
-    Mapper --> Service: 返回用户列表
-    deactivate Mapper
-else 普通用户
-    Service -> Service: 根据userId过滤当前用户
-end
+Mapper -> DB: 执行分页查询（COUNT + SELECT LIMIT）
+activate DB
+DB --> Mapper: 返回用户数据列表
+DB --> Mapper: 返回总条数 total
+deactivate DB
 
 autonumber 8
-Service --> Controller: 返回用户数据（ID/登录名/用户名/角色等）
-deactivate Service
+Mapper --> Service: 返回 List<User>
+deactivate Mapper
 
 autonumber 9
-Controller --> UserPage: 返回JSON响应
-deactivate Controller
+Service -> Service: PageInfo 封装分页信息
 
 autonumber 10
-UserPage --> User: 渲染用户信息表格
+Service -> Service: CopyUtil.copyList 转换为 UserQueryResp
+
+autonumber 11
+Service -> Service: 关联查询 role 表填充 roleName
+
+autonumber 12
+Service --> Controller: 返回 PageResp(list, total, pages)
+deactivate Service
+
+autonumber 13
+Controller --> UserPage: 返回 JSON 分页响应
+note right
+  {
+    "content": {
+      "total": 10,
+      "list": [...],
+      "pages": 1
+    }
+  }
+end note
+deactivate Controller
+
+autonumber 14
+UserPage --> User: 渲染用户信息表格+分页组件
 deactivate UserPage
 
-' ===== 图注说明（放在下方，不挤占横向空间） =====
-note over UserPage, Controller
-  <b>前置条件：</b>用户已完成登录并携带有效Cookie/Token
+' ===== 底部说明 =====
+note over Service, Mapper
+  <b>分页机制：</b>PageHelper 拦截 SQL，自动追加 LIMIT 和 COUNT
+  <b>字段映射：</b>CopyUtil.copyList 将 User 实体转为 UserQueryResp
+  <b>角色关联：</b>遍历 list 查询 role 表填充 roleName
 end note
 
-note over Service
-  <b>RBAC权限控制</b>
-  管理员 → 查询全部用户列表
-  普通用户 → 仅返回自身信息
+note over UserPage, Controller
+  <b>RBAC 权限控制：</b>仅管理员角色（perRoleId=1）可进入用户管理页面，
+  前端通过菜单显隐控制，后端接口不做二次角色校验。
 end note
 
 @enduml
