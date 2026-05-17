@@ -58,7 +58,7 @@ D:\project\java\imooc-wiki\word\第0章\二审\联调\论文\数据上传和用�
 第四章：D:\project\java\imooc-wiki\word\第0章\二审\联调\第四章.txt
 老的修改建议：D:\project\java\imooc-wiki\word\第0章\二审\联调\第四章_论文与实现一致性审查_修改建议.txt
 建表和数据的SQL：D:\project\java\imooc-wiki\doc\create_table.sql
-请结合当前代码等信息，思考需要重新修改的第四章部分，以论文描述为主，如果代码不符合就修改代码，不修改论文
+请结合当前代码等信息，思考需要重新修改的第四章部分，如果有论文和代码实现差距较大问题，整理出来，给出修改建议
 1、图4.4 系统ER图，代码：D:\project\java\imooc-wiki\word\第4章\图4.4-横向版v5-彩色.puml
 2、表4.1-表4.4的表信息和相关描述部分的修改
 3、图4.5 用户信息时序图，代码：D:\project\java\imooc-wiki\word\第4章\图4.5-用户信息时序图-彩色版.puml
