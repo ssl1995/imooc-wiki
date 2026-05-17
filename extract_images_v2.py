@@ -4,7 +4,7 @@ import os
 
 doc = Document('word/第0章/审查/5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索系统研建-盲审.docx')
 
-image_dir = 'word/第0章/审查/extracted_images_v2'
+image_dir = 'word/第0章/一审/extracted_images_v2'
 os.makedirs(image_dir, exist_ok=True)
 
 # 建立rel_id到文件名的映射
