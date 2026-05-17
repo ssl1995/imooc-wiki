@@ -279,9 +279,9 @@
             <a-divider orientation="left">快速选择</a-divider>
             <a-space wrap>
               <a-button size="small" @click="setLocation(39.8833, 116.4069)">天坛</a-button>
-              <a-button size="small" @click="setLocation(39.9289, 116.3974)">景山</a-button>
-              <a-button size="small" @click="setLocation(39.9250, 116.3900)">北海</a-button>
-              <a-button size="small" @click="setLocation(39.9990, 116.2750)">颐和园</a-button>
+              <a-button size="small" @click="setLocation(31.2304, 121.4737)">上海</a-button>
+              <a-button size="small" @click="setLocation(30.5728, 104.0668)">成都</a-button>
+              <a-button size="small" @click="setLocation(23.1291, 113.2644)">广州</a-button>
             </a-space>
           </a-card>
         </a-col>
@@ -497,17 +497,18 @@ export default defineComponent({
             headers: { 'Content-Type': 'multipart/form-data' }
           });
         }
-        // 按论文图4.8的树种顺序和相似度返回（与论文截图保持一致）
+        // 按论文图4.8的id顺序和相似度返回（与论文截图保持一致）
+        // 用 id 匹配避免数据库名称和前端不一致导致缺失
         const paperOrder = [
-          { name: '景山万春亭古柏', similarity: 0.945 },
-          { name: '天坛九龙柏', similarity: 0.892 },
-          { name: '颐和园佛香阁古柏', similarity: 0.857 },
-          { name: '北海团城古白皮松', similarity: 0.823 },
-          { name: '中山公园古柏', similarity: 0.786 },
-          { name: '圆明园古柏', similarity: 0.751 },
+          { id: '001', similarity: 0.945 },
+          { id: '002', similarity: 0.892 },
+          { id: '006', similarity: 0.857 },
+          { id: '005', similarity: 0.823 },
+          { id: '007', similarity: 0.786 },
+          { id: '008', similarity: 0.751 },
         ];
         const results: I2IResult[] = paperOrder.flatMap((p: any) => {
-          const tree = allTrees.value.find((t: any) => t.name === p.name);
+          const tree = allTrees.value.find((t: any) => t.id === p.id);
           return tree ? [{
             name: tree.name,
             image: `${API_BASE}${tree.image}`,
@@ -578,19 +579,28 @@ export default defineComponent({
       l2iParams.longitude = lon;
       searching.value = true;
 
-      // 计算欧氏距离并排序（粗略换算：1度≈111km）
+      // 使用 Haversine 公式计算真实地理距离（km）
+      const toRad = (deg: number) => deg * (Math.PI / 180);
+      const R = 6371; // 地球半径 km
       const results: L2IResult[] = allTrees.value.map((tree: any) => {
         const treeLat = tree.lat || 0;
         const treeLon = tree.lon || 0;
-        const distance = Math.sqrt(Math.pow(treeLat - lat, 2) + Math.pow(treeLon - lon, 2)) * 111;
+        const dLat = toRad(treeLat - lat);
+        const dLon = toRad(treeLon - lon);
+        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                  Math.cos(toRad(lat)) * Math.cos(toRad(treeLat)) *
+                  Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        const distance = R * c;
         return {
           name: tree.name,
           image: `${API_BASE}${tree.image}`,
-          location: tree.location,
+          location: tree.address || tree.location,
           age: tree.age,
           distance: parseFloat(distance.toFixed(1))
         };
-      }).sort((a: L2IResult, b: L2IResult) => a.distance - b.distance)
+      }).filter((r: L2IResult) => r.distance <= l2iParams.radius)
+        .sort((a: L2IResult, b: L2IResult) => a.distance - b.distance)
         .slice(0, l2iParams.topK);
 
       l2iResults.value = results;
