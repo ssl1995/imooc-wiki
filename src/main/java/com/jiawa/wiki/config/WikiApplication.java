@@ -21,7 +21,6 @@ public class WikiApplication {
     private static final Logger LOG = LoggerFactory.getLogger(WikiApplication.class);
 
     public static void main(String[] args) {
-
         SpringApplication app = new SpringApplication(WikiApplication.class);
 
         Environment env = app.run(args).getEnvironment();

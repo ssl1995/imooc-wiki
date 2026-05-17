@@ -39,3 +39,7 @@
 4、请扫描论文中的4.8到4.11，我需要演示的时候，和论文中已有的图效果保持一致，比如右边返回值列表的列表树种的名称必须保持一致
 以上信息整理完成后，更新到D:\project\java\imooc-wiki\word\第0章\二审\导师面谈准备清单.md
 
+上一步，卡主了，我手动执行了：D:\project\java\imooc-wiki\doc\tree_table.sql
+
+论文中的图4.8：D:\project\java\imooc-wiki\word\第0章\二审\联调\论文\图4.8.png
+现在的图4.8效果：D:\project\java\imooc-wiki\word\第0章\二审\联调\现在的图4.8的效果.png

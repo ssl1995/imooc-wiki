@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.jiawa.wiki.mapper.TreeMapper">
+
+    <resultMap id="BaseResultMap" type="com.jiawa.wiki.domain.Tree">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="species" jdbcType="VARCHAR" property="species" />
+        <result column="age" jdbcType="INTEGER" property="age" />
+        <result column="lat" jdbcType="DOUBLE" property="lat" />
+        <result column="lon" jdbcType="DOUBLE" property="lon" />
+        <result column="location" jdbcType="VARCHAR" property="location" />
+        <result column="address" jdbcType="VARCHAR" property="address" />
+        <result column="protection_level" jdbcType="VARCHAR" property="protectionLevel" />
+        <result column="hash_code" jdbcType="VARCHAR" property="hashCode" />
+        <result column="extra_json" jdbcType="VARCHAR" property="extraJson" />
+        <result column="image_path" jdbcType="VARCHAR" property="imagePath" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, name, species, age, lat, lon, location, address, protection_level, hash_code, extra_json, image_path
+    </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM tree
+    </select>
+
+    <select id="selectByName" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM tree
+        WHERE species LIKE CONCAT('%', #{name}, '%')
+           OR name LIKE CONCAT('%', #{name}, '%')
+    </select>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM tree
+        WHERE id = #{id}
+    </select>
+
+</mapper>
