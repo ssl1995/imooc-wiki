@@ -1,25 +1,33 @@
 package com.jiawa.wiki.domain;
 
 public class Tree {
-    private String id;
+    private Long id;
+    private String treeCode;
     private String name;
     private String species;
     private Integer age;
-    private Double lat;
-    private Double lon;
-    private String location;
-    private String address;
-    private String protectionLevel;
-    private String hashCode;
-    private String extraJson;
-    private String imagePath;
+    private String height;
+    private java.math.BigDecimal latitude;
+    private java.math.BigDecimal longitude;
+    private String desc;
+    private Byte isDelete;
+    private Long createTime;
+    private Long updateTime;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTreeCode() {
+        return treeCode;
+    }
+
+    public void setTreeCode(String treeCode) {
+        this.treeCode = treeCode;
     }
 
     public String getName() {
@@ -46,67 +54,59 @@ public class Tree {
         this.age = age;
     }
 
-    public Double getLat() {
-        return lat;
+    public String getHeight() {
+        return height;
     }
 
-    public void setLat(Double lat) {
-        this.lat = lat;
+    public void setHeight(String height) {
+        this.height = height;
     }
 
-    public Double getLon() {
-        return lon;
+    public java.math.BigDecimal getLatitude() {
+        return latitude;
     }
 
-    public void setLon(Double lon) {
-        this.lon = lon;
+    public void setLatitude(java.math.BigDecimal latitude) {
+        this.latitude = latitude;
     }
 
-    public String getLocation() {
-        return location;
+    public java.math.BigDecimal getLongitude() {
+        return longitude;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLongitude(java.math.BigDecimal longitude) {
+        this.longitude = longitude;
     }
 
-    public String getAddress() {
-        return address;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
-    public String getProtectionLevel() {
-        return protectionLevel;
+    public Byte getIsDelete() {
+        return isDelete;
     }
 
-    public void setProtectionLevel(String protectionLevel) {
-        this.protectionLevel = protectionLevel;
+    public void setIsDelete(Byte isDelete) {
+        this.isDelete = isDelete;
     }
 
-    public String getHashCode() {
-        return hashCode;
+    public Long getCreateTime() {
+        return createTime;
     }
 
-    public void setHashCode(String hashCode) {
-        this.hashCode = hashCode;
+    public void setCreateTime(Long createTime) {
+        this.createTime = createTime;
     }
 
-    public String getExtraJson() {
-        return extraJson;
+    public Long getUpdateTime() {
+        return updateTime;
     }
 
-    public void setExtraJson(String extraJson) {
-        this.extraJson = extraJson;
-    }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setUpdateTime(Long updateTime) {
+        this.updateTime = updateTime;
     }
 }

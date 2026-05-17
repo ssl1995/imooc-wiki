@@ -13,5 +13,7 @@ public interface TreeMapper {
 
     List<Tree> selectByName(@Param("name") String name);
 
-    Tree selectById(@Param("id") String id);
+    Tree selectById(@Param("id") Long id);
+
+    Tree selectByTreeCode(@Param("treeCode") String treeCode);
 }

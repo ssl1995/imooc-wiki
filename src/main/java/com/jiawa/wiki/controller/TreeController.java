@@ -1,6 +1,8 @@
 package com.jiawa.wiki.controller;
 
+import com.jiawa.wiki.domain.ImageInfo;
 import com.jiawa.wiki.domain.Tree;
+import com.jiawa.wiki.mapper.ImageInfoMapper;
 import com.jiawa.wiki.mapper.TreeMapper;
 import com.jiawa.wiki.resp.CommonResp;
 import org.slf4j.Logger;
@@ -13,11 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.nio.file.Files;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 古树名木检索控制器
  * 支持以图搜图(I2I)、以图搜位置(I2L)、以位置搜图(L2I)、按树种名称检索
- * 数据源：MySQL 数据库 tree 表
+ * 数据源：MySQL 数据库 tree 表 + image_info 表
  */
 @RestController
 @RequestMapping("tree")
@@ -31,31 +34,39 @@ public class TreeController {
     @Resource
     private TreeMapper treeMapper;
 
+    @Resource
+    private ImageInfoMapper imageInfoMapper;
+
     /**
-     * 将 Tree 实体转换为前端期望的 Map 格式
+     * 将 Tree 实体转换为前端期望的 Map 格式，并关联查询图像信息
      */
     private Map<String, Object> toMap(Tree tree) {
         Map<String, Object> map = new HashMap<>();
         map.put("id", tree.getId());
+        map.put("treeCode", tree.getTreeCode());
         map.put("name", tree.getName());
         map.put("species", tree.getSpecies());
         map.put("age", tree.getAge());
-        map.put("lat", tree.getLat());
-        map.put("lon", tree.getLon());
-        map.put("location", tree.getLocation());
-        map.put("address", tree.getAddress());
-        map.put("protectionLevel", tree.getProtectionLevel());
-        map.put("hashCode", tree.getHashCode());
-        map.put("image", "/tree/image/" + tree.getId());
+        map.put("height", tree.getHeight());
+        map.put("lat", tree.getLatitude());
+        map.put("lon", tree.getLongitude());
+        map.put("location", tree.getDesc());
+        map.put("desc", tree.getDesc());
+
+        // 关联查询图像信息
+        ImageInfo imageInfo = imageInfoMapper.selectByTreeId(tree.getId());
+        if (imageInfo != null) {
+            map.put("hashCode", imageInfo.getHashCode());
+            map.put("image", "/tree/image/" + tree.getTreeCode());
+        } else {
+            map.put("hashCode", null);
+            map.put("image", null);
+        }
         return map;
     }
 
     private List<Map<String, Object>> toMapList(List<Tree> trees) {
-        List<Map<String, Object>> result = new ArrayList<>();
-        for (Tree tree : trees) {
-            result.add(toMap(tree));
-        }
-        return result;
+        return trees.stream().map(this::toMap).collect(Collectors.toList());
     }
 
     /**
@@ -82,15 +93,15 @@ public class TreeController {
         LOG.info("按树种名称检索，参数：name={}, ageMin={}, ageMax={}", name, ageMin, ageMax);
 
         List<Tree> trees = treeMapper.selectByName(name);
-        List<Map<String, Object>> filtered = new ArrayList<>();
-        for (Tree tree : trees) {
-            boolean ageMatch = true;
-            if (ageMin != null && tree.getAge() != null && tree.getAge() < ageMin) ageMatch = false;
-            if (ageMax != null && tree.getAge() != null && tree.getAge() > ageMax) ageMatch = false;
-            if (ageMatch) {
-                filtered.add(toMap(tree));
-            }
-        }
+        List<Map<String, Object>> filtered = trees.stream()
+                .filter(tree -> {
+                    boolean ageMatch = true;
+                    if (ageMin != null && tree.getAge() != null && tree.getAge() < ageMin) ageMatch = false;
+                    if (ageMax != null && tree.getAge() != null && tree.getAge() > ageMax) ageMatch = false;
+                    return ageMatch;
+                })
+                .map(this::toMap)
+                .collect(Collectors.toList());
 
         CommonResp<List<Map<String, Object>>> resp = new CommonResp<>();
         resp.setContent(filtered);
@@ -114,16 +125,16 @@ public class TreeController {
 
     /**
      * 获取古树图片
+     * 使用 treeCode（如 001）匹配演示目录
      */
-    @GetMapping("/image/{id}")
-    public void image(@PathVariable String id, HttpServletResponse response) {
+    @GetMapping("/image/{treeCode}")
+    public void image(@PathVariable String treeCode, HttpServletResponse response) {
         try {
-            // 在 bfath_demo 目录下查找对应 id 的 image.jpg
             File dir = new File(IMAGE_ROOT);
             File[] dirs = dir.listFiles();
             if (dirs != null) {
                 for (File d : dirs) {
-                    if (d.isDirectory() && d.getName().startsWith(id + "_")) {
+                    if (d.isDirectory() && d.getName().startsWith(treeCode + "_")) {
                         File imgFile = new File(d, "image.jpg");
                         if (imgFile.exists()) {
                             response.setContentType("image/jpeg");
@@ -148,7 +159,7 @@ public class TreeController {
      * 获取古树名木详细信息
      */
     @GetMapping("/detail/{id}")
-    public CommonResp<Map<String, Object>> detail(@PathVariable String id) {
+    public CommonResp<Map<String, Object>> detail(@PathVariable Long id) {
         LOG.info("查询古树详情，id={}", id);
         CommonResp<Map<String, Object>> resp = new CommonResp<>();
         Tree tree = treeMapper.selectById(id);

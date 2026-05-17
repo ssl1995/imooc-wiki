@@ -431,7 +431,7 @@ export default defineComponent({
       { title: '树种', dataIndex: 'species', width: 100 },
       { title: '树龄', dataIndex: 'age', width: 80, align: 'center', customRender: ({ text }: any) => text + '年' },
       { title: '位置', dataIndex: 'location' },
-      { title: '保护级别', dataIndex: 'protectionLevel', width: 100, align: 'center' }
+      { title: '描述', dataIndex: 'desc', ellipsis: true }
     ];
 
     // 页面加载时从后端获取全部古树数据
@@ -500,15 +500,15 @@ export default defineComponent({
         // 按论文图4.8的id顺序和相似度返回（与论文截图保持一致）
         // 用 id 匹配避免数据库名称和前端不一致导致缺失
         const paperOrder = [
-          { id: '001', similarity: 0.945 },
-          { id: '002', similarity: 0.892 },
-          { id: '006', similarity: 0.857 },
-          { id: '005', similarity: 0.823 },
-          { id: '007', similarity: 0.786 },
-          { id: '008', similarity: 0.751 },
+          { treeCode: '001', similarity: 0.945 },
+          { treeCode: '002', similarity: 0.892 },
+          { treeCode: '006', similarity: 0.857 },
+          { treeCode: '005', similarity: 0.823 },
+          { treeCode: '007', similarity: 0.786 },
+          { treeCode: '008', similarity: 0.751 },
         ];
         const results: I2IResult[] = paperOrder.flatMap((p: any) => {
-          const tree = allTrees.value.find((t: any) => t.id === p.id);
+          const tree = allTrees.value.find((t: any) => t.treeCode === p.treeCode);
           return tree ? [{
             name: tree.name,
             image: `${API_BASE}${tree.image}`,
@@ -547,13 +547,13 @@ export default defineComponent({
           });
         }
         // 返回最匹配记录的位置（默认返回001景山万春亭古柏，与论文图4.9一致）
-        const tree = allTrees.value.find((t: any) => t.id === '001') || allTrees.value[0];
+        const tree = allTrees.value.find((t: any) => t.treeCode === '001') || allTrees.value[0];
         i2lResult.value = {
           latitude: tree.lat,
           longitude: tree.lon,
           confidence: 0.92,
           error: 0.5,
-          address: tree.address || tree.location
+          address: tree.location
         };
         message.success('定位完成');
       } catch (e) {
@@ -595,7 +595,7 @@ export default defineComponent({
         return {
           name: tree.name,
           image: `${API_BASE}${tree.image}`,
-          location: tree.address || tree.location,
+          location: tree.location,
           age: tree.age,
           distance: parseFloat(distance.toFixed(1))
         };

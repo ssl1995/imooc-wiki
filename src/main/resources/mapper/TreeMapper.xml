@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-
 <mapper namespace="com.jiawa.wiki.mapper.TreeMapper">
-
     <resultMap id="BaseResultMap" type="com.jiawa.wiki.domain.Tree">
-        <id column="id" jdbcType="VARCHAR" property="id" />
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="tree_code" jdbcType="VARCHAR" property="treeCode" />
         <result column="name" jdbcType="VARCHAR" property="name" />
         <result column="species" jdbcType="VARCHAR" property="species" />
         <result column="age" jdbcType="INTEGER" property="age" />
-        <result column="lat" jdbcType="DOUBLE" property="lat" />
-        <result column="lon" jdbcType="DOUBLE" property="lon" />
-        <result column="location" jdbcType="VARCHAR" property="location" />
-        <result column="address" jdbcType="VARCHAR" property="address" />
-        <result column="protection_level" jdbcType="VARCHAR" property="protectionLevel" />
-        <result column="hash_code" jdbcType="VARCHAR" property="hashCode" />
-        <result column="extra_json" jdbcType="VARCHAR" property="extraJson" />
-        <result column="image_path" jdbcType="VARCHAR" property="imagePath" />
+        <result column="height" jdbcType="VARCHAR" property="height" />
+        <result column="latitude" jdbcType="DECIMAL" property="latitude" />
+        <result column="longitude" jdbcType="DECIMAL" property="longitude" />
+        <result column="desc" jdbcType="VARCHAR" property="desc" />
+        <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+        <result column="create_time" jdbcType="BIGINT" property="createTime" />
+        <result column="update_time" jdbcType="BIGINT" property="updateTime" />
     </resultMap>
 
-    <sql id="Base_Column_List">
-        id, name, species, age, lat, lon, location, address, protection_level, hash_code, extra_json, image_path
-    </sql>
-
     <select id="selectAll" resultMap="BaseResultMap">
-        SELECT
-        <include refid="Base_Column_List" />
+        SELECT id, tree_code, name, species, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time
         FROM tree
+        WHERE is_delete = 0
+        ORDER BY tree_code
     </select>
 
     <select id="selectByName" resultMap="BaseResultMap">
-        SELECT
-        <include refid="Base_Column_List" />
+        SELECT id, tree_code, name, species, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time
         FROM tree
-        WHERE species LIKE CONCAT('%', #{name}, '%')
-           OR name LIKE CONCAT('%', #{name}, '%')
+        WHERE is_delete = 0
+          AND (species LIKE CONCAT('%', #{name}, '%') OR name LIKE CONCAT('%', #{name}, '%'))
     </select>
 
     <select id="selectById" resultMap="BaseResultMap">
-        SELECT
-        <include refid="Base_Column_List" />
+        SELECT id, tree_code, name, species, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time
         FROM tree
         WHERE id = #{id}
+          AND is_delete = 0
     </select>
 
+    <select id="selectByTreeCode" resultMap="BaseResultMap">
+        SELECT id, tree_code, name, species, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time
+        FROM tree
+        WHERE tree_code = #{treeCode}
+          AND is_delete = 0
+    </select>
 </mapper>
