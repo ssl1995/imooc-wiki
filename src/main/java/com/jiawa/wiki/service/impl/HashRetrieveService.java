@@ -1,4 +1,4 @@
-package com.jiawa.wiki.util;
+package com.jiawa.wiki.service.impl;
 
 import org.springframework.stereotype.Service;
 
