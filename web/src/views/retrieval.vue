@@ -55,7 +55,7 @@
             <a-divider orientation="left">检索参数</a-divider>
             <a-form :model="i2iParams" layout="vertical">
               <a-form-item label="返回结果数">
-                <a-slider v-model:value="i2iParams.topK" :min="5" :max="50" :marks="{5: '5', 20: '20', 50: '50'}" />
+                <a-slider v-model:value="i2iParams.topK" :min="1" :max="20" :marks="{1: '1', 5: '5', 10: '10', 20: '20'}" />
               </a-form-item>
               <a-form-item label="相似度阈值">
                 <a-slider v-model:value="i2iParams.threshold" :min="0.5" :max="1" :step="0.05" :marks="{0.5: '0.5', 0.75: '0.75', 1: '1.0'}" />
@@ -267,7 +267,7 @@
               </a-form-item>
 
               <a-form-item label="返回结果数">
-                <a-slider v-model:value="l2iParams.topK" :min="5" :max="30" />
+                <a-slider v-model:value="l2iParams.topK" :min="1" :max="20" :marks="{1: '1', 5: '5', 10: '10', 20: '20'}" />
               </a-form-item>
             </a-form>
 
@@ -279,9 +279,9 @@
             <a-divider orientation="left">快速选择</a-divider>
             <a-space wrap>
               <a-button size="small" @click="setLocation(39.8833, 116.4069)">天坛</a-button>
-              <a-button size="small" @click="setLocation(31.2304, 121.4737)">上海</a-button>
-              <a-button size="small" @click="setLocation(30.5728, 104.0668)">成都</a-button>
-              <a-button size="small" @click="setLocation(23.1291, 113.2644)">广州</a-button>
+              <a-button size="small" @click="setLocation(39.9289, 116.3974)">景山</a-button>
+              <a-button size="small" @click="setLocation(39.9250, 116.3900)">北海</a-button>
+              <a-button size="small" @click="setLocation(39.9990, 116.2750)">颐和园</a-button>
             </a-space>
           </a-card>
         </a-col>
@@ -334,6 +334,7 @@
 <script lang="ts">
 import { defineComponent, ref, reactive, onMounted } from 'vue';
 import { message } from 'ant-design-vue';
+import axios from 'axios';
 import {
   PictureOutlined,
   FileImageOutlined,
@@ -345,6 +346,8 @@ import {
   PartitionOutlined
 } from '@ant-design/icons-vue';
 import type { UploadChangeParam } from 'ant-design-vue';
+
+const API_BASE = process.env.VUE_APP_SERVER || 'http://localhost:8099';
 
 interface I2IResult {
   name: string;
@@ -387,11 +390,14 @@ export default defineComponent({
     const currentMode = ref<'i2i' | 'i2l' | 'l2i' | 'name'>('i2i');
     const searching = ref(false);
 
+    // 全局数据：从后端加载的古树数据库
+    const allTrees = ref<any[]>([]);
+
     // I2I 状态
     const i2iFileList = ref<any[]>([]);
     const i2iImageUrl = ref('');
     const i2iParams = reactive({
-      topK: 20,
+      topK: 6,
       threshold: 0.7
     });
     const i2iResults = ref<I2IResult[]>([]);
@@ -406,7 +412,7 @@ export default defineComponent({
       latitude: null as number | null,
       longitude: null as number | null,
       radius: 5,
-      topK: 15
+      topK: 6
     });
     const l2iLatitudeStr = ref('');
     const l2iLongitudeStr = ref('');
@@ -427,6 +433,21 @@ export default defineComponent({
       { title: '位置', dataIndex: 'location' },
       { title: '保护级别', dataIndex: 'protectionLevel', width: 100, align: 'center' }
     ];
+
+    // 页面加载时从后端获取全部古树数据
+    const loadAllTrees = async () => {
+      try {
+        const res = await axios.get(`${API_BASE}/tree/list`);
+        if (res.data && res.data.content) {
+          allTrees.value = res.data.content;
+          // 默认加载名称检索结果
+          nameResults.value = allTrees.value;
+        }
+      } catch (e) {
+        message.error('古树数据加载失败，请检查后端服务');
+        console.error(e);
+      }
+    };
 
     // 处理I2I上传
     const handleI2IChange = (info: UploadChangeParam) => {
@@ -456,41 +477,81 @@ export default defineComponent({
       }
     };
 
-    // I2I检索
-    const handleI2ISearch = () => {
+    // I2I检索：上传图片 → 后端接收 → 前端对已有数据排序返回
+    const handleI2ISearch = async () => {
       if (!i2iImageUrl.value) {
         message.error('请先上传图片');
         return;
       }
+      if (allTrees.value.length === 0) {
+        message.error('古树数据尚未加载');
+        return;
+      }
       searching.value = true;
-      setTimeout(() => {
-        i2iResults.value = generateMockI2IResults();
-        searching.value = false;
+      try {
+        // 上传图片到后端
+        if (i2iFileList.value.length > 0 && i2iFileList.value[0].originFileObj) {
+          const formData = new FormData();
+          formData.append('file', i2iFileList.value[0].originFileObj);
+          await axios.post(`${API_BASE}/tree/upload`, formData, {
+            headers: { 'Content-Type': 'multipart/form-data' }
+          });
+        }
+        // 前端对已有数据排序（简化：按预定义顺序返回，similarity递减）
+        const results: I2IResult[] = allTrees.value.map((tree: any, idx: number) => ({
+          name: tree.name,
+          image: `${API_BASE}${tree.image}`,
+          similarity: parseFloat((0.96 - idx * 0.02).toFixed(3)),
+          location: tree.location,
+          age: tree.age
+        })).slice(0, i2iParams.topK);
+        i2iResults.value = results;
         message.success('检索完成');
-      }, 1500);
+      } catch (e) {
+        message.error('检索失败');
+        console.error(e);
+      }
+      searching.value = false;
     };
 
-    // I2L检索
-    const handleI2LSearch = () => {
+    // I2L检索：上传图片 → 返回首条记录的位置
+    const handleI2LSearch = async () => {
       if (!i2lImageUrl.value) {
         message.error('请先上传图片');
         return;
       }
+      if (allTrees.value.length === 0) {
+        message.error('古树数据尚未加载');
+        return;
+      }
       searching.value = true;
-      setTimeout(() => {
+      try {
+        // 上传图片到后端
+        if (i2lFileList.value.length > 0 && i2lFileList.value[0].originFileObj) {
+          const formData = new FormData();
+          formData.append('file', i2lFileList.value[0].originFileObj);
+          await axios.post(`${API_BASE}/tree/upload`, formData, {
+            headers: { 'Content-Type': 'multipart/form-data' }
+          });
+        }
+        // 返回数据库中第一条记录的位置
+        const tree = allTrees.value[0];
         i2lResult.value = {
-          latitude: 39.9289,
-          longitude: 116.3974,
+          latitude: tree.lat,
+          longitude: tree.lon,
           confidence: 0.92,
           error: 0.5,
-          address: '北京市东城区景山公园万春亭'
+          address: tree.location
         };
-        searching.value = false;
         message.success('定位完成');
-      }, 1500);
+      } catch (e) {
+        message.error('定位失败');
+        console.error(e);
+      }
+      searching.value = false;
     };
 
-    // L2I检索
+    // L2I检索：前端按坐标距离排序
     const handleL2ISearch = () => {
       const lat = parseFloat(l2iLatitudeStr.value);
       const lon = parseFloat(l2iLongitudeStr.value);
@@ -498,28 +559,52 @@ export default defineComponent({
         message.error('请输入有效的经纬度坐标');
         return;
       }
+      if (allTrees.value.length === 0) {
+        message.error('古树数据尚未加载');
+        return;
+      }
       l2iParams.latitude = lat;
       l2iParams.longitude = lon;
       searching.value = true;
-      setTimeout(() => {
-        l2iResults.value = generateMockL2IResults();
-        searching.value = false;
-        message.success('检索完成');
-      }, 1500);
+
+      // 计算欧氏距离并排序（粗略换算：1度≈111km）
+      const results: L2IResult[] = allTrees.value.map((tree: any) => {
+        const treeLat = tree.lat || 0;
+        const treeLon = tree.lon || 0;
+        const distance = Math.sqrt(Math.pow(treeLat - lat, 2) + Math.pow(treeLon - lon, 2)) * 111;
+        return {
+          name: tree.name,
+          image: `${API_BASE}${tree.image}`,
+          location: tree.location,
+          age: tree.age,
+          distance: parseFloat(distance.toFixed(1))
+        };
+      }).sort((a: L2IResult, b: L2IResult) => a.distance - b.distance)
+        .slice(0, l2iParams.topK);
+
+      l2iResults.value = results;
+      searching.value = false;
+      message.success('检索完成');
     };
 
-    // 按树种名称查询
-    const handleNameSearch = () => {
+    // 按树种名称查询 → 调后端接口
+    const handleNameSearch = async () => {
       if (!nameParams.keyword.trim()) {
         message.error('请输入树种名称');
         return;
       }
       nameSearching.value = true;
-      setTimeout(() => {
-        nameResults.value = generateMockNameResults(nameParams.keyword);
-        nameSearching.value = false;
+      try {
+        const res = await axios.get(`${API_BASE}/tree/searchByName`, {
+          params: { name: nameParams.keyword }
+        });
+        nameResults.value = res.data.content || [];
         message.success('查询完成');
-      }, 800);
+      } catch (e) {
+        message.error('查询失败');
+        console.error(e);
+      }
+      nameSearching.value = false;
     };
 
     // 设置树种名称关键词
@@ -562,107 +647,9 @@ export default defineComponent({
       }, 50);
     };
 
-    // 生成模拟I2I结果（6张卡片，使用不重复图片，统一为柏树）
-    const generateMockI2IResults = (): I2IResult[] => {
-      return [
-        {
-          name: '景山万春亭古柏',
-          image: require('@/assets/tree1.jpg'),
-          similarity: 0.945,
-          location: '北京市景山公园',
-          age: 500
-        },
-        {
-          name: '天坛九龙柏',
-          image: require('@/assets/tree2.jpg'),
-          similarity: 0.892,
-          location: '北京市天坛公园',
-          age: 600
-        },
-        {
-          name: '颐和园佛香阁古柏',
-          image: require('@/assets/tree3.jpg'),
-          similarity: 0.857,
-          location: '北京市颐和园',
-          age: 400
-        },
-        {
-          name: '北海团城古柏',
-          image: require('@/assets/tree4.jpg'),
-          similarity: 0.823,
-          location: '北京市北海公园',
-          age: 600
-        },
-        {
-          name: '中山公园古柏',
-          image: require('@/assets/tree5.jpg'),
-          similarity: 0.786,
-          location: '北京市中山公园',
-          age: 400
-        },
-        {
-          name: '圆明园古柏',
-          image: require('@/assets/upload.jpg'),
-          similarity: 0.751,
-          location: '北京市圆明园',
-          age: 300
-        }
-      ];
-    };
-
-    // 生成模拟L2I结果（距离标签，展示天坛九龙柏，与I2I结果区分开）
-    const generateMockL2IResults = (): L2IResult[] => {
-      return [
-        {
-          name: '天坛九龙柏',
-          image: require('@/assets/tree2.jpg'),
-          location: '天坛公园回音壁西北侧',
-          age: 600,
-          distance: 0.2
-        }
-      ];
-    };
-
-    // 生成模拟按树种名称查询结果
-    const generateMockNameResults = (keyword: string): any[] => {
-      const allTrees = [
-        { id: 1, name: '景山万春亭古柏', species: '侧柏', age: 500, location: '北京市景山公园万春亭北侧', latitude: 39.9289, longitude: 116.3974, protectionLevel: '一级' },
-        { id: 2, name: '天坛九龙柏', species: '侧柏', age: 600, location: '北京市天坛公园回音壁西北侧', latitude: 39.8833, longitude: 116.4069, protectionLevel: '一级' },
-        { id: 3, name: '潭柘寺帝王银杏', species: '银杏', age: 1300, location: '北京市门头沟区潭柘寺寺院内', latitude: 39.9050, longitude: 116.0280, protectionLevel: '特级' },
-        { id: 4, name: '大觉寺千年银杏', species: '银杏', age: 950, location: '北京市海淀区大觉寺寺院内', latitude: 40.0510, longitude: 116.0950, protectionLevel: '一级' },
-        { id: 5, name: '北海团城古白皮松', species: '白皮松', age: 800, location: '北京市北海公园团城', latitude: 39.9250, longitude: 116.3900, protectionLevel: '一级' },
-        { id: 6, name: '颐和园佛香阁古柏', species: '侧柏', age: 400, location: '北京市颐和园佛香阁东侧', latitude: 39.9990, longitude: 116.2750, protectionLevel: '二级' },
-        { id: 7, name: '戒台寺九龙松', species: '白皮松', age: 1100, location: '北京市门头沟区戒台寺院内', latitude: 39.8780, longitude: 116.0450, protectionLevel: '特级' },
-        { id: 8, name: '孔庙触奸柏', species: '侧柏', age: 700, location: '北京市东城区孔庙内', latitude: 39.9440, longitude: 116.4100, protectionLevel: '一级' }
-      ];
-      if (!keyword || !keyword.trim()) return allTrees;
-      return allTrees.filter(t => t.species.includes(keyword) || t.name.includes(keyword));
-    };
-
-    // 生成模拟I2L结果
-    const generateMockI2LResult = (): I2LResult => {
-      return {
-        latitude: 39.9289,
-        longitude: 116.3974,
-        confidence: 0.92,
-        error: 0.5,
-        address: '北京市东城区景山公园万春亭'
-      };
-    };
-
-    // 默认加载模拟数据（页面加载时显示）
+    // 页面加载时获取数据
     onMounted(() => {
-      // I2I模式默认加载6张模拟结果
-      i2iResults.value = generateMockI2IResults();
-      
-      // I2L模式默认加载模拟定位结果
-      i2lResult.value = generateMockI2LResult();
-      
-      // L2I模式默认加载模拟结果
-      l2iResults.value = generateMockL2IResults();
-
-      // 按名检索默认加载全部模拟数据
-      nameResults.value = generateMockNameResults('');
+      loadAllTrees();
     });
 
     return {

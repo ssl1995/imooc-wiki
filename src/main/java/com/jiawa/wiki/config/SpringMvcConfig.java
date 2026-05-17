@@ -31,7 +31,10 @@ public class SpringMvcConfig implements WebMvcConfigurer {
                         "/doc/vote/**",
                         "/doc/find-content/**",
                         "/ebook-snapshot/**",
-                        "/ebook/upload/avatar"
+                        "/ebook/upload/avatar",
+                        "/tree/image/**",
+                        "/tree/list",
+                        "/tree/searchByName"
                 );
 
         registry.addInterceptor(actionInterceptor)
