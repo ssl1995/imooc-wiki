@@ -25,7 +25,7 @@ skinparam class {
 }
 
 ' ===== 定义实体（与上下文一致） =====
-entity "用户信息" as User {
+entity "用户信息表" as User {
     * id : bigint <<PK>>
     --
     用户名 : varchar
@@ -33,14 +33,14 @@ entity "用户信息" as User {
     个人描述 : text
 }
 
-entity "权限角色" as Role {
+entity "权限角色表" as Role {
     * id : bigint <<PK>>
     --
     角色名称 : varchar
     权限描述 : text
 }
 
-entity "树木信息" as Tree {
+entity "树木表" as Tree {
     * id : bigint <<PK>>
     --
     树种名称 : varchar
@@ -50,7 +50,7 @@ entity "树木信息" as Tree {
     经度 : decimal(11,8)
 }
 
-entity "图像信息" as Image {
+entity "图像表" as Image {
     * id : bigint <<PK>>
     --
     tree_id : bigint <<FK>>
