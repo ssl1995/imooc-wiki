@@ -39,8 +39,41 @@
 4、请扫描论文中的4.8到4.11，我需要演示的时候，和论文中已有的图效果保持一致，比如右边返回值列表的列表树种的名称必须保持一致
 以上信息整理完成后，更新到D:\project\java\imooc-wiki\word\第0章\二审\导师面谈准备清单.md
 
-上一步，卡主了，我手动执行了：D:\project\java\imooc-wiki\doc\tree_table.sql
-
-论文中的图4.10：D:\project\java\imooc-wiki\word\第0章\二审\联调\论文\图4.10.png
-现在的图4.10效果：D:\project\java\imooc-wiki\word\第0章\二审\联调\图4.10.png
-这个以位置搜图两处效果不一致，并且要支持输入参数支持搜索半径和返回结果数的查询参数
+因为本次修改对数据库做了一些修改，和我发现了一些问题，所以和论文中的部分有些出入，我们需要判断如何修改：
+第四章文字版：D:\project\java\imooc-wiki\word\第0章\二审\联调\第四章.txt
+图4.4 系统ER图的代码：D:\project\java\imooc-wiki\word\第4章\图4.4-横向版v5-彩色.puml
+表4.3 树木表：
+    Table 4.3 Tree Table
+    字段	类型	长度	描述	主/外键	允许为空
+    id	bigint	-	主键	主	否
+    latitude	decimal	10,8	纬度	-	否
+    longitude	decimal	11,8	经度	-	否
+    age	int	-	树龄	-	是
+    height	varchar	64	树高	-	是
+    species	varchar	256	树种名称	-	否
+    desc	text	-	描述信息	-	否
+    is_delete	tinyint	-	是否逻辑删除	-	否
+    create_time	bigint	-	创建时间	-	否
+    update_time	bigint	-	更新时间	-	否
+1、图4.4ER图需要更新，比如ER图中 权限角色实体 对应图表4.4 权限角色表，那么ER图中 权限角色实体 名称应该叫 权限角色表，其余3个实体也有写出入，需要修改
+2、表4.4根据本次修改，新增了几个字段，也需要相应的修改
+    -- auto-generated definition
+    create table tree
+    (
+        id               varchar(20)  not null comment '古树编号'
+            primary key,
+        name             varchar(100) not null comment '古树名称',
+        species          varchar(50)  null comment '树种',
+        age              int          null comment '树龄',
+        lat              double       null comment '纬度',
+        lon              double       null comment '经度',
+        location         varchar(200) null comment '位置描述',
+        address          varchar(200) null comment '详细地址',
+        protection_level varchar(20)  null comment '保护级别',
+        hash_code        varchar(128) null comment '128位哈希码',
+        extra_json       text         null comment '扩展JSON数据',
+        image_path       varchar(500) null comment '图片路径'
+    )
+        comment '古树名木信息表' charset = utf8mb4;
+3、检查第4章图表的描述和ER图、时序图部分的描述是否一致，是否还需要修改
+上述修改建议整理成也给txt文件，我review
