@@ -36,6 +36,7 @@
               name="file"
               :multiple="false"
               :customRequest="customRequest"
+              :beforeUpload="beforeUploadI2I"
               @change="handleI2IChange"
               class="query-uploader"
             >
@@ -115,6 +116,7 @@
               name="file"
               :multiple="false"
               :customRequest="customRequest"
+              :beforeUpload="beforeUploadI2L"
               @change="handleI2LChange"
               class="query-uploader"
             >
@@ -427,9 +429,23 @@ export default defineComponent({
       { title: '古树名称', dataIndex: 'name', width: 160 },
       { title: '树种', dataIndex: 'species', width: 100 },
       { title: '树龄', dataIndex: 'age', width: 80, align: 'center', customRender: ({ text }: any) => text + '年' },
-      { title: '位置', dataIndex: 'location' },
-      { title: '描述', dataIndex: 'desc', ellipsis: true }
+      { title: '位置', dataIndex: 'location' }
     ];
+
+    // 上传前清空旧文件和预览
+    const beforeUploadI2I = () => {
+      i2iFileList.value = [];
+      i2iImageUrl.value = '';
+      i2iResults.value = [];
+      return true;
+    };
+
+    const beforeUploadI2L = () => {
+      i2lFileList.value = [];
+      i2lImageUrl.value = '';
+      i2lResult.value = null;
+      return true;
+    };
 
     // 处理I2I上传
     const handleI2IChange = (info: UploadChangeParam) => {
@@ -651,6 +667,8 @@ export default defineComponent({
       nameResults,
       nameColumns,
       customRequest,
+      beforeUploadI2I,
+      beforeUploadI2L,
       handleI2IChange,
       handleI2LChange,
       handleI2ISearch,

@@ -6,6 +6,10 @@
     <result column="login_name" jdbcType="VARCHAR" property="loginName" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="password" jdbcType="CHAR" property="password" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="desc" jdbcType="VARCHAR" property="desc" />
+    <result column="per_role_id" jdbcType="BIGINT" property="perRoleId" />
+    <result column="last_login_time" jdbcType="BIGINT" property="lastLoginTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, login_name, `name`, `password`
+    id, login_name, `name`, `password`, age, `desc`, per_role_id, last_login_time
   </sql>
   <select id="selectByExample" parameterType="com.jiawa.wiki.domain.UserExample" resultMap="BaseResultMap">
     select
@@ -99,10 +103,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.jiawa.wiki.domain.User">
-    insert into user (id, login_name, `name`,
-                      `password`)
+    insert into user (id, login_name, `name`, `password`, age, `desc`, per_role_id, last_login_time)
     values (#{id,jdbcType=BIGINT}, #{loginName,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
-            #{password,jdbcType=CHAR})
+            #{password,jdbcType=CHAR}, #{age,jdbcType=INTEGER}, #{desc,jdbcType=VARCHAR},
+            #{perRoleId,jdbcType=BIGINT}, #{lastLoginTime,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.jiawa.wiki.domain.User">
     insert into user
@@ -156,6 +160,18 @@
       <if test="record.password != null">
         `password` = #{record.password,jdbcType=CHAR},
       </if>
+      <if test="record.age != null">
+        age = #{record.age,jdbcType=INTEGER},
+      </if>
+      <if test="record.desc != null">
+        `desc` = #{record.desc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.perRoleId != null">
+        per_role_id = #{record.perRoleId,jdbcType=BIGINT},
+      </if>
+      <if test="record.lastLoginTime != null">
+        last_login_time = #{record.lastLoginTime,jdbcType=BIGINT},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -166,7 +182,11 @@
     set id = #{record.id,jdbcType=BIGINT},
     login_name = #{record.loginName,jdbcType=VARCHAR},
     `name` = #{record.name,jdbcType=VARCHAR},
-    `password` = #{record.password,jdbcType=CHAR}
+    `password` = #{record.password,jdbcType=CHAR},
+    age = #{record.age,jdbcType=INTEGER},
+    `desc` = #{record.desc,jdbcType=VARCHAR},
+    per_role_id = #{record.perRoleId,jdbcType=BIGINT},
+    last_login_time = #{record.lastLoginTime,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -183,6 +203,18 @@
       <if test="password != null">
         `password` = #{password,jdbcType=CHAR},
       </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="desc != null">
+        `desc` = #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="perRoleId != null">
+        per_role_id = #{perRoleId,jdbcType=BIGINT},
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time = #{lastLoginTime,jdbcType=BIGINT},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -190,7 +222,11 @@
     update user
     set login_name = #{loginName,jdbcType=VARCHAR},
         `name` = #{name,jdbcType=VARCHAR},
-        `password` = #{password,jdbcType=CHAR}
+        `password` = #{password,jdbcType=CHAR},
+        age = #{age,jdbcType=INTEGER},
+        `desc` = #{desc,jdbcType=VARCHAR},
+        per_role_id = #{perRoleId,jdbcType=BIGINT},
+        last_login_time = #{lastLoginTime,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

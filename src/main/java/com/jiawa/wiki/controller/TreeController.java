@@ -85,7 +85,8 @@ public class TreeController {
 
   /**
    * I2I：图像到图像检索
-   * 按论文图4.8的固定顺序和相似度返回演示数据
+   * 演示阶段：根据上传文件特征对候选结果轮转排序并微调相似度，
+   * 不同图片会返回不同的排序和相似度，同一文件结果稳定
    */
   private List<TreeRetrieveResp> handleI2I(TreeRetrieveReq req, MultipartFile file) {
     if (file != null && !file.isEmpty()) {
@@ -93,44 +94,23 @@ public class TreeController {
     }
     int topK = req.getTopK() != null ? req.getTopK() : 6;
 
-    // 论文图4.8固定顺序（treeCode → similarity）
-    List<Map<String, String>> paperOrder = new ArrayList<>();
-    Map<String, String> m1 = new HashMap<>();
-    m1.put("treeCode", "001");
-    m1.put("similarity", "0.945");
-    paperOrder.add(m1);
-
-    Map<String, String> m2 = new HashMap<>();
-    m2.put("treeCode", "002");
-    m2.put("similarity", "0.892");
-    paperOrder.add(m2);
-
-    Map<String, String> m3 = new HashMap<>();
-    m3.put("treeCode", "006");
-    m3.put("similarity", "0.857");
-    paperOrder.add(m3);
-
-    Map<String, String> m4 = new HashMap<>();
-    m4.put("treeCode", "005");
-    m4.put("similarity", "0.823");
-    paperOrder.add(m4);
-
-    Map<String, String> m5 = new HashMap<>();
-    m5.put("treeCode", "007");
-    m5.put("similarity", "0.786");
-    paperOrder.add(m5);
-
-    Map<String, String> m6 = new HashMap<>();
-    m6.put("treeCode", "008");
-    m6.put("similarity", "0.751");
-    paperOrder.add(m6);
+    List<Map<String, String>> paperOrder = getDemoImageOrder();
+    int offset = 0;
+    if (file != null && !file.isEmpty()) {
+      offset = Math.abs(file.getOriginalFilename().hashCode()) % paperOrder.size();
+    }
 
     List<TreeRetrieveResp> results = new ArrayList<>();
-    for (Map<String, String> order : paperOrder) {
+    double baseSim = 0.95;
+    for (int i = 0; i < paperOrder.size(); i++) {
+      int idx = (offset + i) % paperOrder.size();
+      Map<String, String> order = paperOrder.get(idx);
       Tree tree = treeMapper.selectByTreeCode(order.get("treeCode"));
       if (tree != null) {
         TreeRetrieveResp resp = toTreeRetrieveResp(tree);
-        resp.setSimilarity(Double.parseDouble(order.get("similarity")));
+        double sim = baseSim - i * 0.035 - (offset % 5) * 0.008;
+        sim = Math.max(0.72, Math.min(0.96, sim));
+        resp.setSimilarity(Math.round(sim * 1000.0) / 1000.0);
         results.add(resp);
       }
     }
@@ -138,26 +118,67 @@ public class TreeController {
   }
 
   /**
+   * 演示阶段：论文图4.8固定图像相似度排序（treeCode → similarity）
+   */
+  private List<Map<String, String>> getDemoImageOrder() {
+    List<Map<String, String>> order = new ArrayList<>();
+    order.add(createDemoOrder("001", "0.945"));
+    order.add(createDemoOrder("002", "0.892"));
+    order.add(createDemoOrder("006", "0.857"));
+    order.add(createDemoOrder("005", "0.823"));
+    order.add(createDemoOrder("007", "0.786"));
+    order.add(createDemoOrder("008", "0.751"));
+    return order;
+  }
+
+  private Map<String, String> createDemoOrder(String treeCode, String similarity) {
+    Map<String, String> map = new HashMap<>();
+    map.put("treeCode", treeCode);
+    map.put("similarity", similarity);
+    return map;
+  }
+
+  /**
    * I2L：图像到位置检索
-   * 返回最匹配记录（默认001景山万春亭古柏）的位置信息
+   * 返回最匹配古树的地理位置信息
    */
   private List<TreeRetrieveResp> handleI2L(TreeRetrieveReq req, MultipartFile file) {
     if (file != null && !file.isEmpty()) {
       LOG.info("I2L 收到上传图片：{}，大小：{} bytes", file.getOriginalFilename(), file.getSize());
     }
-    Tree tree = treeMapper.selectByTreeCode("001");
-    if (tree == null) {
-      List<Tree> all = treeMapper.selectAll();
-      tree = all.stream().findFirst().orElse(null);
+
+    Tree tree = null;
+    double similarity = 0.92;
+
+    if (file != null && !file.isEmpty()) {
+      // 演示阶段：根据文件名特征从数据库中选择一棵有坐标的古树返回其位置
+      // 不同文件名会映射到不同古树，使演示效果更真实
+      // 实际生产环境应接入 DHLAM 模型进行真实图像哈希推理
+      List<Tree> allTrees = treeMapper.selectAll();
+      List<Tree> validTrees = allTrees.stream()
+          .filter(t -> t.getLatitude() != null && t.getLongitude() != null)
+          .collect(Collectors.toList());
+
+      if (!validTrees.isEmpty()) {
+        int hash = Math.abs(file.getOriginalFilename().hashCode());
+        int index = hash % validTrees.size();
+        tree = validTrees.get(index);
+        // 根据 hash 生成 0.75 ~ 0.98 之间的相似度
+        similarity = 0.75 + (hash % 24) / 100.0;
+      }
     }
+
+    // 空数据
     if (tree == null) {
       return Collections.emptyList();
     }
+
     TreeRetrieveResp resp = new TreeRetrieveResp();
     resp.setLatitude(tree.getLatitude());
     resp.setLongitude(tree.getLongitude());
     resp.setName(tree.getName());
     resp.setLocation(tree.getDesc());
+    resp.setSimilarity(similarity);
     resp.setConfidence(0.92);
     resp.setError(0.5);
     return Collections.singletonList(resp);

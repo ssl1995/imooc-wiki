@@ -17,6 +17,12 @@ public class UserSaveReq {
     @Pattern(regexp = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,32}$", message = "【密码】至少包含 数字和英文，长度6-32")
     private String password;
 
+    private Integer age;
+
+    private String desc;
+
+    private Long perRoleId;
+
     public Long getId() {
         return id;
     }
@@ -49,6 +55,30 @@ public class UserSaveReq {
         this.password = password;
     }
 
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public Long getPerRoleId() {
+        return perRoleId;
+    }
+
+    public void setPerRoleId(Long perRoleId) {
+        this.perRoleId = perRoleId;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -59,6 +89,9 @@ public class UserSaveReq {
         sb.append(", loginName=").append(loginName);
         sb.append(", name=").append(name);
         sb.append(", password=").append(password);
+        sb.append(", age=").append(age);
+        sb.append(", desc=").append(desc);
+        sb.append(", perRoleId=").append(perRoleId);
         sb.append("]");
         return sb.toString();
     }

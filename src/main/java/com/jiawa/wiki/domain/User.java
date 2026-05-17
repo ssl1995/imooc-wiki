@@ -9,6 +9,14 @@ public class User {
 
     private String password;
 
+    private Integer age;
+
+    private String desc;
+
+    private Long perRoleId;
+
+    private Long lastLoginTime;
+
     public Long getId() {
         return id;
     }
@@ -41,6 +49,38 @@ public class User {
         this.password = password;
     }
 
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public Long getPerRoleId() {
+        return perRoleId;
+    }
+
+    public void setPerRoleId(Long perRoleId) {
+        this.perRoleId = perRoleId;
+    }
+
+    public Long getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(Long lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -51,6 +91,10 @@ public class User {
         sb.append(", loginName=").append(loginName);
         sb.append(", name=").append(name);
         sb.append(", password=").append(password);
+        sb.append(", age=").append(age);
+        sb.append(", desc=").append(desc);
+        sb.append(", perRoleId=").append(perRoleId);
+        sb.append(", lastLoginTime=").append(lastLoginTime);
         sb.append("]");
         return sb.toString();
     }

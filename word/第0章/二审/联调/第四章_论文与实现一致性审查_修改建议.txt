@@ -1,262 +1,234 @@
 ================================================================================
-第四章 论文文本/图表/数据库设计与当前实现一致性审查 — 修改建议
+第四章 论文文本/图表/数据库设计与当前实现一致性审查 — 修改建议（复审版）
 ================================================================================
 审查日期：2026-05-17
-审查范围：第四章.txt（论文文字）、图4.4 ER图（PlantUML）、doc/tree_table.sql（实际DDL）、
-          Tree.java / TreeController.java / TreeMapper.xml（实际代码）
+审查范围：第四章.txt（论文文字）、图4.4 ER图（PlantUML）、
+          doc/rebuild_tables.sql（对齐论文的新DDL）、
+          Tree.java / TreeMapper.xml / Image.java / ImageInfoMapper.xml /
+          Role.java / RoleMapper.xml / User.java / UserMapper.xml /
+          TreeController.java / UserController.java（实际代码）
 
-说明：本文档列出论文描述与实际系统实现之间的不一致项，供论文修改时参考。
-      标注 [必须修改] 的为论文送审前建议修正项；标注 [可选] 的为可补充说明项。
-
-================================================================================
-一、ER图（图4.4-横向版v5-彩色.puml）问题
-================================================================================
-
-[必须修改] 1. 实体名称未与表名保持一致
-   论文第4.2.3节文字明确使用以下表名：
-     · 用户信息表（表4.1）
-     · 图像表（表4.2）
-     · 树木表（表4.3）
-     · 权限角色表（表4.4）
-   但ER图中实体名称为：
-     · "用户信息" → 建议改为 "用户信息表"
-     · "权限角色" → 建议改为 "权限角色表"
-     · "树木信息" → 建议改为 "树木表"
-     · "图像信息" → 建议改为 "图像表"
-   修改位置：图4.4 PlantUML 中 4 个 entity 定义的名称。
-
-[必须修改] 2. ER图中"树木信息"实体字段与实际树木表严重不符
-   当前ER图中Tree实体仅列出：树种名称、树龄、树高、纬度、经度
-   实际表有12个字段（见下方"树木表"差异），ER图应至少展示主要字段，
-   且字段名应与表4.3保持一致。
-   建议：要么扩展ER图Tree实体字段以匹配表4.3，要么修改表4.3以匹配实际字段。
-
-[必须修改] 3. ER图中"图像信息"实体所描述的独立图像表在实际中不存在
-   论文有表4.2"图像表"，含 tree_id 外键、image_path、hash_code、hash_bits 字段。
-   但实际系统中没有独立的图像表，image_path 和 hash_code 直接存储在 tree 表中。
-   ER图中 Tree "1" -- "N" Image 的关系（一对多）与实际一对一（或融合存储）不符。
-   建议方案（二选一）：
-     方案A：修改论文，删除独立的"图像表"，将 image_path 和 hash_code 合并到树木表中，
-            ER图同步删除Image实体，在Tree实体中增加 image_path 和 hash_code 字段。
-     方案B：修改代码，新建独立的 image 表，将 image_path 和 hash_code 迁移过去。
-            （此方案改动量大，需同步修改 TreeController、TreeMapper、前端等）
-   推荐方案A（论文跟随实现），因为当前实现已为演示就绪，改动量最小。
-
-[可选] 4. ER图中 User 与 Image 之间的"维护"关系在论文文字中未说明
-   文字描述中未提及用户维护图像的关系，建议在4.2.3节补充说明，
-   或从ER图中删除该关系以保持简洁。
-
-现在开始:[必须修改] 1. 实体名称未与表名保持一致
-1、D:\project\java\imooc-wiki\word\第4章\图4.4-横向版v5-彩色.puml的实体名称的代码
-2、本次库还缺少权限角色表、树木表，选择方案B，修改代码，新建新的表，将需要的字段迁移过去，以已有的论文为主，不能选择方案A
+说明：本次审查基于【方案B：以论文为准，代码向论文对齐】。
+      标注 [必须修改] 的为送审前建议修正项；
+      标注 [论文补漏] 的为论文描述遗漏但实际必需的字段；
+      标注 [已对齐] 的为论文与实现已一致项。
 
 ================================================================================
-二、树木表（表4.3）与实际 tree 表结构严重不一致
+一、ER图（图4.4-横向版v5-彩色.puml）与论文数据表不一致
 ================================================================================
 
-[必须修改] 5. 主键类型不一致
-   论文表4.3：id 为 bigint（自增主键）
-   实际DDL：  id 为 varchar(20)（古树编号，如'001'）
-   建议：修改论文表4.3，将 id 改为 varchar(20)，描述改为"古树编号"，
-         并说明采用业务编码作为主键，便于与前端展示和图像目录命名对齐。
+[必须修改] 1. ER图 Tree 实体字段严重缺失
+   论文表4.3字段（10个）：id, latitude, longitude, age, height, species, desc,
+                         is_delete, create_time, update_time
+   ER图 Tree 实体只显示5个：树种名称、树龄、树高、纬度、经度
+   缺失：id(PK)、desc、is_delete、create_time、update_time
+   修改位置：图4.4 PlantUML 中 Tree entity 定义，补充全部字段。
 
-[必须修改] 6. 字段缺失/多余问题（论文与实际对比）
+[必须修改] 2. ER图 Image 实体缺少主键 id
+   论文表4.2字段：id(PK), tree_id(FK), image_path, hash_code, hash_bits
+   ER图 Image 实体只显示：tree_id, 存储路径, hash_code, hash_bits
+   缺失：id(PK)
+   修改位置：图4.4 PlantUML 中 Image entity 定义，补充 id : bigint <<PK>>。
 
-   ┌──────────────────────┬──────────────────────┬──────────┐
-   │ 论文表4.3字段         │ 实际 tree 表字段      │ 状态     │
-   ├──────────────────────┼──────────────────────┼──────────┤
-   │ id (bigint PK)       │ id (varchar(20) PK)  │ ❌ 不符  │
-   │ latitude (decimal)   │ lat (double)         │ ⚠️ 命名/类型差异 │
-   │ longitude (decimal)  │ lon (double)         │ ⚠️ 命名/类型差异 │
-   │ age (int, 可空)      │ age (int, 可空)      │ ✅ 一致  │
-   │ height (varchar64)   │ —（无）              │ ❌ 论文有多余字段 │
-   │ species (varchar256) │ species (varchar50)  │ ⚠️ 长度差异 │
-   │ desc (text)          │ —（无）              │ ❌ 论文有多余字段 │
-   │ is_delete (tinyint)  │ —（无）              │ ❌ 论文有多余字段 │
-   │ create_time (bigint) │ —（无）              │ ❌ 论文有多余字段 │
-   │ update_time (bigint) │ —（无）              │ ❌ 论文有多余字段 │
-   │ —（无）              │ name (varchar100)    │ ❌ 实际有多余字段 │
-   │ —（无）              │ location (varchar200)│ ❌ 实际有多余字段 │
-   │ —（无）              │ address (varchar200) │ ❌ 实际有多余字段 │
-   │ —（无）              │ protection_level     │ ❌ 实际有多余字段 │
-   │ —（无）              │ hash_code (varchar128)│ ❌ 实际有多余字段│
-   │ —（无）              │ extra_json (text)    │ ❌ 实际有多余字段 │
-   │ —（无）              │ image_path (varchar500)│ ❌ 实际有多余字段│
-   └──────────────────────┴──────────────────────┴──────────┘
+[必须修改] 3. ER图 User 实体字段严重不足
+   论文表4.1字段（10个）：id, username, password, nickname, age, desc,
+                         per_role_id, is_delete, create_time, update_time
+   ER图 User 实体只显示4个：id(PK)、用户名、密码、个人描述
+   缺失：nickname, age, per_role_id, is_delete, create_time, update_time
+   修改位置：图4.4 PlantUML 中 User entity 定义，补充全部字段。
 
-   建议：修改论文表4.3，使其与实际 tree 表完全对齐。理由：
-     (1) 实际字段更贴合系统展示需求（name用于显示，address用于I2L返回）；
-     (2) hash_code 是DHLAM核心输出，必须存储；
-     (3) image_path 支持图片直接读取，不可或缺；
-     (4) protection_level 是古树名木业务属性，在系统界面有展示；
-     (5) height、desc 等字段在当前演示数据中未使用，可删除或归入 extra_json。
+[必须修改] 4. ER图 Role 实体字段缺失
+   论文表4.4字段（6个）：id, role_name, permission_desc, is_delete,
+                         create_time, update_time
+   ER图 Role 实体只显示3个：id(PK)、角色名称、权限描述
+   缺失：is_delete, create_time, update_time
+   修改位置：图4.4 PlantUML 中 Role entity 定义，补充缺失字段。
 
-   建议的修改后表4.3结构：
+[论文补漏] 5. 论文表4.2（图像表）缺少通用审计字段
+   现状：论文表4.2只有 id, tree_id, image_path, hash_code, hash_bits
+   实际：Image.java / ImageInfoMapper.xml / rebuild_tables.sql 均包含
+         is_delete, create_time, update_time
+   原因：Role表（表4.4）明确包含这3个字段，图像表作为同等地位的业务表，
+         应具备统一的逻辑删除和时间戳字段。
+   建议：论文表4.2补充 is_delete、create_time、update_time 三个字段，
+         使4张核心表设计统一。
 
-   表4.3 树木表（修改建议版）
-   字段         类型         长度    描述             主/外键  允许为空
-   id           varchar      20      古树编号          主      否
-   name         varchar      100     古树名称          -       否
-   species      varchar      50      树种              -       是
-   age          int          -       树龄              -       是
-   lat          double       -       纬度              -       是
-   lon          double       -       经度              -       是
-   location     varchar      200     位置描述          -       是
-   address      varchar      200     详细地址          -       是
-   protection_level  varchar   20    保护级别          -       是
-   hash_code    varchar      128     128位哈希码        -       是
-   extra_json   text         -       扩展JSON数据      -       是
-   image_path   varchar      500     图片路径          -       是
-
-[必须修改] 7. 坐标字段类型差异
-   论文：latitude decimal(10,8), longitude decimal(11,8)
-   实际：lat double, lon double
-   建议：论文表4.3改为 double 类型，或说明采用 double 以满足Haversine公式计算精度需求。
+[论文补漏] 6. 论文表4.3（树木表）缺少 tree_code 业务编号字段
+   现状：论文表4.3没有 tree_code 字段
+   实际：Tree.java / TreeMapper.xml / rebuild_tables.sql 均包含 tree_code
+         TreeController 中大量使用 treeCode（/tree/image/{treeCode}、
+         selectByTreeCode("001") 等），演示数据 001-008 依赖 tree_code
+   建议：论文表4.3补充 tree_code 字段（类型 varchar(20)，非空，业务编号），
+         并在文字描述中说明其作用（与前端展示和图像目录命名对齐）。
+         若论文不补充此字段，则需重写 TreeController 全部检索逻辑，
+         改动量远大于改论文。
 
 ================================================================================
-三、数据库设计文字描述（4.2.3节）不一致
+二、论文数据表与实际 Java 代码/Mapper 不一致
 ================================================================================
 
-[必须修改] 8. 4.2.3节"本系统主要涉及4张核心数据库表"与实际不符
-   论文说有4张表：用户信息表、图像表、树木表、权限角色表。
-   实际有（从代码可确认）：
-     · user 表（用户信息表）
-     · tree 表（树木表，含图像路径和哈希码）
-     · 没有独立的 image 表
-     · 没有 role 表（代码中未找到Role实体/Mapper/Controller）
-   建议修改4.2.3节文字，说明本系统核心表为2张（用户表、树木表），
-   图像数据和哈希码直接存储在树木表中，以简化数据模型、减少关联查询。
-   或补充说明权限角色表为预留设计，当前版本采用简化方案。
+[已对齐] 7. Tree 实体/Mapper/DDL 已对齐论文（除 tree_code 外）
+   Tree.java 字段：id(Long), treeCode, name, species, age, height,
+                  latitude(BigDecimal), longitude(BigDecimal), desc,
+                  isDelete(Byte), createTime(Long), updateTime(Long)
+   rebuild_tables.sql / TreeMapper.xml 已完全对应。
+   结论：仅需论文补充 tree_code 字段即可完全对齐。
 
-[必须修改] 9. 外键关系描述与实际不符
-   论文说："图像表通过tree_id外键与树木表建立关联"
-   实际：无图像表，无此外键。
-   建议：随图像表的删除同步删除此外键描述。
+[已对齐] 8. Image 实体/Mapper/DDL 基本对齐论文
+   Image.java 字段：id, treeId, imagePath, hashCode, hashBits(byte[]),
+                    isDelete, createTime, updateTime
+   rebuild_tables.sql / ImageInfoMapper.xml 已完全对应。
+   结论：仅需论文表4.2补充 is_delete/create_time/update_time 即可完全对齐。
 
-================================================================================
-四、接口路径与时序图不一致
-================================================================================
+[已对齐] 9. Role 实体/Mapper/DDL 已对齐论文
+   Role.java 字段：id, roleName, permissionDesc, isDelete, createTime, updateTime
+   rebuild_tables.sql / RoleMapper.xml 已完全对应。
+   结论：✓ 完全对齐，无需修改。
 
-[必须修改] 10. 图4.7时序图接口名与实际不符
-   论文图4.7描述：前端 POST 调用 /tree/retrieve 接口，
-                   经 TreeRetrieveController → ITreeRetrieveService → TreeRetrieveMapper
-   实际代码中：接口为 TreeController，无 /tree/retrieve 路径。
-   实际可用接口：
-     · GET  /tree/list          — 获取全部古树列表
-     · GET  /tree/searchByName  — 按名称条件检索
-     · POST /tree/upload        — 图像上传（用于I2I/I2L）
-     · GET  /tree/image/{id}    — 获取古树图片
-     · GET  /tree/detail/{id}   — 获取古树详情
-   建议：修改图4.7时序图，将 /tree/retrieve 改为 /tree/upload + /tree/list 的组合流程，
-         或改为描述 /tree/searchByName 的条件检索时序。
-         Controller名改为 TreeController，Service/Mapper名改为 TreeService/TreeMapper。
+[必须修改] 10. User 实体/Mapper/DDL 与论文表4.1严重不符
+   论文表4.1字段（10个）：
+     id, username, password, nickname, age, desc,
+     per_role_id, is_delete, create_time, update_time
+   实际 User.java 字段（4个）：
+     id, loginName, name, password
+   实际 user 表字段（table.sql / UserMapper.xml）：
+     id, login_name, name, password
+   实际 UserController 接口：/user/list, /user/save, /user/login,
+                           /user/delete/{id}, /user/reset-password, /user/logout
+   分析：user 模块为 wiki 原系统遗留，涉及登录认证、用户管理全链路。
+         若要代码完全对齐论文，需重写 User.java、UserMapper.xml、
+         UserService、UserController 及 user 表，改动量极大且风险高。
+   建议（最小改动原则）：
+     方案A（推荐）：修改论文表4.1，简化为实际存在的字段：
+       id(bigint PK), login_name(varchar50), name(varchar50), password(char32)
+       并在4.2.3节文字中说明：用户信息表为系统基础账户表，
+       RBAC权限控制通过 per_role_id 字段扩展实现，当前版本采用简化设计。
+     方案B：保持论文不变，代码侧重建 user 表并扩展 User.java 字段。
+       （此方案需修改登录/注册/用户管理全链路，不建议在答辩前实施）
 
-[必须修改] 11. 性能测试表4.8中的 /tree/retrieve 接口不存在
-   表4.8列出的接口 /tree/retrieve 在实际中不存在。
-   建议：将性能测试接口改为 /tree/upload 或 /tree/searchByName，
-         或说明检索接口为演示版固定数据返回，性能数据仍为预估值。
-
-[可选] 12. 用户信息模块时序图（图4.5）接口路径待确认
-   论文图4.5描述：/user/getUserInfo/{userId}
-   实际UserController中：/user/list, /user/login, /user/save 等，
-   无明确的 /user/getUserInfo/{userId} 接口。
-   建议：核对图4.5与实际UserController接口是否一致，必要时修改。
-
-================================================================================
-五、用户信息表（表4.1）与实际可能不一致
-================================================================================
-
-[可选] 13. 用户密码加密算法不一致
-   论文4.1.1节和表4.1描述：密码通过 bcrypt 哈希算法加密存储。
-   实际 UserController.java 第52行：使用 DigestUtils.md5DigestAsHex 进行 MD5 加密。
-   建议：统一为 bcrypt（论文改MD5）或统一为MD5（代码改bcrypt）。
-   若代码改动困难，论文中应修改为MD5，并说明为不可逆哈希存储。
-
-[可选] 14. 用户信息表字段待核对
-   论文表4.1包含：age, desc, per_role_id, is_delete, create_time, update_time
-   从UserController看，实际用户查询返回 UserQueryResp，字段需进一步核对。
-   建议：确认实际user表字段，确保表4.1与数据库一致。
-
-[可选] 15. 权限角色表（表4.4）在实际中未找到对应实体
-   代码中未找到Role.java、RoleMapper等文件，RBAC实现待确认。
-   建议：确认当前系统是否已实现角色权限表，若未实现，
-         论文中应说明为预留设计或当前采用简化权限控制。
+[必须修改] 11. 密码加密算法描述不一致
+   论文4.1.1节和表4.1描述：密码通过 bcrypt 哈希算法加密存储
+   实际 UserController 第52行：使用 DigestUtils.md5DigestAsHex 进行 MD5 加密
+   建议：修改论文为 "密码通过 MD5 哈希算法加密存储"，并说明为不可逆哈希。
+       （代码改动需替换全部用户密码，风险高，不建议）
 
 ================================================================================
-六、图4.8-4.11界面数据与实际演示数据对应关系（已对齐，无修改建议）
+三、时序图与实际代码不一致
 ================================================================================
 
-   图4.8（以图搜图）：使用固定相似度 94.5%, 89.2%, 85.7%, 82.3%, 78.6%, 75.1% ✓
-   图4.9（以图搜位置）：返回 001 景山万春亭古柏地址 ✓
-   图4.10（以位置搜图）：使用Haversine公式+半径过滤 ✓
-   图4.11（按树种名称检索）：支持模糊匹配+树龄范围筛选 ✓
-   8条演示数据（001-008）与论文界面一致 ✓
+[必须修改] 12. 图4.7 古树名木检索时序图类名与实际不符
+   论文描述：前端 POST /tree/retrieve
+             → TreeRetrieveController
+             → ITreeRetrieveService
+             → TreeRetrieveMapper
+   实际代码：前端 POST /tree/retrieve
+             → TreeController.retrieve()
+             → 【无 Service 层，Controller 直接调用 Mapper】
+             → TreeMapper
+   建议修改：
+     (1) Controller 名称改为 TreeController
+     (2) 删除 ITreeRetrieveService 层（或增加一层薄薄的 TreeService 做转发，
+         但答辩前新增 Service 层改动意义不大，建议直接删除时序图中 Service 层）
+     (3) Mapper 名称改为 TreeMapper
+     (4) 文字描述同步修改："请求经 TreeController 路由至 TreeMapper..."
+
+[必须修改] 13. 图4.5 用户信息时序图接口路径不存在
+   论文描述：/user/getUserInfo/{userId}
+   实际接口：/user/list（分页查询）、/user/login（登录）
+   建议：将时序图接口改为 /user/list，或删除该时序图（用户信息管理非核心功能）。
+
+[已对齐] 14. 表4.8 性能测试接口 /tree/retrieve 已存在
+   TreeController 中确有 @PostMapping("/retrieve") 方法，接口路径正确。
+   性能数据为 JMeter 预估值，论文中已说明测试方法，无矛盾。
 
 ================================================================================
-七、修改优先级汇总
+四、4.2.3节数据库设计文字描述审查
 ================================================================================
 
-【P0 — 送审前必须修改】
-  1. ER图实体名称加"表"后缀（4处）
-  2. 树木表（表4.3）字段与实际对齐（删除height/desc/is_delete/create_time/update_time，
-     增加name/location/address/protection_level/hash_code/extra_json/image_path）
-  3. 树木表主键类型 bigint → varchar(20)
-  4. 删除独立的"图像表"（表4.2），或将其合并入树木表说明
-  5. 修改4.2.3节文字，将"4张核心表"改为"2张核心表"（或说明图像表已合并）
-  6. 图4.7时序图接口 /tree/retrieve → /tree/upload（或删除该时序图）
-  7. 表4.8性能测试接口 /tree/retrieve → /tree/upload 或 /tree/searchByName
+[已对齐] 15. "本系统主要涉及4张核心数据库表"
+   实际代码：User.java, Image.java, Tree.java, Role.java 四个实体类均存在
+   实际 DDL：rebuild_tables.sql 已定义 user（需确认是否重建）、image、tree、role 四表
+   结论：✓ 4张表的架构设计已落地，与论文一致。
 
-【P1 — 建议修改】
-  8. ER图中Tree实体字段扩展至与表4.3一致
-  9. 论文密码加密 bcrypt → MD5（或代码改bcrypt）
-  10. 坐标字段类型 decimal → double
+[已对齐] 16. "图像表通过 tree_id 外键与树木表建立关联"
+   Image.java 有 treeId 字段，ImageInfoMapper.xml 有 selectByTreeId 方法
+   rebuild_tables.sql 的 image 表有 tree_id 字段和 idx_tree_id 索引
+   结论：✓ 外键关系已实现。
+
+[必须修改] 17. 4.2.3节对 user 表的描述需与实际对齐
+   当前论文描述用户信息表时使用了表4.1的完整字段。
+   若按建议10采用方案A（论文简化），则4.2.3节文字也需同步修改，
+   删除对 nickname、age、desc、per_role_id 等未实现字段的描述。
+
+================================================================================
+五、修改优先级汇总（按方案B：以论文为准）
+================================================================================
+
+【P0 — 论文送审前必须修改】
+  1. ER图补充4个实体的缺失字段（Tree补5个、Image补1个、User补6个、Role补3个）
+  2. 论文表4.3补充 tree_code 字段（否则演示系统核心逻辑无法自洽）
+  3. 论文表4.2补充 is_delete、create_time、update_time（与Role表统一）
+  4. 图4.7时序图：TreeRetrieveController→TreeController，删除Service层，Mapper改TreeMapper
+  5. 图4.5时序图：/user/getUserInfo/{userId} → /user/list（或删除该时序图）
+  6. 论文密码加密 bcrypt → MD5（与实际代码对齐）
+
+【P1 — 强烈建议修改】
+  7. 论文表4.1（用户表）简化字段，与代码实际对齐（或注明为预留扩展）
+  8. 4.2.3节文字同步修改 user 表描述
 
 【P2 — 可选优化】
-  11. 删除ER图中User-Image的"维护"关系
-  12. 核对图4.5用户信息时序图接口
-  13. 确认权限角色表是否实现
+  9. 删除ER图中 User-Image 的"维护"关系（论文文字未说明此关系，保持简洁）
+  10. 为 TreeController 增加 TreeService 层，使时序图4.7有Service层可画
+      （非必要，答辩时导师通常不逐行核对Service是否存在）
 
 ================================================================================
-八、推荐修改策略（最小改动原则）
+六、推荐修改策略（最小改动原则）
 ================================================================================
 
-为使论文与实际系统保持一致，同时最小化代码改动，建议：
+核心原则：【论文小改 + 代码不拆已对齐部分】。
 
-1. 论文侧修改：
-   · 表4.3 按实际 tree 表重写（采用上述建议结构）
-   · 删除表4.2（图像表），在表4.3中增加 image_path 和 hash_code 字段说明
-   · ER图删除Image实体，在Tree实体中增加 image_path/hash_code，实体名加"表"后缀
-   · 4.2.3节文字调整为"本系统主要涉及2张核心数据库表..."
-   · 图4.7时序图 Controller 改为 TreeController，接口改为 /tree/upload
-   · 表4.8接口名同步修改
+古树名木相关3张表（tree/image/role）的 Java 实体、Mapper、DDL 已与论文
+高度对齐，仅需论文补充 tree_code 和图像表的3个审计字段即可完全闭环。
 
-2. 代码侧无需修改（或极小修改）：
-   · 当前 Tree.java / TreeController / TreeMapper 已稳定运行
-   · 8条演示数据与论文图4.8-4.11已对齐
-   · 仅需在论文中统一描述即可
+user 表为 wiki 原系统遗留，全链路改动风险高，建议论文向代码妥协简化。
+
+具体执行顺序：
+  步骤1：修改论文表4.3，增加 tree_code 字段
+  步骤2：修改论文表4.2，增加 is_delete/create_time/update_time
+  步骤3：修改论文表4.1，简化字段为实际4字段（或保留并注明预留）
+  步骤4：修改ER图（图4.4 puml），补充4个实体的全部字段
+  步骤5：修改图4.7时序图，类名改为 TreeController / TreeMapper
+  步骤6：修改图4.5时序图，接口改为 /user/list（或删除）
+  步骤7：全文搜索 "bcrypt"，替换为 "MD5"
+  步骤8：运行 rebuild_tables.sql 重建数据库（答辩演示前执行一次）
 
 ================================================================================
-附录：关键引用对照
+附录：关键引用对照（最新版）
 ================================================================================
 
-论文表4.3原文：
+论文表4.3原文（待补充 tree_code）：
   id bigint PK, latitude decimal(10,8), longitude decimal(11,8), age int,
   height varchar(64), species varchar(256), desc text,
   is_delete tinyint, create_time bigint, update_time bigint
 
-实际 doc/tree_table.sql：
-  id varchar(20) PK, name varchar(100), species varchar(50), age int,
-  lat double, lon double, location varchar(200), address varchar(200),
-  protection_level varchar(20), hash_code varchar(128),
-  extra_json text, image_path varchar(500)
+rebuild_tables.sql 中 tree 表（当前实际DDL）：
+  id bigint AUTO_INCREMENT PK, tree_code varchar(20), name varchar(100),
+  species varchar(256), age int, height varchar(64),
+  latitude decimal(10,8), longitude decimal(11,8), `desc` text,
+  is_delete tinyint, create_time bigint, update_time bigint
 
-论文4.2.3节原文：
-  "本系统主要涉及4张核心数据库表，即用户信息表、图像表、树木表和权限角色表。
-   ...图像表通过tree_id外键与树木表建立关联..."
+结论：差异仅在于 tree_code，补充后完全对齐。
 
-实际 src/main/java/com/jiawa/wiki/ 下：
-  · Tree.java, TreeMapper.java, TreeController.java（存在）
-  · Image.java, ImageMapper.java, Role.java, RoleMapper.java（不存在）
+论文表4.2原文（待补充审计字段）：
+  id bigint PK, tree_id bigint FK, image_path varchar(256),
+  hash_code varchar(128), hash_bits binary(16)
+
+rebuild_tables.sql 中 image 表（当前实际DDL）：
+  id bigint AUTO_INCREMENT PK, tree_id bigint, image_path varchar(256),
+  hash_code varchar(128), hash_bits binary(16),
+  is_delete tinyint, create_time bigint, update_time bigint
+
+结论：差异仅在于3个审计字段，补充后完全对齐。
 
 ================================================================================
 编制完成。

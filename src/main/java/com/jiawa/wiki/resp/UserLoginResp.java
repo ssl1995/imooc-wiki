@@ -13,6 +13,8 @@ public class UserLoginResp {
 
     private String name;
 
+    private Long perRoleId;
+
     private String token;
 
 
@@ -48,12 +50,21 @@ public class UserLoginResp {
         this.name = name;
     }
 
+    public Long getPerRoleId() {
+        return perRoleId;
+    }
+
+    public void setPerRoleId(Long perRoleId) {
+        this.perRoleId = perRoleId;
+    }
+
     @Override
     public String toString() {
         return "UserLoginResp{" +
                 "id=" + id +
                 ", loginName='" + loginName + '\'' +
                 ", name='" + name + '\'' +
+                ", perRoleId=" + perRoleId +
                 ", token='" + token + '\'' +
                 '}';
     }

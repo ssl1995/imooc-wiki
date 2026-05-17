@@ -69,10 +69,16 @@
       <a-form-item label="密码" v-show="!currentUser.id">
         <a-input v-model:value="currentUser.password" type="password"/>
       </a-form-item>
+      <a-form-item label="年龄">
+        <a-input v-model:value="currentUser.age" type="number"/>
+      </a-form-item>
+      <a-form-item label="用户介绍">
+        <a-input v-model:value="currentUser.desc"/>
+      </a-form-item>
       <a-form-item label="角色">
-        <a-select v-model:value="currentUser.role" style="width: 100%;">
-          <a-select-option value="admin">管理员</a-select-option>
-          <a-select-option value="user">普通用户</a-select-option>
+        <a-select v-model:value="currentUser.perRoleId" style="width: 100%;">
+          <a-select-option :value="1">管理员</a-select-option>
+          <a-select-option :value="2">普通用户</a-select-option>
         </a-select>
       </a-form-item>
     </a-form>
@@ -133,12 +139,8 @@ export default defineComponent({
       },
       {
         title: '角色',
-        dataIndex: 'role',
-        width: 100,
-        customRender: ({ text }: { text: string }) => {
-          const roleMap: Record<string, string> = { 'admin': '管理员', 'user': '普通用户', 'operator': '操作员' };
-          return roleMap[text] || '普通用户';
-        }
+        dataIndex: 'roleName',
+        width: 100
       },
       {
         title: '用户介绍',
@@ -149,7 +151,13 @@ export default defineComponent({
       {
         title: '上次登录',
         dataIndex: 'lastLoginTime',
-        width: 170
+        width: 170,
+        customRender: ({ text }: { text: any }) => {
+          if (!text) return '-';
+          const ts = typeof text === 'string' ? Number(text) : text;
+          const date = new Date(ts);
+          return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`;
+        }
       },
       {
         title: '操作',
@@ -182,27 +190,8 @@ export default defineComponent({
             return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`;
           };
           
-          const mockUsers = [
-            { id: 1, loginName: 'admin', name: '系统管理员', age: 35, role: 'admin', desc: '系统管理员账号', lastLoginTime: formatTime(now) },
-            { id: 2, loginName: 'zhangsan', name: '张三', age: 28, role: 'user', desc: '同学1', lastLoginTime: '2026-04-08 09:15:42' },
-            { id: 3, loginName: 'lisi', name: '李四', age: 32, role: 'user', desc: '同学2', lastLoginTime: '2026-04-07 16:20:18' },
-            { id: 4, loginName: 'wangwu', name: '王五', age: 26, role: 'user', desc: '同学3', lastLoginTime: '2026-04-06 11:45:33' },
-            { id: 5, loginName: 'zhaoliu', name: '赵六', age: 24, role: 'user', desc: '同学4', lastLoginTime: '2026-04-05 08:30:12' },
-            { id: 6, loginName: 'sunqi', name: '孙七', age: 29, role: 'operator', desc: '操作员1', lastLoginTime: '2026-04-04 17:25:56' },
-            { id: 7, loginName: 'zhouba', name: '周八', age: 27, role: 'user', desc: '同学5', lastLoginTime: '2026-04-03 14:18:29' },
-            { id: 8, loginName: 'wujiu', name: '吴九', age: 25, role: 'user', desc: '同学6', lastLoginTime: '2026-04-02 10:55:47' },
-            { id: 9, loginName: 'zhengshi', name: '郑十', age: 26, role: 'user', desc: '同学7', lastLoginTime: '2026-04-01 08:22:15' },
-            { id: 10, loginName: 'chengyi', name: '程一', age: 31, role: 'operator', desc: '操作员2', lastLoginTime: '2026-03-31 19:40:33' },
-            { id: 11, loginName: 'xueer', name: '薛二', age: 25, role: 'user', desc: '同学8', lastLoginTime: '2026-03-30 15:12:58' },
-            { id: 12, loginName: 'lisan', name: '李三', age: 28, role: 'user', desc: '同学9', lastLoginTime: '2026-03-29 11:35:21' },
-            { id: 13, loginName: 'wusi', name: '吴四', age: 30, role: 'user', desc: '同学10', lastLoginTime: '2026-03-28 09:48:06' },
-            { id: 14, loginName: 'zhengwu', name: '郑五', age: 27, role: 'user', desc: '同学11', lastLoginTime: '2026-03-27 16:55:42' },
-            { id: 15, loginName: 'wangliu', name: '王六', age: 29, role: 'operator', desc: '操作员3', lastLoginTime: '2026-03-26 13:28:19' },
-            { id: 16, loginName: 'fengqi', name: '冯七', age: 26, role: 'user', desc: '同学12', lastLoginTime: '2026-03-25 07:15:55' }
-          ];
-          const backendUsers = data.content.list || [];
-          // 如果后端有数据，合并；否则使用模拟数据
-          users.value = backendUsers.length > 0 ? [...mockUsers, ...backendUsers.filter((u: any) => u.loginName !== 'admin')] : mockUsers;
+          const list = data.content.list || [];
+          users.value = list;
 
           // 重置分页按钮
           pagination.value.current = params.page;

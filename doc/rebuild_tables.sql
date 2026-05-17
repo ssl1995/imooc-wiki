@@ -4,8 +4,8 @@
 -- ============================================================
 
 -- 权限角色表（表4.4）
-DROP TABLE IF EXISTS role;
-CREATE TABLE role (
+DROP TABLE IF EXISTS per_role;
+CREATE TABLE per_role (
     id BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键',
     role_name VARCHAR(256) NOT NULL COMMENT '角色名称',
     permission_desc TEXT COMMENT '权限描述',
@@ -15,11 +15,39 @@ CREATE TABLE role (
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='权限角色表';
 
--- 插入默认角色数据
-INSERT INTO role (id, role_name, permission_desc, is_delete, create_time, update_time) VALUES
+-- 插入默认角色数据（仅2种：管理员、普通用户）
+INSERT INTO per_role (id, role_name, permission_desc, is_delete, create_time, update_time) VALUES
 (1, '管理员', '拥有系统全部操作权限，包括用户管理、古树名木管理、权限分配等', 0, 1715000000000, 1715000000000),
-(2, '普通用户', '可执行古树名木检索、图像上传、个人信息管理等操作', 0, 1715000000000, 1715000000000),
-(3, '操作员', '可执行古树名木数据录入、修改及图像上传等操作', 0, 1715000000000, 1715000000000);
+(2, '普通用户', '可执行古树名木检索、图像上传、个人信息管理等操作', 0, 1715000000000, 1715000000000);
+
+-- 用户信息表（表4.1）
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+    `id` BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+    `login_name` VARCHAR(50) NOT NULL COMMENT '登陆名',
+    `name` VARCHAR(50) COMMENT '昵称/名称',
+    `password` CHAR(32) NOT NULL COMMENT '密码（MD5加密）',
+    `age` INT COMMENT '年龄',
+    `desc` TEXT COMMENT '用户介绍',
+    `per_role_id` BIGINT COMMENT '简易权限角色',
+    `last_login_time` BIGINT COMMENT '上次登录时间戳',
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `login_name_unique` (`login_name`),
+    INDEX `idx_role_id` (`per_role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户信息表';
+
+-- 插入演示用户数据（与图4.6界面一致）
+INSERT INTO `user` (id, login_name, `name`, `password`, age, `desc`, per_role_id, last_login_time) VALUES
+(1, 'admin', '系统管理员', '5ca679820249600c173480ba769126ed', 35, '系统管理员账号', 1, 1716000000000),
+(2, 'zhangsan', '张三', '5ca679820249600c173480ba769126ed', 28, '同学1', 2, 1714000000000),
+(3, 'lisi', '李四', '5ca679820249600c173480ba769126ed', 32, '同学2', 2, 1713000000000),
+(4, 'wangwu', '王五', '5ca679820249600c173480ba769126ed', 26, '同学3', 2, 1712000000000),
+(5, 'zhaoliu', '赵六', '5ca679820249600c173480ba769126ed', 24, '同学4', 2, 1711000000000),
+(6, 'sunqi', '孙七', '5ca679820249600c173480ba769126ed', 29, '操作员1', 2, 1710000000000),
+(7, 'zhouba', '周八', '5ca679820249600c173480ba769126ed', 27, '同学5', 2, 1709000000000),
+(8, 'wujiu', '吴九', '5ca679820249600c173480ba769126ed', 25, '同学6', 2, 1708000000000),
+(9, 'zhengshi', '郑十', '5ca679820249600c173480ba769126ed', 26, '同学7', 2, 1707000000000),
+(10, 'chengyi', '程一', '5ca679820249600c173480ba769126ed', 31, '同学8', 2, 1706000000000);
 
 -- 图像表（表4.2）
 DROP TABLE IF EXISTS image;

@@ -113,17 +113,21 @@ create table `content`
 drop table if exists `user`;
 create table `user`
 (
-    `id`         bigint      not null comment 'ID',
-    `login_name` varchar(50) not null comment '登陆名',
-    `name`       varchar(50) comment '昵称',
-    `password`   char(32)    not null comment '密码',
+    `id`              bigint      not null auto_increment comment 'ID',
+    `login_name`      varchar(50) not null comment '登陆名',
+    `name`            varchar(50) comment '昵称',
+    `password`        char(32)    not null comment '密码',
+    `age`             int comment '年龄',
+    `desc`            text comment '用户介绍',
+    `per_role_id`     bigint comment '角色ID（关联role表）',
+    `last_login_time` bigint comment '上次登录时间戳',
     primary key (`id`),
     unique key `login_name_unique` (`login_name`)
 ) engine = innodb
   default charset = utf8mb4 comment ='用户';
 
-insert into `user` (id, `login_name`, `name`, `password`)
-values (1, 'admin', '管理员', 'e70e2222a9d67c4f2eae107533359aa4');
+insert into `user` (id, `login_name`, `name`, `password`, age, `desc`, per_role_id, last_login_time)
+values (1, 'admin', '系统管理员', 'e70e2222a9d67c4f2eae107533359aa4', 35, '系统管理员账号', 1, 1716000000000);
 
 # 更新文档数、阅读数、点赞数
 update ebook t1 ,(select ebook_id, count(1) as doc_count, sum(view_count) as view_count, sum(vote_count) as vote_count

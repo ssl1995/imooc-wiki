@@ -2,10 +2,12 @@ package com.jiawa.wiki.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.jiawa.wiki.domain.Role;
 import com.jiawa.wiki.domain.User;
 import com.jiawa.wiki.domain.UserExample;
 import com.jiawa.wiki.exception.BusinessException;
 import com.jiawa.wiki.exception.BusinessExceptionCode;
+import com.jiawa.wiki.mapper.PermissionRoleMapper;
 import com.jiawa.wiki.mapper.UserMapper;
 import com.jiawa.wiki.req.UserLoginReq;
 import com.jiawa.wiki.req.UserQueryReq;
@@ -36,6 +38,9 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Resource
+    private PermissionRoleMapper permissionRoleMapper;
+
+    @Resource
     private SnowFlake snowFlake;
 
     public PageResp<UserQueryResp> list(UserQueryReq req) {
@@ -51,18 +56,17 @@ public class UserServiceImpl implements UserService {
         LOG.info("总行数：{}", pageInfo.getTotal());
         LOG.info("总页数：{}", pageInfo.getPages());
 
-        // List<UserResp> respList = new ArrayList<>();
-        // for (User user : userList) {
-        //     // UserResp userResp = new UserResp();
-        //     // BeanUtils.copyProperties(user, userResp);
-        //     // 对象复制
-        //     UserResp userResp = CopyUtil.copy(user, UserResp.class);
-        //
-        //     respList.add(userResp);
-        // }
-
-        // 列表复制
         List<UserQueryResp> list = CopyUtil.copyList(userList, UserQueryResp.class);
+
+        // 关联查询角色名称
+        for (UserQueryResp resp : list) {
+            if (resp.getPerRoleId() != null) {
+                Role role = permissionRoleMapper.selectById(resp.getPerRoleId());
+                if (role != null) {
+                    resp.setRoleName(role.getRoleName());
+                }
+            }
+        }
 
         PageResp<UserQueryResp> pageResp = new PageResp<>();
         pageResp.setTotal(pageInfo.getTotal());
@@ -125,16 +129,22 @@ public class UserServiceImpl implements UserService {
         User userDB = selectByLoginName(req.getLoginName());
 
         if (ObjectUtils.isEmpty(userDB)) {
-            LOG.info("用户名不存在,{}", req.getLoginName());
+            LOG.info("用户名不存在, {}", req.getLoginName());
             // 用户名或密码错误
             throw new BusinessException(BusinessExceptionCode.LOGIN_USER_ERROR);
         } else {
             if (Objects.equals(userDB.getPassword(), req.getPassword())) {
-                // 登录成功
-                return CopyUtil.copy(userDB, UserLoginResp.class);
+                // 登录成功，更新上次登录时间
+                User updateUser = new User();
+                updateUser.setId(userDB.getId());
+                updateUser.setLastLoginTime(System.currentTimeMillis());
+                userMapper.updateByPrimaryKeySelective(updateUser);
+
+                UserLoginResp resp = CopyUtil.copy(userDB, UserLoginResp.class);
+                return resp;
             } else {
                 // 密码不对
-                LOG.info("密码不对,输入密码：{}，数据库密码：{}", req.getPassword(), userDB.getPassword());
+                LOG.info("密码不对, 输入密码：{}，数据库密码：{}", req.getPassword(), userDB.getPassword());
                 // 用户名或密码错误
                 throw new BusinessException(BusinessExceptionCode.LOGIN_USER_ERROR);
             }

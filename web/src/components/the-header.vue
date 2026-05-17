@@ -34,10 +34,10 @@
       <a-menu-item key="/retrieval">
         <router-link to="/retrieval">多模态检索</router-link>
       </a-menu-item>
-      <a-menu-item key="/admin/data-upload" :style="user.id?{}:{display:'none'}">
+      <a-menu-item key="/admin/data-upload" :style="(user.id && Number(user.perRoleId) === 1)?{}:{display:'none'}">
         <router-link to="/admin/data-upload">数据上传</router-link>
       </a-menu-item>
-      <a-menu-item key="/admin/user" :style="user.id?{}:{display:'none'}">
+      <a-menu-item key="/admin/user" :style="(user.id && Number(user.perRoleId) === 1)?{}:{display:'none'}">
         <router-link to="/admin/user">用户管理</router-link>
       </a-menu-item>
     </a-menu>
