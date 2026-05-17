@@ -1,5 +1,7 @@
 package com.jiawa.wiki.domain;
 
+import java.math.BigDecimal;
+
 public class Tree {
     private Long id;
     private String treeCode;
@@ -7,8 +9,8 @@ public class Tree {
     private String species;
     private Integer age;
     private String height;
-    private java.math.BigDecimal latitude;
-    private java.math.BigDecimal longitude;
+    private BigDecimal latitude;
+    private BigDecimal longitude;
     private String desc;
     private Byte isDelete;
     private Long createTime;

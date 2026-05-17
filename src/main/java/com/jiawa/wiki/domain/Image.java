@@ -1,6 +1,6 @@
 package com.jiawa.wiki.domain;
 
-public class ImageInfo {
+public class Image {
     private Long id;
     private Long treeId;
     private String imagePath;

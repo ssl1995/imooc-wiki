@@ -22,5 +22,8 @@ logging:
 mybatis:
   mapper-locations: classpath:/mapper/**/*.xml
 
+tree:
+  image-root: algorithm/data_samples/bfath_demo
+
 test:
   hello: Hello1

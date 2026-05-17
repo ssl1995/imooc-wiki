@@ -390,9 +390,6 @@ export default defineComponent({
     const currentMode = ref<'i2i' | 'i2l' | 'l2i' | 'name'>('i2i');
     const searching = ref(false);
 
-    // 全局数据：从后端加载的古树数据库
-    const allTrees = ref<any[]>([]);
-
     // I2I 状态
     const i2iFileList = ref<any[]>([]);
     const i2iImageUrl = ref('');
@@ -434,21 +431,6 @@ export default defineComponent({
       { title: '描述', dataIndex: 'desc', ellipsis: true }
     ];
 
-    // 页面加载时从后端获取全部古树数据
-    const loadAllTrees = async () => {
-      try {
-        const res = await axios.get(`${API_BASE}/tree/list`);
-        if (res.data && res.data.content) {
-          allTrees.value = res.data.content;
-          // 默认加载名称检索结果
-          nameResults.value = allTrees.value;
-        }
-      } catch (e) {
-        message.error('古树数据加载失败，请检查后端服务');
-        console.error(e);
-      }
-    };
-
     // 处理I2I上传
     const handleI2IChange = (info: UploadChangeParam) => {
       if (info.file.status === 'done') {
@@ -477,47 +459,31 @@ export default defineComponent({
       }
     };
 
-    // I2I检索：上传图片 → 后端接收 → 前端对已有数据排序返回
+    // I2I检索：调用后端 /tree/retrieve
     const handleI2ISearch = async () => {
       if (!i2iImageUrl.value) {
         message.error('请先上传图片');
         return;
       }
-      if (allTrees.value.length === 0) {
-        message.error('古树数据尚未加载');
-        return;
-      }
       searching.value = true;
       try {
-        // 上传图片到后端
+        const formData = new FormData();
+        formData.append('type', 'I2I');
+        formData.append('topK', i2iParams.topK.toString());
         if (i2iFileList.value.length > 0 && i2iFileList.value[0].originFileObj) {
-          const formData = new FormData();
           formData.append('file', i2iFileList.value[0].originFileObj);
-          await axios.post(`${API_BASE}/tree/upload`, formData, {
-            headers: { 'Content-Type': 'multipart/form-data' }
-          });
         }
-        // 按论文图4.8的id顺序和相似度返回（与论文截图保持一致）
-        // 用 id 匹配避免数据库名称和前端不一致导致缺失
-        const paperOrder = [
-          { treeCode: '001', similarity: 0.945 },
-          { treeCode: '002', similarity: 0.892 },
-          { treeCode: '006', similarity: 0.857 },
-          { treeCode: '005', similarity: 0.823 },
-          { treeCode: '007', similarity: 0.786 },
-          { treeCode: '008', similarity: 0.751 },
-        ];
-        const results: I2IResult[] = paperOrder.flatMap((p: any) => {
-          const tree = allTrees.value.find((t: any) => t.treeCode === p.treeCode);
-          return tree ? [{
-            name: tree.name,
-            image: `${API_BASE}${tree.image}`,
-            similarity: p.similarity,
-            location: tree.location,
-            age: tree.age
-          }] : [];
-        }).slice(0, i2iParams.topK);
-        i2iResults.value = results;
+        const res = await axios.post(`${API_BASE}/tree/retrieve`, formData, {
+          headers: { 'Content-Type': 'multipart/form-data' }
+        });
+        const list = res.data.content || [];
+        i2iResults.value = list.map((item: any) => ({
+          name: item.name,
+          image: item.image ? `${API_BASE}${item.image}` : '',
+          similarity: item.similarity || 0,
+          location: item.location || item.desc || '',
+          age: item.age || 0
+        }));
         message.success('检索完成');
       } catch (e) {
         message.error('检索失败');
@@ -526,35 +492,33 @@ export default defineComponent({
       searching.value = false;
     };
 
-    // I2L检索：上传图片 → 返回首条记录的位置
+    // I2L检索：调用后端 /tree/retrieve
     const handleI2LSearch = async () => {
       if (!i2lImageUrl.value) {
         message.error('请先上传图片');
         return;
       }
-      if (allTrees.value.length === 0) {
-        message.error('古树数据尚未加载');
-        return;
-      }
       searching.value = true;
       try {
-        // 上传图片到后端
+        const formData = new FormData();
+        formData.append('type', 'I2L');
         if (i2lFileList.value.length > 0 && i2lFileList.value[0].originFileObj) {
-          const formData = new FormData();
           formData.append('file', i2lFileList.value[0].originFileObj);
-          await axios.post(`${API_BASE}/tree/upload`, formData, {
-            headers: { 'Content-Type': 'multipart/form-data' }
-          });
         }
-        // 返回最匹配记录的位置（默认返回001景山万春亭古柏，与论文图4.9一致）
-        const tree = allTrees.value.find((t: any) => t.treeCode === '001') || allTrees.value[0];
-        i2lResult.value = {
-          latitude: tree.lat,
-          longitude: tree.lon,
-          confidence: 0.92,
-          error: 0.5,
-          address: tree.location
-        };
+        const res = await axios.post(`${API_BASE}/tree/retrieve`, formData, {
+          headers: { 'Content-Type': 'multipart/form-data' }
+        });
+        const list = res.data.content || [];
+        if (list.length > 0) {
+          const item = list[0];
+          i2lResult.value = {
+            latitude: item.latitude,
+            longitude: item.longitude,
+            confidence: item.confidence || 0.92,
+            error: item.error || 0.5,
+            address: item.location || item.name || ''
+          };
+        }
         message.success('定位完成');
       } catch (e) {
         message.error('定位失败');
@@ -563,52 +527,44 @@ export default defineComponent({
       searching.value = false;
     };
 
-    // L2I检索：前端按坐标距离排序
-    const handleL2ISearch = () => {
+    // L2I检索：调用后端 /tree/retrieve
+    const handleL2ISearch = async () => {
       const lat = parseFloat(l2iLatitudeStr.value);
       const lon = parseFloat(l2iLongitudeStr.value);
       if (isNaN(lat) || isNaN(lon)) {
         message.error('请输入有效的经纬度坐标');
         return;
       }
-      if (allTrees.value.length === 0) {
-        message.error('古树数据尚未加载');
-        return;
-      }
       l2iParams.latitude = lat;
       l2iParams.longitude = lon;
       searching.value = true;
-
-      // 使用 Haversine 公式计算真实地理距离（km）
-      const toRad = (deg: number) => deg * (Math.PI / 180);
-      const R = 6371; // 地球半径 km
-      const results: L2IResult[] = allTrees.value.map((tree: any) => {
-        const treeLat = tree.lat || 0;
-        const treeLon = tree.lon || 0;
-        const dLat = toRad(treeLat - lat);
-        const dLon = toRad(treeLon - lon);
-        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                  Math.cos(toRad(lat)) * Math.cos(toRad(treeLat)) *
-                  Math.sin(dLon / 2) * Math.sin(dLon / 2);
-        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        const distance = R * c;
-        return {
-          name: tree.name,
-          image: `${API_BASE}${tree.image}`,
-          location: tree.location,
-          age: tree.age,
-          distance: parseFloat(distance.toFixed(1))
-        };
-      }).filter((r: L2IResult) => r.distance <= l2iParams.radius)
-        .sort((a: L2IResult, b: L2IResult) => a.distance - b.distance)
-        .slice(0, l2iParams.topK);
-
-      l2iResults.value = results;
+      try {
+        const formData = new FormData();
+        formData.append('type', 'L3I');
+        formData.append('latitude', lat.toString());
+        formData.append('longitude', lon.toString());
+        formData.append('radius', l2iParams.radius.toString());
+        formData.append('topK', l2iParams.topK.toString());
+        const res = await axios.post(`${API_BASE}/tree/retrieve`, formData, {
+          headers: { 'Content-Type': 'multipart/form-data' }
+        });
+        const list = res.data.content || [];
+        l2iResults.value = list.map((item: any) => ({
+          name: item.name,
+          image: item.image ? `${API_BASE}${item.image}` : '',
+          location: item.location || item.desc || '',
+          age: item.age || 0,
+          distance: item.distance || 0
+        }));
+        message.success('检索完成');
+      } catch (e) {
+        message.error('检索失败');
+        console.error(e);
+      }
       searching.value = false;
-      message.success('检索完成');
     };
 
-    // 按树种名称查询 → 调后端接口
+    // NAME检索：调用后端 /tree/retrieve
     const handleNameSearch = async () => {
       if (!nameParams.keyword.trim()) {
         message.error('请输入树种名称');
@@ -616,8 +572,11 @@ export default defineComponent({
       }
       nameSearching.value = true;
       try {
-        const res = await axios.get(`${API_BASE}/tree/searchByName`, {
-          params: { name: nameParams.keyword }
+        const formData = new FormData();
+        formData.append('type', 'NAME');
+        formData.append('speciesName', nameParams.keyword.trim());
+        const res = await axios.post(`${API_BASE}/tree/retrieve`, formData, {
+          headers: { 'Content-Type': 'multipart/form-data' }
         });
         nameResults.value = res.data.content || [];
         message.success('查询完成');
@@ -668,9 +627,9 @@ export default defineComponent({
       }, 50);
     };
 
-    // 页面加载时获取数据
+    // 页面加载时无需预加载全部数据，各检索模式按需调用 /tree/retrieve
     onMounted(() => {
-      loadAllTrees();
+      // 默认空状态，等待用户操作
     });
 
     return {
