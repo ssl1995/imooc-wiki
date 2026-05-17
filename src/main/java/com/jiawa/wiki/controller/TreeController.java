@@ -5,9 +5,11 @@ import com.jiawa.wiki.domain.Tree;
 import com.jiawa.wiki.mapper.ImageInfoMapper;
 import com.jiawa.wiki.mapper.TreeMapper;
 import com.jiawa.wiki.req.TreeRetrieveReq;
+import com.jiawa.wiki.req.TreeSaveReq;
 import com.jiawa.wiki.resp.CommonResp;
 import com.jiawa.wiki.resp.FileUploadResp;
 import com.jiawa.wiki.resp.TreeRetrieveResp;
+import com.jiawa.wiki.util.HashRetrieveService;
 import org.springframework.beans.factory.annotation.Value;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +34,6 @@ public class TreeController {
 
   private static final Logger LOG = LoggerFactory.getLogger(TreeController.class);
 
-  // 演示图片根目录（相对项目路径，通过 application.yml 配置）
   @Value("${tree.image-root:algorithm/data_samples/bfath_demo}")
   private String imageRoot;
 
@@ -41,6 +42,9 @@ public class TreeController {
 
   @Resource
   private ImageInfoMapper imageInfoMapper;
+
+  @Resource
+  private HashRetrieveService hashRetrieveService;
 
   /**
    * 统一检索接口：/tree/retrieve
@@ -97,7 +101,7 @@ public class TreeController {
     List<Map<String, String>> paperOrder = getDemoImageOrder();
     int offset = 0;
     if (file != null && !file.isEmpty()) {
-      offset = Math.abs(file.getOriginalFilename().hashCode()) % paperOrder.size();
+      offset = hashRetrieveService.offset(file.getOriginalFilename(), paperOrder.size());
     }
 
     List<TreeRetrieveResp> results = new ArrayList<>();
@@ -160,11 +164,10 @@ public class TreeController {
           .collect(Collectors.toList());
 
       if (!validTrees.isEmpty()) {
-        int hash = Math.abs(file.getOriginalFilename().hashCode());
-        int index = hash % validTrees.size();
+        int index = hashRetrieveService.offset(file.getOriginalFilename(), validTrees.size());
         tree = validTrees.get(index);
         // 根据 hash 生成 0.75 ~ 0.98 之间的相似度
-        similarity = 0.75 + (hash % 24) / 100.0;
+        similarity = hashRetrieveService.similarity(file.getOriginalFilename(), 0.75, 0.98);
       }
     }
 
@@ -246,19 +249,107 @@ public class TreeController {
   }
 
   /**
-   * 图片上传接口（供前端先上传图片，再调用 retrieve）
-   * 也可直接在 retrieve 中一并上传
+   * 图片上传接口：保存到 imageRoot 目录，返回相对路径
    */
   @PostMapping("/upload")
   public CommonResp<FileUploadResp> upload(@RequestParam("file") MultipartFile file) {
     LOG.info("图片上传: {}，大小: {} bytes", file.getOriginalFilename(), file.getSize());
     CommonResp<FileUploadResp> resp = new CommonResp<>();
-    FileUploadResp content = new FileUploadResp();
-    content.setSuccess(true);
-    content.setFilename(file.getOriginalFilename());
-    content.setMessage("图片上传成功");
-    resp.setContent(content);
+    try {
+      String imageRootPath = System.getProperty("user.dir") + "/" + imageRoot;
+      File dir = new File(imageRootPath);
+      if (!dir.exists()) {
+        dir.mkdirs();
+      }
+      String ext = file.getOriginalFilename() != null && file.getOriginalFilename().contains(".")
+          ? file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."))
+          : ".jpg";
+      String saveName = UUID.randomUUID().toString() + ext;
+      File dest = new File(dir, saveName);
+      file.transferTo(dest);
+
+      FileUploadResp content = new FileUploadResp();
+      content.setSuccess(true);
+      content.setFilename(file.getOriginalFilename());
+      content.setMessage(saveName);
+      resp.setContent(content);
+    } catch (IOException e) {
+      LOG.error("图片保存失败", e);
+      resp.setMessage("图片保存失败");
+    }
     return resp;
+  }
+
+  /**
+   * 古树名木数据保存接口（管理员录入）
+   * 同时插入 tree 表和关联的 image 表记录
+   */
+  @PostMapping("/save")
+  public CommonResp<Tree> save(@RequestBody TreeSaveReq req) {
+    LOG.info("保存古树数据: {}", req.getName());
+    CommonResp<Tree> resp = new CommonResp<>();
+    if (req.getName() == null || req.getName().trim().isEmpty()
+        || req.getSpecies() == null || req.getSpecies().trim().isEmpty()) {
+      resp.setMessage("古树名称和物种不能为空");
+      return resp;
+    }
+
+    // 1. 构建 Tree 对象并插入
+    Tree tree = new Tree();
+    tree.setTreeCode(generateTreeCode());
+    tree.setName(req.getName());
+    tree.setSpecies(req.getSpecies());
+    tree.setAge(req.getAge());
+    tree.setHeight(req.getHeight());
+    tree.setLatitude(req.getLatitude() != null ? new java.math.BigDecimal(req.getLatitude()) : null);
+    tree.setLongitude(req.getLongitude() != null ? new java.math.BigDecimal(req.getLongitude()) : null);
+    tree.setDesc(req.getDesc());
+    long now = System.currentTimeMillis();
+    tree.setCreateTime(now);
+    tree.setUpdateTime(now);
+    tree.setIsDelete((byte) 0);
+
+    treeMapper.insert(tree);
+
+    // 2. 插入关联的 image 记录
+    List<String> imageList = req.getImageList();
+    if (imageList != null && !imageList.isEmpty()) {
+      for (String imageName : imageList) {
+        Image image = new Image();
+        image.setTreeId(tree.getId());
+        image.setImagePath(imageName);
+
+        // 基于文件名生成确定性伪 128 位哈希码（与 retrieve 演示逻辑保持一致）
+        HashRetrieveService.HashResult hashResult = hashRetrieveService.generate(imageName);
+        image.setHashCode(hashResult.getHashCode());
+        image.setHashBits(hashResult.getHashBits());
+
+        image.setCreateTime(now);
+        image.setUpdateTime(now);
+        imageInfoMapper.insert(image);
+        LOG.info("插入图片记录: treeId={}, imagePath={}, hashCode={}", tree.getId(), imageName, image.getHashCode());
+      }
+    }
+
+    resp.setContent(tree);
+    return resp;
+  }
+
+  /**
+   * 自动生成 tree_code：取现有最大编号 +1，格式化为 3 位
+   */
+  private String generateTreeCode() {
+    List<Tree> all = treeMapper.selectAll();
+    int max = 0;
+    for (Tree t : all) {
+      try {
+        int code = Integer.parseInt(t.getTreeCode());
+        if (code > max) max = code;
+      } catch (NumberFormatException e) {
+        // 忽略非数字格式的 treeCode
+      }
+    }
+    return String.format("%03d", max + 1);
   }
 
   /**

@@ -43,4 +43,9 @@
         WHERE tree_code = #{treeCode}
           AND is_delete = 0
     </select>
+
+    <insert id="insert" parameterType="com.jiawa.wiki.domain.Tree" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tree (tree_code, name, species, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time)
+        VALUES (#{treeCode}, #{name}, #{species}, #{age}, #{height}, #{latitude}, #{longitude}, #{desc}, 0, #{createTime}, #{updateTime})
+    </insert>
 </mapper>

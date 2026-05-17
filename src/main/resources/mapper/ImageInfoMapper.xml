@@ -32,4 +32,9 @@
           AND is_delete = 0
         LIMIT 1
     </select>
+
+    <insert id="insert" parameterType="com.jiawa.wiki.domain.Image" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO image (tree_id, image_path, hash_code, hash_bits, is_delete, create_time, update_time)
+        VALUES (#{treeId}, #{imagePath}, #{hashCode}, #{hashBits}, 0, #{createTime}, #{updateTime})
+    </insert>
 </mapper>

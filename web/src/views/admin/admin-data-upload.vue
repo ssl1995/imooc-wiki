@@ -1,20 +1,14 @@
 <template>
   <div class="data-upload-container">
-    <a-page-header
-      title="古树名木数据上传"
-      sub-title="管理员数据录入界面"
-      :back-icon="false"
-    />
-    
     <a-row :gutter="24" class="upload-content">
       <!-- 左侧：表单区域 -->
       <a-col :span="14">
-        <a-card title="基础信息录入" class="info-card">
+        <a-card title="信息录入" class="info-card">
           <a-form :model="formState" :label-col="{ span: 6 }" :wrapper-col="{ span: 16 }">
             <!-- 古树名称 -->
             <a-form-item label="古树名称" required>
               <a-input 
-                v-model:value="formState.treeName" 
+                v-model:value="formState.name" 
                 placeholder="请输入古树名称"
               >
                 <template #prefix>
@@ -25,10 +19,9 @@
             
             <!-- 物种分类 -->
             <a-form-item label="物种分类" required>
-              <a-select 
+              <a-input 
                 v-model:value="formState.species" 
-                placeholder="请选择物种"
-                :options="speciesOptions"
+                placeholder="请输入树种名称，如：银杏、侧柏、国槐等"
               />
             </a-form-item>
             
@@ -87,7 +80,7 @@
             <!-- 备注 -->
             <a-form-item label="备注">
               <a-textarea 
-                v-model:value="formState.remark" 
+                v-model:value="formState.desc" 
                 :rows="3"
                 placeholder="请输入备注信息"
               />
@@ -163,6 +156,7 @@
 <script lang="ts">
 import { defineComponent, reactive, ref } from 'vue';
 import { message } from 'ant-design-vue';
+import axios from 'axios';
 import {
   EnvironmentOutlined,
   InboxOutlined,
@@ -173,14 +167,16 @@ import {
 } from '@ant-design/icons-vue';
 import type { UploadChangeParam } from 'ant-design-vue';
 
+const API_BASE = process.env.VUE_APP_SERVER || 'http://localhost:8099';
+
 interface FormState {
-  treeName: string;
+  name: string;
   species: string | undefined;
   latitude: number | null;
   longitude: number | null;
   age: number | null;
   height: number | null;
-  remark: string;
+  desc: string;
 }
 
 export default defineComponent({
@@ -196,63 +192,54 @@ export default defineComponent({
   setup() {
     // 表单状态
     const formState = reactive<FormState>({
-      treeName: '',
+      name: '',
       species: undefined,
       latitude: null,
       longitude: null,
       age: null,
       height: null,
-      remark: ''
+      desc: ''
     });
 
-    // 物种选项
-    const speciesOptions = [
-      { value: '银杏', label: '银杏' },
-      { value: '柏树', label: '柏树' },
-      { value: '松树', label: '松树' },
-      { value: '槐树', label: '槐树' },
-      { value: '榕树', label: '榕树' },
-      { value: '樟树', label: '樟树' },
-      { value: '其他', label: '其他' }
-    ];
+    // 物种输入为自由文本，系统支持论文所述 iNaturalist 36 个科属类别下的任意树种录入
 
-    // 文件列表 - 默认加载本地图片
-    const fileList = ref<any[]>([
-      {
-        uid: '-1',
-        name: 'upload.jpg',
-        status: 'done',
-        url: require('@/assets/upload.jpg'),
-        thumbUrl: require('@/assets/upload.jpg')
-      }
-    ]);
+    // 文件列表
+    const fileList = ref<any[]>([]);
     const submitting = ref(false);
 
-    // 自定义上传请求 - 本地模拟上传成功
+    // 自定义上传请求 - 调用后端 /tree/upload
     const customRequest = (options: any) => {
       const { file, onSuccess, onError, onProgress } = options;
-      
-      // 模拟上传进度
-      let percent = 0;
-      const interval = setInterval(() => {
-        percent += 20;
-        if (onProgress) {
-          onProgress({ percent });
+
+      // 创建本地 blob URL 用于预览（上传前即可预览）
+      const rawFile = file.originFileObj || file;
+      const blobUrl = URL.createObjectURL(rawFile);
+      file.url = blobUrl;
+      file.thumbUrl = blobUrl;
+
+      const formData = new FormData();
+      formData.append('file', rawFile);
+
+      axios.post(`${API_BASE}/tree/upload`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+        onUploadProgress: (e: any) => {
+          if (onProgress) {
+            onProgress({ percent: Math.round((e.loaded * 100) / e.total) });
+          }
         }
-        if (percent >= 100) {
-          clearInterval(interval);
-          // 模拟上传成功，使用本地图片URL
-          setTimeout(() => {
-            const url = URL.createObjectURL(file);
-            if (onSuccess) {
-              onSuccess({
-                url: url,
-                thumbUrl: url
-              });
-            }
-          }, 200);
+      }).then((res) => {
+        const data = res.data;
+        if (data.success) {
+          file.response = { serverFileName: data.content.message };
+          if (onSuccess) {
+            onSuccess(file.response);
+          }
+        } else {
+          if (onError) onError(new Error(data.message || '上传失败'));
         }
-      }, 50);
+      }).catch((err) => {
+        if (onError) onError(err);
+      });
     };
 
     // 处理文件变化
@@ -270,15 +257,28 @@ export default defineComponent({
       console.log('Dropped files', e.dataTransfer?.files);
     };
 
+    // 释放所有 blob URL（组件卸载或重置时调用）
+    const revokeBlobUrls = () => {
+      fileList.value.forEach((f: any) => {
+        if (f.url && f.url.startsWith('blob:')) {
+          URL.revokeObjectURL(f.url);
+        }
+      });
+    };
+
     // 移除文件
     const removeFile = (index: number) => {
+      const file = fileList.value[index];
+      if (file.url && file.url.startsWith('blob:')) {
+        URL.revokeObjectURL(file.url);
+      }
       fileList.value.splice(index, 1);
       message.success('已移除图片');
     };
 
     // 提交表单
     const handleSubmit = () => {
-      if (!formState.treeName || !formState.species || !formState.latitude || !formState.longitude) {
+      if (!formState.name || !formState.species || !formState.latitude || !formState.longitude) {
         message.error('请填写必填项');
         return;
       }
@@ -286,30 +286,59 @@ export default defineComponent({
         message.error('请至少上传一张图片');
         return;
       }
-      
-      submitting.value = true;
-      setTimeout(() => {
+
+      // 提取上传成功的图片文件名
+      const imageList = fileList.value
+        .filter((f: any) => f.status === 'done' && f.response && f.response.serverFileName)
+        .map((f: any) => f.response.serverFileName);
+
+      if (imageList.length === 0) {
+        message.error('图片尚未上传完成，请稍后再试');
         submitting.value = false;
-        message.success('数据上传成功');
-      }, 1500);
+        return;
+      }
+
+      submitting.value = true;
+      const payload = {
+        name: formState.name,
+        species: formState.species,
+        latitude: formState.latitude,
+        longitude: formState.longitude,
+        age: formState.age,
+        height: formState.height ? formState.height + '米' : null,
+        desc: formState.desc,
+        imageList: imageList
+      };
+      axios.post(`${API_BASE}/tree/save`, payload).then((res) => {
+        submitting.value = false;
+        const data = res.data;
+        if (data.success) {
+          message.success(`数据上传成功，古树编号：${data.content.treeCode}`);
+        } else {
+          message.error(data.message || '保存失败');
+        }
+      }).catch(() => {
+        submitting.value = false;
+        message.error('网络错误，保存失败');
+      });
     };
 
     // 重置表单
     const handleReset = () => {
-      formState.treeName = '';
+      revokeBlobUrls();
+      formState.name = '';
       formState.species = undefined;
       formState.latitude = null;
       formState.longitude = null;
       formState.age = null;
       formState.height = null;
-      formState.remark = '';
+      formState.desc = '';
       fileList.value = [];
       message.success('表单已重置');
     };
 
     return {
       formState,
-      speciesOptions,
       fileList,
       submitting,
       handleChange,

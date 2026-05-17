@@ -7,4 +7,5 @@ public interface ImageInfoMapper {
     List<Image> selectAll();
     Image selectById(Long id);
     Image selectByTreeId(Long treeId);
+    int insert(Image image);
 }

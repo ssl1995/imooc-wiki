@@ -62,7 +62,7 @@
 
 <script lang="ts">
 import {computed, defineComponent, ref, watch} from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import axios from 'axios';
 import {message} from 'ant-design-vue';
 import store from "@/store";
@@ -75,6 +75,7 @@ export default defineComponent({
   setup() {
     const user = computed(() => store.state.user);
     const route = useRoute();
+    const router = useRouter();
     const selectedKeys = ref<string[]>([route.path]);
 
     // 监听路由变化更新选中状态
@@ -119,6 +120,8 @@ export default defineComponent({
         if (data.success) {
           message.success("退出登录成功！");
           store.commit("setUser", {});
+          // 退出后跳转到首页
+          router.push('/');
         } else {
           message.error(data.message);
         }

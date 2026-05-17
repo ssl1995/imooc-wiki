@@ -8,19 +8,7 @@
           <MailOutlined />
           <span>首页</span>
         </a-menu-item>
-        <a-sub-menu v-for="item in level1" :key="item.id">
-          <template v-slot:title>
-            <span><user-outlined />{{ item.name }}</span>
-          </template>
-          <a-menu-item v-for="child in item.children" :key="child.id">
-            <MailOutlined />
-            <span>{{ child.name }}</span>
-          </a-menu-item>
-        </a-sub-menu>
-
-        <a-menu-item key="tip" :disabled="true">
-          <span>以上菜单在分类管理配置</span>
-        </a-menu-item>
+        <!-- 左侧动态分类菜单已隐藏（wiki原系统分类，与古树名木无关） -->
       </a-menu>
     </a-layout-sider>
     <a-layout-content :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }">

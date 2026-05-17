@@ -16,4 +16,6 @@ public interface TreeMapper {
     Tree selectById(@Param("id") Long id);
 
     Tree selectByTreeCode(@Param("treeCode") String treeCode);
+
+    int insert(Tree record);
 }

@@ -11,24 +11,7 @@
                 </template>
               </a-statistic>
             </a-col>
-            <a-col :span="8">
-              <a-statistic title="总点赞量" :value="statistic.voteCount">
-                <template #suffix>
-                  <like-outlined/>
-                </template>
-              </a-statistic>
-            </a-col>
-            <a-col :span="8">
-              <a-statistic title="点赞率"
-                           :value="!((statistic.voteCount / statistic.viewCount * 100)===(statistic.voteCount / statistic.viewCount * 100))?'0':(statistic.voteCount / statistic.viewCount * 100)"
-                           :precision="2"
-                           suffix="%"
-                           :value-style="{ color: '#cf1322' }">
-                <template #suffix>
-                  <like-outlined/>
-                </template>
-              </a-statistic>
-            </a-col>
+            <!-- 点赞统计已删除（与古树名木论文无关） -->
           </a-row>
         </a-card>
       </a-col>
@@ -45,13 +28,7 @@
                 </template>
               </a-statistic>
             </a-col>
-            <a-col :span="12">
-              <a-statistic title="今日点赞" :value="statistic.todayVoteCount">
-                <template #suffix>
-                  <like-outlined/>
-                </template>
-              </a-statistic>
-            </a-col>
+            <!-- 今日点赞已删除（与古树名木论文无关） -->
           </a-row>
         </a-card>
       </a-col>
@@ -170,7 +147,7 @@ export default defineComponent({
           trigger: 'axis'
         },
         legend: {
-          data: ['总阅读量', '总点赞量']
+          data: ['总阅读量']
         },
         grid: {
           left: '1%',
@@ -197,13 +174,6 @@ export default defineComponent({
             type: 'line',
             // stack: '总量', 不堆叠
             data: seriesView,
-            smooth: true
-          },
-          {
-            name: '总点赞量',
-            type: 'line',
-            // stack: '总量', 不堆叠
-            data: seriesVote,
             smooth: true
           }
         ]
