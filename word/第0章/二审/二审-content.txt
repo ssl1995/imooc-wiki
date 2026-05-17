@@ -71,4 +71,5 @@ D:\project\java\imooc-wiki\word\第0章\二审\联调\论文\数据上传和用�
 
 现在开始思考如何修改下面时序图，审查逻辑是否有问题和错误，虽然代码暂时没有走DGLAM模型，但是时序图必须走，给出建议的txt：
 1、图4.7 古树名木检索时序图，代码：D:\project\java\imooc-wiki\word\第4章\图4.7-古树名木检索时序图-彩色版.puml
-2、时序图的文字描述；如上图4.7所示，展示了古树名木检索时序图。用户登录后进入检索界面，上传查询图像或输入地理位置坐标，前端POST调用/tree/retrieve接口，请求经TreeRetrieveController路由至ITreeRetrieveService。Service层调用DHLAM模型服务，由模型完成图像/位置特征提取、多模态融合及128位哈希码生成，返回哈希码后通过TreeRetrieveMapper执行数据库哈希码相似度查询，获取匹配结果集。Service层按汉明距离排序取Top-K结果，最终经Controller封装为JSON响应返回前端渲染展示。需要说明的是，按树种名称条件检索为传统SQL查询，不走DHLAM模型，其时序较为简单，本文不在图4.7中单独展示说明。
+老时序图的文字描述；如上图4.7所示，展示了古树名木检索时序图。用户登录后进入检索界面，上传查询图像或输入地理位置坐标，前端POST调用/tree/retrieve接口，请求经TreeRetrieveController路由至ITreeRetrieveService。Service层调用DHLAM模型服务，由模型完成图像/位置特征提取、多模态融合及128位哈希码生成，返回哈希码后通过TreeRetrieveMapper执行数据库哈希码相似度查询，获取匹配结果集。Service层按汉明距离排序取Top-K结果，最终经Controller封装为JSON响应返回前端渲染展示。需要说明的是，按树种名称条件检索为传统SQL查询，不走DHLAM模型，其时序较为简单，本文不在图4.7中单独展示说明。
+思考新的时序图文字描述如何修改？

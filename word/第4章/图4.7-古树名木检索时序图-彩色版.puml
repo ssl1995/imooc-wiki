@@ -10,13 +10,13 @@ skinparam sequenceBoxBackgroundColor #F8F8F8
 skinparam noteBackgroundColor #FFFFE0
 skinparam noteBorderColor #666666
 
-' ===== 参与者（精简为6个） =====
+' ===== 参与者 =====
 actor "用户" as User
 participant "古树检索界面" as SearchPage
-participant "TreeRetrieveController" as Controller
-participant "ITreeRetrieveService" as Service
+participant "TreeController" as Controller
+participant "TreeService" as Service
 participant "DHLAM模型" as DHLAM
-participant "TreeRetrieveMapper" as Mapper
+participant "TreeMapper" as Mapper
 participant "MySQL数据库" as DB
 
 ' ===== 前置条件说明 =====
@@ -24,67 +24,82 @@ note over User, SearchPage
   <b>前置条件：</b>用户已完成登录
 end note
 
-' ===== 核心检索流程（三种模式合并描述） =====
+' ===== 核心检索流程（以I2I为主链路） =====
 autonumber 1
-User -> SearchPage: 上传图像或输入坐标(lat,lon)
+User -> SearchPage: 上传查询图像或输入坐标(lat,lon)
 activate SearchPage
 
 autonumber 2
-SearchPage -> Controller: 调用 /tree/retrieve (POST)
+SearchPage -> Controller: POST /tree/retrieve
 activate Controller
 
 autonumber 3
-Controller -> Service: retrieve(query)
+Controller -> Service: retrieve(TreeRetrieveReq, file)
 activate Service
 
 autonumber 4
-Service -> DHLAM: 调用模型服务生成哈希码
+Service -> DHLAM: 模型推理(查询图像/坐标)
 activate DHLAM
 
 autonumber 5
-DHLAM -> DHLAM: 特征提取(ResNet-50 / LocationEncoder)
-DHLAM -> DHLAM: 多模态融合
-DHLAM -> DHLAM: 哈希层生成128位哈希码(FC→Tanh→Sign)
+DHLAM -> DHLAM: ImageEncoder(ResNet-50)提取512维图像特征
 
 autonumber 6
-DHLAM --> Service: 返回哈希码
-deactivate DHLAM
+DHLAM -> DHLAM: LocationEncoder(MLP)编码256维位置特征
 
 autonumber 7
-Service -> Mapper: selectByHashCode(hash)
-activate Mapper
+DHLAM -> DHLAM: 多模态融合(Concat)生成768维融合特征
 
 autonumber 8
-Mapper -> DB: 哈希码相似度查询
-activate DB
-DB --> Mapper: 返回匹配结果集
-deactivate DB
+DHLAM -> DHLAM: 哈希层(FC→Tanh→Sign)生成128位二进制哈希码
 
 autonumber 9
-Mapper --> Service: 返回古树信息列表
-deactivate Mapper
+DHLAM --> Service: 返回 hashCode + hashBits
+deactivate DHLAM
 
 autonumber 10
-Service -> Service: 汉明距离排序(Top-K)
+Service -> Mapper: 查询古树及图像哈希数据
+activate Mapper
 
 autonumber 11
-Service --> Controller: 返回检索结果
-deactivate Service
+Mapper -> DB: 关联查询 tree + image 表
+activate DB
+DB --> Mapper: 返回古树与图像哈希记录
+deactivate DB
 
 autonumber 12
-Controller --> SearchPage: 返回古树信息JSON
-deactivate Controller
+Mapper --> Service: 返回 List<Tree+Image>
+deactivate Mapper
 
 autonumber 13
+Service -> Service: 计算汉明距离并排序(Top-K)
+
+autonumber 14
+Service --> Controller: 返回检索结果列表
+deactivate Service
+
+autonumber 15
+Controller --> SearchPage: 返回古树信息JSON
+note right
+  {
+    "content": [
+      { "treeCode":"001", "name":"景山万春亭古柏",
+        "similarity":0.945, "image":"/tree/image/001" }
+    ]
+  }
+end note
+deactivate Controller
+
+autonumber 16
 SearchPage --> User: 渲染检索结果列表
 deactivate SearchPage
 
-' ===== 底部说明（替代右侧note，不占横向空间） =====
-note over Controller, DB
-  <b>三种检索模式共享同一流程</b>
-  I2I: 图像→哈希码→相似图像
-  I2L: 图像→哈希码→地理位置
-  L2I: 坐标→哈希码→附近图像
+' ===== 三种检索模式说明 =====
+note over Controller, Mapper
+  <b>三种检索模式差异（DHLAM输入路径不同）</b>
+  I2I: 图像→ImageEncoder→哈希层→汉明距离检索相似图像
+  I2L: 图像+位置→双模态融合→哈希层→返回地理位置
+  L2I: 坐标→LocationEncoder→哈希层→检索附近图像
 end note
 
 @enduml
