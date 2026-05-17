@@ -25,5 +25,11 @@ mybatis:
 tree:
   image-root: algorithm/data_samples/bfath_demo
 
+# DHLAM 模型推理服务配置
+dhlam:
+  api:
+    url: http://localhost:5000     # Python Flask 推理服务地址，空则禁用
+  demo-mode: true                  # true=走模拟逻辑，false=HTTP调用真实Python模型
+
 test:
   hello: Hello1

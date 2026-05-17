@@ -9,6 +9,7 @@ import com.jiawa.wiki.req.TreeSaveReq;
 import com.jiawa.wiki.resp.CommonResp;
 import com.jiawa.wiki.resp.FileUploadResp;
 import com.jiawa.wiki.resp.TreeRetrieveResp;
+import com.jiawa.wiki.service.impl.HashModelRetrieveService;
 import com.jiawa.wiki.service.impl.HashRetrieveService;
 import org.springframework.beans.factory.annotation.Value;
 import org.slf4j.Logger;
@@ -45,6 +46,9 @@ public class TreeController {
 
   @Resource
   private HashRetrieveService hashRetrieveService;
+
+  @Resource
+  private HashModelRetrieveService hashModelRetrieveService;
 
   /**
    * 统一检索接口：/tree/retrieve
