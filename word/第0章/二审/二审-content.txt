@@ -52,8 +52,11 @@
     思考有哪些正文部分还得修改或者不对的地方？哪些图还需要跟着改，比如图1.1技术路想图 该如何修改？
 2、以上信息，我只修改了导师提到的创新性部分，接下来我们分析思考如何修改第三章的数据集描述和实验部分，给出方案清单我审查
 
-论文中文标题：融合图像与地理位置元数据的古树名木多模态哈希检索方法研究与应用
-论文英文标题：Research and Construction of Ancient and Famous Tree Multimodal Hashing Retrieval System Based on Image and Location Metadata 怎么修改才符合中文标题的翻译？
+以下三个文件审查一遍，哪些是过期的可以删除，哪些需要保留，减少对我的干扰？
+D:\project\java\imooc-wiki\word\第0章\二审\论文\修改方案_消融实验迁移到iNaturalist.md
+D:\project\java\imooc-wiki\word\第0章\二审\论文\修改方案清单_数据集与消融实验.md
+D:\project\java\imooc-wiki\word\第0章\二审\论文\正文替换文本_消融实验迁移iNaturalist.txt
 
-上述说的修改已经更新：- 论文路径：D:\project\java\imooc-wiki\word\第0章\二审\论文\5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索方法研究与应用-1.docx。
-请重新扫描上述论文的文本部分，是否修改完成？暂留的是图1.1 技术路线图还没有更新，留着等数据集修改和消融实验、第4章系统部分修改完成后再修改
+
+上述修改已经完成，论文：D:\project\java\imooc-wiki\word\第0章\二审\论文\5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索方法研究与应用-1.docx
+请重新扫描论文正文部分，检查修改是否完成？
