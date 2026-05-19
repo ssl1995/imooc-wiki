@@ -167,32 +167,38 @@ INSERT INTO per_role (id, role_name, permission_desc, is_delete, create_time, up
 INSERT INTO per_role (id, role_name, permission_desc, is_delete, create_time, update_time) VALUES (2, '普通用户', '可执行古树名木检索、图像上传、个人信息管理等操作', 0, 1715000000000, 1715000000000);
 
 -- auto-generated definition
+drop table tree ;
 create table tree
 (
-    id          bigint auto_increment comment '主键'
+    id               bigint auto_increment comment '主键'
         primary key,
-    tree_code   varchar(20)       null comment '古树编号（如001、002，用于前端固定匹配）',
-    name        varchar(100)      null comment '古树名称',
-    species     varchar(256)      null comment '树种名称',
-    age         int               null comment '树龄',
-    height      varchar(64)       null comment '树高',
-    latitude    decimal(10, 8)    null comment '纬度',
-    longitude   decimal(11, 8)    null comment '经度',
-    `desc`      text              null comment '描述信息',
-    is_delete   tinyint default 0 not null comment '是否逻辑删除 0:否 1:是',
-    create_time bigint            not null comment '创建时间',
-    update_time bigint            not null comment '更新时间'
+    tree_code        varchar(20)       null comment '古树编号（如001、002，用于前端固定匹配）',
+    name             varchar(100)      null comment '古树名称',
+    species          varchar(256)      null comment '树种名称',
+    family           varchar(64)       null comment '科',
+    genus            varchar(64)       null comment '属',
+    protection_level varchar(20)       null comment '保护级别（一级/二级/三级）',
+    age              int               null comment '树龄',
+    height           varchar(64)       null comment '树高',
+    latitude         decimal(10, 8)    null comment '纬度',
+    longitude        decimal(11, 8)    null comment '经度',
+    `desc`           text              null comment '描述信息',
+    is_delete        tinyint default 0 not null comment '是否逻辑删除 0:否 1:是',
+    create_time      bigint            not null comment '创建时间',
+    update_time      bigint            not null comment '更新时间'
 )
     comment '树木表' charset = utf8mb4;
 
-INSERT INTO tree (id, tree_code, name, species, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time) VALUES (1, '001', '景山万春亭古柏', '侧柏', 500, '15米', 39.92890000, 116.39740000, '位于北京市景山公园万春亭，为一级保护古树', 0, 1715000000000, 1715000000000);
-INSERT INTO tree (id, tree_code, name, species, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time) VALUES (2, '002', '天坛九龙柏', '侧柏', 600, '18米', 39.88330000, 116.40690000, '位于天坛公园回音壁西北侧，为一级保护古树', 0, 1715000000000, 1715000000000);
-INSERT INTO tree (id, tree_code, name, species, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time) VALUES (3, '003', '潭柘寺帝王银杏', '银杏', 1300, '25米', 39.90500000, 116.02800000, '位于北京市门头沟区潭柘寺寺院内，为特级保护古树', 0, 1715000000000, 1715000000000);
-INSERT INTO tree (id, tree_code, name, species, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time) VALUES (4, '004', '大觉寺千年银杏', '银杏', 950, '22米', 40.05100000, 116.09500000, '位于北京市海淀区大觉寺寺院内，为一级保护古树', 0, 1715000000000, 1715000000000);
-INSERT INTO tree (id, tree_code, name, species, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time) VALUES (5, '005', '北海团城古白皮松', '白皮松', 800, '20米', 39.92500000, 116.39000000, '位于北京市北海公园，为一级保护古树', 0, 1715000000000, 1715000000000);
-INSERT INTO tree (id, tree_code, name, species, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time) VALUES (6, '006', '颐和园佛香阁古柏', '侧柏', 400, '16米', 39.99900000, 116.27500000, '位于北京市颐和园，为二级保护古树', 0, 1715000000000, 1715000000000);
-INSERT INTO tree (id, tree_code, name, species, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time) VALUES (7, '007', '中山公园古柏', '侧柏', 400, '14米', 39.90600000, 116.39700000, '位于北京市中山公园，为一级保护古树', 0, 1715000000000, 1715000000000);
-INSERT INTO tree (id, tree_code, name, species, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time) VALUES (8, '008', '圆明园古柏', '侧柏', 300, '12米', 40.00800000, 116.29800000, '位于北京市圆明园，为一级保护古树', 0, 1715000000000, 1715000000000);
+
+
+INSERT INTO tree (id, tree_code, name, species, family, genus, protection_level, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time) VALUES (1, '001', '景山万春亭古柏', '侧柏', '柏科', '侧柏属', '一级', 500, '15米', 39.92440000, 116.39700000, '位于北京市景山公园万春亭，为一级保护古树', 0, 1715000000000, 1715000000000);
+INSERT INTO tree (id, tree_code, name, species, family, genus, protection_level, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time) VALUES (2, '002', '天坛九龙柏', '侧柏', '柏科', '侧柏属', '一级', 600, '18米', 39.88330000, 116.40690000, '位于天坛公园回音壁西北侧，为一级保护古树', 0, 1715000000000, 1715000000000);
+INSERT INTO tree (id, tree_code, name, species, family, genus, protection_level, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time) VALUES (3, '003', '潭柘寺帝王银杏', '银杏', '银杏科', '银杏属', '一级', 1300, '25米', 39.89540000, 116.04810000, '位于北京市门头沟区潭柘寺寺院内，为一级保护古树', 0, 1715000000000, 1715000000000);
+INSERT INTO tree (id, tree_code, name, species, family, genus, protection_level, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time) VALUES (4, '004', '大觉寺千年银杏', '银杏', '银杏科', '银杏属', '一级', 950, '22米', 40.05100000, 116.09500000, '位于北京市海淀区大觉寺寺院内，为一级保护古树', 0, 1715000000000, 1715000000000);
+INSERT INTO tree (id, tree_code, name, species, family, genus, protection_level, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time) VALUES (5, '005', '北海团城古油松', '油松', '松科', '松属', '一级', 800, '20米', 39.91670000, 116.38890000, '位于北京市北海公园，为一级保护古树', 0, 1715000000000, 1715000000000);
+INSERT INTO tree (id, tree_code, name, species, family, genus, protection_level, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time) VALUES (6, '006', '颐和园佛香阁古柏', '侧柏', '柏科', '侧柏属', '二级', 400, '16米', 39.99900000, 116.27500000, '位于北京市颐和园，为二级保护古树', 0, 1715000000000, 1715000000000);
+INSERT INTO tree (id, tree_code, name, species, family, genus, protection_level, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time) VALUES (7, '007', '中山公园古柏', '侧柏', '柏科', '侧柏属', '一级', 400, '14米', 39.90600000, 116.39700000, '位于北京市中山公园，为一级保护古树', 0, 1715000000000, 1715000000000);
+INSERT INTO tree (id, tree_code, name, species, family, genus, protection_level, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time) VALUES (8, '008', '圆明园古柏', '侧柏', '柏科', '侧柏属', '一级', 300, '12米', 40.00800000, 116.29800000, '位于北京市圆明园，为一级保护古树', 0, 1715000000000, 1715000000000);
 
 -- auto-generated definition
 create table user
@@ -202,7 +208,7 @@ create table user
     login_name      varchar(50) not null comment '登陆名',
     name            varchar(50) null comment '昵称/名称',
     password        char(32)    not null comment '密码（MD5加密）',
-    age             int         not null comment '年龄',
+    age             int         null comment '年龄',
     `desc`          text        null comment '用户介绍',
     per_role_id     bigint      null comment '简易权限角色',
     last_login_time bigint      null comment '上次登录时间戳',
@@ -213,8 +219,7 @@ create table user
 
 create index idx_role_id
     on user (per_role_id);
-    comment '用户' charset = utf8mb4;
-            
+
 INSERT INTO user (id, login_name, name, password, age, `desc`, per_role_id, last_login_time) VALUES (1, 'admin', '系统管理员', '5ca679820249600c173480ba769126ed', 31, '系统管理员账号', 1, 1779031613802);
 INSERT INTO user (id, login_name, name, password, age, `desc`, per_role_id, last_login_time) VALUES (2, 'zhangsan', '张三', '5ca679820249600c173480ba769126ed', 28, '同学1', 2, 1779029574552);
 INSERT INTO user (id, login_name, name, password, age, `desc`, per_role_id, last_login_time) VALUES (3, 'lisi', '李四', '5ca679820249600c173480ba769126ed', 32, '同学2', 2, 1713000000000);

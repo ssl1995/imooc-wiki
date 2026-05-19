@@ -23,6 +23,9 @@
         <a-radio-button value="name">
           <PartitionOutlined /> 按树种名称检索
         </a-radio-button>
+        <a-radio-button value="taxonomy">
+          <ApartmentOutlined /> 科属种查询
+        </a-radio-button>
       </a-radio-group>
     </div>
 
@@ -187,7 +190,7 @@
               <a-form-item label="树种名称" required>
                 <a-input-search
                   v-model:value="nameParams.keyword"
-                  placeholder="例如: 银杏、侧柏、白皮松"
+                  placeholder="例如: 银杏、侧柏、油松"
                   enter-button
                   @search="handleNameSearch"
                   :loading="nameSearching"
@@ -205,7 +208,7 @@
             <a-space wrap>
               <a-button size="small" @click="setNameKeyword('银杏')">银杏</a-button>
               <a-button size="small" @click="setNameKeyword('侧柏')">侧柏</a-button>
-              <a-button size="small" @click="setNameKeyword('白皮松')">白皮松</a-button>
+              <a-button size="small" @click="setNameKeyword('油松')">油松</a-button>
             </a-space>
           </a-card>
         </a-col>
@@ -330,6 +333,149 @@
         </a-col>
       </a-row>
     </div>
+
+    <!-- Taxonomy: 科属种查询 -->
+    <div v-if="currentMode === 'taxonomy'" class="search-section">
+      <a-row :gutter="24">
+        <a-col :span="8">
+          <a-card title="科属种导航" class="query-card">
+            <a-form :model="taxonomyParams" layout="vertical">
+              <a-form-item label="选择科">
+                <a-select
+                  v-model:value="taxonomyParams.family"
+                  placeholder="请选择科"
+                  @change="onFamilyChange"
+                  allowClear
+                >
+                  <a-select-option v-for="f in familyList" :key="f" :value="f">{{ f }}</a-select-option>
+                </a-select>
+              </a-form-item>
+              <a-form-item label="选择属">
+                <a-select
+                  v-model:value="taxonomyParams.genus"
+                  placeholder="请先选择科"
+                  @change="onGenusChange"
+                  :disabled="!taxonomyParams.family"
+                  allowClear
+                >
+                  <a-select-option v-for="g in genusList" :key="g" :value="g">{{ g }}</a-select-option>
+                </a-select>
+              </a-form-item>
+              <a-form-item label="选择种">
+                <a-select
+                  v-model:value="taxonomyParams.species"
+                  placeholder="请先选择属"
+                  :disabled="!taxonomyParams.genus"
+                  allowClear
+                >
+                  <a-select-option v-for="s in speciesSelectList" :key="s" :value="s">{{ s }}</a-select-option>
+                </a-select>
+              </a-form-item>
+            </a-form>
+
+            <a-divider orientation="left"><FilterOutlined /> 属性筛选</a-divider>
+            <a-form :model="filterParams" layout="vertical">
+              <a-form-item label="保护级别">
+                <a-select v-model:value="filterParams.protectionLevel" placeholder="全部级别" allowClear>
+                  <a-select-option value="一级">一级</a-select-option>
+                  <a-select-option value="二级">二级</a-select-option>
+                  <a-select-option value="三级">三级</a-select-option>
+                </a-select>
+              </a-form-item>
+              <a-form-item label="树龄范围">
+                <a-slider v-model:value="filterParams.ageRange" range :min="0" :max="2000" :marks="{0: '0', 500: '500', 1000: '1000', 1500: '1500', 2000: '2000'}" />
+              </a-form-item>
+            </a-form>
+
+            <a-button type="primary" size="large" block @click="handleTaxonomySearch" :loading="taxonomySearching">
+              <SearchOutlined /> 查询古树
+            </a-button>
+
+            <a-divider orientation="left">快速选择</a-divider>
+            <a-space wrap>
+              <a-button size="small" @click="quickSelectTaxonomy('银杏科', '银杏属', '银杏')">银杏</a-button>
+              <a-button size="small" @click="quickSelectTaxonomy('柏科', '侧柏属', '侧柏')">侧柏</a-button>
+              <a-button size="small" @click="quickSelectTaxonomy('松科', '松属', '油松')">油松</a-button>
+            </a-space>
+          </a-card>
+        </a-col>
+
+        <a-col :span="16">
+          <a-card title="古树名木列表" class="result-card">
+            <div v-if="!taxonomyResults.length" class="empty-result">
+              <a-empty description="请选择科属种条件进行查询" />
+            </div>
+            <div v-else>
+              <a-alert
+                :message="`共查询到 ${taxonomyResults.length} 条古树名木记录`"
+                type="success"
+                show-icon
+                style="margin-bottom: 16px"
+              />
+              <div class="result-grid">
+                <a-row :gutter="[16, 16]">
+                  <a-col :span="8" v-for="(item, index) in taxonomyResults" :key="index">
+                    <a-card hoverable class="result-item" @click="showDetail(item)">
+                      <template #cover>
+                        <img :src="item.image" class="result-image" />
+                      </template>
+                      <a-card-meta>
+                        <template #title>
+                          <div class="result-title">
+                            {{ item.name }}
+                            <a-tag color="green">{{ item.protectionLevel }}</a-tag>
+                          </div>
+                        </template>
+                        <template #description>
+                          <div class="result-info">
+                            <p><ApartmentOutlined /> {{ item.family }} / {{ item.genus }} / {{ item.species }}</p>
+                            <p><CalendarOutlined /> 树龄: {{ item.age }}年</p>
+                            <p><EnvironmentOutlined /> {{ item.location }}</p>
+                          </div>
+                        </template>
+                      </a-card-meta>
+                    </a-card>
+                  </a-col>
+                </a-row>
+              </div>
+            </div>
+          </a-card>
+        </a-col>
+      </a-row>
+    </div>
+
+    <!-- 古树详情抽屉 -->
+    <a-drawer
+      v-model:visible="detailVisible"
+      title="古树名木详情"
+      width="600"
+      placement="right"
+    >
+      <div v-if="detailData" class="detail-content">
+        <div class="detail-image-wrapper">
+          <img :src="detailData.image" class="detail-image" />
+        </div>
+        <a-descriptions bordered :column="1" size="middle">
+          <a-descriptions-item label="古树名称">{{ detailData.name }}</a-descriptions-item>
+          <a-descriptions-item label="古树编号">{{ detailData.treeCode }}</a-descriptions-item>
+          <a-descriptions-item label="科">
+            <a-tag color="blue">{{ detailData.family }}</a-tag>
+          </a-descriptions-item>
+          <a-descriptions-item label="属">
+            <a-tag color="cyan">{{ detailData.genus }}</a-tag>
+          </a-descriptions-item>
+          <a-descriptions-item label="种">{{ detailData.species }}</a-descriptions-item>
+          <a-descriptions-item label="保护级别">
+            <a-tag :color="getProtectionColor(detailData.protectionLevel)">{{ detailData.protectionLevel }}</a-tag>
+          </a-descriptions-item>
+          <a-descriptions-item label="树龄">{{ detailData.age }} 年</a-descriptions-item>
+          <a-descriptions-item label="树高">{{ detailData.height }}</a-descriptions-item>
+          <a-descriptions-item label="纬度">{{ detailData.latitude }}</a-descriptions-item>
+          <a-descriptions-item label="经度">{{ detailData.longitude }}</a-descriptions-item>
+          <a-descriptions-item label="位置描述">{{ detailData.location }}</a-descriptions-item>
+        </a-descriptions>
+      </div>
+    </a-drawer>
   </div>
 </template>
 
@@ -345,7 +491,10 @@ import {
   SearchOutlined,
   CalendarOutlined,
   GlobalOutlined,
-  PartitionOutlined
+  PartitionOutlined,
+  ApartmentOutlined,
+  InfoCircleOutlined,
+  FilterOutlined
 } from '@ant-design/icons-vue';
 import type { UploadChangeParam } from 'ant-design-vue';
 
@@ -385,11 +534,14 @@ export default defineComponent({
     SearchOutlined,
     CalendarOutlined,
     GlobalOutlined,
-    PartitionOutlined
+    PartitionOutlined,
+    ApartmentOutlined,
+    InfoCircleOutlined,
+    FilterOutlined
   },
   setup() {
     // 当前检索模式
-    const currentMode = ref<'i2i' | 'i2l' | 'l2i' | 'name'>('i2i');
+    const currentMode = ref<'i2i' | 'i2l' | 'l2i' | 'name' | 'taxonomy'>('i2i');
     const searching = ref(false);
 
     // I2I 状态
@@ -431,6 +583,26 @@ export default defineComponent({
       { title: '树龄', dataIndex: 'age', width: 80, align: 'center', customRender: ({ text }: any) => text + '年' },
       { title: '位置', dataIndex: 'location' }
     ];
+
+    // Taxonomy 状态（科属种查询）
+    const taxonomyParams = reactive({
+      family: '',
+      genus: '',
+      species: ''
+    });
+    const filterParams = reactive({
+      protectionLevel: '',
+      ageRange: [0, 2000] as number[]
+    });
+    const taxonomySearching = ref(false);
+    const taxonomyResults = ref<any[]>([]);
+    const familyList = ref<string[]>([]);
+    const genusList = ref<string[]>([]);
+    const speciesSelectList = ref<string[]>([]);
+
+    // 详情抽屉状态
+    const detailVisible = ref(false);
+    const detailData = ref<any>(null);
 
     // 上传前清空旧文件和预览
     const beforeUploadI2I = () => {
@@ -626,6 +798,112 @@ export default defineComponent({
       return 'orange';
     };
 
+    // ==================== 科属种查询方法 ====================
+
+    // 加载所有科
+    const loadFamilies = async () => {
+      try {
+        const res = await axios.get(`${API_BASE}/tree/taxonomy/families`);
+        familyList.value = res.data.content || [];
+      } catch (e) {
+        console.error('加载科列表失败', e);
+      }
+    };
+
+    // 科变化时加载属
+    const onFamilyChange = async (family: string) => {
+      taxonomyParams.genus = '';
+      taxonomyParams.species = '';
+      genusList.value = [];
+      speciesSelectList.value = [];
+      if (!family) return;
+      try {
+        const res = await axios.get(`${API_BASE}/tree/taxonomy/genera`, { params: { family } });
+        genusList.value = res.data.content || [];
+      } catch (e) {
+        console.error('加载属列表失败', e);
+      }
+    };
+
+    // 属变化时加载种
+    const onGenusChange = async (genus: string) => {
+      taxonomyParams.species = '';
+      speciesSelectList.value = [];
+      if (!genus || !taxonomyParams.family) return;
+      try {
+        const res = await axios.get(`${API_BASE}/tree/taxonomy/species`, {
+          params: { family: taxonomyParams.family, genus }
+        });
+        speciesSelectList.value = res.data.content || [];
+      } catch (e) {
+        console.error('加载种列表失败', e);
+      }
+    };
+
+    // 科属种查询：调用后端 /tree/filter 进行综合筛选
+    const handleTaxonomySearch = async () => {
+      taxonomySearching.value = true;
+      try {
+        const params: any = {};
+        if (taxonomyParams.family) params.family = taxonomyParams.family;
+        if (taxonomyParams.genus) params.genus = taxonomyParams.genus;
+        if (taxonomyParams.species) params.species = taxonomyParams.species;
+        if (filterParams.protectionLevel) params.protectionLevel = filterParams.protectionLevel;
+        if (filterParams.ageRange && filterParams.ageRange.length === 2) {
+          params.minAge = filterParams.ageRange[0];
+          params.maxAge = filterParams.ageRange[1];
+        }
+        const res = await axios.get(`${API_BASE}/tree/filter`, { params });
+        const list = res.data.content || [];
+        taxonomyResults.value = list.map((item: any) => ({
+          id: item.id,
+          treeCode: item.treeCode,
+          name: item.name,
+          species: item.species,
+          family: item.family,
+          genus: item.genus,
+          protectionLevel: item.protectionLevel || '未知',
+          age: item.age || 0,
+          height: item.height,
+          latitude: item.latitude,
+          longitude: item.longitude,
+          location: item.location || item.desc || '',
+          image: item.image ? `${API_BASE}${item.image}` : ''
+        }));
+        message.success(`查询完成，共 ${taxonomyResults.value.length} 条记录`);
+      } catch (e) {
+        message.error('查询失败');
+        console.error(e);
+      }
+      taxonomySearching.value = false;
+    };
+
+    // 快速选择科属种
+    const quickSelectTaxonomy = (family: string, genus: string, species: string) => {
+      taxonomyParams.family = family;
+      onFamilyChange(family).then(() => {
+        taxonomyParams.genus = genus;
+        onGenusChange(genus).then(() => {
+          taxonomyParams.species = species;
+          handleTaxonomySearch();
+        });
+      });
+    };
+
+    // 显示古树详情
+    const showDetail = (item: any) => {
+      detailData.value = item;
+      detailVisible.value = true;
+    };
+
+    // 保护级别颜色
+    const getProtectionColor = (level: string) => {
+      if (level === '一级') return 'orange';
+      if (level === '二级') return 'blue';
+      if (level === '三级') return 'green';
+      return 'default';
+    };
+
     // 本地模拟上传
     const customRequest = (options: any) => {
       const { file, onSuccess, onProgress } = options;
@@ -643,9 +921,9 @@ export default defineComponent({
       }, 50);
     };
 
-    // 页面加载时无需预加载全部数据，各检索模式按需调用 /tree/retrieve
+    // 页面加载时预加载科列表（用于科属种查询）
     onMounted(() => {
-      // 默认空状态，等待用户操作
+      loadFamilies();
     });
 
     return {
@@ -677,7 +955,24 @@ export default defineComponent({
       handleNameSearch,
       setNameKeyword,
       setLocation,
-      getSimilarityColor
+      getSimilarityColor,
+      // taxonomy
+      taxonomyParams,
+      filterParams,
+      taxonomySearching,
+      taxonomyResults,
+      familyList,
+      genusList,
+      speciesSelectList,
+      onFamilyChange,
+      onGenusChange,
+      handleTaxonomySearch,
+      quickSelectTaxonomy,
+      // detail
+      detailVisible,
+      detailData,
+      showDetail,
+      getProtectionColor
     };
   }
 });
@@ -852,5 +1147,23 @@ export default defineComponent({
 :deep(.ant-upload-hint) {
   font-size: 12px;
   color: #999;
+}
+
+/* 详情抽屉样式 */
+.detail-content {
+  padding: 8px;
+}
+
+.detail-image-wrapper {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.detail-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 </style>

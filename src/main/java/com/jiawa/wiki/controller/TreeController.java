@@ -303,6 +303,9 @@ public class TreeController {
     tree.setTreeCode(generateTreeCode());
     tree.setName(req.getName());
     tree.setSpecies(req.getSpecies());
+    tree.setFamily(req.getFamily());
+    tree.setGenus(req.getGenus());
+    tree.setProtectionLevel(req.getProtectionLevel());
     tree.setAge(req.getAge());
     tree.setHeight(req.getHeight());
     tree.setLatitude(req.getLatitude() != null ? new java.math.BigDecimal(req.getLatitude()) : null);
@@ -389,7 +392,7 @@ public class TreeController {
   }
 
   /**
-   * 获取古树名木详细信息
+   * 获取古树名木详细信息（含科属种、保护级别等完整字段）
    */
   @GetMapping("/detail/{id}")
   public CommonResp<TreeRetrieveResp> detail(@PathVariable Long id) {
@@ -398,7 +401,86 @@ public class TreeController {
     Tree tree = treeMapper.selectById(id);
     if (tree != null) {
       resp.setContent(toTreeRetrieveResp(tree));
+    } else {
+      resp.setMessage("古树记录不存在");
     }
+    return resp;
+  }
+
+  /**
+   * 科属种层级查询：获取所有科
+   */
+  @GetMapping("/taxonomy/families")
+  public CommonResp<List<String>> getFamilies() {
+    LOG.info("查询所有科");
+    CommonResp<List<String>> resp = new CommonResp<>();
+    List<String> families = treeMapper.selectAllFamilies();
+    resp.setContent(families);
+    return resp;
+  }
+
+  /**
+   * 科属种层级查询：根据科获取下属属
+   */
+  @GetMapping("/taxonomy/genera")
+  public CommonResp<List<String>> getGenera(@RequestParam String family) {
+    LOG.info("查询科下属属，family={}", family);
+    CommonResp<List<String>> resp = new CommonResp<>();
+    List<String> genera = treeMapper.selectGeneraByFamily(family);
+    resp.setContent(genera);
+    return resp;
+  }
+
+  /**
+   * 科属种层级查询：根据科、属获取下属种
+   */
+  @GetMapping("/taxonomy/species")
+  public CommonResp<List<String>> getSpeciesByTaxonomy(@RequestParam String family,
+                                                        @RequestParam String genus) {
+    LOG.info("查询科属下属种，family={}，genus={}", family, genus);
+    CommonResp<List<String>> resp = new CommonResp<>();
+    List<String> speciesList = treeMapper.selectSpeciesByGenus(family, genus);
+    resp.setContent(speciesList);
+    return resp;
+  }
+
+  /**
+   * 科属种条件检索：按科/属/种筛选古树列表
+   */
+  @GetMapping("/taxonomy/search")
+  public CommonResp<List<TreeRetrieveResp>> searchByTaxonomy(
+      @RequestParam(required = false) String family,
+      @RequestParam(required = false) String genus,
+      @RequestParam(required = false) String species) {
+    LOG.info("科属种检索，family={}，genus={}，species={}", family, genus, species);
+    CommonResp<List<TreeRetrieveResp>> resp = new CommonResp<>();
+    List<Tree> trees = treeMapper.selectByTaxonomy(family, genus, species);
+    List<TreeRetrieveResp> results = trees.stream()
+        .map(this::toTreeRetrieveResp)
+        .collect(Collectors.toList());
+    resp.setContent(results);
+    return resp;
+  }
+
+  /**
+   * 综合属性筛选：支持保护级别、树龄范围等多条件组合查询
+   */
+  @GetMapping("/filter")
+  public CommonResp<List<TreeRetrieveResp>> filter(
+      @RequestParam(required = false) String family,
+      @RequestParam(required = false) String genus,
+      @RequestParam(required = false) String species,
+      @RequestParam(required = false) String protectionLevel,
+      @RequestParam(required = false) Integer minAge,
+      @RequestParam(required = false) Integer maxAge) {
+    LOG.info("综合筛选，family={}，genus={}，species={}，protectionLevel={}，ageRange={}-{}",
+        family, genus, species, protectionLevel, minAge, maxAge);
+    CommonResp<List<TreeRetrieveResp>> resp = new CommonResp<>();
+    List<Tree> trees = treeMapper.selectByFilter(family, genus, species, protectionLevel, minAge, maxAge);
+    List<TreeRetrieveResp> results = trees.stream()
+        .map(this::toTreeRetrieveResp)
+        .collect(Collectors.toList());
+    resp.setContent(results);
     return resp;
   }
 
@@ -411,6 +493,9 @@ public class TreeController {
     resp.setTreeCode(tree.getTreeCode());
     resp.setName(tree.getName());
     resp.setSpecies(tree.getSpecies());
+    resp.setFamily(tree.getFamily());
+    resp.setGenus(tree.getGenus());
+    resp.setProtectionLevel(tree.getProtectionLevel());
     resp.setAge(tree.getAge());
     resp.setHeight(tree.getHeight());
     resp.setLatitude(tree.getLatitude());

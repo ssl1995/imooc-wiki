@@ -8,6 +8,9 @@ public class TreeRetrieveResp {
     private String treeCode;
     private String name;
     private String species;
+    private String family;
+    private String genus;
+    private String protectionLevel;
     private Integer age;
     private String height;
     private BigDecimal latitude;
@@ -50,6 +53,30 @@ public class TreeRetrieveResp {
 
     public void setSpecies(String species) {
         this.species = species;
+    }
+
+    public String getFamily() {
+        return family;
+    }
+
+    public void setFamily(String family) {
+        this.family = family;
+    }
+
+    public String getGenus() {
+        return genus;
+    }
+
+    public void setGenus(String genus) {
+        this.genus = genus;
+    }
+
+    public String getProtectionLevel() {
+        return protectionLevel;
+    }
+
+    public void setProtectionLevel(String protectionLevel) {
+        this.protectionLevel = protectionLevel;
     }
 
     public Integer getAge() {
@@ -150,6 +177,9 @@ public class TreeRetrieveResp {
         sb.append(", treeCode=").append(treeCode);
         sb.append(", name=").append(name);
         sb.append(", species=").append(species);
+        sb.append(", family=").append(family);
+        sb.append(", genus=").append(genus);
+        sb.append(", protectionLevel=").append(protectionLevel);
         sb.append(", age=").append(age);
         sb.append(", height=").append(height);
         sb.append(", latitude=").append(latitude);

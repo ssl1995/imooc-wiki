@@ -1,0 +1,183 @@
+=== Para 700 ===
+综上所述，本文提出的DHLM模型与古树名木展示与检索系统在iNaturalist到BFATH的迁移中展现了一定的领域适应能力，其在更多场景中的通用性有待进一步验证。例如，在园林绿化管理中，该系统可支持珍贵树种的智能建档与动态检索。系统基于前后端分离的架构，具备良好的可扩展性和跨平台适应能力，未来有望在林业资源管理与生态保护等场景中发挥应用价值。
+
+=== Para 701 ===
+5.2 展望
+
+=== Para 702 ===
+本文提出的DHLM模型在古树名木多模态检索方面取得了一定成果，但仍存在以下局限性，有待后续研究工作进一步完善。
+
+=== Para 703 ===
+模型层面，DHLM模型目前依赖监督学习与度量学习优化，后续可引入自监督预训练机制，利用大规模无标注图像数据学习更鲁棒的图像特征，进一步提升模型对弱标注数据或新物种的泛化能力。
+
+=== Para 704 ===
+融合机制层面，DHLM模型当前通过多路融合策略验证确定特征拼接为最优融合方案，并采用双分支哈希投影机制在哈希空间实现模态加权融合。后续可探索将地理位置的空间关联特性（如距离衰减、地理围栏）显式编码进位置特征，或引入图神经网络建模古树名木间的空间邻接关系，进一步提升位置特征的判别性。
+
+=== Para 705 ===
+实验验证层面，本文采用固定随机种子（seed=42）下的单次运行并报告结果，核心结论已通过预实验多次验证。后续研究可在更大规模的古树名木数据集上开展多次随机种子重复实验，报告均值与方差以增强统计稳健性；同时可将DCMH、SSAH等图像-文本多模态哈希方法适配至图像-位置坐标场景，在统一的图像-位置数据上与本文DBHP机制开展公平对比。
+
+=== Para 706 ===
+系统层面，当前古树名木展示与检索系统仍依赖云端处理，未来可结合模型轻量化技术（如模型剪枝或知识蒸馏等）与哈希码固有的存储优势，实现模型在园林移动终端或无人机采集设备上的边缘部署。此外，系统当前已支持科属种三级分类信息展示与树种名称条件检索，未来可进一步关联中国植物志数据库实现科属种层级的智能推荐与自动补全。
+
+=== Para 707 ===
+应用层面，DHLM模型在iNaturalist到BFATH的迁移中展现了一定的领域适应能力，未来可进一步探索其在濒危植物识别、植物多样性监测等林业相关场景的应用，进一步拓展模型与系统的应用范围。
+
+=== Para 709 ===
+参考文献
+
+=== Para 710 ===
+诸大建, 张帅. 中国生态文明实践如何检验和深化可持续性科学[J]. 中国人口·资源与环境, 2022, 32(9): 1-10.
+
+=== Para 711 ===
+国家古树名木保护专项调查组. 第二次全国古树名木资源普查结果[R]. 北京: 国家林业和草原局, 2023.
+
+=== Para 712 ===
+Kalaivani P, Sharma T P, Mandal D, et al. Deep Learning in Plant Biology: A Comprehensive Review[J]. Frontiers in Plant Science, 2022, 13: 924412.
+
+=== Para 713 ===
+Ferreira A S, Da Silva N F, Papa J P, et al. Plant Leaf Classification Using Color and Texture Features[J]. IEEE Transactions on Image Processing, 2020, 29: 7565-7576.
+
+=== Para 714 ===
+Liu H M, Wang R P, Shan S G, et al. Deep Supervised Hashing for Fast Image Retrieval[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Las Vegas, USA, 2016: 2064-2072.
+
+=== Para 715 ===
+Zhu H, Long M S, Wang J M, et al. Deep Hashing Network for Efficient Similarity Retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. Phoenix, USA, 2016: 2415-2421.
+
+=== Para 716 ===
+Cao Z J, Long M S, Wang J M, et al. HashNet: Deep Learning to Hash by Continuation[C]//Proceedings of the IEEE International Conference on Computer Vision. Venice, Italy, 2017: 5609-5618.
+
+=== Para 717 ===
+Yang E K, Deng C, Liu W, et al. Pairwise Relationship Guided Deep Hashing for Cross-Modal Retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. San Francisco, USA, 2017: 1618-1625.
+
+=== Para 718 ===
+Jiang Q Y, Li W J. Deep Cross-Modal Hashing[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Honolulu, USA, 2017: 3232-3240.
+
+=== Para 719 ===
+Li C, Deng C, Li N, et al. Self-Supervised Adversarial Hashing Networks for Cross-Modal Retrieval[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Salt Lake City, USA, 2018: 4242-4251.
+
+=== Para 720 ===
+Zou Q, Cheng S L, Chen J Y. PromptHash: Affinity-Prompted Collaborative Cross-Modal Learning for Adaptive Hashing Retrieval[C]//Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. Nashville, USA, 2025: 19649-19658.
+
+=== Para 721 ===
+Li Y, Zhen L L, Sun Y, et al. Deep Evidential Hashing for Trustworthy Cross-Modal Retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. Philadelphia, USA, 2025: 18566-18574.
+
+=== Para 722 ===
+Li J X, Wong W K, Jiang L, et al. Lightweight Contrastive Distilled Hashing for Online Cross-Modal Retrieval[C]//Proceedings of the AAAI Conference on Artificial Intelligence. Philadelphia, USA, 2025: 4779-4787.
+
+=== Para 723 ===
+Pegia M, Jónsson B T, Moumtzidou A, et al. MuseHash: Supervised Bayesian Hashing for Multimodal Image Representation[C]//Proceedings of the 2023 ACM International Conference on Multimedia Retrieval. Thessaloniki, Greece, 2023: 434-442.
+
+=== Para 724 ===
+Wang J D, Zhang T, Song J K, et al. A Survey on Learning to Hash[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2018, 40(4): 769-790.
+
+=== Para 725 ===
+Mai G, Janowicz K, Yan B, et al. Multi-Scale Representation Learning for Spatial Feature Distributions using Grid Cells[C]//Proceedings of the 8th International Conference on Learning Representations. Virtual Event, 2020.
+
+=== Para 726 ===
+Chu G, Potetz B, Adam H, et al. Geo-Aware Networks for Fine-Grained Recognition[C]//Proceedings of the IEEE/CVF International Conference on Computer Vision. Seoul, Korea, 2019: 2811-2820.
+
+=== Para 727 ===
+Mai G, Huang W, Sun J, et al. Contrastive Spatial Pre-Training for Learning Spatially-Aware Visual Representations[C]//Proceedings of the 11th International Conference on Learning Representations. Kigali, Rwanda, 2023.
+
+=== Para 728 ===
+Klemmer K, Rolf E, Watt A, et al. SatCLIP: Global, General-Purpose Location Embeddings with Satellite Imagery[C]//Advances in Neural Information Processing Systems, 2023, 36: 53471-53495.
+
+=== Para 729 ===
+Vivanco Cepeda V, Nayak G K, Shah M. GeoCLIP: CLIP-Inspired Alignment between Locations and Images for Effective Worldwide Geo-Localization[C]//Advances in Neural Information Processing Systems 36. New Orleans, USA, 2023: 8690-8701.
+
+=== Para 730 ===
+Van Horn G, Mac Aodha O, Song Y, et al. The iNaturalist Species Classification and Detection Dataset[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Salt Lake City, USA, 2018: 8769-8778.
+
+=== Para 731 ===
+Krizhevsky A, Sutskever I, Hinton G E. ImageNet Classification with Deep Convolutional Neural Networks[C]//Advances in Neural Information Processing Systems 25. Lake Tahoe, USA, 2012: 1097-1105.
+
+=== Para 732 ===
+Srivastava N, Hinton G, Krizhevsky A, et al. Dropout: A Simple Way to Prevent Neural Networks from Overfitting[J]. Journal of Machine Learning Research, 2014, 15(1): 1929-1958.
+
+=== Para 733 ===
+Glorot X, Bengio Y. Understanding the Difficulty of Training Deep Feedforward Neural Networks[C]//Proceedings of the 13th International Conference on Artificial Intelligence and Statistics. Sardinia, Italy, 2010: 249-256.
+
+=== Para 734 ===
+Lin M, Chen Q, Yan S. Network In Network[C]//Proceedings of the 2nd International Conference on Learning Representations. Banff, Canada, 2014.
+
+=== Para 735 ===
+Simonyan K, Zisserman A. Very Deep Convolutional Networks for Large-Scale Image Recognition[C]//Proceedings of the 3rd International Conference on Learning Representations. San Diego, USA, 2015.
+
+=== Para 736 ===
+Szegedy C, Liu W, Jia Y Q, et al. Going Deeper with Convolutions[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Boston, USA, 2015: 1-9.
+
+=== Para 737 ===
+He K M, Zhang X Y, Ren S Q, et al. Deep Residual Learning for Image Recognition[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Las Vegas, USA, 2016: 770-778.
+
+=== Para 738 ===
+Schroff F, Kalenichenko D, Philbin J. FaceNet: A Unified Embedding for Face Recognition and Clustering[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Boston, USA, 2015: 815-823.
+
+=== Para 739 ===
+Hadsell R, Chopra S, LeCun Y. Dimensionality Reduction by Learning an Invariant Mapping[C]//Proceedings of the 2006 IEEE Computer Society Conference on Computer Vision and Pattern Recognition. New York, USA, 2006, 2: 1735-1742.
+
+=== Para 740 ===
+Dosovitskiy A, Beyer L, Kolesnikov A, et al. An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale[C]//Proceedings of the 9th International Conference on Learning Representations. Virtual Event, 2021.
+
+=== Para 741 ===
+Tan M, Le Q V. EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks[C]//Proceedings of the 36th International Conference on Machine Learning. Long Beach, USA, 2019: 6105-6114.
+
+=== Para 742 ===
+Zhang S, Wang Z, Zhang Y, et al. A Survey of Vision and Language Related Multi-Modal Task[J]. Artificial Intelligence Review, 2022, 55(6): 4685-4715.
+
+=== Para 743 ===
+Snoek C G M, Worring M, Smeulders A W M. Early versus Late Fusion in Semantic Video Analysis[C]//Proceedings of the 13th ACM International Conference on Multimedia. Singapore, 2005: 399-402.
+
+=== Para 744 ===
+Ramachandram D, Taylor G W. Deep Multimodal Learning: A Survey on Recent Advances and Trends[C]//Proceedings of the 2017 IEEE Signal Processing and Machine Learning for Sensor Signal Analytics. Philadelphia, USA, 2017: 1-6.
+
+=== Para 745 ===
+Baltrusaitis T, Ahuja C, Morency L P. Multimodal Machine Learning: A Survey and Taxonomy[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2019, 41(2): 423-443.
+
+=== Para 746 ===
+Fukui A, Park D H, Yang D, et al. Multimodal Compact Bilinear Pooling for Visual Question Answering and Visual Grounding[C]//Proceedings of the 2016 Conference on Empirical Methods in Natural Language Processing. Austin, USA, 2016: 457-468.
+
+=== Para 747 ===
+Ben-Younes H, Cadene R, Cord M, et al. MUTAN: Multimodal Tucker Fusion for Visual Question Answering[C]//Proceedings of the IEEE International Conference on Computer Vision. Venice, Italy, 2017: 2631-2639.
+
+=== Para 748 ===
+Lu J, Yang J, Batra D, et al. Hierarchical Question-Image Co-Attention for Visual Question Answering[C]//Proceedings of the 29th International Conference on Neural Information Processing Systems. Barcelona, Spain, 2016: 289-297.
+
+=== Para 749 ===
+Li X, Yang J, Ma J. Recent Developments of Content-Based Image Retrieval (CBIR)[J]. Neurocomputing, 2021, 452: 675-689.
+
+=== Para 750 ===
+Cao Y, Long M S, Liu B, et al. Deep Cauchy Hashing for Hamming Space Retrieval[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Salt Lake City, USA, 2018: 1229-1237.
+
+=== Para 751 ===
+Wang Q, Zhang L, Wu B, et al. Multi-Scale Deep Supervised Hashing for Image Retrieval[C]//Proceedings of the 31st ACM International Conference on Multimedia. Ottawa, Canada, 2023: 1124-1132.
+
+=== Para 752 ===
+Shrivastava A, Gupta A, Girshick R. Training Region-Based Object Detectors with Online Hard Example Mining[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. Las Vegas, USA, 2016: 761-769.
+
+=== Para 753 ===
+京津冀古树名木保护研究中心. 京津冀古树寻踪[M]. 北京: 中国建筑工业出版社, 2019.
+
+=== Para 754 ===
+Shorten C, Khoshgoftaar T M. A Survey on Image Data Augmentation for Deep Learning[J]. Journal of Big Data, 2019, 6(1): 1-48.
+
+=== Para 755 ===
+Zheng L, Yang Y, Tian Q. SIFT Meets CNN: A Decade Survey of Instance Retrieval[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2017, 40(5): 1224-1244.
+
+=== Para 756 ===
+Sommerville I. Software Engineering[M]. 10th ed. Boston: Addison-Wesley, 2015: 125-130.
+
+=== Para 757 ===
+Sandhu R S, Coyne E J, Feinstein H L, et al. Role-Based Access Control Models[J]. Computer, 1996, 29(2): 38-47.
+
+=== Para 758 ===
+You Y. Vue.js[M]. Birmingham: Packt Publishing Ltd, 2022.
+
+=== Para 759 ===
+VMware, Inc. Spring Boot Documentation[EB/OL]. 2023 [2026-04-09]. https://spring.io/projects/spring-boot.
+
+=== Para 760 ===
+Oracle Corporation. MySQL 8.0 Reference Manual[EB/OL]. 2023 [2026-04-09]. https://dev.mysql.com/doc/refman/8.0/en.
+
+=== Para 761 ===
+国家林业局. 古树名木普查技术规范: LY/T 2738-2016[S]. 北京: 中国标准出版社, 2016.
+

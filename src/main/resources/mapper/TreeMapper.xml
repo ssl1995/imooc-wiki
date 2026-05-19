@@ -6,6 +6,9 @@
         <result column="tree_code" jdbcType="VARCHAR" property="treeCode" />
         <result column="name" jdbcType="VARCHAR" property="name" />
         <result column="species" jdbcType="VARCHAR" property="species" />
+        <result column="family" jdbcType="VARCHAR" property="family" />
+        <result column="genus" jdbcType="VARCHAR" property="genus" />
+        <result column="protection_level" jdbcType="VARCHAR" property="protectionLevel" />
         <result column="age" jdbcType="INTEGER" property="age" />
         <result column="height" jdbcType="VARCHAR" property="height" />
         <result column="latitude" jdbcType="DECIMAL" property="latitude" />
@@ -16,36 +19,103 @@
         <result column="update_time" jdbcType="BIGINT" property="updateTime" />
     </resultMap>
 
+    <sql id="Base_Column_List">
+        id, tree_code, name, species, family, genus, protection_level, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time
+    </sql>
+
     <select id="selectAll" resultMap="BaseResultMap">
-        SELECT id, tree_code, name, species, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time
+        SELECT <include refid="Base_Column_List" />
         FROM tree
         WHERE is_delete = 0
         ORDER BY tree_code
     </select>
 
     <select id="selectByName" resultMap="BaseResultMap">
-        SELECT id, tree_code, name, species, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time
+        SELECT <include refid="Base_Column_List" />
         FROM tree
         WHERE is_delete = 0
           AND (species LIKE CONCAT('%', #{name}, '%') OR name LIKE CONCAT('%', #{name}, '%'))
     </select>
 
     <select id="selectById" resultMap="BaseResultMap">
-        SELECT id, tree_code, name, species, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time
+        SELECT <include refid="Base_Column_List" />
         FROM tree
         WHERE id = #{id}
           AND is_delete = 0
     </select>
 
     <select id="selectByTreeCode" resultMap="BaseResultMap">
-        SELECT id, tree_code, name, species, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time
+        SELECT <include refid="Base_Column_List" />
         FROM tree
         WHERE tree_code = #{treeCode}
           AND is_delete = 0
     </select>
 
+    <!-- 根据科属种条件筛选古树 -->
+    <select id="selectByTaxonomy" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM tree
+        WHERE is_delete = 0
+        <if test="family != null and family != ''">
+            AND family = #{family}
+        </if>
+        <if test="genus != null and genus != ''">
+            AND genus = #{genus}
+        </if>
+        <if test="species != null and species != ''">
+            AND species = #{species}
+        </if>
+        ORDER BY tree_code
+    </select>
+
+    <!-- 查询所有科（去重） -->
+    <select id="selectAllFamilies" resultType="java.lang.String">
+        SELECT DISTINCT family FROM tree WHERE is_delete = 0 AND family IS NOT NULL AND family != '' ORDER BY family
+    </select>
+
+    <!-- 根据科查询下属所有属（去重） -->
+    <select id="selectGeneraByFamily" resultType="java.lang.String">
+        SELECT DISTINCT genus FROM tree WHERE is_delete = 0 AND family = #{family} AND genus IS NOT NULL AND genus != '' ORDER BY genus
+    </select>
+
+    <!-- 根据科和属查询下属所有种（去重） -->
+    <select id="selectSpeciesByGenus" resultType="java.lang.String">
+        SELECT DISTINCT species FROM tree
+        WHERE is_delete = 0
+          AND family = #{family}
+          AND genus = #{genus}
+          AND species IS NOT NULL AND species != ''
+        ORDER BY species
+    </select>
+
+    <!-- 综合条件筛选 -->
+    <select id="selectByFilter" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM tree
+        WHERE is_delete = 0
+        <if test="family != null and family != ''">
+            AND family = #{family}
+        </if>
+        <if test="genus != null and genus != ''">
+            AND genus = #{genus}
+        </if>
+        <if test="species != null and species != ''">
+            AND species = #{species}
+        </if>
+        <if test="protectionLevel != null and protectionLevel != ''">
+            AND protection_level = #{protectionLevel}
+        </if>
+        <if test="minAge != null">
+            AND age &gt;= #{minAge}
+        </if>
+        <if test="maxAge != null">
+            AND age &lt;= #{maxAge}
+        </if>
+        ORDER BY tree_code
+    </select>
+
     <insert id="insert" parameterType="com.jiawa.wiki.domain.Tree" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO tree (tree_code, name, species, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time)
-        VALUES (#{treeCode}, #{name}, #{species}, #{age}, #{height}, #{latitude}, #{longitude}, #{desc}, 0, #{createTime}, #{updateTime})
+        INSERT INTO tree (tree_code, name, species, family, genus, protection_level, age, height, latitude, longitude, `desc`, is_delete, create_time, update_time)
+        VALUES (#{treeCode}, #{name}, #{species}, #{family}, #{genus}, #{protectionLevel}, #{age}, #{height}, #{latitude}, #{longitude}, #{desc}, 0, #{createTime}, #{updateTime})
     </insert>
 </mapper>

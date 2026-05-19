@@ -7,6 +7,9 @@ public class Tree {
     private String treeCode;
     private String name;
     private String species;
+    private String family;
+    private String genus;
+    private String protectionLevel;
     private Integer age;
     private String height;
     private BigDecimal latitude;
@@ -46,6 +49,30 @@ public class Tree {
 
     public void setSpecies(String species) {
         this.species = species;
+    }
+
+    public String getFamily() {
+        return family;
+    }
+
+    public void setFamily(String family) {
+        this.family = family;
+    }
+
+    public String getGenus() {
+        return genus;
+    }
+
+    public void setGenus(String genus) {
+        this.genus = genus;
+    }
+
+    public String getProtectionLevel() {
+        return protectionLevel;
+    }
+
+    public void setProtectionLevel(String protectionLevel) {
+        this.protectionLevel = protectionLevel;
     }
 
     public Integer getAge() {

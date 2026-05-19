@@ -1,0 +1,66 @@
+=== Para 5 ===
+硕士学位论文
+
+=== Para 7 ===
+（隐名评阅论文封面）
+
+=== Para 9 ===
+论文题目：融合图像与地理位置元数据的古树名木多模态哈希检索方法研究与应用
+
+=== Para 10 ===
+English Title: Research and Application of Ancient and Famous Tree Multimodal Hashing Method Based on Fused Imageand Location Metadata
+
+=== Para 11 ===
+专业学位类型：电子信息硕士
+
+=== Para 12 ===
+领域名称：软件工程
+
+=== Para 13 ===
+研究方向：智能信息处理
+
+=== Para 14 ===
+论文编号：
+
+=== Para 15 ===
+提交日期：2026年5月15日
+
+=== Para 17 ===
+摘要
+
+=== Para 18 ===
+古树名木是自然生态与历史文化的重要载体，其智能化检索与管理是当前研究热点。现有管理方式存在图像与地理位置元数据割裂、单模态检索精度不足等问题，难以满足精细化管理需求。本文提出一种基于深度哈希学习的多模态检索模型DHLM（Deep Hashing Learning Multi-modal Network），通过融合图像与地理位置元数据实现以图搜位置、以位置搜图的双向检索能力。本文主要工作如下：
+
+=== Para 19 ===
+针对古树名木多模态检索中样本类别不平衡与复杂背景干扰等问题，本文提出DHLM模型。首先，设计基于Triplet Loss、Contrastive Loss和Quantization Loss的联合损失函数，并采用难例挖掘策略缓解类别不平衡问题；设计双分支哈希投影机制，将图像特征与位置特征分别映射至128维哈希语义空间后加权融合，生成128位二进制哈希码；此外，通过多路融合策略验证确定特征拼接为最优融合方案，联合图像和地理位置元数据构建统一语义空间。
+
+=== Para 20 ===
+为验证模型性能，本文构建多维度实验验证框架。在iNaturalist 2018数据集上进行模型预训练、基线对比与消融实验，与HashNet、DCH和MDSH三个基线模型公平对比；在自建BFATH数据集上进行领域微调与系统演示验证，以mAP、Recall@K和Precision@K验证模型有效性。实验结果表明，DHLM单模态变体优于最优基线方法MDSH 2.8个百分点，引入地理位置元数据后进一步提升至mAP 0.741（iNaturalist 2018数据集），验证了多模态融合策略的有效性。
+
+=== Para 21 ===
+针对现有系统缺少专用古树名木检索工具的问题，本文设计并实现基于B/S架构的古树名木多模态检索系统。采用Vue和SpringBoot前后端分离架构，集成DHLM模型支持图像与地理位置双向检索。系统已完成开发和测试，可为古树名木检索管理提供有力支持。
+
+=== Para 22 ===
+关键词: 古树名木检索，深度哈希学习，多模态哈希检索，多模态融合
+
+=== Para 23 ===
+Research and Application of Ancient and Famous Tree Multimodal Hashing Retrieval Method Based on Fused Image and Location Metadata
+
+=== Para 24 ===
+Abstract
+
+=== Para 25 ===
+Ancient and famous trees possess considerable ecological and historical value, making their intelligent retrieval and management an active research topic. Existing approaches suffer from the separation between image data and geographic location metadata, and unimodal retrieval alone cannot achieve the precision required for fine-grained management. This dissertation presents DHLM (Deep Hashing Learning Multi-modal Network), a deep hashing-based multimodal retrieval model that fuses image and location metadata to enable bidirectional retrieval—image-to-location and location-to-image search. The main contributions are as follows:
+
+=== Para 26 ===
+This article proposes the DHLM model to tackle class imbalance and complex background interference in ancient tree retrieval. A joint loss combining Triplet Loss, Contrastive Loss and Quantization Loss is adopted together with hard negative mining. A dual-branch hash projection mechanism is designed to map image and location features into 128-dimensional hash semantic spaces respectively, followed by weighted fusion to generate 128-bit binary hash codes. A multi-path fusion verification strategy is employed to confirm feature concatenation as the optimal fusion scheme, integrating image and location metadata into a unified semantic space.
+
+=== Para 27 ===
+A multi-level experimental framework is built for validation. On the iNaturalist 2018 dataset, DHLM-Image is benchmarked against HashNet, DCH, and MDSH under identical settings, and ablation studies are carried out to quantify the contribution of each core module. Fine-tuning along with system demonstration validation are performed on our self-built BFATH dataset, with mAP, Recall@K, and Precision@K as evaluation metrics. Results show that DHLM-Image surpasses MDSH by 2.8 percentage points, and the full DHLM achieves an mAP of 0.741 by incorporating location metadata.
+
+=== Para 28 ===
+To fill the gap in dedicated ancient tree retrieval tools, a B/S-architecture retrieval system is designed and implemented, adopting Vue and SpringBoot decoupled front-end/back-end architecture and integrating the DHLM model for bidirectional image-location retrieval. Development and testing have been completed, providing intelligent retrieval support for ancient tree conservation and management.
+
+=== Para 29 ===
+Key Words: Ancient and Famous Tree Retrieval, Deep Hashing Learning, Multimodal Hashing Retrieval, Multimodal Fusion
+
