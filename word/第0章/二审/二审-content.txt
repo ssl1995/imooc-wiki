@@ -98,6 +98,5 @@ D:\project\java\imooc-wiki\word\第0章\二审\论文\第4章替换文本_可直
 D:\project\java\imooc-wiki\word\第4章\图4.1 系统用例图.puml
 思考如何修改？
 
-1、新的ER图效果如下，2个note导致太高了，分析如何变矮，实在不好改，就把2个note删除
-D:\project\java\imooc-wiki\word\第0章\二审\论文\新ER图.png
-2、上述的修改第4章的方案形成一个md，我审查，边判断变改
+1、这么看太丑了，效果和内容我满意的，怎么修改判断更好看呢？
+D:\project\java\imooc-wiki\word\第0章\二审\论文\用例图3.png

@@ -2,17 +2,12 @@
 
 left to right direction
 
-actor "管理员" as Admin
 actor "用户" as User
+actor "管理员" as Admin
+
+Admin --|> User : 继承
 
 rectangle "古树名木多模态展示与检索系统" {
-
-    package "管理员功能" {
-        usecase "用户管理" as UC3
-        usecase "权限管理" as UC4
-        usecase "登录" as UC5
-        usecase "古树名木数据上传" as UC1
-    }
 
     package "用户功能" {
         usecase "注册" as UC6
@@ -30,18 +25,25 @@ rectangle "古树名木多模态展示与检索系统" {
         usecase "以图搜位置(I2L)" as UC9_2
         usecase "以位置搜图(L2I)" as UC9_3
     }
-}
 
-Admin --> UC1
-Admin --> UC3
-Admin --> UC4
-Admin --> UC5
+    package "管理员功能" {
+        usecase "用户管理" as UC3
+        usecase "权限管理" as UC4
+        usecase "登录" as UC5
+        usecase "古树名木数据上传" as UC1
+    }
+}
 
 User --> UC5_1
 User --> UC6
 User --> UC7
 User --> UC8
 User --> UC9
+
+Admin --> UC1
+Admin --> UC3
+Admin --> UC4
+Admin --> UC5
 
 UC8 ..> UC8_1 : <<include>>
 UC8 ..> UC8_2 : <<include>>
@@ -51,20 +53,5 @@ UC8 ..> UC8_4 : <<include>>
 UC9 ..> UC9_1 : <<include>>
 UC9 ..> UC9_2 : <<include>>
 UC9 ..> UC9_3 : <<include>>
-
-note bottom of UC8
-  <b>信息查询四种能力</b>
-  科属种：三级级联筛选
-  树种名称：关键词模糊匹配
-  属性筛选：树龄/保护级别等
-  详情展示：单株古树完整档案
-end note
-
-note bottom of UC9
-  <b>多模态检索三种模式</b>
-  I2I: 上传图像，检索相似图像
-  I2L: 上传图像，返回数据库已知位置
-  L2I: 输入坐标，检索周边图像
-end note
 
 @enduml
