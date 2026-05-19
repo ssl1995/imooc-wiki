@@ -3,7 +3,7 @@
     <!-- 页面头部 -->
     <div class="retrieval-header">
       <h1 class="title">
-        <TreeOutlined /> 古树名木多模态检索
+        <TreeOutlined /> 古树名木信息查询
       </h1>
       <p class="subtitle">融合图像与地理位置元数据的智能检索</p>
     </div>
@@ -11,238 +11,144 @@
     <!-- 检索模式切换 -->
     <div class="mode-tabs">
       <a-radio-group v-model:value="currentMode" button-style="solid" size="large">
-        <a-radio-button value="i2i">
-          <PictureOutlined /> 以图搜图
+        <a-radio-button value="taxonomy">
+          <ApartmentOutlined /> 科属种查询
         </a-radio-button>
-        <a-radio-button value="i2l">
-          <FileImageOutlined /> 以图搜位置
-        </a-radio-button>
-        <a-radio-button value="l2i">
-          <EnvironmentOutlined /> 以位置搜图
+        <a-radio-button value="name">
+          <PartitionOutlined /> 树种名称查询
         </a-radio-button>
       </a-radio-group>
     </div>
 
-    <!-- I2I: 以图搜图 -->
-    <div v-if="currentMode === 'i2i'" class="search-section">
-      <a-row :gutter="24">
-        <a-col :span="8">
-          <a-card title="上传查询图像" class="query-card">
-            <a-upload-dragger
-              v-model:fileList="i2iFileList"
-              name="file"
-              :multiple="false"
-              :customRequest="customRequest"
-              :beforeUpload="beforeUploadI2I"
-              @change="handleI2IChange"
-              class="query-uploader"
-            >
-              <p class="ant-upload-drag-icon">
-                <CameraOutlined />
-              </p>
-              <p class="ant-upload-text">点击或拖拽上传古树图片</p>
-              <p class="ant-upload-hint">支持 JPG/PNG 格式，建议分辨率 ≥ 512×512</p>
-            </a-upload-dragger>
-            
-            <!-- 预览 -->
-            <div v-if="i2iImageUrl" class="query-preview">
-              <a-image :src="i2iImageUrl" :width="200" class="preview-img" />
-            </div>
-
-            <!-- 检索参数 -->
-            <a-divider orientation="left">检索参数</a-divider>
-            <a-form :model="i2iParams" layout="vertical">
-              <a-form-item label="返回结果数">
-                <a-slider v-model:value="i2iParams.topK" :min="1" :max="50" :marks="{1: '1', 5: '5', 10: '10', 20: '20', 50: '50'}" />
-              </a-form-item>
-              <a-form-item label="相似度阈值">
-                <a-slider v-model:value="i2iParams.threshold" :min="0.5" :max="1" :step="0.05" :marks="{0.5: '0.5', 0.75: '0.75', 1: '1.0'}" />
-              </a-form-item>
-            </a-form>
-
-            <a-button type="primary" size="large" block @click="handleI2ISearch" :loading="searching">
-              <SearchOutlined /> 开始检索
-            </a-button>
-          </a-card>
-        </a-col>
-
-        <a-col :span="16">
-          <a-card title="检索结果" class="result-card">
-            <div v-if="!i2iResults.length" class="empty-result">
-              <a-empty description="请上传图片开始检索" />
-            </div>
-            <div v-else class="result-grid">
-              <a-row :gutter="[16, 16]">
-                <a-col :span="8" v-for="(item, index) in i2iResults" :key="index">
-                  <a-card hoverable class="result-item">
-                    <template #cover>
-                      <img :src="item.image" class="result-image" />
-                    </template>
-                    <a-card-meta>
-                      <template #title>
-                        <div class="result-title">
-                          {{ item.name }}
-                          <a-tag :color="getSimilarityColor(item.similarity)">
-                            {{ (item.similarity * 100).toFixed(1) }}%
-                          </a-tag>
-                        </div>
-                      </template>
-                      <template #description>
-                        <div class="result-info">
-                          <p><EnvironmentOutlined /> {{ item.location }}</p>
-                          <p><CalendarOutlined /> 树龄: {{ item.age }}年</p>
-                        </div>
-                      </template>
-                    </a-card-meta>
-                  </a-card>
-                </a-col>
-              </a-row>
-            </div>
-          </a-card>
-        </a-col>
-      </a-row>
-    </div>
-
-    <!-- I2L: 以图搜位置 -->
-    <div v-if="currentMode === 'i2l'" class="search-section">
-      <a-row :gutter="24">
-        <a-col :span="8">
-          <a-card title="上传查询图像" class="query-card">
-            <a-upload-dragger
-              v-model:fileList="i2lFileList"
-              name="file"
-              :multiple="false"
-              :customRequest="customRequest"
-              :beforeUpload="beforeUploadI2L"
-              @change="handleI2LChange"
-              class="query-uploader"
-            >
-              <p class="ant-upload-drag-icon">
-                <CameraOutlined />
-              </p>
-              <p class="ant-upload-text">点击或拖拽上传古树图片</p>
-              <p class="ant-upload-hint">系统将返回该古树最可能的地理位置</p>
-            </a-upload-dragger>
-            
-            <div v-if="i2lImageUrl" class="query-preview">
-              <a-image :src="i2lImageUrl" :width="200" class="preview-img" />
-            </div>
-
-            <a-button type="primary" size="large" block @click="handleI2LSearch" :loading="searching">
-              <SearchOutlined /> 定位查询
-            </a-button>
-          </a-card>
-        </a-col>
-
-        <a-col :span="16">
-          <a-card title="定位结果" class="result-card">
-            <div v-if="!i2lResult" class="empty-result">
-              <a-empty description="请上传图片进行定位" />
-            </div>
-            <div v-else class="location-result">
-              <a-descriptions bordered :column="2">
-                <a-descriptions-item label="检索位置" :span="2">
-                  <span class="location-text">
-                    <EnvironmentOutlined /> 纬度: {{ i2lResult.latitude }}°, 经度: {{ i2lResult.longitude }}°
-                  </span>
-                </a-descriptions-item>
-                <a-descriptions-item label="置信度">
-                  <a-progress 
-                    :percent="i2lResult.confidence * 100" 
-                    :status="i2lResult.confidence > 0.8 ? 'success' : 'normal'"
-                    :stroke-color="i2lResult.confidence > 0.8 ? '#52c41a' : '#1890ff'"
-                  />
-                </a-descriptions-item>
-                <a-descriptions-item label="误差范围">
-                  <span class="error-range">±{{ i2lResult.error }} km</span>
-                </a-descriptions-item>
-                <a-descriptions-item label="地址描述" :span="2">
-                  {{ i2lResult.address }}
-                </a-descriptions-item>
-              </a-descriptions>
-
-              <!-- 地图占位区域 -->
-              <div class="map-container">
-                <div class="map-placeholder">
-                  <GlobalOutlined class="map-icon" />
-                  <p>地图显示区域</p>
-                  <p class="map-hint">此处后续将迭代显示定位结果在地图上的位置</p>
-                </div>
-              </div>
-            </div>
-          </a-card>
-        </a-col>
-      </a-row>
-    </div>
-
     <!-- NameSearch: 按树种名称检索 -->
-    <div v-if="currentMode === 'l2i'" class="search-section">
+    <div v-if="currentMode === 'name'" class="search-section">
       <a-row :gutter="24">
         <a-col :span="8">
-          <a-card title="输入地理位置" class="query-card">
-            <a-form :model="l2iParams" layout="vertical">
-              <a-form-item label="纬度 (Latitude)" required>
-                <a-input
-                  v-model:value="l2iLatitudeStr"
-                  style="width: 100%"
-                  placeholder="例如: 39.9289"
+          <a-card title="树种名称查询" class="query-card">
+            <a-form :model="nameParams" layout="vertical">
+              <a-form-item label="树种名称" required>
+                <a-input-search
+                  v-model:value="nameParams.keyword"
+                  placeholder="例如: 银杏、侧柏、油松"
+                  enter-button
+                  @search="handleNameSearch"
+                  :loading="nameSearching"
                 />
               </a-form-item>
-              <a-form-item label="经度 (Longitude)" required>
-                <a-input
-                  v-model:value="l2iLongitudeStr"
-                  style="width: 100%"
-                  placeholder="例如: 116.3974"
-                />
-              </a-form-item>
-              
-              <a-divider orientation="left">检索范围</a-divider>
-              
-              <a-form-item label="搜索半径">
-                <a-radio-group v-model:value="l2iParams.radius">
-                  <a-radio :value="1">&lt; 1 km</a-radio>
-                  <a-radio :value="5">&lt; 5 km</a-radio>
-                  <a-radio :value="10">&lt; 10 km</a-radio>
-                  <a-radio :value="50">&lt; 50 km</a-radio>
-                </a-radio-group>
-              </a-form-item>
-
-              <a-form-item label="返回结果数">
-                <a-slider v-model:value="l2iParams.topK" :min="1" :max="50" :marks="{1: '1', 5: '5', 10: '10', 20: '20', 50: '50'}" />
+              <a-form-item label="树龄范围">
+                <a-slider v-model:value="nameParams.ageRange" range :min="0" :max="2000" :marks="{0: '0', 500: '500', 1000: '1000', 1500: '1500', 2000: '2000'}" />
               </a-form-item>
             </a-form>
-
-            <a-button type="primary" size="large" block @click="handleL2ISearch" :loading="searching">
-              <SearchOutlined /> 检索附近古树
+            <a-button type="primary" size="large" block @click="handleNameSearch" :loading="nameSearching">
+              <SearchOutlined /> 查询
             </a-button>
 
-            <!-- 快速选择 -->
-            <a-divider orientation="left">快速选择</a-divider>
-            <a-space wrap>
-              <a-button size="small" @click="setLocation(39.8833, 116.4069)">天坛</a-button>
-              <a-button size="small" @click="setLocation(31.2304, 121.4737)">上海</a-button>
-              <a-button size="small" @click="setLocation(30.5728, 104.0668)">成都</a-button>
-              <a-button size="small" @click="setLocation(23.1291, 113.2644)">广州</a-button>
-            </a-space>
           </a-card>
         </a-col>
 
         <a-col :span="16">
-          <a-card title="附近古树检索结果" class="result-card">
-            <div v-if="!l2iResults.length" class="empty-result">
-              <a-empty description="请输入坐标开始检索" />
+          <a-card title="查询结果" class="result-card">
+            <div v-if="!nameResults.length" class="empty-result">
+              <a-empty description="请输入树种名称开始查询" />
             </div>
             <div v-else>
-              <a-alert 
-                :message="`在指定位置周围找到 ${l2iResults.length} 棵古树`" 
-                type="info" 
+              <a-alert
+                :message="`共查询到 ${nameResults.length} 条古树名木记录`"
+                type="success"
+                show-icon
+                style="margin-bottom: 16px"
+              />
+              <a-table
+                :columns="nameColumns"
+                :data-source="nameResults"
+                :pagination="{ pageSize: 5 }"
+                row-key="id"
+                size="middle"
+                bordered
+              />
+            </div>
+          </a-card>
+        </a-col>
+      </a-row>
+    </div>
+
+    <!-- Taxonomy: 科属种查询 -->
+    <div v-if="currentMode === 'taxonomy'" class="search-section">
+      <a-row :gutter="24">
+        <a-col :span="8">
+          <a-card title="科属种导航" class="query-card">
+            <a-form :model="taxonomyParams" layout="vertical">
+              <a-form-item label="选择科">
+                <a-select
+                  v-model:value="taxonomyParams.family"
+                  placeholder="请选择科"
+                  @change="onFamilyChange"
+                  allowClear
+                >
+                  <a-select-option v-for="f in familyList" :key="f" :value="f">{{ f }}</a-select-option>
+                </a-select>
+              </a-form-item>
+              <a-form-item label="选择属">
+                <a-select
+                  v-model:value="taxonomyParams.genus"
+                  placeholder="请先选择科"
+                  @change="onGenusChange"
+                  :disabled="!taxonomyParams.family"
+                  allowClear
+                >
+                  <a-select-option v-for="g in genusList" :key="g" :value="g">{{ g }}</a-select-option>
+                </a-select>
+              </a-form-item>
+              <a-form-item label="选择种">
+                <a-select
+                  v-model:value="taxonomyParams.species"
+                  placeholder="请先选择属"
+                  :disabled="!taxonomyParams.genus"
+                  allowClear
+                >
+                  <a-select-option v-for="s in speciesSelectList" :key="s" :value="s">{{ s }}</a-select-option>
+                </a-select>
+              </a-form-item>
+            </a-form>
+          </a-card>
+
+          <a-card title="属性筛选" class="query-card" style="margin-top: 16px;">
+            <a-form :model="filterParams" layout="vertical">
+              <a-form-item label="保护级别">
+                <a-select v-model:value="filterParams.protectionLevel" placeholder="全部级别" allowClear>
+                  <a-select-option value="一级">一级</a-select-option>
+                  <a-select-option value="二级">二级</a-select-option>
+                  <a-select-option value="三级">三级</a-select-option>
+                </a-select>
+              </a-form-item>
+              <a-form-item label="树龄范围">
+                <a-slider v-model:value="filterParams.ageRange" range :min="0" :max="2000" :marks="{0: '0', 500: '500', 1000: '1000', 1500: '1500', 2000: '2000'}" />
+              </a-form-item>
+            </a-form>
+          </a-card>
+
+          <a-button type="primary" size="large" block @click="handleTaxonomySearch" :loading="taxonomySearching" style="margin-top: 16px;">
+            <SearchOutlined /> 查询古树
+          </a-button>
+
+        </a-col>
+
+        <a-col :span="16">
+          <a-card title="古树名木列表" class="result-card">
+            <div v-if="!taxonomyResults.length" class="empty-result">
+              <a-empty description="请选择科属种条件进行查询" />
+            </div>
+            <div v-else>
+              <a-alert
+                :message="`共查询到 ${taxonomyResults.length} 条古树名木记录`"
+                type="success"
                 show-icon
                 style="margin-bottom: 16px"
               />
               <div class="result-grid">
                 <a-row :gutter="[16, 16]">
-                  <a-col :span="8" v-for="(item, index) in l2iResults" :key="index">
-                    <a-card hoverable class="result-item">
+                  <a-col :span="8" v-for="(item, index) in taxonomyResults" :key="index">
+                    <a-card hoverable class="result-item" @click="showDetail(item)">
                       <template #cover>
                         <img :src="item.image" class="result-image" />
                       </template>
@@ -250,13 +156,14 @@
                         <template #title>
                           <div class="result-title">
                             {{ item.name }}
-                            <a-tag color="blue">{{ item.distance }}km</a-tag>
+                            <a-tag color="green">{{ item.protectionLevel }}</a-tag>
                           </div>
                         </template>
                         <template #description>
                           <div class="result-info">
-                            <p><EnvironmentOutlined /> {{ item.location }}</p>
+                            <p><ApartmentOutlined /> {{ item.family }} / {{ item.genus }} / {{ item.species }}</p>
                             <p><CalendarOutlined /> 树龄: {{ item.age }}年</p>
+                            <p><EnvironmentOutlined /> {{ item.location }}</p>
                           </div>
                         </template>
                       </a-card-meta>
@@ -270,7 +177,38 @@
       </a-row>
     </div>
 
-    <!-- Taxonomy: 科属种查询 -->
+    <!-- 古树详情抽屉 -->
+    <a-drawer
+      v-model:visible="detailVisible"
+      title="古树名木详情"
+      width="600"
+      placement="right"
+    >
+      <div v-if="detailData" class="detail-content">
+        <div class="detail-image-wrapper">
+          <img :src="detailData.image" class="detail-image" />
+        </div>
+        <a-descriptions bordered :column="1" size="middle">
+          <a-descriptions-item label="古树名称">{{ detailData.name }}</a-descriptions-item>
+          <a-descriptions-item label="古树编号">{{ detailData.treeCode }}</a-descriptions-item>
+          <a-descriptions-item label="科">
+            <a-tag color="blue">{{ detailData.family }}</a-tag>
+          </a-descriptions-item>
+          <a-descriptions-item label="属">
+            <a-tag color="cyan">{{ detailData.genus }}</a-tag>
+          </a-descriptions-item>
+          <a-descriptions-item label="种">{{ detailData.species }}</a-descriptions-item>
+          <a-descriptions-item label="保护级别">
+            <a-tag :color="getProtectionColor(detailData.protectionLevel)">{{ detailData.protectionLevel }}</a-tag>
+          </a-descriptions-item>
+          <a-descriptions-item label="树龄">{{ detailData.age }} 年</a-descriptions-item>
+          <a-descriptions-item label="树高">{{ detailData.height }}</a-descriptions-item>
+          <a-descriptions-item label="纬度">{{ detailData.latitude }}</a-descriptions-item>
+          <a-descriptions-item label="经度">{{ detailData.longitude }}</a-descriptions-item>
+          <a-descriptions-item label="位置描述">{{ detailData.location }}</a-descriptions-item>
+        </a-descriptions>
+      </div>
+    </a-drawer>
   </div>
 </template>
 
@@ -336,7 +274,7 @@ export default defineComponent({
   },
   setup() {
     // 当前检索模式
-    const currentMode = ref<'i2i' | 'i2l' | 'l2i'>('i2i');
+    const currentMode = ref<'name' | 'taxonomy'>('taxonomy');
     const searching = ref(false);
 
     // I2I 状态
@@ -716,9 +654,10 @@ export default defineComponent({
       }, 50);
     };
 
-    // 页面加载时预加载科列表（用于科属种查询）
+    // 页面加载时预加载科列表，并默认查询全部古树数据
     onMounted(() => {
       loadFamilies();
+      handleTaxonomySearch();
     });
 
     return {

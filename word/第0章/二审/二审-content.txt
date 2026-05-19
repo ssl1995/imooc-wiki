@@ -100,4 +100,10 @@ D:\project\java\imooc-wiki\word\第0章\二审\论文\第4章替换文本_可直
 
 京津冀古树寻踪
 
-论文3.3.1说明的是155种树种：银杏、侧柏、桧柏、油松、国槐、青檀、黄连木、柘树、流苏、杜梨、板栗、漆树、榉树、梨树、红桦共15个典型树种。没有白皮松，是否需要将油松改成白皮松？
+数据上传目前截图：D:\project\java\imooc-wiki\word\第0章\二审\论文\数据上传时序图.png
+1、实现数据上传的时序图代码
+参考：D:\project\java\imooc-wiki\word\第4章\图4.5-用户信息时序图-彩色版.puml
+后端接口：com.jiawa.wiki.controller.TreeController.upload
+2、古树名木数据上传实现的描述也得补充
+
+D:\project\java\imooc-wiki\word\第4章\图4.6-古树名木数据上传时序图puml，这个时序图有体现模型DHLM吗？不能写成“自动生成”

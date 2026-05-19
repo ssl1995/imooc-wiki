@@ -1,0 +1,134 @@
+@startuml
+
+' ===== 字体与样式设置（确保论文打印清晰） =====
+skinparam defaultFontSize 14
+skinparam defaultFontName SimHei
+skinparam sequenceMessageAlign center
+skinparam sequenceArrowThickness 2
+skinparam participantPadding 25
+skinparam sequenceBoxBackgroundColor #F8F8F8
+skinparam noteBackgroundColor #FFFFE0
+skinparam noteBorderColor #666666
+
+' ===== 参与者定义 =====
+actor "管理员" as Admin
+participant "古树名木\n数据上传页" as UploadPage
+participant "TreeController" as Controller
+participant "TreeMapper" as TreeMapper
+participant "ImageInfoMapper" as ImageMapper
+participant "MySQL数据库" as DB
+participant "文件系统" as FS
+
+' ===== 前置条件说明 =====
+note over Admin, UploadPage
+  <b>前置条件：</b>管理员已完成登录并携带有效Token，
+  具备古树名木数据录入权限（perRoleId=1）
+end note
+
+' ===== 流程1：表单信息录入 =====
+autonumber 1
+Admin -> UploadPage: 填写古树基础信息
+note right
+  古树名称、树种、纬度、经度、
+  树龄、树高、备注描述
+end note
+activate UploadPage
+
+' ===== 流程2：图像上传 =====
+autonumber 2
+Admin -> UploadPage: 拖拽/点击上传古树图像
+UploadPage -> Controller: POST /tree/upload (MultipartFile)
+activate Controller
+
+Controller -> FS: 保存图像至 imageRoot 目录
+activate FS
+FS --> Controller: 返回存储路径
+note right
+  原始文件名 → UUID 重命名
+  后缀保留（.jpg / .png）
+end note
+deactivate FS
+
+Controller --> UploadPage: 返回 FileUploadResp
+note right
+  {
+    "success": true,
+    "message": "uuid-filename.jpg"
+  }
+end note
+deactivate Controller
+
+UploadPage --> Admin: 前端预览已上传图像
+
+' ===== 流程3：数据提交保存 =====
+autonumber 3
+Admin -> UploadPage: 点击"提交数据"按钮
+UploadPage -> Controller: POST /tree/save (TreeSaveReq)
+activate Controller
+
+Controller -> Controller: 参数校验（名称、物种非空）
+
+Controller -> Controller: 自动生成 treeCode（最大编号+1，3位格式）
+
+Controller -> TreeMapper: insert(Tree)
+activate TreeMapper
+TreeMapper -> DB: INSERT INTO tree (...)
+activate DB
+DB --> TreeMapper: 返回自增主键 id
+note right
+  同时插入：
+  family / genus / protection_level
+  等新增扩展字段
+end note
+deactivate DB
+TreeMapper --> Controller: 返回影响行数
+deactivate TreeMapper
+
+' ===== 流程4：关联图像记录插入 =====
+autonumber 4
+Controller -> Controller: 遍历 imageList
+loop 每张上传图像
+  Controller -> Controller: 基于文件名生成 128 位伪哈希码
+  Controller -> ImageMapper: insert(Image)
+  activate ImageMapper
+  ImageMapper -> DB: INSERT INTO image (...)
+  activate DB
+  DB --> ImageMapper: 返回自增主键
+  deactivate DB
+  ImageMapper --> Controller: 返回影响行数
+  deactivate ImageMapper
+end
+
+Controller --> UploadPage: 返回 CommonResp<Tree>
+note right
+  {
+    "success": true,
+    "content": {
+      "treeCode": "009",
+      "name": "...",
+      "species": "..."
+    }
+  }
+end note
+deactivate Controller
+
+UploadPage --> Admin: 提示"数据上传成功，古树编号：009"
+deactivate UploadPage
+
+' ===== 底部说明 =====
+note over Controller, TreeMapper
+  <b>treeCode 生成策略：</b>查询现有最大编号 +1，
+  格式化为 3 位字符串（001, 002, ..., 009）
+end note
+
+note over Controller, FS
+  <b>图像存储：</b>保存在项目根目录下 algorithm/data_samples/bfath_demo/，
+  文件名采用 UUID 避免冲突，原始后缀保留
+end note
+
+note over Controller, ImageMapper
+  <b>哈希码生成：</b>基于文件名 hashCode 生成确定性伪 128 位哈希，
+  与 retrieve 演示阶段的哈希逻辑保持一致
+end note
+
+@enduml
