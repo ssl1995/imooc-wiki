@@ -1,26 +1,35 @@
 @startuml
 
+skinparam defaultFontSize 14
+skinparam defaultFontName SimHei
+skinparam usecaseBackgroundColor #F8F8F8
+skinparam usecaseBorderColor #666666
+skinparam packageBackgroundColor #FFFFFF
+skinparam packageBorderColor #333333
+skinparam actorBackgroundColor #E8E8E8
+skinparam actorBorderColor #333333
+
 left to right direction
 
 actor "用户" as User
 actor "管理员" as Admin
 
-Admin --|> User : 继承
+Admin --|> User
 
-rectangle "古树名木多模态展示与检索系统" {
+rectangle  {
 
     package "用户功能" {
         usecase "注册" as UC6
         usecase "个人信息管理" as UC7
         usecase "登录" as UC5_1
 
-        usecase "古树名木信息查询" as UC8
+        usecase "古树名木\n信息查询" as UC8
         usecase "科属种查询" as UC8_1
         usecase "树种名称查询" as UC8_2
         usecase "属性筛选" as UC8_3
         usecase "古树详情展示" as UC8_4
 
-        usecase "古树名木多模态检索" as UC9
+        usecase "古树名木\n多模态检索" as UC9
         usecase "以图搜图(I2I)" as UC9_1
         usecase "以图搜位置(I2L)" as UC9_2
         usecase "以位置搜图(L2I)" as UC9_3
@@ -30,7 +39,7 @@ rectangle "古树名木多模态展示与检索系统" {
         usecase "用户管理" as UC3
         usecase "权限管理" as UC4
         usecase "登录" as UC5
-        usecase "古树名木数据上传" as UC1
+        usecase "古树名木\n数据上传" as UC1
     }
 }
 
@@ -45,13 +54,13 @@ Admin --> UC3
 Admin --> UC4
 Admin --> UC5
 
-UC8 ..> UC8_1 : <<include>>
-UC8 ..> UC8_2 : <<include>>
-UC8 ..> UC8_3 : <<include>>
-UC8 ..> UC8_4 : <<include>>
+UC8 ..> UC8_1
+UC8 ..> UC8_2
+UC8 ..> UC8_3
+UC8 ..> UC8_4
 
-UC9 ..> UC9_1 : <<include>>
-UC9 ..> UC9_2 : <<include>>
-UC9 ..> UC9_3 : <<include>>
+UC9 ..> UC9_1
+UC9 ..> UC9_2
+UC9 ..> UC9_3
 
 @enduml
