@@ -106,4 +106,6 @@ D:\project\java\imooc-wiki\word\第0章\二审\论文\第4章替换文本_可直
 后端接口：com.jiawa.wiki.controller.TreeController.upload
 2、古树名木数据上传实现的描述也得补充
 
-D:\project\java\imooc-wiki\word\第4章\图4.6-古树名木数据上传时序图puml，这个时序图有体现模型DHLM吗？不能写成“自动生成”
+D:\project\java\imooc-wiki\word\第4章\图4.6-古树名木数据上传时序图.puml
+效果：D:\project\java\imooc-wiki\word\第0章\二审\论文\时序图11.png
+现在这个时序图放到论文里看不清楚，减少一些可有可无的，尽量简洁

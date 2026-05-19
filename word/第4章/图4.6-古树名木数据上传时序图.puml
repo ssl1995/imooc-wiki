@@ -16,6 +16,7 @@ participant "古树名木\n数据上传页" as UploadPage
 participant "TreeController" as Controller
 participant "TreeMapper" as TreeMapper
 participant "ImageInfoMapper" as ImageMapper
+participant "DHLAM模型\nHashModelRetrieveService" as DHLAM
 participant "MySQL数据库" as DB
 participant "文件系统" as FS
 
@@ -29,8 +30,8 @@ end note
 autonumber 1
 Admin -> UploadPage: 填写古树基础信息
 note right
-  古树名称、树种、纬度、经度、
-  树龄、树高、备注描述
+  古树名称、树种、科、属、保护级别、
+  纬度、经度、树龄、树高、备注描述
 end note
 activate UploadPage
 
@@ -68,30 +69,65 @@ activate Controller
 
 Controller -> Controller: 参数校验（名称、物种非空）
 
-Controller -> Controller: 自动生成 treeCode（最大编号+1，3位格式）
+' ===== treeCode 生成（具体逻辑，非自动生成） =====
+autonumber 4
+Controller -> TreeMapper: selectAll()
+activate TreeMapper
+TreeMapper -> DB: SELECT * FROM tree WHERE is_delete = 0
+activate DB
+DB --> TreeMapper: 返回 List<Tree>
+deactivate DB
+TreeMapper --> Controller: 返回全部记录
+deactivate TreeMapper
 
+Controller -> Controller: 遍历解析 treeCode 整数值，取最大值 max
+Controller -> Controller: max + 1，格式化为 3 位字符串（String.format("%03d", max + 1)）
+note right
+  例如：现有最大编号 008 → 生成 009
+end note
+
+' ===== tree 表插入 =====
+autonumber 5
 Controller -> TreeMapper: insert(Tree)
 activate TreeMapper
-TreeMapper -> DB: INSERT INTO tree (...)
+TreeMapper -> DB: INSERT INTO tree (tree_code, name, species, family, genus, protection_level, age, height, latitude, longitude, desc, ...)
 activate DB
 DB --> TreeMapper: 返回自增主键 id
-note right
-  同时插入：
-  family / genus / protection_level
-  等新增扩展字段
-end note
 deactivate DB
 TreeMapper --> Controller: 返回影响行数
 deactivate TreeMapper
 
-' ===== 流程4：关联图像记录插入 =====
-autonumber 4
+' ===== 流程4：DHLAM 模型生成哈希码并保存图像记录 =====
+autonumber 6
 Controller -> Controller: 遍历 imageList
 loop 每张上传图像
-  Controller -> Controller: 基于文件名生成 128 位伪哈希码
+  Controller -> DHLAM: generate(imagePath, latitude, longitude)
+  activate DHLAM
+
+  DHLAM -> DHLAM: ImageEncoder：读取图像文件 → CRC32/像素特征提取 → 64位图像特征
+  note right
+    模拟 ResNet-50 视觉特征提取流程
+  end note
+
+  DHLAM -> DHLAM: LocationEncoder：lat/lon → MLP编码 → 64位位置特征
+  note right
+    论文 3.2.2 节：MLP(2→128→128→256)
+  end note
+
+  DHLAM -> DHLAM: Fusion：图像特征与位置特征拼接融合
+
+  DHLAM -> DHLAM: HashLayer：FC → Tanh → Sign → 128位二进制哈希码
+  note right
+    训练阶段：Tanh 输出连续值（梯度可回传）
+    推理阶段：Sign 量化为离散二进制
+  end note
+
+  DHLAM --> Controller: 返回 HashResult(hashCode, hashBits)
+  deactivate DHLAM
+
   Controller -> ImageMapper: insert(Image)
   activate ImageMapper
-  ImageMapper -> DB: INSERT INTO image (...)
+  ImageMapper -> DB: INSERT INTO image (tree_id, image_path, hash_code, hash_bits, ...)
   activate DB
   DB --> ImageMapper: 返回自增主键
   deactivate DB
@@ -117,18 +153,18 @@ deactivate UploadPage
 
 ' ===== 底部说明 =====
 note over Controller, TreeMapper
-  <b>treeCode 生成策略：</b>查询现有最大编号 +1，
-  格式化为 3 位字符串（001, 002, ..., 009）
+  <b>treeCode 生成策略：</b>查询 tree 表全部记录，遍历解析 treeCode 整数值取最大值，
+  加 1 后格式化为 3 位字符串（001, 002, ..., 009），确保编号唯一且有序。
 end note
 
 note over Controller, FS
   <b>图像存储：</b>保存在项目根目录下 algorithm/data_samples/bfath_demo/，
-  文件名采用 UUID 避免冲突，原始后缀保留
+  文件名采用 UUID 避免冲突，原始后缀保留。
 end note
 
-note over Controller, ImageMapper
-  <b>哈希码生成：</b>基于文件名 hashCode 生成确定性伪 128 位哈希，
-  与 retrieve 演示阶段的哈希逻辑保持一致
+note over DHLAM, Controller
+  <b>DHLAM 哈希编码：</b>数据上传阶段即调用模型生成 128 位哈希码存入数据库，
+  避免检索阶段实时计算，提升查询响应速度（论文表 3.8：0.8ms）。
 end note
 
 @enduml
