@@ -1,0 +1,73 @@
+@startuml
+
+skinparam defaultFontSize 14
+skinparam defaultFontName SimHei
+skinparam sequenceMessageAlign center
+skinparam sequenceArrowThickness 2
+skinparam participantPadding 20
+
+actor "管理员" as Admin
+participant "数据上传页" as Page
+participant "TreeController" as TC
+participant "TreeMapper" as TM
+participant "ImageInfoMapper" as IM
+participant "DHLAM模型" as DHLAM
+database "MySQL" as DB
+participant "文件系统" as FS
+
+Admin -> Page: 填写古树基础信息
+activate Page
+
+Admin -> Page: 上传古树图像
+Page -> TC: POST /tree/upload
+activate TC
+TC -> FS: 保存图像（UUID命名）
+FS --> TC: 返回存储路径
+TC --> Page: 返回文件名
+ deactivate TC
+
+Admin -> Page: 点击提交
+Page -> TC: POST /tree/save
+activate TC
+
+TC -> TC: 参数校验
+
+TC -> TM: selectAll()
+activate TM
+TM -> DB: SELECT * FROM tree
+DB --> TM: 返回全部记录
+deactivate TM
+TC -> TC: 解析treeCode取最大值+1，格式化为3位
+
+TC -> TM: insert(Tree)
+activate TM
+TM -> DB: INSERT INTO tree
+DB --> TM: 返回自增主键id
+deactivate TM
+
+loop 每张上传图像
+  TC -> DHLAM: generate(imagePath, lat, lon)
+  activate DHLAM
+  DHLAM -> DHLAM: ImageEncoder→LocationEncoder→Fusion→HashLayer
+  DHLAM --> TC: 返回128位哈希码
+  deactivate DHLAM
+
+  TC -> IM: insert(Image)
+  activate IM
+  IM -> DB: INSERT INTO image
+  DB --> IM: 返回主键
+  deactivate IM
+end
+
+TC --> Page: 返回保存结果
+ deactivate TC
+
+Page --> Admin: 提示上传成功
+ deactivate Page
+
+note over TC
+  <b>treeCode生成：</b>查询全部记录→解析取最大→+1→%03d格式化
+  <b>DHLAM哈希：</b>上传阶段即生成128位哈希码，避免检索时实时计算
+end note
+
+@enduml

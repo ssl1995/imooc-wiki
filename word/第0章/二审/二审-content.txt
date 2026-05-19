@@ -92,20 +92,12 @@ D:\project\java\imooc-wiki\word\第0章\二审\论文\第4章替换文本_可直
 - 重点，4.3.3 科属种查询与古树详情展示模块详细设计与实现需要实现，需要实现系统完成Web页面展示
 - 4.4.1 功能测试 这部分的文字修改留到前面修改完成后再修改
 
-当前：
-1、总结设计，先扫描表4.1到表4.4，比如表4.3是肯定要新增字段的，给出新增的字段表格内容
-2、先完成4.3.3 科属种查询与古树详情展示模块详细设计与实现，设计到Web页面展示，学习当前实现，给出修改建议，要求不要在前端做假页面，查询数据走后端接口返回，新增的字段sql给到
-	后端代码：D:\project\java\imooc-wiki\src
-	前端代码：D:\project\java\imooc-wiki\web
+【修改】：
+4.3部分修改完成，从第4章开始从头再来检查哪些没改，
+请重新扫描论文的正文描述，我发现图4.1 系统整体用例图就还没有改
+D:\project\java\imooc-wiki\word\第4章\图4.1 系统用例图.puml
+思考如何修改？
 
-京津冀古树寻踪
-
-数据上传目前截图：D:\project\java\imooc-wiki\word\第0章\二审\论文\数据上传时序图.png
-1、实现数据上传的时序图代码
-参考：D:\project\java\imooc-wiki\word\第4章\图4.5-用户信息时序图-彩色版.puml
-后端接口：com.jiawa.wiki.controller.TreeController.upload
-2、古树名木数据上传实现的描述也得补充
-
-D:\project\java\imooc-wiki\word\第4章\图4.6-古树名木数据上传时序图.puml
-效果：D:\project\java\imooc-wiki\word\第0章\二审\论文\时序图11.png
-现在这个时序图放到论文里看不清楚，减少一些可有可无的，尽量简洁
+1、新的ER图效果如下，2个note导致太高了，分析如何变矮，实在不好改，就把2个note删除
+D:\project\java\imooc-wiki\word\第0章\二审\论文\新ER图.png
+2、上述的修改第4章的方案形成一个md，我审查，边判断变改

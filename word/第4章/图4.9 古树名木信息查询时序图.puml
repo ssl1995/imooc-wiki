@@ -1,0 +1,63 @@
+@startuml
+
+skinparam defaultFontSize 14
+skinparam defaultFontName SimHei
+skinparam sequenceMessageAlign center
+skinparam sequenceArrowThickness 2
+skinparam participantPadding 80
+skinparam minParticipantWidth 160
+
+actor "查询用户" as User
+participant "信息查询页" as Page
+participant "TreeController" as TC
+participant "TreeMapper" as TM
+database "MySQL" as DB
+
+User -> Page: 访问信息查询页面
+activate Page
+
+Page -> TC: GET /tree/taxonomy/families
+activate TC
+TC -> TM: selectAllFamilies()
+activate TM
+TM -> DB: SELECT DISTINCT family
+DB --> TM: 返回科列表
+TM --> TC: List<String>
+deactivate TM
+TC --> Page: 返回科数据
+
+alt 科属种查询
+  User -> Page: 选择科/属/种（级联加载）
+  Page -> TC: GET /taxonomy/genera / species
+  TC -> TM: 查询下级分类
+  TM -> DB: SELECT DISTINCT genus / species
+  DB --> TM: 返回属/种列表
+  TM --> TC: List<String>
+  TC --> Page: 返回级联数据
+  User -> Page: 设置筛选条件并查询
+  Page -> TC: GET /tree/filter
+  TC -> TM: selectByFilter()
+  activate TM
+  TM -> DB: 动态条件查询
+  DB --> TM: 返回古树列表
+  TM --> TC: List<Tree>
+  deactivate TM
+  TC --> Page: 返回查询结果
+
+else 树种名称查询
+  User -> Page: 输入树种名称并查询
+  Page -> TC: POST /tree/retrieve(type=NAME)
+  TC -> TM: selectByNameLike()
+  activate TM
+  TM -> DB: LIKE模糊查询
+  DB --> TM: 返回匹配记录
+  TM --> TC: List<Tree>
+  deactivate TM
+  TC --> Page: 返回查询结果
+end
+
+deactivate TC
+Page --> User: 展示查询结果
+deactivate Page
+
+@enduml
