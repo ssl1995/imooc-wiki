@@ -55,7 +55,10 @@ entity "树木表" as Tree {
     --
     tree_code : varchar(20)       '古树编号'
     name : varchar(100)           '古树名称'
+    family : varchar(64)          '科'
+    genus : varchar(64)           '属'
     species : varchar(256)        '树种名称'
+    protection_level : varchar(20)'保护级别'
     age : int                     '树龄'
     height : varchar(64)          '树高'
     latitude : decimal(10,8)      '纬度'
@@ -101,9 +104,11 @@ note bottom of Image
 end note
 
 note bottom of Tree
-位置坐标采用WGS84坐标系：
+位置坐标采用WGS84坐标系，科属种字段支持三级级联检索：
 - latitude: 纬度(-90~90)
 - longitude: 经度(-180~180)
+- family/genus/species: 科属种三级分类
+- protection_level: 一级/二级/三级
 end note
 
 note bottom of User

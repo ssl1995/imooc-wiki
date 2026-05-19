@@ -30,9 +30,9 @@ rectangle  {
         usecase "古树详情展示" as UC8_4
 
         usecase "古树名木\n多模态检索" as UC9
-        usecase "以图搜图(I2I)" as UC9_1
-        usecase "以图搜位置(I2L)" as UC9_2
-        usecase "以位置搜图(L2I)" as UC9_3
+        usecase "以图搜图" as UC9_1
+        usecase "以图搜位置" as UC9_2
+        usecase "以位置搜图" as UC9_3
     }
 
     package "管理员功能" {
