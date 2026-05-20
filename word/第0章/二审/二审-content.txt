@@ -19,3 +19,11 @@
 
 P1和P1的mAp改成mAP已经修改。P1的Mater Candidate我全文扫描是不存在的，属于误判。P2均以确认无误。
 请更新D:\project\java\imooc-wiki\word\第0章\二审\论文\二审前自查分析报告.md、D:\project\java\imooc-wiki\AGENTS.md
+
+
+上述的二审分析是只针对“一审评阅修改表”分析出来的吗，也需要重新扫描论文查看质量的，请重新分析，并更新
+论文：D:\project\java\imooc-wiki\word\第0章\二审\论文\5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索方法研究与应用-删除错误的创新.docx
+修改表：D:\project\java\imooc-wiki\word\第0章\二审\论文\宋声林_一审评阅修改表-2.docx
+
+论文我没有修改，一审评价表中我改成了这样的描述：“本人已删除1.2.2节末尾以“综上所述”开头的总结性段落。”。
+请更新D:\project\java\imooc-wiki\word\第0章\二审\二审增评预测分析.md，删除无用的分析，重新分析
