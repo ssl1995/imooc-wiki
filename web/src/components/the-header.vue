@@ -1,7 +1,7 @@
 <template>
   <a-layout-header class="header">
 <!--    <div class="logo">北林wiki知识库系统</div>-->
-    <div class="logo">古树名木检索系统</div>
+    <div class="logo">古树名木多模态展示与检索系统</div>
 
     <a-popconfirm
         title="确认退出登录?"
