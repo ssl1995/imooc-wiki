@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6" pages="3">
   <diagram name="图3.1 架构图1" id="MYAKikFL6JXlaFGOQ8vM">
-    <mxGraphModel dx="2003" dy="1016" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="0" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
+    <mxGraphModel dx="2879" dy="1188" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="0" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
       <root>
         <mxCell id="s93y6MaZtBUe2uIwKUzg-0" />
         <mxCell id="s93y6MaZtBUe2uIwKUzg-1" parent="s93y6MaZtBUe2uIwKUzg-0" />
@@ -45,7 +45,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="s93y6MaZtBUe2uIwKUzg-10" parent="s93y6MaZtBUe2uIwKUzg-1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" value="古树名木图像" vertex="1">
-          <mxGeometry height="40" width="110" x="-626" y="317" as="geometry" />
+          <mxGeometry height="40" width="110" x="-616" y="317" as="geometry" />
         </mxCell>
         <mxCell id="s93y6MaZtBUe2uIwKUzg-11" edge="1" parent="s93y6MaZtBUe2uIwKUzg-1" source="s93y6MaZtBUe2uIwKUzg-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="s93y6MaZtBUe2uIwKUzg-14">
           <mxGeometry relative="1" as="geometry" />
@@ -119,11 +119,11 @@
         <mxCell id="s93y6MaZtBUe2uIwKUzg-79" parent="s93y6MaZtBUe2uIwKUzg-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="Hash&lt;div&gt;(128)&lt;/div&gt;" vertex="1">
           <mxGeometry height="66.25" width="30" x="261.5" y="403.88" as="geometry" />
         </mxCell>
-        <mxCell id="q4dA28Xj3Q2TB-Fnw9L_-0" parent="s93y6MaZtBUe2uIwKUzg-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="图像向量" vertex="1">
-          <mxGeometry height="30" width="60" x="-177" y="360" as="geometry" />
+        <mxCell id="q4dA28Xj3Q2TB-Fnw9L_-0" parent="s93y6MaZtBUe2uIwKUzg-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="图像向量&lt;div&gt;（512）&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="-177" y="368.5" as="geometry" />
         </mxCell>
-        <mxCell id="q4dA28Xj3Q2TB-Fnw9L_-1" parent="s93y6MaZtBUe2uIwKUzg-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="坐标向量" vertex="1">
-          <mxGeometry height="30" width="60" x="-177" y="559.5" as="geometry" />
+        <mxCell id="q4dA28Xj3Q2TB-Fnw9L_-1" parent="s93y6MaZtBUe2uIwKUzg-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="坐标向量&lt;div&gt;（256））&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="-177" y="570" as="geometry" />
         </mxCell>
         <mxCell id="20X4shWpAssZ4iIUpClb-13" edge="1" parent="s93y6MaZtBUe2uIwKUzg-1" source="20X4shWpAssZ4iIUpClb-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="20X4shWpAssZ4iIUpClb-11">
           <mxGeometry relative="1" as="geometry" />
