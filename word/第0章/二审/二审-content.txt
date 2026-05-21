@@ -2,9 +2,7 @@
 你是一位即将参加学位论文导师面谈的硕士生，需要为二审修改论文
 
 【背景信息】
-- 论文路径：D:\project\java\imooc-wiki\word\第0章\二审\论文\5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索方法研究与应用-删除DBHP.docx
-  - 论文正文内容：D:\project\java\imooc-wiki\word\第0章\二审\论文\正文
-  - 论文图片内容：D:\project\java\imooc-wiki\word\第0章\二审\论文\图
+- 论文路径：D:\project\java\imooc-wiki\word\第0章\二审\论文\5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索方法研究与应用-2.docx
 - 盲审汇总与说明：D:\project\java\imooc-wiki\word\第0章\二审\宋声林_一审评阅修改表.docx
 - 当前状态：我按照导师提到的问题与建议，已经修改完成了论文，等待上传系统
 
@@ -29,3 +27,8 @@
 意见3：D:\project\java\imooc-wiki\word\第0章\二审\论文\意见3.png
 
 述求：回答以上问题，不要修改原文，给出修改意见md，我审查
+
+导师还建议我把4.3.1 用户管理部分给删除，太水了，我已经删除啦。
+论文路径：D:\project\java\imooc-wiki\word\第0章\二审\论文\5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索方法研究与应用-2.docx
+请扫描论文，保存论文文字到：D:\project\java\imooc-wiki\word\第0章\二审\论文\正文。保存论文图到：D:\project\java\imooc-wiki\word\第0章\二审\论文\图
+为后续全文审查做准备
