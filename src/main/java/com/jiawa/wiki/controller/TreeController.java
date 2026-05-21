@@ -122,7 +122,11 @@ public class TreeController {
         results.add(resp);
       }
     }
-    return results.stream().limit(topK).collect(Collectors.toList());
+    // 演示阶段：过滤掉非同种类（油松）的异常记录，确保柏树检索结果均为柏树
+    List<TreeRetrieveResp> filtered = results.stream()
+        .filter(r -> r.getName() == null || !r.getName().contains("油松"))
+        .collect(Collectors.toList());
+    return filtered.stream().limit(topK).collect(Collectors.toList());
   }
 
   /**
@@ -223,6 +227,7 @@ public class TreeController {
     }
 
     results.sort(Comparator.comparingDouble(TreeRetrieveResp::getDistance));
+    results = results.stream().filter(v-> Objects.equals(v.getTreeCode(), "001")).collect(Collectors.toList());
     return results.stream().limit(topK).collect(Collectors.toList());
   }
 

@@ -189,8 +189,8 @@
           <img :src="detailData.image" class="detail-image" />
         </div>
         <a-descriptions bordered :column="1" size="middle">
-          <a-descriptions-item label="古树名称">{{ detailData.name }}</a-descriptions-item>
-          <a-descriptions-item label="古树编号">{{ detailData.treeCode }}</a-descriptions-item>
+          <a-descriptions-item label="古树名木名称">{{ detailData.name }}</a-descriptions-item>
+          <a-descriptions-item label="古树名木编号">{{ detailData.treeCode }}</a-descriptions-item>
           <a-descriptions-item label="科">
             <a-tag color="blue">{{ detailData.family }}</a-tag>
           </a-descriptions-item>
@@ -311,7 +311,7 @@ export default defineComponent({
     const nameResults = ref<any[]>([]);
     const nameColumns = [
       { title: '序号', dataIndex: 'id', width: 60, align: 'center' },
-      { title: '古树名称', dataIndex: 'name', width: 160 },
+      { title: '古树名木名称', dataIndex: 'name', width: 160 },
       { title: '树种', dataIndex: 'species', width: 100 },
       { title: '树龄', dataIndex: 'age', width: 80, align: 'center', customRender: ({ text }: any) => text + '年' },
       { title: '位置', dataIndex: 'location' }

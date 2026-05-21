@@ -6,10 +6,10 @@
         <a-card title="信息录入" class="info-card">
           <a-form :model="formState" :label-col="{ span: 6 }" :wrapper-col="{ span: 16 }">
             <!-- 古树名称 -->
-            <a-form-item label="古树名称" required>
+            <a-form-item label="古树名木名称" required>
               <a-input 
                 v-model:value="formState.name" 
-                placeholder="请输入古树名称"
+                placeholder="请输入古树名木名称"
               >
                 <template #prefix>
                   <FileImageOutlined />
