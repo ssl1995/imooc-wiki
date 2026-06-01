@@ -2,12 +2,11 @@
 你是一位即将参加学位论文的硕士生，当前状态，我按照导师提到的问题与建议，已经修改完成了论文，上传系统，二次送审
 
 【背景信息】
-- 论文路径：D:\project\java\imooc-wiki\word\第0章\二审\论文\5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索方法研究与应用.docx
-- 盲审汇总与说明：D:\project\java\imooc-wiki\word\第0章\二审\论文\宋声林_一审评阅修改表.docx
-- 二审预测分析：D:\project\java\imooc-wiki\word\第0章\二审\二审增评预测分析.md
+论文路径：D:\project\java\imooc-wiki\word\第0章\二审\论文\5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索方法研究与应用.docx
+全文正文：D:\project\java\imooc-wiki\word\第0章\二审\论文\正文\全文文本.txt
+盲审汇总与说明：D:\project\java\imooc-wiki\word\第0章\二审\论文\宋声林_一审评阅修改表.docx
+二审预测分析：D:\project\java\imooc-wiki\word\第0章\二审\二审增评预测分析.md
 
 【述求】
-学校行政老师跟我说，本周五送二审，但是下周一到三的答辩大概率来不及了，后面会让我参加二辩，预计6月份，我猜测就是下下周的啦
-
-
-
+当前的PPT：D:\project\java\imooc-wiki\word\第0章\二审\论文\ppt\答辩-宋声林.pptx
+整个PPT已经完成，请审查一遍，给出审查建议，并且也预测老师们可能的问题与回复，我放到第33页的备注里
