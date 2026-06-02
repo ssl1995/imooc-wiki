@@ -3,10 +3,9 @@
 
 【背景信息】
 论文路径：D:\project\java\imooc-wiki\word\第0章\二审\论文\5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索方法研究与应用.docx
-全文正文：D:\project\java\imooc-wiki\word\第0章\二审\论文\正文\全文文本.txt
 盲审汇总与说明：D:\project\java\imooc-wiki\word\第0章\二审\论文\宋声林_一审评阅修改表.docx
 二审预测分析：D:\project\java\imooc-wiki\word\第0章\二审\二审增评预测分析.md
+当前的PPT：D:\project\java\imooc-wiki\word\第0章\二审\论文\ppt\答辩-宋声林.pptx
 
 【述求】
-当前的PPT：D:\project\java\imooc-wiki\word\第0章\二审\论文\ppt\答辩-宋声林.pptx
-整个PPT已经完成，请审查一遍，给出审查建议，并且也预测老师们可能的问题与回复，我放到第33页的备注里
+我是5月22日系统上二次送审出来的，截止今天目前，还是没有送审结果，联网分析二次评审专家收到通知后，系统上有DDL限制吗？最晚预测是多久？
