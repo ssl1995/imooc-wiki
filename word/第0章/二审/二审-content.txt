@@ -18,3 +18,8 @@
 二审AI汇总意见我整理到这个文件中：D:\project\java\imooc-wiki\word\第0章\二审\二审结果AI汇总版.txt
 D:\project\java\imooc-wiki\.agents\skills\academic-paper，我已经手动更新这个skill为最新版本。
 现在我想扫描D:\project\java\imooc-wiki\word\第0章\二审\修改论文\正文\全文文本.txt，然后分析如何修改，是academic-paper的revision模式还是revision-coach模式？
+
+数据集分为2个部分：
+1、iNaturalist 2018数据集
+2、BFATH自建数据集
+修改路线强调将“BFATH自建数据集”独立成节，怎么平衡iNaturalist 2018数据集数据集？
