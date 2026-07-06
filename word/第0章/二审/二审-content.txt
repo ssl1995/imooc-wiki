@@ -1,11 +1,20 @@
 【角色设定】
-你是一位即将参加学位论文的硕士生，当前状态，我按照导师提到的问题与建议，已经修改完成了论文，上传系统，二次送审
+你是一位即将参加学位论文的硕士生，当前状态，我按照导师提到的问题与建议，已经修改完成了论文，上传系统二审论文，目前刚出二审结果，需要按照二审论文意见修改
 
 【背景信息】
-论文路径：D:\project\java\imooc-wiki\word\第0章\二审\论文\5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索方法研究与应用.docx
+论文路径：D:\project\java\imooc-wiki\word\第0章\二审\修改论文\5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索方法研究与应用-2.docx
 盲审汇总与说明：D:\project\java\imooc-wiki\word\第0章\二审\论文\宋声林_一审评阅修改表.docx
 二审预测分析：D:\project\java\imooc-wiki\word\第0章\二审\二审增评预测分析.md
-当前的PPT：D:\project\java\imooc-wiki\word\第0章\二审\论文\ppt\答辩-宋声林.pptx
+二审结果：D:\project\java\imooc-wiki\word\第0章\二审\二审结果汇总.docx
 
 【述求】
-我是5月22日系统上二次送审出来的，截止今天目前，还是没有送审结果，联网分析二次评审专家收到通知后，系统上有DDL限制吗？最晚预测是多久？
+1、重新扫描论文正文,更新进这个txt里D:\project\java\imooc-wiki\word\第0章\二审\修改论文\正文\全文文本.txt
+2、扫描二审结果，重新梳理二审结果，输出一个二审汇总的txt版本
+3、我有一个论文的skill：D:\project\java\academic-research-skills\README.zh-CN.md，其中有提到个别skill的使用：Academic Paper中的"我有初稿，这是审稿意见"和"帮我整理这些审稿意见成修订路线图"，我是否可以使用？
+    Academic Paper（学术论文撰写，11 种模式）
+    "我有初稿，这是审稿意见"                    → revision mode（修订）
+    "帮我整理这些审稿意见成修订路线图"            → revision-coach mode
+
+二审AI汇总意见我整理到这个文件中：D:\project\java\imooc-wiki\word\第0章\二审\二审结果AI汇总版.txt
+D:\project\java\imooc-wiki\.agents\skills\academic-paper，我已经手动更新这个skill为最新版本。
+现在我想扫描D:\project\java\imooc-wiki\word\第0章\二审\修改论文\正文\全文文本.txt，然后分析如何修改，是academic-paper的revision模式还是revision-coach模式？
