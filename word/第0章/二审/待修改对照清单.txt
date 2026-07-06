@@ -1,0 +1,78 @@
+待修改对照清单
+生成时间：2026-07-07
+对应文件：5200090_宋声林_融合图像与地理位置元数据的古树名木多模态哈希检索方法研究与应用-1-修订完成.docx
+
+================================================================================
+一、高优先级（必须修改）
+================================================================================
+
+【修改 1】摘要第一段术语补全
+位置：中文摘要第一段（P11）
+当前：通过融合图像与地理位置元数据实现以图搜图、图搜位置和以位置搜图的多模态检索能力。本文主要工作如下：
+改为：通过融合图像与地理位置元数据实现以图搜图、以图搜位置和以位置搜图的多模态检索能力。本文主要工作如下：
+说明：全文其余位置均用"以图搜位置"，摘要此处漏"以"字。
+
+【修改 2】英文摘要第二段双句号
+位置：英文摘要第二段末尾（P19）
+当前：...integrates image and location metadata into a unified semantic space..
+改为：...integrates image and location metadata into a unified semantic space.
+说明：末尾多了一个英文句点。
+
+================================================================================
+二、中优先级（强烈建议修改）
+================================================================================
+
+【修改 3】英文摘要首段增加模型改进原因
+位置：英文摘要首段（P18）
+当前：
+Ancient and famous trees possess considerable ecological and historical value, making their intelligent retrieval and management an active research topic. Existing approaches suffer from the separation between image data and geographic location metadata, and unimodal retrieval alone cannot achieve the precision required for fine-grained management. This dissertation presents DHLM (Deep Hashing Learning Multi-modal Network), a deep hashing-based multimodal retrieval model that fuses image and location metadata to enable multimodal retrieval capabilities including image-to-image, image-to-location and location-to-image search. The main contributions are as follows:
+
+改为：
+Ancient and famous trees possess considerable ecological and historical value, making their intelligent retrieval and management an active research topic. Existing approaches suffer from the separation between image data and geographic location metadata, and unimodal retrieval alone cannot achieve the precision required for fine-grained management. Location metadata provides complementary spatial priors for distinguishing visually similar tree species, thereby alleviating the ambiguity of unimodal image retrieval. This dissertation presents DHLM (Deep Hashing Learning Multi-modal Network), a deep hashing-based multimodal retrieval model that fuses image and location metadata to enable multimodal retrieval capabilities including image-to-image, image-to-location and location-to-image search. The main contributions are as follows:
+
+说明：补充"地理位置元数据提供空间先验、缓解视觉歧义"的改进原因，与 P2-1 建议及中文摘要逻辑对应。
+
+【修改 4】数据库设计段落术语统一
+位置：4.2.3 数据库设计，表 4.1—4.4 之前的 ER 图说明段落（P516）
+当前：树木表是核心数据表之一，记录古树名木的属性，树木id作为主键，其余属性其中包括古树名称、树种名称、科属、保护级别、树龄、树高和经纬坐标等；
+改为：树木表是核心数据表之一，记录古树名木的属性，树木id作为主键，其余属性其中包括古树名称、树种名称、科属、保护级别、树龄、树高和位置坐标等；
+说明：术语规范要求用"位置坐标"，禁用"经纬度/GPS坐标"，"经纬坐标"属于近似禁用词。
+
+【修改 5】正文中英文术语 Geo-localization 及相近表述
+位置 1：1.2.2 节文献综述（P44）
+当前：早期研究主要关注基于地理位置的图像检索（Geo-localization），通过匹配图像特征与地理数据库实现定位。
+改为：早期研究主要关注基于地理位置的图像检索（地理定位），通过匹配图像特征与地理数据库实现定位。
+
+位置 2：3.4.1 节末尾与 GeoCLIP 对比（P459）
+当前：近年来GeoCLIP等图像-位置对比学习方法通过CLIP多模态对齐实现拍摄地理位置推断（Geo-localization），其任务目标为根据输入图像推断未知地理位置坐标，属于回归/分类任务；
+改为：近年来GeoCLIP等图像-位置对比学习方法通过CLIP多模态对齐实现拍摄位置推断（地理定位），其任务目标为根据输入图像推断未知地理位置坐标，属于回归/分类任务；
+说明：
+  - 中文正文避免混用英文术语"Geo-localization"；
+  - "拍摄地理位置推断"接近"预测拍摄位置"，改为"拍摄位置推断"，与 DHLM 的检索任务表述更明确区分。
+
+================================================================================
+三、可选优化（可不修改）
+================================================================================
+
+【可选 1】3.3.2 小标题
+当前：3.3.2 BFATH自建数据集
+改为：3.3.2 BFATH 自建数据集构建与使用建议
+
+【可选 2】中文摘要第一段末尾强化模型改进原因
+当前：针对上述问题，本文提出一种基于深度哈希学习的多模态检索模型DHLM（Deep Hashing Learning Multi-modal Network），通过融合图像与地理位置元数据实现以图搜图、以图搜位置和以位置搜图的多模态检索能力。本文主要工作如下：
+可改为：针对上述问题，本文提出一种基于深度哈希学习的多模态检索模型DHLM（Deep Hashing Learning Multi-modal Network），通过融合图像与地理位置元数据构建统一哈希空间：地理位置元数据可为形态相似树种的判别提供空间分布先验，与图像特征形成互补，从而缓解单模态检索的视觉歧义、提升检索精度，实现以图搜图、以图搜位置和以位置搜图的多模态检索能力。本文主要工作如下：
+说明：当前写法问题定义与解决方案已清晰，此修改为可选增强。
+
+【可选 3】数据库时间字段段落补充触发器说明
+当前段落末尾：该设计在保证时序一致性的同时，便于系统跨时区部署及后续按时间范围进行查询与审计。
+可追加：若数据库环境支持，也可通过 DEFAULT CURRENT_TIMESTAMP(3) 与 ON UPDATE CURRENT_TIMESTAMP(3) 触发器实现自动维护；本系统当前采用应用层控制，以降低与特定数据库版本的耦合。
+
+================================================================================
+四、修改顺序建议
+================================================================================
+
+第一步：高优先级 2 处（摘要术语、英文双句号）
+第二步：中优先级 3 处（英文摘要补句、经纬坐标、Geo-localization）
+第三步：可选 3 处（视时间和个人偏好决定）
+
+完成第一步和第二步后，论文即可进入导出 PDF 和准备回复信阶段。
