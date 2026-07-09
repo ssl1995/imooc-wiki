@@ -496,6 +496,10 @@ export default defineComponent({
         const formData = new FormData();
         formData.append('type', 'NAME');
         formData.append('speciesName', nameParams.keyword.trim());
+        if (nameParams.ageRange && nameParams.ageRange.length === 2) {
+          formData.append('minAge', nameParams.ageRange[0].toString());
+          formData.append('maxAge', nameParams.ageRange[1].toString());
+        }
         const res = await axios.post(`${API_BASE}/tree/retrieve`, formData, {
           headers: { 'Content-Type': 'multipart/form-data' }
         });

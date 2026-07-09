@@ -232,7 +232,7 @@ public class TreeController {
   }
 
   /**
-   * NAME：按树种名称检索
+   * NAME：按树种名称检索，支持树龄范围筛选
    */
   private List<TreeRetrieveResp> handleName(TreeRetrieveReq req) {
     String speciesName = req.getSpeciesName();
@@ -240,7 +240,21 @@ public class TreeController {
       return Collections.emptyList();
     }
     List<Tree> trees = treeMapper.selectByName(speciesName.trim());
-    return trees.stream().map(this::toTreeRetrieveResp).collect(Collectors.toList());
+    return trees.stream()
+        .filter(tree -> {
+          Integer age = tree.getAge();
+          if (age == null) {
+            return false;
+          }
+          Integer minAge = req.getMinAge();
+          Integer maxAge = req.getMaxAge();
+          if (minAge != null && age < minAge) {
+            return false;
+          }
+          return maxAge == null || age <= maxAge;
+        })
+        .map(this::toTreeRetrieveResp)
+        .collect(Collectors.toList());
   }
 
   /**
