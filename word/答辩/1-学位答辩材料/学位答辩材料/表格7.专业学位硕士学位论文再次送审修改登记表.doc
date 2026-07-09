@@ -1,0 +1,1475 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?mso-application progid="Word.Document" ?>
+<w:wordDocument xmlns:w="http://schemas.microsoft.com/office/word/2003/wordml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:sl="http://schemas.microsoft.com/schemaLibrary/2003/core" xmlns:aml="http://schemas.microsoft.com/aml/2001/core" xmlns:wx="http://schemas.microsoft.com/office/word/2003/auxHint" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882" w:macrosPresent="no" w:embeddedObjPresent="no" w:ocxPresent="no" xml:space="preserve">
+    <o:DocumentProperties>
+        <o:Title>中国林科院学位论文修改登记表</o:Title>
+        <o:Author>杨洪国</o:Author>
+        <o:LastAuthor>QIAN</o:LastAuthor>
+        <o:Revision>19</o:Revision>
+        <o:LastPrinted>2004-03-31T08:18:00Z</o:LastPrinted>
+        <o:Created>2011-11-05T03:13:00Z</o:Created>
+        <o:LastSaved>2020-08-04T04:27:51Z</o:LastSaved>
+        <o:TotalTime>11520</o:TotalTime>
+        <o:Pages>1</o:Pages>
+        <o:Words>82</o:Words>
+        <o:Characters>470</o:Characters>
+        <o:Company>人教初</o:Company>
+        <o:Lines>3</o:Lines>
+        <o:Paragraphs>1</o:Paragraphs>
+        <o:CharactersWithSpaces>551</o:CharactersWithSpaces>
+        <o:Version>14</o:Version>
+    </o:DocumentProperties>
+    <o:CustomDocumentProperties>
+        <o:KSOProductBuildVer dt:dt="string">2052-11.1.0.9912</o:KSOProductBuildVer>
+    </o:CustomDocumentProperties>
+    <w:fonts>
+        <w:defaultFonts w:ascii="Times New Roman" w:fareast="宋体" w:h-ansi="Times New Roman" w:cs="Times New Roman" />
+        <w:font w:name="Times New Roman">
+            <w:panose-1 w:val="02020603050405020304" />
+            <w:charset w:val="00" />
+            <w:family w:val="Auto" />
+            <w:pitch w:val="Default" />
+            <w:sig w:usb-0="E0002EFF" w:usb-1="C000785B" w:usb-2="00000009" w:usb-3="00000000" w:csb-0="400001FF" w:csb-1="FFFF0000" />
+        </w:font>
+        <w:font w:name="宋体">
+            <w:panose-1 w:val="02010600030101010101" />
+            <w:charset w:val="86" />
+            <w:family w:val="Auto" />
+            <w:pitch w:val="Default" />
+            <w:sig w:usb-0="00000003" w:usb-1="288F0000" w:usb-2="00000006" w:usb-3="00000000" w:csb-0="00040001" w:csb-1="00000000" />
+        </w:font>
+        <w:font w:name="Wingdings">
+            <w:panose-1 w:val="05000000000000000000" />
+            <w:charset w:val="02" />
+            <w:family w:val="Auto" />
+            <w:pitch w:val="Default" />
+            <w:sig w:usb-0="00000000" w:usb-1="00000000" w:usb-2="00000000" w:usb-3="00000000" w:csb-0="80000000" w:csb-1="00000000" />
+        </w:font>
+        <w:font w:name="Arial">
+            <w:panose-1 w:val="020B0604020202020204" />
+            <w:charset w:val="01" />
+            <w:family w:val="SWiss" />
+            <w:pitch w:val="Default" />
+            <w:sig w:usb-0="E0002EFF" w:usb-1="C000785B" w:usb-2="00000009" w:usb-3="00000000" w:csb-0="400001FF" w:csb-1="FFFF0000" />
+        </w:font>
+        <w:font w:name="黑体">
+            <w:panose-1 w:val="02010609060101010101" />
+            <w:charset w:val="86" />
+            <w:family w:val="Auto" />
+            <w:pitch w:val="Default" />
+            <w:sig w:usb-0="800002BF" w:usb-1="38CF7CFA" w:usb-2="00000016" w:usb-3="00000000" w:csb-0="00040001" w:csb-1="00000000" />
+        </w:font>
+        <w:font w:name="Courier New">
+            <w:panose-1 w:val="02070309020205020404" />
+            <w:charset w:val="01" />
+            <w:family w:val="Modern" />
+            <w:pitch w:val="Default" />
+            <w:sig w:usb-0="E0002EFF" w:usb-1="C0007843" w:usb-2="00000009" w:usb-3="00000000" w:csb-0="400001FF" w:csb-1="FFFF0000" />
+        </w:font>
+        <w:font w:name="Symbol">
+            <w:panose-1 w:val="05050102010706020507" />
+            <w:charset w:val="02" />
+            <w:family w:val="Roman" />
+            <w:pitch w:val="Default" />
+            <w:sig w:usb-0="00000000" w:usb-1="00000000" w:usb-2="00000000" w:usb-3="00000000" w:csb-0="80000000" w:csb-1="00000000" />
+        </w:font>
+        <w:font w:name="Calibri">
+            <w:panose-1 w:val="020F0502020204030204" />
+            <w:charset w:val="00" />
+            <w:family w:val="SWiss" />
+            <w:pitch w:val="Default" />
+            <w:sig w:usb-0="E4002EFF" w:usb-1="C000247B" w:usb-2="00000009" w:usb-3="00000000" w:csb-0="200001FF" w:csb-1="00000000" />
+        </w:font>
+    </w:fonts>
+    <w:styles>
+        <w:latentStyles w:defLockedState="off" w:latentStyleCount="260">
+            <w:lsdException w:name="Normal" />
+            <w:lsdException w:name="heading 1" />
+            <w:lsdException w:name="heading 2" />
+            <w:lsdException w:name="heading 3" />
+            <w:lsdException w:name="heading 4" />
+            <w:lsdException w:name="heading 5" />
+            <w:lsdException w:name="heading 6" />
+            <w:lsdException w:name="heading 7" />
+            <w:lsdException w:name="heading 8" />
+            <w:lsdException w:name="heading 9" />
+            <w:lsdException w:name="index 1" />
+            <w:lsdException w:name="index 2" />
+            <w:lsdException w:name="index 3" />
+            <w:lsdException w:name="index 4" />
+            <w:lsdException w:name="index 5" />
+            <w:lsdException w:name="index 6" />
+            <w:lsdException w:name="index 7" />
+            <w:lsdException w:name="index 8" />
+            <w:lsdException w:name="index 9" />
+            <w:lsdException w:name="toc 1" />
+            <w:lsdException w:name="toc 2" />
+            <w:lsdException w:name="toc 3" />
+            <w:lsdException w:name="toc 4" />
+            <w:lsdException w:name="toc 5" />
+            <w:lsdException w:name="toc 6" />
+            <w:lsdException w:name="toc 7" />
+            <w:lsdException w:name="toc 8" />
+            <w:lsdException w:name="toc 9" />
+            <w:lsdException w:name="Normal Indent" />
+            <w:lsdException w:name="footnote text" />
+            <w:lsdException w:name="annotation text" />
+            <w:lsdException w:name="header" />
+            <w:lsdException w:name="footer" />
+            <w:lsdException w:name="index heading" />
+            <w:lsdException w:name="caption" />
+            <w:lsdException w:name="table of figures" />
+            <w:lsdException w:name="envelope address" />
+            <w:lsdException w:name="envelope return" />
+            <w:lsdException w:name="footnote reference" />
+            <w:lsdException w:name="annotation reference" />
+            <w:lsdException w:name="line number" />
+            <w:lsdException w:name="page number" />
+            <w:lsdException w:name="endnote reference" />
+            <w:lsdException w:name="endnote text" />
+            <w:lsdException w:name="table of authorities" />
+            <w:lsdException w:name="macro" />
+            <w:lsdException w:name="toa heading" />
+            <w:lsdException w:name="List" />
+            <w:lsdException w:name="List Bullet" />
+            <w:lsdException w:name="List Number" />
+            <w:lsdException w:name="List 2" />
+            <w:lsdException w:name="List 3" />
+            <w:lsdException w:name="List 4" />
+            <w:lsdException w:name="List 5" />
+            <w:lsdException w:name="List Bullet 2" />
+            <w:lsdException w:name="List Bullet 3" />
+            <w:lsdException w:name="List Bullet 4" />
+            <w:lsdException w:name="List Bullet 5" />
+            <w:lsdException w:name="List Number 2" />
+            <w:lsdException w:name="List Number 3" />
+            <w:lsdException w:name="List Number 4" />
+            <w:lsdException w:name="List Number 5" />
+            <w:lsdException w:name="Title" />
+            <w:lsdException w:name="Closing" />
+            <w:lsdException w:name="Signature" />
+            <w:lsdException w:name="Default Paragraph Font" />
+            <w:lsdException w:name="Body Text" />
+            <w:lsdException w:name="Body Text Indent" />
+            <w:lsdException w:name="List Continue" />
+            <w:lsdException w:name="List Continue 2" />
+            <w:lsdException w:name="List Continue 3" />
+            <w:lsdException w:name="List Continue 4" />
+            <w:lsdException w:name="List Continue 5" />
+            <w:lsdException w:name="Message Header" />
+            <w:lsdException w:name="Subtitle" />
+            <w:lsdException w:name="Salutation" />
+            <w:lsdException w:name="Date" />
+            <w:lsdException w:name="Body Text First Indent" />
+            <w:lsdException w:name="Body Text First Indent 2" />
+            <w:lsdException w:name="Note Heading" />
+            <w:lsdException w:name="Body Text 2" />
+            <w:lsdException w:name="Body Text 3" />
+            <w:lsdException w:name="Body Text Indent 2" />
+            <w:lsdException w:name="Body Text Indent 3" />
+            <w:lsdException w:name="Block Text" />
+            <w:lsdException w:name="Hyperlink" />
+            <w:lsdException w:name="FollowedHyperlink" />
+            <w:lsdException w:name="Strong" />
+            <w:lsdException w:name="Emphasis" />
+            <w:lsdException w:name="Document Map" />
+            <w:lsdException w:name="Plain Text" />
+            <w:lsdException w:name="E-mail Signature" />
+            <w:lsdException w:name="Normal (Web)" />
+            <w:lsdException w:name="HTML Acronym" />
+            <w:lsdException w:name="HTML Address" />
+            <w:lsdException w:name="HTML Cite" />
+            <w:lsdException w:name="HTML Code" />
+            <w:lsdException w:name="HTML Definition" />
+            <w:lsdException w:name="HTML Keyboard" />
+            <w:lsdException w:name="HTML Preformatted" />
+            <w:lsdException w:name="HTML Sample" />
+            <w:lsdException w:name="HTML Typewriter" />
+            <w:lsdException w:name="HTML Variable" />
+            <w:lsdException w:name="Normal Table" />
+            <w:lsdException w:name="annotation subject" />
+            <w:lsdException w:name="Table Simple 1" />
+            <w:lsdException w:name="Table Simple 2" />
+            <w:lsdException w:name="Table Simple 3" />
+            <w:lsdException w:name="Table Classic 1" />
+            <w:lsdException w:name="Table Classic 2" />
+            <w:lsdException w:name="Table Classic 3" />
+            <w:lsdException w:name="Table Classic 4" />
+            <w:lsdException w:name="Table Colorful 1" />
+            <w:lsdException w:name="Table Colorful 2" />
+            <w:lsdException w:name="Table Colorful 3" />
+            <w:lsdException w:name="Table Columns 1" />
+            <w:lsdException w:name="Table Columns 2" />
+            <w:lsdException w:name="Table Columns 3" />
+            <w:lsdException w:name="Table Columns 4" />
+            <w:lsdException w:name="Table Columns 5" />
+            <w:lsdException w:name="Table Grid 1" />
+            <w:lsdException w:name="Table Grid 2" />
+            <w:lsdException w:name="Table Grid 3" />
+            <w:lsdException w:name="Table Grid 4" />
+            <w:lsdException w:name="Table Grid 5" />
+            <w:lsdException w:name="Table Grid 6" />
+            <w:lsdException w:name="Table Grid 7" />
+            <w:lsdException w:name="Table Grid 8" />
+            <w:lsdException w:name="Table List 1" />
+            <w:lsdException w:name="Table List 2" />
+            <w:lsdException w:name="Table List 3" />
+            <w:lsdException w:name="Table List 4" />
+            <w:lsdException w:name="Table List 5" />
+            <w:lsdException w:name="Table List 6" />
+            <w:lsdException w:name="Table List 7" />
+            <w:lsdException w:name="Table List 8" />
+            <w:lsdException w:name="Table 3D effects 1" />
+            <w:lsdException w:name="Table 3D effects 2" />
+            <w:lsdException w:name="Table 3D effects 3" />
+            <w:lsdException w:name="Table Contemporary" />
+            <w:lsdException w:name="Table Elegant" />
+            <w:lsdException w:name="Table Professional" />
+            <w:lsdException w:name="Table Subtle 1" />
+            <w:lsdException w:name="Table Subtle 2" />
+            <w:lsdException w:name="Table Web 1" />
+            <w:lsdException w:name="Table Web 2" />
+            <w:lsdException w:name="Table Web 3" />
+            <w:lsdException w:name="Balloon Text" />
+            <w:lsdException w:name="Table Grid" />
+            <w:lsdException w:name="Table Theme" />
+            <w:lsdException w:name="Light Shading" />
+            <w:lsdException w:name="Light List" />
+            <w:lsdException w:name="Light Grid" />
+            <w:lsdException w:name="Medium Shading 1" />
+            <w:lsdException w:name="Medium Shading 2" />
+            <w:lsdException w:name="Medium List 1" />
+            <w:lsdException w:name="Medium List 2" />
+            <w:lsdException w:name="Medium Grid 1" />
+            <w:lsdException w:name="Medium Grid 2" />
+            <w:lsdException w:name="Medium Grid 3" />
+            <w:lsdException w:name="Dark List" />
+            <w:lsdException w:name="Colorful Shading" />
+            <w:lsdException w:name="Colorful List" />
+            <w:lsdException w:name="Colorful Grid" />
+            <w:lsdException w:name="Light Shading Accent 1" />
+            <w:lsdException w:name="Light List Accent 1" />
+            <w:lsdException w:name="Light Grid Accent 1" />
+            <w:lsdException w:name="Medium Shading 1 Accent 1" />
+            <w:lsdException w:name="Medium Shading 2 Accent 1" />
+            <w:lsdException w:name="Medium List 1 Accent 1" />
+            <w:lsdException w:name="Medium List 2 Accent 1" />
+            <w:lsdException w:name="Medium Grid 1 Accent 1" />
+            <w:lsdException w:name="Medium Grid 2 Accent 1" />
+            <w:lsdException w:name="Medium Grid 3 Accent 1" />
+            <w:lsdException w:name="Dark List Accent 1" />
+            <w:lsdException w:name="Colorful Shading Accent 1" />
+            <w:lsdException w:name="Colorful List Accent 1" />
+            <w:lsdException w:name="Colorful Grid Accent 1" />
+            <w:lsdException w:name="Light Shading Accent 2" />
+            <w:lsdException w:name="Light List Accent 2" />
+            <w:lsdException w:name="Light Grid Accent 2" />
+            <w:lsdException w:name="Medium Shading 1 Accent 2" />
+            <w:lsdException w:name="Medium Shading 2 Accent 2" />
+            <w:lsdException w:name="Medium List 1 Accent 2" />
+            <w:lsdException w:name="Medium List 2 Accent 2" />
+            <w:lsdException w:name="Medium Grid 1 Accent 2" />
+            <w:lsdException w:name="Medium Grid 2 Accent 2" />
+            <w:lsdException w:name="Medium Grid 3 Accent 2" />
+            <w:lsdException w:name="Dark List Accent 2" />
+            <w:lsdException w:name="Colorful Shading Accent 2" />
+            <w:lsdException w:name="Colorful List Accent 2" />
+            <w:lsdException w:name="Colorful Grid Accent 2" />
+            <w:lsdException w:name="Light Shading Accent 3" />
+            <w:lsdException w:name="Light List Accent 3" />
+            <w:lsdException w:name="Light Grid Accent 3" />
+            <w:lsdException w:name="Medium Shading 1 Accent 3" />
+            <w:lsdException w:name="Medium Shading 2 Accent 3" />
+            <w:lsdException w:name="Medium List 1 Accent 3" />
+            <w:lsdException w:name="Medium List 2 Accent 3" />
+            <w:lsdException w:name="Medium Grid 1 Accent 3" />
+            <w:lsdException w:name="Medium Grid 2 Accent 3" />
+            <w:lsdException w:name="Medium Grid 3 Accent 3" />
+            <w:lsdException w:name="Dark List Accent 3" />
+            <w:lsdException w:name="Colorful Shading Accent 3" />
+            <w:lsdException w:name="Colorful List Accent 3" />
+            <w:lsdException w:name="Colorful Grid Accent 3" />
+            <w:lsdException w:name="Light Shading Accent 4" />
+            <w:lsdException w:name="Light List Accent 4" />
+            <w:lsdException w:name="Light Grid Accent 4" />
+            <w:lsdException w:name="Medium Shading 1 Accent 4" />
+            <w:lsdException w:name="Medium Shading 2 Accent 4" />
+            <w:lsdException w:name="Medium List 1 Accent 4" />
+            <w:lsdException w:name="Medium List 2 Accent 4" />
+            <w:lsdException w:name="Medium Grid 1 Accent 4" />
+            <w:lsdException w:name="Medium Grid 2 Accent 4" />
+            <w:lsdException w:name="Medium Grid 3 Accent 4" />
+            <w:lsdException w:name="Dark List Accent 4" />
+            <w:lsdException w:name="Colorful Shading Accent 4" />
+            <w:lsdException w:name="Colorful List Accent 4" />
+            <w:lsdException w:name="Colorful Grid Accent 4" />
+            <w:lsdException w:name="Light Shading Accent 5" />
+            <w:lsdException w:name="Light List Accent 5" />
+            <w:lsdException w:name="Light Grid Accent 5" />
+            <w:lsdException w:name="Medium Shading 1 Accent 5" />
+            <w:lsdException w:name="Medium Shading 2 Accent 5" />
+            <w:lsdException w:name="Medium List 1 Accent 5" />
+            <w:lsdException w:name="Medium List 2 Accent 5" />
+            <w:lsdException w:name="Medium Grid 1 Accent 5" />
+            <w:lsdException w:name="Medium Grid 2 Accent 5" />
+            <w:lsdException w:name="Medium Grid 3 Accent 5" />
+            <w:lsdException w:name="Dark List Accent 5" />
+            <w:lsdException w:name="Colorful Shading Accent 5" />
+            <w:lsdException w:name="Colorful List Accent 5" />
+            <w:lsdException w:name="Colorful Grid Accent 5" />
+            <w:lsdException w:name="Light Shading Accent 6" />
+            <w:lsdException w:name="Light List Accent 6" />
+            <w:lsdException w:name="Light Grid Accent 6" />
+            <w:lsdException w:name="Medium Shading 1 Accent 6" />
+            <w:lsdException w:name="Medium Shading 2 Accent 6" />
+            <w:lsdException w:name="Medium List 1 Accent 6" />
+            <w:lsdException w:name="Medium List 2 Accent 6" />
+            <w:lsdException w:name="Medium Grid 1 Accent 6" />
+            <w:lsdException w:name="Medium Grid 2 Accent 6" />
+            <w:lsdException w:name="Medium Grid 3 Accent 6" />
+            <w:lsdException w:name="Dark List Accent 6" />
+            <w:lsdException w:name="Colorful Shading Accent 6" />
+            <w:lsdException w:name="Colorful List Accent 6" />
+            <w:lsdException w:name="Colorful Grid Accent 6" />
+        </w:latentStyles>
+        <w:style w:type="paragraph" w:styleId="a1" w:default="on">
+            <w:name w:val="Normal" />
+            <w:pPr>
+                <w:widowControl w:val="off" />
+                <w:jc w:val="both" />
+            </w:pPr>
+            <w:rPr>
+                <w:kern w:val="2" />
+                <w:sz w:val="21" />
+                <w:sz-cs w:val="24" />
+                <w:lang w:val="EN-US" w:fareast="ZH-CN" />
+            </w:rPr>
+        </w:style>
+        <w:style w:type="character" w:styleId="a5" w:default="on">
+            <w:name w:val="Default Paragraph Font" />
+            <w:semiHidden />
+        </w:style>
+        <w:style w:type="table" w:styleId="a4" w:default="on">
+            <w:name w:val="Normal Table" />
+            <w:semiHidden />
+            <w:tblPr>
+                <w:tblCellMar>
+                    <w:top w:w="0" w:type="dxa" />
+                    <w:left w:w="108" w:type="dxa" />
+                    <w:bottom w:w="0" w:type="dxa" />
+                    <w:right w:w="108" w:type="dxa" />
+                </w:tblCellMar>
+            </w:tblPr>
+        </w:style>
+        <w:style w:type="paragraph" w:styleId="a2">
+            <w:name w:val="footer" />
+            <w:basedOn w:val="a1" />
+            <w:link w:val="a7" />
+            <w:pPr>
+                <w:tabs>
+                    <w:tab w:val="center" w:pos="4153" />
+                    <w:tab w:val="right" w:pos="8306" />
+                </w:tabs>
+                <w:snapToGrid w:val="off" />
+                <w:jc w:val="left" />
+            </w:pPr>
+            <w:rPr>
+                <w:sz w:val="18" />
+                <w:sz-cs w:val="18" />
+            </w:rPr>
+        </w:style>
+        <w:style w:type="paragraph" w:styleId="a3">
+            <w:name w:val="header" />
+            <w:basedOn w:val="a1" />
+            <w:link w:val="a6" />
+            <w:pPr>
+                <w:pBdr>
+                    <w:bottom w:val="single" w:sz="6" wx:bdrwidth="15" w:space="1" w:color="auto" />
+                </w:pBdr>
+                <w:tabs>
+                    <w:tab w:val="center" w:pos="4153" />
+                    <w:tab w:val="right" w:pos="8306" />
+                </w:tabs>
+                <w:snapToGrid w:val="off" />
+                <w:jc w:val="center" />
+            </w:pPr>
+            <w:rPr>
+                <w:sz w:val="18" />
+                <w:sz-cs w:val="18" />
+            </w:rPr>
+        </w:style>
+        <w:style w:type="character" w:styleId="a6">
+            <w:name w:val="页眉 Char" />
+            <w:link w:val="a3" />
+            <w:rPr>
+                <w:kern w:val="2" />
+                <w:sz w:val="18" />
+                <w:sz-cs w:val="18" />
+            </w:rPr>
+        </w:style>
+        <w:style w:type="character" w:styleId="a7">
+            <w:name w:val="页脚 Char" />
+            <w:link w:val="a2" />
+            <w:rPr>
+                <w:kern w:val="2" />
+                <w:sz w:val="18" />
+                <w:sz-cs w:val="18" />
+            </w:rPr>
+        </w:style>
+    </w:styles>
+    <w:bgPict>
+        <w:background />
+        <v:background id="_x0000_s1025">
+            <v:fill on="f" focussize="0,0" />
+        </v:background>
+    </w:bgPict>
+    <w:docPr>
+        <w:view w:val="print" />
+        <w:zoom w:percent="90" />
+        <w:characterSpacingControl w:val="CompressPunctuation" />
+        <w:documentProtection w:enforcement="off" />
+        <w:punctuationKerning />
+        <w:doNotEmbedSystemFonts />
+        <w:bordersDontSurroundHeader />
+        <w:bordersDontSurroundFooter />
+        <w:defaultTabStop w:val="420" />
+        <w:drawingGridVerticalSpacing w:val="156" />
+        <w:displayHorizontalDrawingGridEvery w:val="0" />
+        <w:displayVerticalDrawingGridEvery w:val="2" />
+        <w:compat>
+            <w:adjustLineHeightInTable />
+            <w:ulTrailSpace />
+            <w:doNotExpandShiftReturn />
+            <w:balanceSingleByteDoubleByteWidth />
+            <w:spaceForUL />
+            <w:useFELayout />
+        </w:compat>
+    </w:docPr>
+    <w:body>
+        <wx:sect>
+            <w:p>
+                <w:pPr>
+                    <w:jc w:val="center" />
+                    <w:rPr>
+                        <w:rFonts w:fareast="黑体" w:hint="fareast" />
+                        <w:b />
+                        <w:b-cs />
+                        <w:sz w:val="28" />
+                        <w:sz-cs w:val="32" />
+                    </w:rPr>
+                </w:pPr>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:fareast="黑体" w:hint="fareast" />
+                        <w:b />
+                        <w:b-cs />
+                        <w:sz w:val="28" />
+                        <w:sz-cs w:val="32" />
+                    </w:rPr>
+                    <w:t>北京林业大学全日制（非全日制</w:t>
+                </w:r>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:fareast="黑体" w:hint="default" />
+                        <w:b />
+                        <w:b-cs />
+                        <w:sz w:val="28" />
+                        <w:sz-cs w:val="32" />
+                    </w:rPr>
+                    <w:t>）</w:t>
+                </w:r>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:fareast="黑体" w:hint="fareast" />
+                        <w:b />
+                        <w:b-cs />
+                        <w:sz w:val="28" />
+                        <w:sz-cs w:val="32" />
+                    </w:rPr>
+                    <w:t>专业硕士学位论文再次送审修改登记表</w:t>
+                </w:r>
+            </w:p>
+            <w:p>
+                <w:pPr>
+                    <w:jc w:val="center" />
+                    <w:rPr>
+                        <w:rFonts w:fareast="黑体" w:hint="fareast" />
+                        <w:b />
+                        <w:b-cs />
+                        <w:sz w:val="24" />
+                    </w:rPr>
+                </w:pPr>
+            </w:p>
+            <w:p>
+                <w:pPr>
+                    <w:rPr>
+                        <w:rFonts w:ascii="Times New Roman" w:h-ansi="Times New Roman" w:fareast="宋体" w:cs="Times New Roman" w:hint="fareast" />
+                        <w:sz w:val="24" />
+                    </w:rPr>
+                </w:pPr>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:ascii="Times New Roman" w:h-ansi="Times New Roman" w:fareast="宋体" w:cs="Times New Roman" w:hint="fareast" />
+                        <w:sz w:val="24" />
+                    </w:rPr>
+                    <w:t>学号：5200090   姓名：宋声林 </w:t>
+                </w:r>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:ascii="Times New Roman" w:h-ansi="Times New Roman" w:fareast="宋体" w:cs="Times New Roman" w:hint="fareast" />
+                        <w:sz w:val="24" />
+                        <w:lang w:val="EN-US" w:fareast="ZH-CN" />
+                    </w:rPr>
+                    <w:t></w:t>
+                </w:r>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:ascii="Times New Roman" w:h-ansi="Times New Roman" w:fareast="宋体" w:cs="Times New Roman" w:hint="fareast" />
+                        <w:sz w:val="24" />
+                    </w:rPr>
+                    <w:t>学位类别领域：</w:t>
+                </w:r>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:ascii="Times New Roman" w:h-ansi="Times New Roman" w:fareast="宋体" w:cs="Times New Roman" w:hint="fareast" />
+                        <w:sz w:val="24" />
+                        <w:lang w:val="EN-US" w:fareast="ZH-CN" />
+                    </w:rPr>
+                    <w:t>软件工程</w:t>
+                </w:r>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:ascii="Times New Roman" w:h-ansi="Times New Roman" w:fareast="宋体" w:cs="Times New Roman" w:hint="fareast" />
+                        <w:sz w:val="24" />
+                    </w:rPr>
+                    <w:t></w:t>
+                </w:r>
+            </w:p>
+            <w:p>
+                <w:pPr>
+                    <w:rPr>
+                        <w:rFonts w:ascii="Times New Roman" w:h-ansi="Times New Roman" w:fareast="宋体" w:cs="Times New Roman" w:hint="default" />
+                        <w:sz w:val="24" />
+                        <w:lang w:val="EN-US" w:fareast="ZH-CN" />
+                    </w:rPr>
+                </w:pPr>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:ascii="Times New Roman" w:h-ansi="Times New Roman" w:fareast="宋体" w:cs="Times New Roman" w:hint="fareast" />
+                        <w:sz w:val="24" />
+                    </w:rPr>
+                    <w:t>校内指导教师： </w:t>
+                </w:r>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:ascii="Times New Roman" w:h-ansi="Times New Roman" w:fareast="宋体" w:cs="Times New Roman" w:hint="fareast" />
+                        <w:sz w:val="24" />
+                        <w:lang w:val="EN-US" w:fareast="ZH-CN" />
+                    </w:rPr>
+                    <w:t>田萱</w:t>
+                </w:r>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:ascii="Times New Roman" w:h-ansi="Times New Roman" w:fareast="宋体" w:cs="Times New Roman" w:hint="fareast" />
+                        <w:sz w:val="24" />
+                    </w:rPr>
+                    <w:t>      校外指导教师：</w:t>
+                </w:r>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:ascii="Times New Roman" w:h-ansi="Times New Roman" w:fareast="宋体" w:cs="Times New Roman" w:hint="fareast" />
+                        <w:sz w:val="24" />
+                        <w:lang w:val="EN-US" w:fareast="ZH-CN" />
+                    </w:rPr>
+                    <w:t>张廷书</w:t>
+                </w:r>
+            </w:p>
+            <w:p>
+                <w:pPr>
+                    <w:rPr>
+                        <w:rFonts w:hint="fareast" />
+                        <w:sz w:val="24" />
+                    </w:rPr>
+                </w:pPr>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:ascii="Times New Roman" w:h-ansi="Times New Roman" w:fareast="宋体" w:cs="Times New Roman" w:hint="fareast" />
+                        <w:sz w:val="24" />
+                    </w:rPr>
+                    <w:t>论文题目：融合图像与地理位置元数据的古树名木多模态哈希检索方法研究与应用                   </w:t>
+                </w:r>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:hint="fareast" />
+                        <w:sz w:val="24" />
+                    </w:rPr>
+                    <w:t></w:t>
+                </w:r>
+            </w:p>
+            <w:tbl>
+                <w:tblPr>
+                    <w:tblW w:w="10008" w:type="dxa" />
+                    <w:tblInd w:w="0" w:type="dxa" />
+                    <w:tblBorders>
+                        <w:top w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                        <w:left w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                        <w:bottom w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                        <w:right w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                        <w:insideH w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                        <w:insideV w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                    </w:tblBorders>
+                    <w:tblCellMar>
+                        <w:top w:w="0" w:type="dxa" />
+                        <w:left w:w="108" w:type="dxa" />
+                        <w:bottom w:w="0" w:type="dxa" />
+                        <w:right w:w="108" w:type="dxa" />
+                    </w:tblCellMar>
+                </w:tblPr>
+                <w:tblGrid>
+                    <w:gridCol w:w="1368" />
+                    <w:gridCol w:w="8640" />
+                </w:tblGrid>
+                <w:tr>
+                    <w:tblPrEx>
+                        <w:tblBorders>
+                            <w:top w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                            <w:left w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                            <w:bottom w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                            <w:right w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                            <w:insideH w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                            <w:insideV w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                        </w:tblBorders>
+                        <w:tblCellMar>
+                            <w:top w:w="0" w:type="dxa" />
+                            <w:left w:w="108" w:type="dxa" />
+                            <w:bottom w:w="0" w:type="dxa" />
+                            <w:right w:w="108" w:type="dxa" />
+                        </w:tblCellMar>
+                    </w:tblPrEx>
+                    <w:trPr>
+                        <w:trHeight w:val="4045" w:h-rule="atLeast" />
+                    </w:trPr>
+                    <w:tc>
+                        <w:tcPr>
+                            <w:tcW w:w="1368" w:type="dxa" />
+                            <w:shd w:val="clear" w:color="auto" w:fill="auto" />
+                            <w:noWrap w:val="0" />
+                            <w:vAlign w:val="center" />
+                        </w:tcPr>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="center" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>评阅人</w:t>
+                            </w:r>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="center" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>所提主要修改意见</w:t>
+                            </w:r>
+                        </w:p>
+                    </w:tc>
+                    <w:tc>
+                        <w:tcPr>
+                            <w:tcW w:w="8640" w:type="dxa" />
+                            <w:shd w:val="clear" w:color="auto" w:fill="auto" />
+                            <w:noWrap w:val="0" />
+                            <w:vAlign w:val="center" />
+                        </w:tcPr>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="both" />
+                                <w:rPr>
+                                    <w:rFonts w:fareast="宋体" w:hint="default" />
+                                    <w:sz w:val="24" />
+                                    <w:lang w:val="EN-US" w:fareast="ZH-CN" />
+                                </w:rPr>
+                            </w:pPr>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                    <w:lang w:val="EN-US" w:fareast="ZH-CN" />
+                                </w:rPr>
+                                <w:t>评阅人一提出以下修改意见：（1）第2章内容太多，需要精简；（2）基线对比均为单模态方法，缺少多模态哈希方法实验对比；（3）自建BFATH数据集仅300样本，规模偏小，消融实验结论受统计波动影响。
+评阅人二提出以下修改意见：（1）第6页图1.1中，三部分研究内容所在的框格需要用箭头等连接起来，表明三者之间的关系，另外图中留白太多，字体太小，建议重新设计绘图；（2）第14页图2.6中，应为“样本”，而不是“相本”；（3）作者在介绍一些基本概念时，缺乏文献引用，如“多模态融合”；（4）第34页公式3-17中，三个权重的具体值是如何确定的λ。
+评阅人三提出以下修改意见：（1）3.2.4节未体现哈希层创新性设计策略，只介绍了实现流程；（2）iNaturalist 2018筛选标准不明确，是否真含古树名木样本，GPS精度是否满足要求，缺失坐标如何处理；（3）BFATH数据集仅300张样本，消融实验统计显著性有限；（4）缺少与多模态哈希方法（DCMH、SSAH）的横向对比，缺乏外部参照系；（5）系统功能不完善，缺乏科、属、种等基本检索功能，系统工程量较为单薄；（6）Adaptive名实不符，主模型采用特征拼接，注意力加权融合仅作为备选方案且未在实验中验证；（7）1.2.2节最后2段冗余；（8）3.2.2节不同的图像特征编码器基本知识不需要在本节介绍；（9）3.2.2节应明确分别对图像特征和位置特征编码，应将3.2.3节位置编码迁移到3.2.2节；（10）3.2.4节有明显AI痕迹，双引号标点均不对，公式3-10字体格式不对，公式3-16缺乏说明，公式3-18取值范围有误；（11）公式3-17中的参数定义不规范，建议归一化；（12）3.3.3节mAP计算方式不明确，Recall@K指标中数据描述与前文不符；（13）3.4.1节提及“本论文报告单次运行的实验结果”不合理不科学；（14）L2I检索逻辑缺乏说明，查询输入的位置信息是什么缺乏说明；（15）第4章标题应和正文保持一致，应为“4 古树名木多模态检索系统”；（16）部分专业术语界定不严谨，“图像信息/数据/视觉/特征”、“地理位置元数据”等表述前后不一致；（17）图4.6、4.7中文字过小，严重影响可读性。</w:t>
+                            </w:r>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="both" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="both" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="both" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="both" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                        </w:p>
+                    </w:tc>
+                </w:tr>
+                <w:tr>
+                    <w:tblPrEx>
+                        <w:tblBorders>
+                            <w:top w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                            <w:left w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                            <w:bottom w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                            <w:right w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                            <w:insideH w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                            <w:insideV w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                        </w:tblBorders>
+                        <w:tblCellMar>
+                            <w:top w:w="0" w:type="dxa" />
+                            <w:left w:w="108" w:type="dxa" />
+                            <w:bottom w:w="0" w:type="dxa" />
+                            <w:right w:w="108" w:type="dxa" />
+                        </w:tblCellMar>
+                    </w:tblPrEx>
+                    <w:trPr>
+                        <w:trHeight w:val="3865" w:h-rule="atLeast" />
+                    </w:trPr>
+                    <w:tc>
+                        <w:tcPr>
+                            <w:tcW w:w="1368" w:type="dxa" />
+                            <w:shd w:val="clear" w:color="auto" w:fill="auto" />
+                            <w:noWrap w:val="0" />
+                            <w:vAlign w:val="center" />
+                        </w:tcPr>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="center" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>研究生</w:t>
+                            </w:r>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="center" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>修改说明</w:t>
+                            </w:r>
+                        </w:p>
+                    </w:tc>
+                    <w:tc>
+                        <w:tcPr>
+                            <w:tcW w:w="8640" w:type="dxa" />
+                            <w:shd w:val="clear" w:color="auto" w:fill="auto" />
+                            <w:noWrap w:val="0" />
+                            <w:vAlign w:val="top" />
+                        </w:tcPr>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="left" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="left" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="left" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="left" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="left" />
+                                <w:rPr>
+                                    <w:rFonts w:fareast="宋体" w:hint="default" />
+                                    <w:sz w:val="24" />
+                                    <w:lang w:val="EN-US" w:fareast="ZH-CN" />
+                                </w:rPr>
+                            </w:pPr>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                    <w:lang w:val="EN-US" w:fareast="ZH-CN" />
+                                </w:rPr>
+                                <w:t>针对评阅人一的意见修改说明
+意见一：第2章内容太多，需要精简。
+回复：感谢评阅专家提出的宝贵意见。本人在修改过程中对第2章进行了精简：（1AlexNet、dropout、Xavier等基础内容从3.2.2节前移到2.1.2节，并精简描述。（2）将3.2.2节中ViT、EfficientNet等内容从3.2.2节前移到2.1.2节，并精简描述；并将LocationEncoder内容并入3.2.2节，删除了3.2.3节位置编码的重复说明，调整了章节层次结构。
+意见二：基线对比均为单模态方法，缺少多模态哈希方法实验对比。
+回复：感谢评阅专家的指正。本人修改如下：（1）3.4.1说明DCMH、SSAH等现有多模态哈希方法是图像-文本编码器，其中文本编码器与地理位置坐标在输入格式、语义空间和编码方式上存在差异，无法直接迁移构成公平对比。（2）3.4.2对比实验设计了单模态变体做公平对照和多模态增益验证说明，补充了DHLM与GeoCLIP在任务目标上的差异化定位。（3）5.2的实验验证层面，对多模态哈希方法的实验对比做了展望说明。
+意见三：自建BFATH数据集仅300样本，规模偏小，消融实验结论受统计波动影响。
+回复：感谢评阅专家的关注。本人在3.3.1节、3.4.1节和3.4.3节补充了以下说明：（1）BFATH数据集小样本的合理性论证，古树名木为不可再生资源，受保护政策限制，300张已属稀缺资源，并说明了迁移学习、预训练模型评估、关注排序而非绝对数值说明。（2）明确了数据集职能定位，iNaturalist 2018承担核心性能对比、融合策略对比与消融实验，BFATH承担领域微调验证与系统演示。（3）为增强消融实验的统计稳健性，消融实验在iNaturalist 2018验证集（2509张）上进行，受时间限制未执行专家建议的K折交叉验证。
+
+针对评阅人二的意见修改说明
+意见一：第6页图1.1中，三部分研究内容所在的框格需要用箭头等连接起来，表明三者之间的关系，另外图中留白太多，字体太小，建议重新设计绘图。
+回复：感谢评阅专家的细致审阅。本人已重新绘制技术路线图，在三列之间增加横向箭头体现“模型设计→实验验证→系统实现”的递进逻辑关系，缩小列间距减少留白，并将顶层标题及内部框字体统一放大，提高了清晰度。
+意见二：第14页图2.6中，应为“样本”，而不是“相本”。
+回复：感谢评阅专家的指正。本人已修正图2.6题注文字，将“相本”改为“样本”。
+意见三：作者在介绍一些基本概念时，缺乏文献引用，如“多模态融合”。
+回复：感谢评阅专家的建议。本人在2.3.1节“多模态融合”概念首次出现时补充了文献引用[33,36]。
+意见四：第34页公式3-17中，三个权重的具体值是如何确定的？
+回复：感谢评阅专家的质疑。本人在3.2.5基础上，追加说明了“上述具体取值通过预实验搜索确定，详细敏感性分析及验证见3.4.4节”，并在3.4.4节进行分析说明。
+
+针对评阅人三的意见修改说明
+意见一：3.2.4节未体现哈希层创新性设计策略，只介绍了哈希层实现流程，无法体现对深度哈希技术的创新。
+回复：感谢评阅专家的批评。本人修改如下：3.2.4新增（1）增加"投影结构选择"论证。（2）增加"连续松弛函数选择"论证。（3）增加"哈希码长度与量化约束策略"论证。通过上述三维度策略论证，本节不再仅描述实现流程，而是系统展示了哈希层各组件的设计决策依据。
+意见二：iNaturalist 2018筛选标准不明确；是否真含古树名木样本；GPS精度是否满足要求；缺失坐标如何处理。
+回复：感谢评阅专家的严格审阅。本人在3.3.1节补充了以下说明：（1）筛选标准：从iNaturalist 2018全部类别中，依据《古树名木普查技术规范》及京津冀地区常见古树名木科属分布，通过family（科）字段筛选出25个相关科属类别。（2）明确说明iNaturalist为通用植物数据集，图像采集场景与真实古树名木记录存在差异，定位为“预训练与通用评估数据集”。（3）补充位置坐标精度说明：消费级定位精度，满足城市/景区级位置检索需求。（4）说明缺失坐标处理方式：剔除坐标缺失或明显异常的记录。（5）明确本研究使用该数据集中的植物图像及其对应的位置坐标构建训练样本。
+意见三：BFATH数据集仅包含300张样本，消融实验统计显著性有限。
+回复：感谢评阅专家的建议。本人同评阅人一的意见三一起进行了修改，已补充小样本合理性论证、数据集职能定位等说明，受时间限制未执行专家建议的K折交叉验证。
+意见四：缺少与多模态哈希方法（DCMH、SSAH）的横向对比，缺乏外部参照系。
+回复：感谢评阅专家的批评。本人在3.4.1节末尾和3.4.2节表3.4分析末尾补充了详细论证：（1）系统论证说明DCMH、SSAH因文本编码器与坐标输入在格式、语义空间和编码方式上的本质差异而无法直接迁移。（2）补充了DHLM与GeoCLIP在任务目标（预测vs检索）上的差异化定位。（3）受限于时间关系与计算资源，与多模态哈希方法对比留作后续研究。
+意见五：古树名木多模态检索系统功能不完善，缺乏按照科、属、种等基本检索功能，系统工程量较为单薄。
+回复：感谢评阅专家的建议。本人修改如下：（1）在4.1.1节补充了系统支持科属种三级级联查询、树种名称模糊查询、保护级别筛选和树龄区间筛选等功能描述。（2）在4.2.2节功能模块设计中增加了古树名木信息查询模块（含科属种查询与树种名称查询）。（3）在4.3新增4.3.1节古树名木数据上传设计与实现和4.3.2节古树名木信息查询设计与实现，新增图4.5到图4.9。上述修改，系统从单一多模态检索扩展为展示查询与多模态检索的综合平台。
+意见六：Adaptive名实不符，主模型采用特征拼接，注意力加权融合仅作为备选方案且未在实验中验证。
+回复：感谢评阅专家的批评。本人修改如下：（1）已将模型名称从DHLAM（Deep Hashing Learning Adaptive Multi-modal）更改为DHLM（Deep Hashing Learning Multi-modal Network）。图3.1模型架构图已同步更新为DHLM模型架构。（2）在3.2.3节通过多路融合策略验证（特征拼接、门控融合、逐元素相加、逐元素相乘四种方案对比实验，见表3.6确定特征拼接为最优融合方案，而非直接声明使用特征拼接。
+意见七：1.2.2节最后2段和该节标题主旨无关，过于冗余。
+回复：感谢评阅专家的指正。本人已删除1.2.2节末尾以“综上所述”开头的总结性段落。
+意见八：3.2.2节不同的图像特征编码器基本知识不需要在本节介绍。
+回复：感谢评阅专家的建议。本人已删除3.2.2节中AlexNet、VGG、EfficientNet、ViT等其他图像编码器的重复介绍，并将图像编码器基础内容前移至第2章。
+意见九：3.2.2节应明确分别对图像特征和位置特征编码，应将3.2.3节中的地理位置元数据编码迁移到3.2.2节。
+回复：感谢评阅专家的批评。本人修改如下：（1）将LocationEncoder内容并入3.2.2节，使该节明确分为“图像特征编码”和“位置特征编码”两个子层次。（2）3.2.3节改为专注多模态融合策略介绍，删除了冗余的小标题内容。
+意见十：3.2.4节有明显AI痕迹，双引号标点均不对，公式3-10字体格式不对，公式3-16缺乏说明，公式3-18取值范围有误。
+回复：感谢评阅专家的细致审阅。本人修改如下：（1）修正了所有英文双引号为中文双引号。（2）修正了公式3-10字体格式。（3）补充了公式3-16说明。（4）修正了公式3-18取值范围说明。
+意见十一：公式3-17中的参数定义不规范，建议归一化。
+回复：感谢评阅专家的指正。本人修改如下：（1）已将三种损失权重按10:5:1的比例归一化，令λ₁=10/16，λ₂=5/16，λ₃=1/16，满足λ₁+λ₂+λ₃=1。（2）3.4.4节超参数敏感性分析也同步修改。
+意见十二：3.3.3节mAP计算方式不明确，Recall@K指标中数据描述与前文不符。
+回复：感谢评阅专家的批评。本人修改如下：（1）已在3.3.3节明确了mAP计算方式：按查询样本的排序列表计算AP。（2）将“36类/1245张”修正为“25个古树名木相关类别/1254张”，并重新核对了每类平均样本量的表述。
+意见十三：3.4.1节第一段末尾提及“本论文报告单次运行的实验结果”不合理不科学。
+回复：感谢评阅专家的建议。本人修改如下：（1）将3.4.1节相关表述修改为“为客观地评估...本节在两个数据集上开展分层实验”。（2）并在第5章补充说明“实验验证层面，本文采用固定随机种子（seed=42）下的单次运行并报告结果，核心结论已通过预实验多次验证”。
+意见十四：L2I检索逻辑缺乏说明，查询输入的位置信息是什么缺乏说明。
+回复：感谢评阅专家的指正。本人修改如下：（1）在3.3.3节说明“以地理位置坐标为查询，检索半径＜1km等距离的图像视为相关样本”，并在3.2.6节补充了L2I检索流程的详细说明。（2）在第4章系统描述中明确L2I输入为“位置坐标”，输出为附近图像列表。
+意见十五：第4章标题应和正文保持一致，应为“4 古树名木多模态检索系统”
+回复：感谢评阅专家的指正。经与导师沟通，为准确反映系统功能，本人修改如下：（1）同评阅人三的意见五回复，第4章新增4.3.1古树名木数据上传详细设计与实现、4.3.2古树名木信息查询详细设计与实现（科属种和树种名称查询）。（2）第4章更新系统ER图和架构图及相关描述。（3）第4章4.3节新增图4.5到图4.9等。基于上述修改，已将第4章标题统一为“4 古树名木多模态展示与检索系统”，并同步更新了目录和页眉。
+意见十六：部分专业术语界定不严谨，“图像信息/数据/视觉/特征”、“地理位置元数据”等表述前后不一致。
+回复：感谢评阅专家的严格审阅。本人修改如下：（1）在第2章开头新增术语界定段：“图像数据指原始像素矩阵及文件级输入；图像特征指经由卷积神经网络提取的高维向量表示”。（2）除术语界定外，全文已统一替换“图像信息”为“图像特征/图像数据”，替换“视觉信息”为“图像特征”。
+意见十七：图4.6、4.7中文字过小，严重影响可读性。
+回复：感谢评阅专家的建议。本人修改如下：（1）图4.6已调整，前端按钮16px、列宽320px，确保图文清晰；（2）评阅意见中的图4.7对应现在的图4.10，重写时序图的puml代码，去除登录流程，减少约70%高度，优化其余流程文字表述，提高了时序图清晰度。（3）基于上述经验，检查并调整了第4章其余图的清晰度。</w:t>
+                            </w:r>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="left" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="left" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="left" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="left" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="left" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="left" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="left" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="left" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                        </w:p>
+                    </w:tc>
+                </w:tr>
+                <w:tr>
+                    <w:tblPrEx>
+                        <w:tblBorders>
+                            <w:top w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                            <w:left w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                            <w:bottom w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                            <w:right w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                            <w:insideH w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                            <w:insideV w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                        </w:tblBorders>
+                        <w:tblCellMar>
+                            <w:top w:w="0" w:type="dxa" />
+                            <w:left w:w="108" w:type="dxa" />
+                            <w:bottom w:w="0" w:type="dxa" />
+                            <w:right w:w="108" w:type="dxa" />
+                        </w:tblCellMar>
+                    </w:tblPrEx>
+                    <w:trPr>
+                        <w:trHeight w:val="1551" w:h-rule="atLeast" />
+                    </w:trPr>
+                    <w:tc>
+                        <w:tcPr>
+                            <w:tcW w:w="1368" w:type="dxa" />
+                            <w:shd w:val="clear" w:color="auto" w:fill="auto" />
+                            <w:noWrap w:val="0" />
+                            <w:vAlign w:val="center" />
+                        </w:tcPr>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="center" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>研究生</w:t>
+                            </w:r>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="center" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>承诺</w:t>
+                            </w:r>
+                        </w:p>
+                    </w:tc>
+                    <w:tc>
+                        <w:tcPr>
+                            <w:tcW w:w="8640" w:type="dxa" />
+                            <w:shd w:val="clear" w:color="auto" w:fill="auto" />
+                            <w:noWrap w:val="0" />
+                            <w:vAlign w:val="top" />
+                        </w:tcPr>
+                        <w:p>
+                            <w:pPr>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:rPr>
+                                    <w:rFonts w:ascii="黑体" w:fareast="黑体" w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:ascii="黑体" w:fareast="黑体" w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>我已根据论文评阅人所提意见对论文进行了全面、认真地修改和说明。</w:t>
+                            </w:r>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:rPr>
+                                    <w:rFonts w:ascii="黑体" w:fareast="黑体" w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:ind w:first-line="840" w:first-line-chars="350" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>研究生签名：                    </w:t>
+                            </w:r>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                    <w:lang w:val="EN-US" w:fareast="ZH-CN" />
+                                </w:rPr>
+                                <w:t>2026</w:t>
+                            </w:r>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>年</w:t>
+                            </w:r>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                    <w:lang w:val="EN-US" w:fareast="ZH-CN" />
+                                </w:rPr>
+                                <w:t> 5</w:t>
+                            </w:r>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>月</w:t>
+                            </w:r>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                    <w:lang w:val="EN-US" w:fareast="ZH-CN" />
+                                </w:rPr>
+                                <w:t> 21</w:t>
+                            </w:r>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>日</w:t>
+                            </w:r>
+                        </w:p>
+                    </w:tc>
+                </w:tr>
+                <w:tr>
+                    <w:tblPrEx>
+                        <w:tblBorders>
+                            <w:top w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                            <w:left w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                            <w:bottom w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                            <w:right w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                            <w:insideH w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                            <w:insideV w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto" />
+                        </w:tblBorders>
+                        <w:tblCellMar>
+                            <w:top w:w="0" w:type="dxa" />
+                            <w:left w:w="108" w:type="dxa" />
+                            <w:bottom w:w="0" w:type="dxa" />
+                            <w:right w:w="108" w:type="dxa" />
+                        </w:tblCellMar>
+                    </w:tblPrEx>
+                    <w:trPr>
+                        <w:trHeight w:val="1699" w:h-rule="atLeast" />
+                    </w:trPr>
+                    <w:tc>
+                        <w:tcPr>
+                            <w:tcW w:w="1368" w:type="dxa" />
+                            <w:shd w:val="clear" w:color="auto" w:fill="auto" />
+                            <w:noWrap w:val="0" />
+                            <w:vAlign w:val="center" />
+                        </w:tcPr>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="center" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>导师</w:t>
+                            </w:r>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:jc w:val="center" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>签署意见</w:t>
+                            </w:r>
+                        </w:p>
+                    </w:tc>
+                    <w:tc>
+                        <w:tcPr>
+                            <w:tcW w:w="8640" w:type="dxa" />
+                            <w:shd w:val="clear" w:color="auto" w:fill="auto" />
+                            <w:noWrap w:val="0" />
+                            <w:vAlign w:val="top" />
+                        </w:tcPr>
+                        <w:p>
+                            <w:pPr>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:b />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:rPr>
+                                    <w:rFonts w:ascii="黑体" w:fareast="黑体" w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>1．</w:t>
+                            </w:r>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:ascii="黑体" w:fareast="黑体" w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>该生是否已对评阅人提出的意见进行了仔细的修改和说明（是☑否□）</w:t>
+                            </w:r>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:rPr>
+                                    <w:rFonts w:ascii="黑体" w:fareast="黑体" w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:ascii="黑体" w:fareast="黑体" w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>2．是否同意该生提交修改后的学位论文进行再次送审      （是☑否□）</w:t>
+                            </w:r>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:ascii="黑体" w:fareast="黑体" w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>）</w:t>
+                            </w:r>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                        </w:p>
+                        <w:p>
+                            <w:pPr>
+                                <w:ind w:first-line="840" w:first-line-chars="350" />
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                            </w:pPr>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>导师签名：                        </w:t>
+                            </w:r>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                    <w:lang w:val="EN-US" w:fareast="ZH-CN" />
+                                </w:rPr>
+                                <w:t>2026</w:t>
+                            </w:r>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>年</w:t>
+                            </w:r>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                    <w:lang w:val="EN-US" w:fareast="ZH-CN" />
+                                </w:rPr>
+                                <w:t> 5</w:t>
+                            </w:r>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>月</w:t>
+                            </w:r>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                    <w:lang w:val="EN-US" w:fareast="ZH-CN" />
+                                </w:rPr>
+                                <w:t> 21</w:t>
+                            </w:r>
+                            <w:r>
+                                <w:rPr>
+                                    <w:rFonts w:hint="fareast" />
+                                    <w:sz w:val="24" />
+                                </w:rPr>
+                                <w:t>日</w:t>
+                            </w:r>
+                        </w:p>
+                    </w:tc>
+                </w:tr>
+            </w:tbl>
+            <w:p>
+                <w:pPr>
+                    <w:spacing w:before="156" w:before-lines="50" />
+                    <w:rPr>
+                        <w:rFonts w:hint="fareast" />
+                    </w:rPr>
+                </w:pPr>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:hint="fareast" />
+                    </w:rPr>
+                    <w:t>注：1）本表可加页；用5号宋体打印，存档；</w:t>
+                </w:r>
+            </w:p>
+            <w:p>
+                <w:pPr>
+                    <w:ind w:first-line="420" w:first-line-chars="200" />
+                    <w:rPr>
+                        <w:rFonts w:hint="fareast" />
+                    </w:rPr>
+                </w:pPr>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:hint="fareast" />
+                    </w:rPr>
+                    <w:t>2）</w:t>
+                </w:r>
+                <w:r>
+                    <w:t>“</w:t>
+                </w:r>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:hint="fareast" />
+                    </w:rPr>
+                    <w:t>修改意见</w:t>
+                </w:r>
+                <w:r>
+                    <w:t>”</w:t>
+                </w:r>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:hint="fareast" />
+                    </w:rPr>
+                    <w:t>一栏应详细填写评阅人所提意见，并按顺序标明</w:t>
+                </w:r>
+                <w:r>
+                    <w:t>“</w:t>
+                </w:r>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:hint="fareast" />
+                    </w:rPr>
+                    <w:t>①②③</w:t>
+                </w:r>
+                <w:r>
+                    <w:t>”</w:t>
+                </w:r>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:hint="fareast" />
+                    </w:rPr>
+                    <w:t>；</w:t>
+                </w:r>
+            </w:p>
+            <w:p>
+                <w:pPr>
+                    <w:ind w:first-line="420" w:first-line-chars="200" />
+                    <w:rPr>
+                        <w:rFonts w:hint="fareast" />
+                    </w:rPr>
+                </w:pPr>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:hint="fareast" />
+                    </w:rPr>
+                    <w:t>3）</w:t>
+                </w:r>
+                <w:r>
+                    <w:t>“</w:t>
+                </w:r>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:hint="fareast" />
+                    </w:rPr>
+                    <w:t>修改结果</w:t>
+                </w:r>
+                <w:r>
+                    <w:t>”</w:t>
+                </w:r>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:hint="fareast" />
+                    </w:rPr>
+                    <w:t>一栏应详细标明本人按意见修改结果和页码；对不进行修改的意见需要作详细说明；</w:t>
+                </w:r>
+            </w:p>
+            <w:p>
+                <w:pPr>
+                    <w:ind w:first-line="420" w:first-line-chars="200" />
+                    <w:rPr>
+                        <w:rFonts w:hint="fareast" />
+                    </w:rPr>
+                </w:pPr>
+                <w:r>
+                    <w:rPr>
+                        <w:rFonts w:hint="fareast" />
+                    </w:rPr>
+                    <w:t>4）本表应在本人签字及导师进行详细、全面、认真签署意见后生效。</w:t>
+                </w:r>
+            </w:p>
+            <w:sectPr>
+                <w:pgSz w:w="11907" w:h="16840" />
+                <w:pgMar w:top="964" w:right="1134" w:bottom="964" w:left="1304" w:header="794" w:footer="907" w:gutter="0" />
+                <w:cols w:space="720" />
+                <w:docGrid w:type="lines" w:line-pitch="312" />
+            </w:sectPr>
+        </wx:sect>
+    </w:body>
+</w:wordDocument>
