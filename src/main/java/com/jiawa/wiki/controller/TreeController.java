@@ -126,6 +126,15 @@ public class TreeController {
     List<TreeRetrieveResp> filtered = results.stream()
         .filter(r -> r.getName() == null || !r.getName().contains("油松"))
         .collect(Collectors.toList());
+
+    // 按相似度阈值过滤
+    Double threshold = req.getThreshold();
+    if (threshold != null) {
+      filtered = filtered.stream()
+          .filter(r -> r.getSimilarity() != null && r.getSimilarity() >= 0.5 &&  r.getSimilarity()<=threshold)
+          .collect(Collectors.toList());
+    }
+
     return filtered.stream().limit(topK).collect(Collectors.toList());
   }
 

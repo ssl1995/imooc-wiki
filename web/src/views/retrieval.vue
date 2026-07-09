@@ -453,6 +453,7 @@ export default defineComponent({
         const formData = new FormData();
         formData.append('type', 'I2I');
         formData.append('topK', i2iParams.topK.toString());
+        formData.append('threshold', i2iParams.threshold.toString());
         if (i2iFileList.value.length > 0 && i2iFileList.value[0].originFileObj) {
           formData.append('file', i2iFileList.value[0].originFileObj);
         }

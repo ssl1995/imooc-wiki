@@ -42,6 +42,11 @@ public class TreeRetrieveReq {
    */
   private Integer topK = 6;
 
+  /**
+   * 相似度阈值（I2I检索用）
+   */
+  private Double threshold;
+
   public TreeRetrieveEnum getType() {
     return type;
   }
@@ -104,5 +109,13 @@ public class TreeRetrieveReq {
 
   public void setMaxAge(Integer maxAge) {
     this.maxAge = maxAge;
+  }
+
+  public Double getThreshold() {
+    return threshold;
+  }
+
+  public void setThreshold(Double threshold) {
+    this.threshold = threshold;
   }
 }
